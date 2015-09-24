@@ -53,7 +53,7 @@ public class Player : MonoBehaviour {
         Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10);
         Vector3 lookPos = Camera.main.ScreenToWorldPoint(mousePos);
         lookPos = lookPos - transform.position;
-        float angle = Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg;
+        float angle = Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg + 270; //TODO: fix rotation when we change player model.
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
@@ -61,11 +61,11 @@ public class Player : MonoBehaviour {
     {
 		if (Input.GetMouseButton(0) && weapon1 != null)
 		{
-			weapon1.GetComponent<Weapon>().Fire();
+			weapon1.GetComponent<Weapon>().Fire(this);
 		}
 		else if (Input.GetMouseButton(1) && weapon2 != null)
 		{
-			weapon2.GetComponent<Weapon>().Fire();
+			weapon2.GetComponent<Weapon>().Fire(this);
 		}
     }
 
@@ -74,5 +74,20 @@ public class Player : MonoBehaviour {
         CheckForMovement();
         CheckForRotation();
         CheckForFire();
+	}
+
+	public float GetStrength()
+	{
+		return 1;
+	}
+
+	public float GetDexterity()
+	{
+		return 1;
+	}
+
+	public float GetIntelligence()
+	{
+		return 1;
 	}
 }
