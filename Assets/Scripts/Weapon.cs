@@ -31,8 +31,13 @@ public class Weapon : MonoBehaviour {
 
     public void Fire (Player p)
     {
-        if (Time.time > lastFired + 1 / fireFrequency)
-        {
+		Fire((CalculateDamage(p) / spread) + BASE_HIT_DAMAGE);
+    }
+
+	public void Fire (float damage)
+	{
+		if (Time.time > lastFired + 1 / fireFrequency)
+		{
 			for (int i = 0; i < spread; i++)
 			{
 				Transform projectile = Instantiate(projectilePrefab, transform.position, transform.rotation) as Transform;
@@ -42,11 +47,11 @@ public class Weapon : MonoBehaviour {
 					projectileTransform.Rotate(new Vector3(0, 0, -(spreadRange / 2) + i * (spreadRange / (spread - 1))));
 				}
 				projectile.GetComponent<Rigidbody2D>().AddForce((projectileTransform.up) * fireForce);
-				projectile.GetComponent<Projectile>().SetDamage((CalculateDamage(p) / spread) + BASE_HIT_DAMAGE);
+				projectile.GetComponent<Projectile>().SetDamage(damage);
 			}
 			lastFired = Time.time;
 		}
-    }
+	}
 
 	private float CalculateDamage (Player p)
 	{
@@ -82,7 +87,7 @@ public class Weapon : MonoBehaviour {
 		{
 			spreadRange = 360;
 		}
-		fireForce = Random.Range(90, 111);
+		fireForce = Random.Range(10, 25);
 
 		fireFrequency = Random.Range(1, 21);
 
