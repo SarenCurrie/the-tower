@@ -41,7 +41,7 @@ public class Weapon : MonoBehaviour {
 				{
 					projectileTransform.Rotate(new Vector3(0, 0, -(spreadRange / 2) + i * (spreadRange / (spread - 1))));
 				}
-				projectile.GetComponent<Rigidbody2D>().AddForce((projectileTransform.right) * fireForce);
+				projectile.GetComponent<Rigidbody2D>().AddForce((projectileTransform.up) * fireForce);
 				projectile.GetComponent<Projectile>().SetDamage((CalculateDamage(p) / spread) + BASE_HIT_DAMAGE);
 			}
 			lastFired = Time.time;
