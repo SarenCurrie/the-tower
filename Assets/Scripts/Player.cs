@@ -6,6 +6,11 @@ public class Player : MonoBehaviour {
     public GameObject weapon1;
     public GameObject weapon2;
 
+    public GameObject helm;
+    public GameObject chest;
+    public GameObject gloves;
+    public GameObject boots;
+
     public float movementSpeed = 20.0f;
 
 	private Rigidbody2D rigidBody;
@@ -76,18 +81,117 @@ public class Player : MonoBehaviour {
         CheckForFire();
 	}
 
-	public float GetStrength()
+	/*
+	*  Get the total strength of all armour pieces
+	*/
+	private int GetItemStrength()
 	{
-		return 1;
+		int helmStrength = 0;
+		int chestStrength = 0;
+		int gloveStrength = 0;
+		int bootStrength = 0;
+
+		if (helm != null)
+		{
+			helmStrength = helm.GetComponent<Armour>().GetStrength();
+		}
+
+		if (chest != null)
+		{
+			chestStrength = chest.GetComponent<Armour>().GetStrength();
+		}
+
+		if (gloves != null)
+		{
+			gloveStrength = gloves.GetComponent<Armour>().GetStrength();
+		}
+
+		if (boots != null)
+		{
+			bootStrength = boots.GetComponent<Armour>().GetStrength();
+		}
+
+		return helmStrength + chestStrength + gloveStrength + bootStrength;
 	}
 
-	public float GetDexterity()
+	/*
+	*  Get the total dexterity of all armour pieces
+	*/
+	private int GetItemDexterity()
 	{
-		return 1;
+		int helmDexterity = 0;
+		int chestDexterity = 0;
+		int gloveDexterity = 0;
+		int bootDexterity = 0;
+
+		if (helm != null)
+		{
+			helmDexterity = helm.GetComponent<Armour>().GetDexterity();
+		}
+
+		if (chest != null)
+		{
+			chestDexterity = chest.GetComponent<Armour>().GetDexterity();
+		}
+
+		if (gloves != null)
+		{
+			gloveDexterity = gloves.GetComponent<Armour>().GetDexterity();
+		}
+
+		if (boots != null)
+		{
+			bootDexterity = boots.GetComponent<Armour>().GetDexterity();
+		}
+
+		return helmDexterity + chestDexterity + gloveDexterity + bootDexterity;
 	}
 
-	public float GetIntelligence()
+	/*
+	*  Get the total intelligence of all armour pieces
+	*/
+	private int GetItemIntelligence()
 	{
-		return 1;
+		int helmIntelligence = 0;
+		int chestIntelligence = 0;
+		int gloveIntelligence = 0;
+		int bootIntelligence = 0;
+
+		if (helm != null)
+		{
+			helmIntelligence = helm.GetComponent<Armour>().GetDexterity();
+		}
+
+		if (chest != null)
+		{
+			chestIntelligence = chest.GetComponent<Armour>().GetDexterity();
+		}
+
+		if (gloves != null)
+		{
+			gloveIntelligence = gloves.GetComponent<Armour>().GetDexterity();
+		}
+
+		if (boots != null)
+		{
+			bootIntelligence = boots.GetComponent<Armour>().GetDexterity();
+		}
+
+		return helmIntelligence + chestIntelligence + gloveIntelligence + bootIntelligence;
+	}
+
+	public int GetStrength()
+	{
+		return 1 + GetItemStrength();
+	}
+
+	public int GetDexterity()
+	{
+		return 1 + GetItemDexterity();
+	}
+
+	public int GetIntelligence()
+	{
+		return 1 + GetItemIntelligence();
 	}
 }
