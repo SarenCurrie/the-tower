@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Floor
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -13,14 +15,14 @@ TagManager:
   - UI
   - 
   - 
+  - Ground_Floor
   - 
   - 
   - 
   - 
   - 
   - 
-  - 
-  - 
+  - Units
   - 
   - 
   - 
@@ -40,4 +42,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ground_Floor
+    uniqueID: 643252735
+    locked: 0
+  - name: Units
+    uniqueID: 3568364171
+    locked: 0
+  - name: Projectiles
+    uniqueID: 2764566173
     locked: 0
