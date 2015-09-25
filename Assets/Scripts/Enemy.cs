@@ -16,13 +16,27 @@ public class Enemy : MonoBehaviour {
 
 	}
 
+	/**
+	 * Changes the enemies health.
+	 */
 	public void LoseHealth (int val) {
 		health -= val;
 		if (health > maxHealth) {
+			// Cannot excede max health
 			health = maxHealth;
 		}
 		else if (health <= 0) {
-			Destroy(gameObject);
+			// If dead, die.
+			Die();
 		}
+	}
+
+	/**
+	 * Destroys the enemy.
+	 *
+	 * In the future, this can be used for scoring/loot etc.
+	 */
+	public void Die () {
+		Destroy(gameObject);
 	}
 }
