@@ -44,12 +44,12 @@ public class Weapon1Script : MonoBehaviour {
 
         if (Input.GetMouseButtonDown(0))
         {
-            weapon.sprite = sprites[1];
+            weapon.sprite = sprites[0];
         }
 
         if (Input.GetMouseButtonDown(1))
         {
-            weapon.sprite = sprites[0];
+            weapon.sprite = sprites[1];
         }
 
 

@@ -32,10 +32,10 @@ public class playerAreaShow : MonoBehaviour
 		// NOTE: Position of guns is hard-coded currently - want to make it depend later on their starting position
 		_InventoryWindowDown = Screen.height - 5.0f;
 		_InventoryWindowUp = Screen.height - (_InventoryWindowHeight) - _Offset;
-		_Weapon1Down = Screen.height - (_InventoryWindowHeight) - _Offset + 50f;
-		_Weapon1Up = Screen.height - (_InventoryWindowHeight) - 200f;
-		_Weapon2Down = Screen.height - (_InventoryWindowHeight) - _Offset + 50f + 60f;
-		_Weapon2Up = Screen.height - (_InventoryWindowHeight) - 200f + 60f;
+        _Weapon1Down = (_InventoryWindowHeight) + _Offset;
+		_Weapon1Up = 200f;
+        _Weapon2Down = (_InventoryWindowHeight) + _Offset + 70f;
+		_Weapon2Up = 270f;
 		weapon1 = GameObject.Find ("Weapon1").GetComponent<RectTransform> ();
 		weapon2 = GameObject.Find("Weapon2").GetComponent<RectTransform> ();
 	}

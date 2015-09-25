@@ -48,12 +48,12 @@ public class Weapon2Script : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            weapon.sprite = sprites[0];
+            weapon.sprite = sprites[1];
         }
 
         if (Input.GetMouseButtonDown(1))
         {
-            weapon.sprite = sprites[1];
+            weapon.sprite = sprites[0];
         }
 
 
