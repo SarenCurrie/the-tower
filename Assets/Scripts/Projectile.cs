@@ -34,5 +34,9 @@ public class Projectile : MonoBehaviour {
 			enemy.LoseHealth(damage);
 			Destroy(gameObject);
 		}
+		if (collision.gameObject.tag == "Wall")
+		{
+			Destroy(gameObject);
+		}
 	}
 }

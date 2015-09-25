@@ -341,6 +341,10 @@ Prefab:
       propertyPath: fireFrequency
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 11471532, guid: ab99800a8503f1b439227c48f320b181, type: 2}
+      propertyPath: damage
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab99800a8503f1b439227c48f320b181, type: 2}
   m_IsPrefabParent: 0
@@ -652,6 +656,10 @@ Prefab:
     - target: {fileID: 489240, guid: 1b3640d3655a64d839cd8e48e561b51b, type: 2}
       propertyPath: m_RootOrder
       value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 11498732, guid: 1b3640d3655a64d839cd8e48e561b51b, type: 2}
+      propertyPath: maxHealth
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b3640d3655a64d839cd8e48e561b51b, type: 2}
