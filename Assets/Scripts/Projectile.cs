@@ -4,6 +4,7 @@ using System.Collections;
 public class Projectile : MonoBehaviour {
 
     public float speed;
+    public float killTime = 2.0f;
 
     public void SetForce(Vector2 f)
     {
@@ -11,9 +12,10 @@ public class Projectile : MonoBehaviour {
     }
 
 	// Use this for initialization
-	void Start () {
-	
-	}
+	void Awake ()
+    {
+        GameObject.Destroy(this, killTime);
+    }
 	
 	// Update is called once per frame
 	void Update () {

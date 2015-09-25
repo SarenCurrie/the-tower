@@ -3,44 +3,49 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
-    public GameObject weapon;
+    public GameObject weapon1;
+    public GameObject weapon2;
 
-	// Use this for initialization
-	void Start () {
-        
-	}
+    public float movementSpeed = 20.0f;
 
-    void PickUpWeapon (GameObject w)
-    {
-        weapon = w;
-        weapon.transform.parent = transform;
+	private Rigidbody2D rigidBody;
+
+    // Use this for initialization
+    void Start () {
+		rigidBody = GetComponent<Rigidbody2D>();
     }
 
-	public float speed = 6.0f;
-
-    void FireWeapon()
+    void PickUpWeapon (GameObject w, int position)
     {
-        weapon.GetComponent<Weapon>().Fire();
+		if (position == 1)
+		{
+			weapon1 = w;
+		}
+		else
+		{
+			weapon2 = w;
+		}
+        w.transform.parent = transform;
     }
 
     void CheckForMovement()
     {
         if (Input.GetKey(KeyCode.A))
         {
-            transform.position += Vector3.left * speed * Time.deltaTime;
+			rigidBody.AddForce(Vector2.left * movementSpeed);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            transform.position += Vector3.right * speed * Time.deltaTime;
-        }
+			rigidBody.AddForce(Vector2.right * movementSpeed);
+		}
         if (Input.GetKey(KeyCode.W))
         {
-            transform.position += Vector3.up * speed * Time.deltaTime;
-        }
+			rigidBody.AddForce(Vector2.up * movementSpeed);
+		}
         if (Input.GetKey(KeyCode.S))
         {
-            transform.position += Vector3.down * speed * Time.deltaTime;
-        }
+			rigidBody.AddForce(Vector2.down * movementSpeed);
+		}
     }
 
     void CheckForRotation()
@@ -54,10 +59,14 @@ public class Player : MonoBehaviour {
 
     void CheckForFire()
     {
-        if (Input.GetKey(KeyCode.E))
-        {
-            FireWeapon();
-        }
+		if (Input.GetMouseButton(0) && weapon1 != null)
+		{
+			weapon1.GetComponent<Weapon>().Fire();
+		}
+		else if (Input.GetMouseButton(1) && weapon2 != null)
+		{
+			weapon2.GetComponent<Weapon>().Fire();
+		}
     }
 
 	// Update is called once per frame

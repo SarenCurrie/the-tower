@@ -141,7 +141,8 @@ GameObject:
   - 4: {fileID: 294009734}
   - 212: {fileID: 294009733}
   - 114: {fileID: 294009735}
-  - 143: {fileID: 294009736}
+  - 50: {fileID: 294009736}
+  - 58: {fileID: 294009737}
   m_Layer: 15
   m_Name: Player
   m_TagString: Player
@@ -199,25 +200,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abb159c4182a74a17896dc871f743721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 564617924}
-  speed: 1.5
---- !u!143 &294009736
-CharacterController:
+  weapon1: {fileID: 564617924}
+  weapon2: {fileID: 0}
+  movementSpeed: 5000
+--- !u!50 &294009736
+Rigidbody2D:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 294009732}
+  m_Mass: 80
+  m_LinearDrag: 30
+  m_AngularDrag: .0500000007
+  m_GravityScale: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!58 &294009737
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 294009732}
+  m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Height: .512000024
   m_Radius: .256000012
-  m_SlopeLimit: 45
-  m_StepOffset: .300000012
-  m_SkinWidth: .0799999982
-  m_MinMoveDistance: .00100000005
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &338176438
 Prefab:
   m_ObjectHideFlags: 0
@@ -693,6 +707,10 @@ Prefab:
       propertyPath: m_Name
       value: VertWall (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6135986, guid: 56dd28eee9772dd49858ac942d19cc63, type: 2}
+      propertyPath: m_Size.y
+      value: 3.9000001
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 56dd28eee9772dd49858ac942d19cc63, type: 2}
   m_IsPrefabParent: 0
@@ -884,6 +902,10 @@ Prefab:
     - target: {fileID: 6102722, guid: 392610535bad1174d9fa3c0afe8b454d, type: 2}
       propertyPath: m_IsTrigger
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6102722, guid: 392610535bad1174d9fa3c0afe8b454d, type: 2}
+      propertyPath: m_Size.y
+      value: .0500000007
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 392610535bad1174d9fa3c0afe8b454d, type: 2}
