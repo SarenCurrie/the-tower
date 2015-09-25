@@ -35,12 +35,14 @@ public class healthManager : MonoBehaviour
 	}
 	
 	void Update ()
-	{t++;
-		if (t>10){
-			t=0;
-		}
+	{
+		delay = .015f+health/4000f;
+
+
 		StartCoroutine("PlayLoop",delay);
+
 		mySprite.sprite = sprites[frameCounter];
+		this.transform.Find("health_text").GetComponent<Text>().text=health.ToString();
 	}
 	
 	//The following methods return a IEnumerator so they can be yielded:
