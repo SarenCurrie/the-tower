@@ -6,6 +6,11 @@ public class Player : MonoBehaviour {
 	// The base value of all stats
 	private const int MIN_STAT = 1;
 
+	// Player stats
+	private int strength = 1;
+	private int dexterity = 1;
+	private int intelligence = 1;
+
     public GameObject weapon1;
     public GameObject weapon2;
 
@@ -37,6 +42,61 @@ public class Player : MonoBehaviour {
 			weapon2 = w;
 		}
         w.transform.parent = transform;
+    }
+
+    /*
+    *  Picks up a piece of armour and puts it into the correct slot
+    */
+    public void PickUpArmour (GameObject a)
+    {
+    	// Get the armour slot
+    	int slot = a.GetComponent<Armour>().GetSlot();
+
+    	// Switch on the slot
+    	switch(slot)
+    	{
+    	case 0:
+    		// helmet
+    		if(helm != null)
+    		{
+    			helm.GetComponent<Armour>().ReturnToFloor();
+    		}
+
+    		helm = a;
+    		break;
+    	case 1:
+    		// chest
+    		if(chest != null)
+    		{
+    			chest.GetComponent<Armour>().ReturnToFloor();
+    		}
+
+    		chest = a;
+    		break;
+    	case 2:
+    		// gloves
+    		if(gloves != null)
+    		{
+    			gloves.GetComponent<Armour>().ReturnToFloor();
+    		}
+
+    		gloves = a;
+    		break;
+    	case 3:
+    		// boots
+    		if(boots != null)
+    		{
+    			boots.GetComponent<Armour>().ReturnToFloor();
+    		}
+
+    		boots = a;
+    		break;
+    	}
+
+    	// Update player stats
+    	UpdateStats();
+
+    	// TODO if a piece of armour exists in the slot put it on the ground
     }
 
     /*
@@ -179,40 +239,47 @@ public class Player : MonoBehaviour {
 		// If the armour piece exists get its intelligence stat
 		if (helm != null)
 		{
-			helmIntelligence = helm.GetComponent<Armour>().GetDexterity();
+			helmIntelligence = helm.GetComponent<Armour>().GetIntelligence();
 		}
 
 		if (chest != null)
 		{
-			chestIntelligence = chest.GetComponent<Armour>().GetDexterity();
+			chestIntelligence = chest.GetComponent<Armour>().GetIntelligence();
 		}
 
 		if (gloves != null)
 		{
-			gloveIntelligence = gloves.GetComponent<Armour>().GetDexterity();
+			gloveIntelligence = gloves.GetComponent<Armour>().GetIntelligence();
 		}
 
 		if (boots != null)
 		{
-			bootIntelligence = boots.GetComponent<Armour>().GetDexterity();
+			bootIntelligence = boots.GetComponent<Armour>().GetIntelligence();
 		}
 
 		// Total all intelligence stats
 		return helmIntelligence + chestIntelligence + gloveIntelligence + bootIntelligence;
 	}
 
+	private void UpdateStats()
+	{
+		strength = GetItemStrength() + MIN_STAT;
+		dexterity = GetItemDexterity() + MIN_STAT;
+		intelligence = GetItemIntelligence() + MIN_STAT;
+	}
+
 	public int GetStrength()
 	{
-		return MIN_STAT + GetItemStrength();
+		return strength;
 	}
 
 	public int GetDexterity()
 	{
-		return MIN_STAT + GetItemDexterity();
+		return dexterity;
 	}
 
 	public int GetIntelligence()
 	{
-		return MIN_STAT + GetItemIntelligence();
+		return intelligence;
 	}
 }
