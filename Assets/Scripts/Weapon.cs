@@ -13,12 +13,12 @@ public class Weapon : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-	
+
 	}
 
     public void Fire ()
@@ -26,7 +26,8 @@ public class Weapon : MonoBehaviour {
         if (Time.time > lastFired + 1 / fireFrequency)
         {
             Transform projectile = Instantiate(projectilePrefab, gameObject.transform.position, Quaternion.identity) as Transform;
-            projectile.GetComponent<Projectile>().SetForce(transform.right * fireForce);
+            projectile.GetComponent<Projectile>().SetForce(transform.up * fireForce);
+            projectile.GetComponent<Projectile>().damage = damage;
             lastFired = Time.time;
         }
     }
