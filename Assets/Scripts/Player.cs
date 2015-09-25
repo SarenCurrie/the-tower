@@ -3,6 +3,9 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
+	// The base value of all stats
+	private const int MIN_STAT = 1;
+
     public GameObject weapon1;
     public GameObject weapon2;
 
@@ -20,6 +23,9 @@ public class Player : MonoBehaviour {
 		rigidBody = GetComponent<Rigidbody2D>();
     }
 
+    /*
+    *  Picks a weapon up off the ground and puts it in the correct weapon slot
+    */
     void PickUpWeapon (GameObject w, int position)
     {
 		if (position == 1)
@@ -33,6 +39,10 @@ public class Player : MonoBehaviour {
         w.transform.parent = transform;
     }
 
+    /*
+    *  Checks if any of the movement keys have been pressed and adds an appropriate force to the
+    *  player model
+    */
     void CheckForMovement()
     {
         if (Input.GetKey(KeyCode.A))
@@ -53,6 +63,10 @@ public class Player : MonoBehaviour {
 		}
     }
 
+    /*
+    *  Checks if the player is currently pointing towards the mouse and rotates them towards it
+    *  if not.
+    */
     void CheckForRotation()
     {
         Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10);
@@ -62,6 +76,10 @@ public class Player : MonoBehaviour {
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
+    /*
+    *  Check if any of the weapon fire buttons have been pressed and fire the appropriate weapon
+    *  if it exists
+    */
     void CheckForFire()
     {
 		if (Input.GetMouseButton(0) && weapon1 != null)
@@ -91,6 +109,7 @@ public class Player : MonoBehaviour {
 		int gloveStrength = 0;
 		int bootStrength = 0;
 
+		// If the armour piece exists get its strength stat
 		if (helm != null)
 		{
 			helmStrength = helm.GetComponent<Armour>().GetStrength();
@@ -111,6 +130,7 @@ public class Player : MonoBehaviour {
 			bootStrength = boots.GetComponent<Armour>().GetStrength();
 		}
 
+		// Total all strength stats
 		return helmStrength + chestStrength + gloveStrength + bootStrength;
 	}
 
@@ -124,6 +144,7 @@ public class Player : MonoBehaviour {
 		int gloveDexterity = 0;
 		int bootDexterity = 0;
 
+		// If the armour piece exists get its dexterity stat
 		if (helm != null)
 		{
 			helmDexterity = helm.GetComponent<Armour>().GetDexterity();
@@ -144,6 +165,7 @@ public class Player : MonoBehaviour {
 			bootDexterity = boots.GetComponent<Armour>().GetDexterity();
 		}
 
+		// Total all dexterity stats
 		return helmDexterity + chestDexterity + gloveDexterity + bootDexterity;
 	}
 
@@ -157,6 +179,7 @@ public class Player : MonoBehaviour {
 		int gloveIntelligence = 0;
 		int bootIntelligence = 0;
 
+		// If the armour piece exists get its intelligence stat
 		if (helm != null)
 		{
 			helmIntelligence = helm.GetComponent<Armour>().GetDexterity();
@@ -177,21 +200,22 @@ public class Player : MonoBehaviour {
 			bootIntelligence = boots.GetComponent<Armour>().GetDexterity();
 		}
 
+		// Total all intelligence stats
 		return helmIntelligence + chestIntelligence + gloveIntelligence + bootIntelligence;
 	}
 
 	public int GetStrength()
 	{
-		return 1 + GetItemStrength();
+		return MIN_STAT + GetItemStrength();
 	}
 
 	public int GetDexterity()
 	{
-		return 1 + GetItemDexterity();
+		return MIN_STAT + GetItemDexterity();
 	}
 
 	public int GetIntelligence()
 	{
-		return 1 + GetItemIntelligence();
+		return MIN_STAT + GetItemIntelligence();
 	}
 }

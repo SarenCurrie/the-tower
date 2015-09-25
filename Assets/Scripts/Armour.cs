@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Armour : MonoBehaviour {
 
+	// The number of points allocated between the different stats
 	private const int STAT_POINTS = 3;
 
 	private int strength;
@@ -22,6 +23,9 @@ public class Armour : MonoBehaviour {
 	
 	}
 
+	/*
+	*  Called when the GameObject is created, generates the armour piece
+	*/
 	public void GenerateArmour() 
 	{
 		// Generate the slot the item will exist in
@@ -48,6 +52,7 @@ public class Armour : MonoBehaviour {
 		}
 	}
 
+	// Getters
 	public int GetSlot()
 	{
 		return slot;
