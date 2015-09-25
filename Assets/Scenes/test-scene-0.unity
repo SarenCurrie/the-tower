@@ -986,6 +986,7 @@ GameObject:
   - 224: {fileID: 1140140704}
   - 222: {fileID: 1140140706}
   - 114: {fileID: 1140140705}
+  - 114: {fileID: 1140140707}
   m_Layer: 5
   m_Name: heartcircle
   m_TagString: Untagged
@@ -1043,6 +1044,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1140140703}
+--- !u!114 &1140140707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1140140703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb7ac65bbe0382646b9ea5e64465c9f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1150294233
 Prefab:
   m_ObjectHideFlags: 0
@@ -1153,6 +1165,7 @@ GameObject:
   - 224: {fileID: 1195573757}
   - 222: {fileID: 1195573759}
   - 114: {fileID: 1195573758}
+  - 114: {fileID: 1195573760}
   m_Layer: 5
   m_Name: health_text
   m_TagString: Untagged
@@ -1217,6 +1230,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1195573756}
+--- !u!114 &1195573760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1195573756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb7ac65bbe0382646b9ea5e64465c9f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1308382619
 Prefab:
   m_ObjectHideFlags: 0
@@ -1588,6 +1612,7 @@ GameObject:
   - 222: {fileID: 1846301654}
   - 114: {fileID: 1846301653}
   - 114: {fileID: 1846301655}
+  - 114: {fileID: 1846301656}
   m_Layer: 5
   m_Name: health
   m_TagString: Untagged
@@ -1655,6 +1680,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 788ab33196e724e07b562acd209d6e0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1846301656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1846301651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb7ac65bbe0382646b9ea5e64465c9f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1992536623
