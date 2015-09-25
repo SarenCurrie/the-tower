@@ -3,24 +3,23 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
-    public GameObject weapon;
+    public GameObject weapon1;
+    public GameObject weapon2;
 
-	// Use this for initialization
-	void Start () {
+    public float speed = 6.0f;
+
+    // Use this for initialization
+    void Start () {
         
 	}
 
-    void PickUpWeapon (GameObject w)
+    void PickUpWeapon (GameObject w, int position)
     {
-        weapon = w;
-        weapon.transform.parent = transform;
-    }
-
-	public float speed = 6.0f;
-
-    void FireWeapon()
-    {
-        weapon.GetComponent<Weapon>().Fire();
+        if (position == 1)
+            weapon1 = w;
+        else
+            weapon2 = w;
+        w.transform.parent = transform;
     }
 
     void CheckForMovement()
@@ -54,10 +53,10 @@ public class Player : MonoBehaviour {
 
     void CheckForFire()
     {
-        if (Input.GetKey(KeyCode.E))
-        {
-            FireWeapon();
-        }
+		if (Input.GetMouseButton(0) && weapon1 != null)
+			weapon1.GetComponent<Weapon>().Fire();
+		else if (Input.GetMouseButton(1) && weapon2 != null)
+			weapon2.GetComponent<Weapon>().Fire();
     }
 
 	// Update is called once per frame
