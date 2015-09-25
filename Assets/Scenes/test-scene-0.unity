@@ -3,7 +3,7 @@
 --- !u!29 &1
 SceneSettings:
   m_ObjectHideFlags: 0
-  m_PVSData: 
+  m_PVSData:
   m_PVSObjectsArray: []
   m_PVSPortalsArray: []
   m_OcclusionBakeSettings:
@@ -161,7 +161,7 @@ SpriteRenderer:
   m_ReceiveShadows: 0
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
+  m_SubsetIndices:
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
   m_ReflectionProbeUsage: 1
@@ -198,8 +198,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: abb159c4182a74a17896dc871f743721, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   weapon1: {fileID: 564617924}
   weapon2: {fileID: 0}
   movementSpeed: 5000
@@ -323,11 +323,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11471532, guid: ab99800a8503f1b439227c48f320b181, type: 2}
       propertyPath: projectilePrefab
-      value: 
+      value:
       objectReference: {fileID: 477814, guid: fd5a1769471d40840a1e5a75244ab3ff, type: 2}
     - target: {fileID: 11471532, guid: ab99800a8503f1b439227c48f320b181, type: 2}
       propertyPath: fireForce
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 160408, guid: ab99800a8503f1b439227c48f320b181, type: 2}
       propertyPath: m_Layer
@@ -338,12 +338,8 @@ Prefab:
       value: -726603125
       objectReference: {fileID: 0}
     - target: {fileID: 11471532, guid: ab99800a8503f1b439227c48f320b181, type: 2}
-      propertyPath: fireFrequency
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 11471532, guid: ab99800a8503f1b439227c48f320b181, type: 2}
-      propertyPath: damage
-      value: 5
+      propertyPath: spread
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab99800a8503f1b439227c48f320b181, type: 2}
