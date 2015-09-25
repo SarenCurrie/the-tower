@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour {
 
-	public int maxHealth;
-	private int health;
+	public float maxHealth;
+	private float health;
 
 	// Use this for initialization
 	void Start () {
@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour {
 	/**
 	 * Changes the enemies health.
 	 */
-	public void LoseHealth (int val) {
+	public void LoseHealth (float val) {
 		health -= val;
 		if (health > maxHealth) {
 			// Cannot excede max health
