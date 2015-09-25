@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 484392}
   - 212: {fileID: 21254264}
   - 114: {fileID: 11471532}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,14 +40,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea53886dc75008348adf646b5596d5f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 477814, guid: fd5a1769471d40840a1e5a75244ab3ff, type: 2}
-  spread: 2
-  spreadRange: 0
-  fireForce: 10
-  fireFrequency: 5
-  strengthModifier: 0
-  dexterityModifier: 0
-  intelligenceModifier: 0
+  projectilePrefab: {fileID: 0}
 --- !u!212 &21254264
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -94,13 +87,9 @@ Prefab:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: spread
-      value: 2
+      propertyPath: m_Layer
+      value: 22
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: projectilePrefab
-      value: 
-      objectReference: {fileID: 477814, guid: fd5a1769471d40840a1e5a75244ab3ff, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 160408}

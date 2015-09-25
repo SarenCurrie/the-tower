@@ -82,13 +82,10 @@ public class Player : MonoBehaviour {
     */
     void CheckForFire()
     {
-		if (Input.GetMouseButton(0) && weapon1 != null)
-		{
-			weapon1.GetComponent<Weapon>().Fire(this);
-		}
-		else if (Input.GetMouseButton(1) && weapon2 != null)
-		{
-			weapon2.GetComponent<Weapon>().Fire(this);
+		if (Input.GetMouseButton (0) && weapon1 != null) {
+			weapon1.GetComponent<Weapon> ().Fire (this);
+		} else if (Input.GetMouseButton (1) && weapon2 != null) {
+			weapon2.GetComponent<Weapon> ().Fire (this);
 		}
     }
 

@@ -11,10 +11,10 @@ GameObject:
   - 114: {fileID: 11495686}
   - 212: {fileID: 21277174}
   - 50: {fileID: 5042094}
-  - 58: {fileID: 5834528}
-  m_Layer: 16
-  m_Name: Projectile
-  m_TagString: Untagged
+  - 61: {fileID: 6117638}
+  m_Layer: 28
+  m_Name: PlayerProjectile
+  m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,8 +47,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &5834528
-CircleCollider2D:
+--- !u!61 &6117638
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -59,7 +59,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: .0799999982
+  m_Size: {x: .159999996, y: .159999996}
 --- !u!114 &11495686
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -128,7 +128,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Layer
-      value: 16
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: PlayerProjectile
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
