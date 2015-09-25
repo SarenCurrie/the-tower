@@ -34,18 +34,6 @@ public class Projectile : MonoBehaviour {
 
 	void OnCollisionEnter2D (Collision2D collision)
 	{
-		print("projectile collided");
-		if (collision.gameObject.tag == "Enemy")
-		{
-			// Destroy projectile when hit
-			print("enemy");
-			var enemy = collision.gameObject.GetComponent<Enemy>();
-			enemy.LoseHealth(damage);
-			Destroy(gameObject);
-		}
-		if (collision.gameObject.tag == "Wall")
-		{
-			Destroy(gameObject);
-		}
+		Destroy(gameObject);
 	}
 }
