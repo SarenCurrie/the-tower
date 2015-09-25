@@ -95,6 +95,7 @@ GameObject:
   - 4: {fileID: 294009734}
   - 212: {fileID: 294009733}
   - 114: {fileID: 294009735}
+  - 50: {fileID: 294009736}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -152,8 +153,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abb159c4182a74a17896dc871f743721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 564617924}
-  speed: 1.5
+  weapon1: {fileID: 564617924}
+  weapon2: {fileID: 0}
+  movementSpeed: 10000
+--- !u!50 &294009736
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 294009732}
+  m_Mass: 80
+  m_LinearDrag: 30
+  m_AngularDrag: .0500000007
+  m_GravityScale: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &339007960
 Prefab:
   m_ObjectHideFlags: 0
