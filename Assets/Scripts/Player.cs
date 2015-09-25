@@ -61,11 +61,11 @@ public class Player : MonoBehaviour {
     {
 		if (Input.GetMouseButton(0) && weapon1 != null)
 		{
-			weapon1.GetComponent<Weapon>().Fire();
+			weapon1.GetComponent<Weapon>().Fire(this);
 		}
 		else if (Input.GetMouseButton(1) && weapon2 != null)
 		{
-			weapon2.GetComponent<Weapon>().Fire();
+			weapon2.GetComponent<Weapon>().Fire(this);
 		}
     }
 
@@ -74,5 +74,20 @@ public class Player : MonoBehaviour {
         CheckForMovement();
         CheckForRotation();
         CheckForFire();
+	}
+
+	public float GetStrength()
+	{
+		return 1;
+	}
+
+	public float GetDexterity()
+	{
+		return 1;
+	}
+
+	public float GetIntelligence()
+	{
+		return 1;
 	}
 }

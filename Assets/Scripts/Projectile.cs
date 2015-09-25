@@ -3,18 +3,19 @@ using System.Collections;
 
 public class Projectile : MonoBehaviour {
 
-    public float speed;
     public float killTime = 2.0f;
 
-    public void SetForce(Vector2 f)
-    {
-        GetComponent<Rigidbody2D>().AddForce(f);
-    }
+	private float damage;
+
+	public void SetDamage(float f)
+	{
+		damage = f;
+	}
 
 	// Use this for initialization
-	void Awake ()
+	void Start ()
     {
-        GameObject.Destroy(this, killTime);
+        GameObject.Destroy(GetComponent<GameObject>(), killTime);
     }
 	
 	// Update is called once per frame
