@@ -327,7 +327,7 @@ Prefab:
       objectReference: {fileID: 477814, guid: fd5a1769471d40840a1e5a75244ab3ff, type: 2}
     - target: {fileID: 11471532, guid: ab99800a8503f1b439227c48f320b181, type: 2}
       propertyPath: fireForce
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 160408, guid: ab99800a8503f1b439227c48f320b181, type: 2}
       propertyPath: m_Layer
@@ -336,6 +336,10 @@ Prefab:
     - target: {fileID: 21254264, guid: ab99800a8503f1b439227c48f320b181, type: 2}
       propertyPath: m_SortingLayerID
       value: -726603125
+      objectReference: {fileID: 0}
+    - target: {fileID: 11471532, guid: ab99800a8503f1b439227c48f320b181, type: 2}
+      propertyPath: spread
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab99800a8503f1b439227c48f320b181, type: 2}
