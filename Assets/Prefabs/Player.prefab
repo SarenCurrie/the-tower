@@ -29,6 +29,7 @@ GameObject:
   - 114: {fileID: 11416798}
   - 50: {fileID: 5004608}
   - 58: {fileID: 5842912}
+  - 114: {fileID: 11488504}
   m_Layer: 17
   m_Name: Player
   m_TagString: Player
@@ -103,6 +104,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon1: {fileID: 113880}
   weapon2: {fileID: 0}
+  helm: {fileID: 0}
+  chest: {fileID: 0}
+  gloves: {fileID: 0}
+  boots: {fileID: 0}
   movementSpeed: 5000
 --- !u!114 &11482112
 MonoBehaviour:
@@ -116,6 +121,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 477814, guid: fd5a1769471d40840a1e5a75244ab3ff, type: 2}
+--- !u!114 &11488504
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5df96648cd016b4cb416e9fddbbe3bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1000
+  damagedBy:
+  - Player
+  - Enemy
 --- !u!212 &21237958
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -176,8 +196,20 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: damagedBy.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: m_Layer
       value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxHealth
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damagedBy.Array.data[2]
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
