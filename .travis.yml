@@ -8,5 +8,7 @@ install:
 - ./Scripts/install.sh
 script:
 - ./Scripts/build.sh
+after_success:
+- ./Scripts/test.sh
 notifications:
   slack: studio-scur:fCnxlpJGIbOPlujPCOEColiW
