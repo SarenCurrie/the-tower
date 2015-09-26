@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Floor
   - Wall
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - 
   - 
   - Units
-  - 
+  - Projectile
   - 
   - 
   - 
