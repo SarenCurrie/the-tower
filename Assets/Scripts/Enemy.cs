@@ -16,6 +16,10 @@ public class Enemy : MonoBehaviour {
 
 	}
 
+	public float GetHealth () {
+		return health;
+	}
+
 	/**
 	 * Changes the enemies health.
 	 */
