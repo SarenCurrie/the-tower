@@ -59,7 +59,7 @@ public class Enemy : MonoBehaviour {
 
 	private void FleePlayer()
 	{
-		
+
 	}
 
 	private void MaybeFireAtPlayer()
@@ -82,6 +82,10 @@ public class Enemy : MonoBehaviour {
 		Vector3 relativePlayerPos = GetRelativePlayerPosition();
 		float angle = Mathf.Atan2(relativePlayerPos.y, relativePlayerPos.x) * Mathf.Rad2Deg + 270;
 		transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+	}
+
+	public float GetHealth () {
+		return health;
 	}
 
 	/**
