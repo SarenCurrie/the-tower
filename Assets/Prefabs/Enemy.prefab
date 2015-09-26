@@ -90,7 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 160408, guid: ab99800a8503f1b439227c48f320b181, type: 2}
   preferedDistance: 1
-  preferedDistanceRange: 3
+  preferedDistanceRange: .5
   movementSpeed: 1000
   damage: 1
 --- !u!212 &21213960
@@ -153,7 +153,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: preferedDistanceRange
-      value: 3
+      value: .5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: movementSpeed
