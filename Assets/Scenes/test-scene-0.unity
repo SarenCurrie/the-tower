@@ -592,6 +592,10 @@ Prefab:
       propertyPath: m_Layer
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 11418752, guid: 1b3640d3655a64d839cd8e48e561b51b, type: 2}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 1218109836}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b3640d3655a64d839cd8e48e561b51b, type: 2}
   m_IsPrefabParent: 0
@@ -824,6 +828,10 @@ Prefab:
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 11418752, guid: 1b3640d3655a64d839cd8e48e561b51b, type: 2}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 1588751907}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b3640d3655a64d839cd8e48e561b51b, type: 2}
   m_IsPrefabParent: 0

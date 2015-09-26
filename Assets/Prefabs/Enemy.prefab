@@ -11,7 +11,8 @@ GameObject:
   - 212: {fileID: 21213960}
   - 50: {fileID: 5032764}
   - 58: {fileID: 5887054}
-  - 114: {fileID: 11498732}
+  - 114: {fileID: 11405620}
+  - 114: {fileID: 11418752}
   m_Layer: 24
   m_Name: Enemy
   m_TagString: Enemy
@@ -60,7 +61,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: .256000012
---- !u!114 &11498732
+--- !u!114 &11405620
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5df96648cd016b4cb416e9fddbbe3bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  damagedBy:
+  - Player
+  - Enemy
+  - PlayerProjectile
+--- !u!114 &11418752
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -71,12 +88,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16d1272992c1344f5931d1eb2dadb1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 0}
-  preferedDistance: 0
-  preferedDistanceRange: 0
-  movementSpeed: 0
-  maxHealth: 0
-  damage: 0
+  weapon: {fileID: 160408, guid: ab99800a8503f1b439227c48f320b181, type: 2}
+  preferedDistance: 1
+  preferedDistanceRange: .5
+  movementSpeed: 1000
+  damage: 1
 --- !u!212 &21213960
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -122,6 +138,30 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Layer
       value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 160408, guid: ab99800a8503f1b439227c48f320b181, type: 2}
+    - target: {fileID: 0}
+      propertyPath: preferedDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: preferedDistanceRange
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: movementSpeed
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damage
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
