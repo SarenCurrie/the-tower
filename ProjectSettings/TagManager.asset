@@ -7,6 +7,8 @@ TagManager:
   - Floor
   - Wall
   - Enemy
+  - PlayerProjectile
+  - EnemyProjectile
   layers:
   - Default
   - TransparentFX
@@ -16,30 +18,30 @@ TagManager:
   - UI
   - 
   - 
-  - Ground_Floor
+  - Floor
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - Units
-  - Projectile
-  - 
-  - 
-  - 
-  - 
-  - 
+  - LowObject
+  - DroppedItem
   - 
   - 
   - Enemy
   - 
   - 
+  - Player
+  - PlayerArmour
+  - 
+  - 
+  - Enemy
+  - Weapon
+  - 
+  - MidObject
+  - FlyingEnemy
+  - 
   - EnemyProjectile
+  - PlayerProjectile
   - 
-  - 
-  - 
-  - 
+  - HighObject
+  - Wall
   m_SortingLayers:
   - name: Default
     uniqueID: 0

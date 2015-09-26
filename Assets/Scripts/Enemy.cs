@@ -99,6 +99,24 @@ public class Enemy : MonoBehaviour {
 		}
 	}
 
+	void OnCollisionEnter2D(Collision2D collision)
+	{
+		if (collision.gameObject.tag == "PlayerProjectile")
+		{
+			print("Collision");
+			health -= collision.gameObject.GetComponent<Projectile>().GetDamage();
+			if (health > maxHealth)
+			{
+				// Cannot excede max health
+				health = maxHealth;
+			}
+			else if (health <= 0)
+			{
+				Die();
+			}
+		}
+	}
+
 	/**
 	 * Destroys the enemy.
 	 *

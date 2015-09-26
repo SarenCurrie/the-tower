@@ -12,9 +12,9 @@ GameObject:
   - 212: {fileID: 21277174}
   - 50: {fileID: 5042094}
   - 61: {fileID: 6117638}
-  m_Layer: 16
-  m_Name: Projectile
-  m_TagString: Untagged
+  m_Layer: 28
+  m_Name: PlayerProjectile
+  m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,7 +128,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Layer
-      value: 16
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: PlayerProjectile
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
