@@ -9,7 +9,17 @@ public class Enemy : MonoBehaviour {
 	public float preferedDistanceRange;
 	public float movementSpeed;
 
+	public float minBurstTime;
+	public float maxBurstTime;
+
+	public float minFireWait;
+	public float maxFireWait;
+
 	public float damage;
+
+	private float nextFireTime = 0;
+	private float fireStopTime = 0;
+	private bool waitingToFire = false;
 
 	private Rigidbody2D rigidBody;
 
@@ -60,7 +70,19 @@ public class Enemy : MonoBehaviour {
 
 	private void MaybeFireAtPlayer()
 	{
-		Fire();
+		if (!waitingToFire)
+		{
+			if (Time.time > fireStopTime)
+			{
+				nextFireTime = Time.time + Random.Range(minFireWait, maxFireWait);
+				waitingToFire = true;
+			} else {
+				Fire();
+			}
+		} else if (Time.time > nextFireTime) {
+			fireStopTime = Time.time + Random.Range(minBurstTime, maxBurstTime);
+			waitingToFire = false;
+		}
     }
 
 	private void Fire()
