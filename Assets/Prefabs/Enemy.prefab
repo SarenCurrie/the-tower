@@ -12,7 +12,7 @@ GameObject:
   - 50: {fileID: 5032764}
   - 58: {fileID: 5887054}
   - 114: {fileID: 11498732}
-  m_Layer: 24
+  m_Layer: 14
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ Prefab:
         type: 3}
     - target: {fileID: 0}
       propertyPath: m_Layer
-      value: 24
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
