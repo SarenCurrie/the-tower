@@ -13,6 +13,8 @@ public class Armour : MonoBehaviour {
 	private string armourName;
 	private int slot;
 
+	private bool onFloor = true;
+
 	// Use this for initialization
 	void Start () {
 		GenerateArmour();
@@ -50,6 +52,42 @@ public class Armour : MonoBehaviour {
 				break;
 			}
 		}
+	}
+
+	/*
+	*  Pick up the armour if it is on the ground and clicked
+	*/
+	void OnMouseDown()
+	{
+		if(onFloor)
+		{
+			// Pass the object to the Player PickUpArmour method
+			GetPlayer().PickUpArmour(this.gameObject);
+
+			// Stop the sprite rendering
+			GetComponent<SpriteRenderer>().enabled = false;
+
+			// Clear the onFloor flag
+			onFloor = false;
+		}
+	}
+
+	/*
+	*  Put the armour back on the ground
+	*/
+	public void ReturnToFloor()
+	{
+		// Start the sprite rendering again
+		GetComponent<SpriteRenderer>().enabled = true;
+
+		// Set the onFloor flag
+		onFloor = true;
+	}
+
+	// Get the player object
+	private Player GetPlayer()
+	{
+		return GameObject.FindObjectOfType<Player>();
 	}
 
 	// Getters
