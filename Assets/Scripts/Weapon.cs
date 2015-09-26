@@ -1,4 +1,4 @@
-﻿﻿using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -62,34 +62,30 @@ public class Weapon : MonoBehaviour {
 
 	public void GenerateWeapon()
 	{
-		if(Random.Range(1,5) == 1)
+		int spreadRand = Random.Range (1, 4);//1/4
+		switch (spreadRand)
 		{
-			if (Random.Range(0, 100) == 50)
-			{
-				spread = 100;
-            } else {
-				spread = Random.Range(3, 10);
-				if (spread % 2 == 0)
-				{
-					spread += 1;
-				}
-			}
-		}
-		else
-		{
+		case 1:
+			//Multiple projectiles
+			spread = Random.Range (5, 10);
+			fireForce = Random.Range(15, 25);
+			fireFrequency = Random.Range(1f, 5);
+			break;
+		case 2:
+			//Low fire rate single fire weapon
 			spread = 1;
+			fireForce = Random.Range(80, 100);
+			fireFrequency = Random.Range(1f, 2.5f);
+			break;
+		case 3:
+			//High fire rate  single fire weapon
+			spread = 1;
+			fireForce = Random.Range(20, 35);
+			fireFrequency = Random.Range(15f, 30);
+			break;
 		}
-		if (Random.Range(1, 101) < 98)
-		{
-			spreadRange = Random.Range(15, 91);
-		}
-		else
-		{
-			spreadRange = 360;
-		}
-		fireForce = Random.Range(10, 25);
-
-		fireFrequency = Random.Range(1, 21);
+		//Spread range generation
+		spreadRange = Random.Range(15, 61);
 
 		//Generate main attributes
 		List<int> attributes = new List<int>(new int[] { 0, 1, 2 });
