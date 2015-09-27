@@ -9,16 +9,22 @@ public class Enemy : MonoBehaviour {
 	public float preferedDistanceRange;
 	public float movementSpeed;
 
-	public float maxHealth;
-	private float health;
+	public float minBurstTime;
+	public float maxBurstTime;
+
+	public float minFireWait;
+	public float maxFireWait;
 
 	public float damage;
+
+	private float nextFireTime = 0;
+	private float fireStopTime = 0;
+	private bool waitingToFire = false;
 
 	private Rigidbody2D rigidBody;
 
 	// Use this for initialization
 	void Start () {
-		health = maxHealth;
 		rigidBody = GetComponent<Rigidbody2D>();
 	}
 
@@ -59,12 +65,24 @@ public class Enemy : MonoBehaviour {
 
 	private void FleePlayer()
 	{
-		
+
 	}
 
 	private void MaybeFireAtPlayer()
 	{
-		Fire();
+		if (!waitingToFire)
+		{
+			if (Time.time > fireStopTime)
+			{
+				nextFireTime = Time.time + Random.Range(minFireWait, maxFireWait);
+				waitingToFire = true;
+			} else {
+				Fire();
+			}
+		} else if (Time.time > nextFireTime) {
+			fireStopTime = Time.time + Random.Range(minBurstTime, maxBurstTime);
+			waitingToFire = false;
+		}
     }
 
 	private void Fire()
@@ -82,47 +100,5 @@ public class Enemy : MonoBehaviour {
 		Vector3 relativePlayerPos = GetRelativePlayerPosition();
 		float angle = Mathf.Atan2(relativePlayerPos.y, relativePlayerPos.x) * Mathf.Rad2Deg + 270;
 		transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-	}
-
-	/**
-	 * Changes the enemies health.
-	 */
-	public void LoseHealth (float val) {
-		health -= val;
-		if (health > maxHealth) {
-			// Cannot excede max health
-			health = maxHealth;
-		}
-		else if (health <= 0) {
-			// If dead, die.
-			Die();
-		}
-	}
-
-	void OnCollisionEnter2D(Collision2D collision)
-	{
-		if (collision.gameObject.tag == "PlayerProjectile")
-		{
-			print("Collision");
-			health -= collision.gameObject.GetComponent<Projectile>().GetDamage();
-			if (health > maxHealth)
-			{
-				// Cannot excede max health
-				health = maxHealth;
-			}
-			else if (health <= 0)
-			{
-				Die();
-			}
-		}
-	}
-
-	/**
-	 * Destroys the enemy.
-	 *
-	 * In the future, this can be used for scoring/loot etc.
-	 */
-	public void Die () {
-		Destroy(gameObject);
 	}
 }
