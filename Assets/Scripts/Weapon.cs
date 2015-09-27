@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Weapon : MonoBehaviour {
-
+	
 	private const float BASE_HIT_DAMAGE = 0.01f;
 
     public Transform projectilePrefab;
@@ -15,6 +15,7 @@ public class Weapon : MonoBehaviour {
 	private float strengthModifier;
 	private float dexterityModifier;
 	private float intelligenceModifier;
+	private float damageMod;
 
 	private float lastFired = 0;
 
@@ -29,10 +30,10 @@ public class Weapon : MonoBehaviour {
 
 	}
 
-    public void Fire (Player p)
-    {
-		Fire((CalculateDamage(p) / spread) + BASE_HIT_DAMAGE);
-    }
+	public void Fire (Player p)
+	{
+		Fire(CalculateDamage(p));
+	}
 
 	public void Fire (float damage)
 	{
@@ -55,37 +56,43 @@ public class Weapon : MonoBehaviour {
 
 	private float CalculateDamage (Player p)
 	{
-		return p.GetStrength() * strengthModifier +
+		return ((p.GetStrength() * strengthModifier +
 			p.GetDexterity() * dexterityModifier +
-			p.GetIntelligence() * intelligenceModifier;
+			p.GetIntelligence() * intelligenceModifier) * damageMod);
 	}
 
 	public void GenerateWeapon()
 	{
-		int spreadRand = Random.Range (1, 4);//1/4
+		int spreadRand = Random.Range (1, 4);
 		switch (spreadRand)
 		{
-		case 1:
-			//Multiple projectiles
-			spread = Random.Range (5, 10);
-			fireForce = Random.Range(15, 25);
-			fireFrequency = Random.Range(1f, 5);
-			break;
-		case 2:
-			//Low fire rate single fire weapon
-			spread = 1;
-			fireForce = Random.Range(80, 100);
-			fireFrequency = Random.Range(1f, 2.5f);
-			break;
-		case 3:
-			//High fire rate  single fire weapon
-			spread = 1;
-			fireForce = Random.Range(20, 35);
-			fireFrequency = Random.Range(15f, 30);
-			break;
+			case 1:
+				//Multiple projectiles
+				spread = Random.Range (5, 10);
+				fireForce = Random.Range(15, 20);
+				fireFrequency = Random.Range(1f, 5);
+				spreadRange = Random.Range(15, 61);
+				damageMod = (float)(((50) + (System.Math.Pow(spreadRange, 0.7f))) / (((System.Math.Pow(fireFrequency, 1.1f)))*System.Math.Pow(spread, 1.1f)));
+				break;
+			case 2:
+				//Low fire rate single fire weapon
+				spread = 1;
+				fireForce = Random.Range(80, 100);
+				fireFrequency = Random.Range(1f, 2.5f);
+				spreadRange = 1;
+				damageMod = (float)((50 * 1.5 )/ (System.Math.Pow(fireFrequency, 1.5f)));
+				break;
+			case 3:
+				//High fire rate  single fire weapon
+				spread = 1;
+				fireForce = Random.Range(20, 35);
+				fireFrequency = Random.Range(15f, 30);
+				spreadRange = 1;
+				//(DPS_CONST * SOME_CONST) / ((MIN_FORCE * FORSE^FORCE_CONST) + MIN_FREQ * FREQ^FREQ_CONST))
+				//lower damage for higher fire rate and/or faster bullet speed (total difference of roughly .3 of a second)
+				damageMod = (float)((50 * 25) / (20 * (System.Math.Pow(fireForce, 0.2)) + 15 * (System.Math.Pow(fireFrequency, 1.2))));
+				break;
 		}
-		//Spread range generation
-		spreadRange = Random.Range(15, 61);
 
 		//Generate main attributes
 		List<int> attributes = new List<int>(new int[] { 0, 1, 2 });
