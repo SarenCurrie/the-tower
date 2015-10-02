@@ -4,7 +4,7 @@ using System.Collections;
 public class Health : MonoBehaviour {
 
     public float maxHealth;
-    private float health;
+    public float health;
 
     /**
      * This is an array of tags which specifies what the attached gameObject
@@ -17,11 +17,6 @@ public class Health : MonoBehaviour {
     // Use this for initialization
     void Start () {
         health = maxHealth;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
 	}
 
     /**
@@ -84,6 +79,8 @@ public class Health : MonoBehaviour {
 	 */
     public void Die()
     {
+        //Makes the dead thing drop an item
+        GameObject a = Item.GenerateItem(gameObject.GetComponent<Transform>().position);
         Destroy(gameObject);
     }
 }

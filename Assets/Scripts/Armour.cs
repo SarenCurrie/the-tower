@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Armour : MonoBehaviour {
+public class Armour : Item {
 
 	// The number of points allocated between the different stats
 	private const int STAT_POINTS = 3;
@@ -12,24 +12,18 @@ public class Armour : MonoBehaviour {
 
 	private string armourName;
 	private int slot;
+    private int look;
 
-	private bool onFloor = true;
+    public Sprite[] looks;
 
-	// Use this for initialization
-	void Start () {
-		GenerateArmour();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
-	/*
+    /*
 	*  Called when the GameObject is created, generates the armour piece
 	*/
-	public void GenerateArmour() 
+    public override void Generate() 
 	{
+        //look = Random.Range(0, looks.Length);
+        //GetComponent<SpriteRenderer>().sprite = looks[look];
+
 		// Generate the slot the item will exist in
 		// This might change to an enum at a later date
 		slot = Random.Range(0, 4);
@@ -54,44 +48,57 @@ public class Armour : MonoBehaviour {
 		}
 	}
 
-	/*
-	*  Pick up the armour if it is on the ground and clicked
-	*/
-	void OnMouseDown()
-	{
-		if(onFloor)
-		{
-			// Pass the object to the Player PickUpArmour method
-			GetPlayer().PickUpArmour(this.gameObject);
+    /*
+ *  Picks up a piece of armour and puts it into the correct slot
+ */
+    public override void PickUp()
+    {
+        switch (GetSlot())
+        {
+            case 0:
+                // helmet
+                if (GetPlayer().helm != null)
+                {
+                    GetPlayer().helm.GetComponent<Armour>().ReturnToFloor();
+                }
 
-			// Stop the sprite rendering
-			GetComponent<SpriteRenderer>().enabled = false;
+                GetPlayer().helm = this.gameObject;
+                break;
+            case 1:
+                // chest
+                if (GetPlayer().chest != null)
+                {
+                    GetPlayer().chest.GetComponent<Armour>().ReturnToFloor();
+                }
 
-			// Clear the onFloor flag
-			onFloor = false;
-		}
-	}
+                GetPlayer().chest = this.gameObject;
+                break;
+            case 2:
+                // gloves
+                if (GetPlayer().gloves != null)
+                {
+                    GetPlayer().gloves.GetComponent<Armour>().ReturnToFloor();
+                }
 
-	/*
-	*  Put the armour back on the ground
-	*/
-	public void ReturnToFloor()
-	{
-		// Start the sprite rendering again
-		GetComponent<SpriteRenderer>().enabled = true;
+                GetPlayer().gloves = this.gameObject;
+                break;
+            case 3:
+                // boots
+                if (GetPlayer().boots != null)
+                {
+                    GetPlayer().boots.GetComponent<Armour>().ReturnToFloor();
+                }
 
-		// Set the onFloor flag
-		onFloor = true;
-	}
+                GetPlayer().boots = this.gameObject;
+                break;
+        }
 
-	// Get the player object
-	private Player GetPlayer()
-	{
-		return GameObject.FindObjectOfType<Player>();
-	}
+        // Update player stats
+        GetPlayer().UpdateStats();
+    }
 
-	// Getters
-	public int GetSlot()
+    // Getters
+    public int GetSlot()
 	{
 		return slot;
 	}

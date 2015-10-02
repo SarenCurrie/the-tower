@@ -11,7 +11,7 @@ GameObject:
   - 212: {fileID: 21203302}
   - 114: {fileID: 11416070}
   m_Layer: 22
-  m_Name: Gun
+  m_Name: EnemyGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -103,6 +103,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 475210, guid: c154e1ab5c984f441b1114dfe548458e, type: 2}
+  looks:
+  - {fileID: 21300000, guid: ec5f076a1ef21004ba51f127e330342f, type: 3}
+  - {fileID: 21300000, guid: 28bcaf5ebee2d6a4392de8b2faf09104, type: 3}
 --- !u!114 &11425604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -197,7 +200,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: looks.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Name
+      value: EnemyGun
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 142788}

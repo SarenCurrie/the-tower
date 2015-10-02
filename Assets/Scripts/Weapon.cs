@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
-public class Weapon : MonoBehaviour {
+public class Weapon : Item {
 	
 	private const float BASE_HIT_DAMAGE = 0.01f;
 
@@ -19,18 +20,11 @@ public class Weapon : MonoBehaviour {
 
 	private float lastFired = 0;
 
-	// Use this for initialization
-	void Start () {
-		GenerateWeapon();
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
+    private int look;
 
-	}
+    public Sprite[] looks;
 
-	public void Fire (Player p)
+    public void Fire (Player p)
 	{
 		Fire(CalculateDamage(p));
 	}
@@ -61,32 +55,35 @@ public class Weapon : MonoBehaviour {
 			p.GetIntelligence() * intelligenceModifier) * damageMod);
 	}
 
-	public void GenerateWeapon()
+	public override void Generate()
 	{
-		int spreadRand = Random.Range (1, 4);
+        look = UnityEngine.Random.Range(0, looks.Length);
+        gameObject.GetComponent<SpriteRenderer>().sprite = looks[look];
+
+        int spreadRand = UnityEngine.Random.Range (1, 4);
 		switch (spreadRand)
 		{
 			case 1:
 				//Multiple projectiles
-				spread = Random.Range (5, 10);
-				fireForce = Random.Range(15, 20);
-				fireFrequency = Random.Range(1f, 5);
-				spreadRange = Random.Range(15, 61);
+				spread = UnityEngine.Random.Range (5, 10);
+				fireForce = UnityEngine.Random.Range(15, 20);
+				fireFrequency = UnityEngine.Random.Range(1f, 5);
+				spreadRange = UnityEngine.Random.Range(15, 61);
 				damageMod = (float)(((50) + (System.Math.Pow(spreadRange, 0.7f))) / (((System.Math.Pow(fireFrequency, 1.1f)))*System.Math.Pow(spread, 1.1f)));
 				break;
 			case 2:
 				//Low fire rate single fire weapon
 				spread = 1;
-				fireForce = Random.Range(80, 100);
-				fireFrequency = Random.Range(1f, 2.5f);
+				fireForce = UnityEngine.Random.Range(80, 100);
+				fireFrequency = UnityEngine.Random.Range(1f, 2.5f);
 				spreadRange = 1;
 				damageMod = (float)((50 * 1.5 )/ (System.Math.Pow(fireFrequency, 1.5f)));
 				break;
 			case 3:
 				//High fire rate  single fire weapon
 				spread = 1;
-				fireForce = Random.Range(20, 35);
-				fireFrequency = Random.Range(15f, 30);
+				fireForce = UnityEngine.Random.Range(20, 35);
+				fireFrequency = UnityEngine.Random.Range(15f, 30);
 				spreadRange = 1;
 				//(DPS_CONST * SOME_CONST) / ((MIN_FORCE * FORSE^FORCE_CONST) + MIN_FREQ * FREQ^FREQ_CONST))
 				//lower damage for higher fire rate and/or faster bullet speed (total difference of roughly .3 of a second)
@@ -98,16 +95,32 @@ public class Weapon : MonoBehaviour {
 		List<int> attributes = new List<int>(new int[] { 0, 1, 2 });
 		float[] modifiers = new float[3] { 0, 0, 0 };
 
-		int major = Random.Range(0, 3);
-		float majorMod = Random.Range(0.5f, 0.85f);
+		int major = UnityEngine.Random.Range(0, 3);
+		float majorMod = UnityEngine.Random.Range(0.5f, 0.85f);
 
 		modifiers[attributes[major]] = majorMod;
 		attributes.RemoveAt(major);
-		int minor = Random.Range(0, 2);
+		int minor = UnityEngine.Random.Range(0, 2);
 		modifiers[attributes[minor]] = 1 - majorMod;
 
 		strengthModifier = modifiers[0];
 		dexterityModifier = modifiers[1];
 		intelligenceModifier = modifiers[2];
 	}
+
+    /*
+    *  Picks a weapon up off the ground and puts it in the correct weapon slot
+    */
+    public override void PickUp()
+    {
+        if (GetPlayer().currentWeapon == 1)
+        {
+            GetPlayer().weapon1 = this.gameObject;
+        }
+        else
+        {
+            GetPlayer().weapon2 = this.gameObject;
+        }
+        transform.parent = transform;
+    }
 }
