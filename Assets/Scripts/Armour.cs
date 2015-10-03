@@ -3,54 +3,54 @@ using System.Collections;
 
 public class Armour : Item {
 
-	// The number of points allocated between the different stats
-	private const int STAT_POINTS = 3;
+    // The number of points allocated between the different stats
+    private const int STAT_POINTS = 3;
 
-	private int strength;
-	private int dexterity;
-	private int intelligence;
+    private int strength;
+    private int dexterity;
+    private int intelligence;
 
-	private string armourName;
-	private int slot;
+    private string armourName;
+    private int slot;
     private int look;
 
     public Sprite[] looks;
 
     /*
-	*  Called when the GameObject is created, generates the armour piece
-	*/
-    public override void Generate() 
-	{
+    *  Called when the GameObject is created, generates the armour piece
+    */
+    public override void Generate()
+    {
         //look = Random.Range(0, looks.Length);
         //GetComponent<SpriteRenderer>().sprite = looks[look];
 
-		// Generate the slot the item will exist in
-		// This might change to an enum at a later date
-		slot = Random.Range(0, 4);
+        // Generate the slot the item will exist in
+        // This might change to an enum at a later date
+        slot = Random.Range(0, 4);
 
-		// Assign the stat points
-		for (int i = 0; i < STAT_POINTS; i++)
-		{
-			var stat = Random.Range(0, 3);
-			
-			switch (stat)
-			{
-			case 0:
-				strength++;
-				break;
-			case 1:
-				dexterity++;
-				break;
-			case 2:
-				intelligence++;
-				break;
-			}
-		}
-	}
+        // Assign the stat points
+        for (int i = 0; i < STAT_POINTS; i++)
+        {
+            var stat = Random.Range(0, 3);
+
+            switch (stat)
+            {
+                case 0:
+                    strength++;
+                    break;
+                case 1:
+                    dexterity++;
+                    break;
+                case 2:
+                    intelligence++;
+                    break;
+            }
+        }
+    }
 
     /*
- *  Picks up a piece of armour and puts it into the correct slot
- */
+    *  Picks up a piece of armour and puts it into the correct slot
+    */
     public override void PickUp()
     {
         switch (GetSlot())
@@ -99,22 +99,22 @@ public class Armour : Item {
 
     // Getters
     public int GetSlot()
-	{
-		return slot;
-	}
+    {
+        return slot;
+    }
 
-	public int GetStrength()
-	{
-		return strength;
-	}
+    public int GetStrength()
+    {
+        return strength;
+    }
 
-	public int GetDexterity()
-	{
-		return dexterity;
-	}
+    public int GetDexterity()
+    {
+        return dexterity;
+    }
 
-	public int GetIntelligence()
-	{
-		return intelligence;
-	}
+    public int GetIntelligence()
+    {
+        return intelligence;
+    }
 }

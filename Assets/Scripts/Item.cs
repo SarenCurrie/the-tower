@@ -14,8 +14,8 @@ public abstract class Item : MonoBehaviour {
     }
 
     /**
-     * Static method that returns a new item.
-     */
+    * Static method that returns a new item.
+    */
     public static GameObject GenerateItem(Vector3 v)
     {
         GameObject item = (Instantiate(Resources.Load("GroundGun"), v, Quaternion.identity)) as GameObject;
@@ -23,7 +23,7 @@ public abstract class Item : MonoBehaviour {
         //75% chance a dropped item will be a weapon
         //if (type < WEAPON_CHANCE)
         //{
-           return item;
+            return item;
         //}
         //else
         //{
@@ -33,8 +33,8 @@ public abstract class Item : MonoBehaviour {
     }
 
     /*
-	*  Pick up the item it is on the ground and clicked
-	*/
+    *  Pick up the item it is on the ground and clicked
+    */
     void OnMouseDown()
     {
         if (onFloor)
@@ -50,8 +50,8 @@ public abstract class Item : MonoBehaviour {
     }
 
     /*
-	*  Put the item back on the ground
-	*/
+    *  Put the item back on the ground
+    */
     public void ReturnToFloor()
     {
         // Start the sprite rendering again
