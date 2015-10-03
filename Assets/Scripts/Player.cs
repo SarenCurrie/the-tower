@@ -94,7 +94,7 @@ public class Player : MonoBehaviour {
      */
     void CheckForSwap()
     {
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             if(weapon2 != null)
                 currentWeapon = currentWeapon == 0 ? 1 : 0;
