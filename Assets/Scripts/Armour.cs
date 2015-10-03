@@ -1,113 +1,120 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Armour : MonoBehaviour {
+public class Armour : Item {
 
-	// The number of points allocated between the different stats
-	private const int STAT_POINTS = 3;
+    // The number of points allocated between the different stats
+    private const int STAT_POINTS = 3;
 
-	private int strength;
-	private int dexterity;
-	private int intelligence;
+    private int strength;
+    private int dexterity;
+    private int intelligence;
 
-	private string armourName;
-	private int slot;
+    private string armourName;
+    private int slot;
+    private int look;
 
-	private bool onFloor = true;
+    public Sprite[] looks;
 
-	// Use this for initialization
-	void Start () {
-		GenerateArmour();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    /*
+    *  Called when the GameObject is created, generates the armour piece
+    */
+    public override void Generate()
+    {
+        //look = Random.Range(0, looks.Length);
+        //GetComponent<SpriteRenderer>().sprite = looks[look];
 
-	/*
-	*  Called when the GameObject is created, generates the armour piece
-	*/
-	public void GenerateArmour() 
-	{
-		// Generate the slot the item will exist in
-		// This might change to an enum at a later date
-		slot = Random.Range(0, 4);
+        // Generate the slot the item will exist in
+        // This might change to an enum at a later date
+        slot = Random.Range(0, 4);
 
-		// Assign the stat points
-		for (int i = 0; i < STAT_POINTS; i++)
-		{
-			var stat = Random.Range(0, 3);
-			
-			switch (stat)
-			{
-			case 0:
-				strength++;
-				break;
-			case 1:
-				dexterity++;
-				break;
-			case 2:
-				intelligence++;
-				break;
-			}
-		}
-	}
+        // Assign the stat points
+        for (int i = 0; i < STAT_POINTS; i++)
+        {
+            var stat = Random.Range(0, 3);
 
-	/*
-	*  Pick up the armour if it is on the ground and clicked
-	*/
-	void OnMouseDown()
-	{
-		if(onFloor)
-		{
-			// Pass the object to the Player PickUpArmour method
-			GetPlayer().PickUpArmour(this.gameObject);
+            switch (stat)
+            {
+                case 0:
+                    strength++;
+                    break;
+                case 1:
+                    dexterity++;
+                    break;
+                case 2:
+                    intelligence++;
+                    break;
+            }
+        }
+    }
 
-			// Stop the sprite rendering
-			GetComponent<SpriteRenderer>().enabled = false;
+    /*
+    *  Picks up a piece of armour and puts it into the correct slot
+    */
+    public override void PickUp()
+    {
+        switch (GetSlot())
+        {
+            case 0:
+                // helmet
+                if (GetPlayer().helm != null)
+                {
+                    GetPlayer().helm.GetComponent<Armour>().ReturnToFloor();
+                }
 
-			// Clear the onFloor flag
-			onFloor = false;
-		}
-	}
+                GetPlayer().helm = this.gameObject;
+                break;
+            case 1:
+                // chest
+                if (GetPlayer().chest != null)
+                {
+                    GetPlayer().chest.GetComponent<Armour>().ReturnToFloor();
+                }
 
-	/*
-	*  Put the armour back on the ground
-	*/
-	public void ReturnToFloor()
-	{
-		// Start the sprite rendering again
-		GetComponent<SpriteRenderer>().enabled = true;
+                GetPlayer().chest = this.gameObject;
+                break;
+            case 2:
+                // gloves
+                if (GetPlayer().gloves != null)
+                {
+                    GetPlayer().gloves.GetComponent<Armour>().ReturnToFloor();
+                }
 
-		// Set the onFloor flag
-		onFloor = true;
-	}
+                GetPlayer().gloves = this.gameObject;
+                break;
+            case 3:
+                // boots
+                if (GetPlayer().boots != null)
+                {
+                    GetPlayer().boots.GetComponent<Armour>().ReturnToFloor();
+                }
 
-	// Get the player object
-	private Player GetPlayer()
-	{
-		return GameObject.FindObjectOfType<Player>();
-	}
+                GetPlayer().boots = this.gameObject;
+                break;
+        }
 
-	// Getters
-	public int GetSlot()
-	{
-		return slot;
-	}
+        // Update player stats
+        GetPlayer().UpdateStats();
+    }
 
-	public int GetStrength()
-	{
-		return strength;
-	}
+    // Getters
+    public int GetSlot()
+    {
+        return slot;
+    }
 
-	public int GetDexterity()
-	{
-		return dexterity;
-	}
+    public int GetStrength()
+    {
+        return strength;
+    }
 
-	public int GetIntelligence()
-	{
-		return intelligence;
-	}
+    public int GetDexterity()
+    {
+        return dexterity;
+    }
+
+    public int GetIntelligence()
+    {
+        return intelligence;
+    }
 }

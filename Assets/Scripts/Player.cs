@@ -23,80 +23,12 @@ public class Player : MonoBehaviour {
 
 	private Rigidbody2D rigidBody;
 
+    //Which weapon is the player currently using?
+    public int currentWeapon = 0;
+
     // Use this for initialization
     void Start () {
 		rigidBody = GetComponent<Rigidbody2D>();
-    }
-
-    /*
-    *  Picks a weapon up off the ground and puts it in the correct weapon slot
-    */
-    void PickUpWeapon (GameObject w, int position)
-    {
-		if (position == 1)
-		{
-			weapon1 = w;
-		}
-		else
-		{
-			weapon2 = w;
-		}
-        w.transform.parent = transform;
-    }
-
-    /*
-    *  Picks up a piece of armour and puts it into the correct slot
-    */
-    public void PickUpArmour (GameObject a)
-    {
-    	// Get the armour slot
-    	int slot = a.GetComponent<Armour>().GetSlot();
-
-    	// Switch on the slot
-    	switch(slot)
-    	{
-    	case 0:
-    		// helmet
-    		if(helm != null)
-    		{
-    			helm.GetComponent<Armour>().ReturnToFloor();
-    		}
-
-    		helm = a;
-    		break;
-    	case 1:
-    		// chest
-    		if(chest != null)
-    		{
-    			chest.GetComponent<Armour>().ReturnToFloor();
-    		}
-
-    		chest = a;
-    		break;
-    	case 2:
-    		// gloves
-    		if(gloves != null)
-    		{
-    			gloves.GetComponent<Armour>().ReturnToFloor();
-    		}
-
-    		gloves = a;
-    		break;
-    	case 3:
-    		// boots
-    		if(boots != null)
-    		{
-    			boots.GetComponent<Armour>().ReturnToFloor();
-    		}
-
-    		boots = a;
-    		break;
-    	}
-
-    	// Update player stats
-    	UpdateStats();
-
-    	// TODO if a piece of armour exists in the slot put it on the ground
     }
 
     /*
@@ -139,14 +71,34 @@ public class Player : MonoBehaviour {
     /*
     *  Check if any of the weapon fire buttons have been pressed and fire the appropriate weapon
     *  if it exists
+    *
+    *  TODO: An exception should be thrown in an else as a player should not be able to get to a
+    *  state where they cannot fire.
     */
     void CheckForFire()
     {
-		if (Input.GetMouseButton (0) && weapon1 != null) {
-			weapon1.GetComponent<Weapon> ().Fire (this);
-		} else if (Input.GetMouseButton (1) && weapon2 != null) {
-			weapon2.GetComponent<Weapon> ().Fire (this);
+		if (Input.GetMouseButton (0)) {
+            if (currentWeapon == 0 && weapon1 != null)
+            {
+                weapon1.GetComponent<Weapon>().Fire(this);
+            }
+            else if (weapon2 != null)
+            {
+                weapon2.GetComponent<Weapon>().Fire(this);
+            }
 		}
+    }
+
+    /**
+     * Checks if the player has pressed E, which swaps the weapons.
+     */
+    void CheckForSwap()
+    {
+        if (Input.GetKey(KeyCode.E))
+        {
+            if(weapon2 != null)
+                currentWeapon = currentWeapon == 0 ? 1 : 0;
+        }
     }
 
 	// Update is called once per frame
@@ -154,6 +106,7 @@ public class Player : MonoBehaviour {
         CheckForMovement();
         CheckForRotation();
         CheckForFire();
+        CheckForSwap();
 	}
 
 	/*
@@ -261,7 +214,7 @@ public class Player : MonoBehaviour {
 		return helmIntelligence + chestIntelligence + gloveIntelligence + bootIntelligence;
 	}
 
-	private void UpdateStats()
+	public void UpdateStats()
 	{
 		strength = GetItemStrength() + MIN_STAT;
 		dexterity = GetItemDexterity() + MIN_STAT;
