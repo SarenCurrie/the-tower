@@ -102,14 +102,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abb159c4182a74a17896dc871f743721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon1: {fileID: 160408, guid: ab99800a8503f1b439227c48f320b181, type: 2}
-  weapon2: {fileID: 160408, guid: ab99800a8503f1b439227c48f320b181, type: 2}
+  weapons:
+  - {fileID: 113880}
+  - {fileID: 0}
   helm: {fileID: 0}
   chest: {fileID: 0}
   gloves: {fileID: 0}
   boots: {fileID: 0}
   movementSpeed: 5000
-  currentWeapon: 0
 --- !u!114 &11482112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -236,6 +236,10 @@ Prefab:
       propertyPath: m_Name
       value: PlayerGun
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: weapons.Array.data[0]
+      value: 
+      objectReference: {fileID: 113880}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 124720}

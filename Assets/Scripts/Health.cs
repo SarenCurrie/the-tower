@@ -56,7 +56,6 @@ public class Health : MonoBehaviour {
         {
             if (collision.gameObject.tag == damagedBy[i])
             {
-                print("Collision");
                 health -= collision.gameObject.GetComponent<Projectile>().GetDamage();
                 if (health > maxHealth)
                 {
