@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System;
 
 public class Weapon : Item {
-	
+
 	private const float BASE_HIT_DAMAGE = 0.01f;
 
     public Transform projectilePrefab;
@@ -113,7 +113,7 @@ public class Weapon : Item {
     */
     public override void PickUp()
     {
-        if (GetPlayer().currentWeapon == 1)
+        if (GetPlayer().currentWeapon == 0)
         {
             GetPlayer().weapon1 = this.gameObject;
         }
@@ -121,6 +121,8 @@ public class Weapon : Item {
         {
             GetPlayer().weapon2 = this.gameObject;
         }
-        transform.parent = transform;
+        transform.position = GetPlayer().transform.position;
+        transform.rotation = GetPlayer().transform.rotation;
+        transform.parent = GetPlayer().transform;
     }
 }
