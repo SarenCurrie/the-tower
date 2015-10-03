@@ -54,6 +54,8 @@ public abstract class Item : MonoBehaviour {
         // Start the sprite rendering again
         gameObject.GetComponent<SpriteRenderer>().enabled = true;
 
+		gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Item_Dropped";
+
 		//Stop following the player
 		transform.parent = null;
 

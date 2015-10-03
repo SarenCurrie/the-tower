@@ -117,6 +117,7 @@ public class Weapon : Item {
         transform.position = GetPlayer().transform.position;
         transform.rotation = GetPlayer().transform.rotation;
         transform.parent = GetPlayer().transform; //Weapon will follow the player.
+		GetComponent<SpriteRenderer>().sortingLayerName = "Held_Weapon";
 
 		GetPlayer().GetComponent<Player>().PickUpWeapon(this);
 	}
