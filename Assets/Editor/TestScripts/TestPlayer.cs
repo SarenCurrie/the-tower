@@ -33,7 +33,7 @@ public class TestPlayer
 
     }
 
-
+    //TODO
     [Test]
     public void TestPlayerStartsWithWeapon()
     {
@@ -45,54 +45,33 @@ public class TestPlayer
 
     }
 
+    [Test]
     public void TestPlayerStartingMovementSpeed()
+    {
+        float desiredMovementSpeed = 20.0f;
+        //TODO
+        Player player = instantiator.InstantiateScript<Player>();
+        float movementSpeed = player.movementSpeed;
+        Assert.AreEqual(desiredMovementSpeed,movementSpeed);
+
+    }
+
+    [Test]
+    public void TestPlayerNoStartingArmourSet()
     {
         //TODO
         Player player = instantiator.InstantiateScript<Player>();
-        GameObject weapon1Object = player.weapon2;
-        //Weapon weapon1 = weapon1Object.GetComponent<Weapon>();
-        //Assert.IsNotNull(weapon1Object);
+        GameObject helm = player.helm;
+        GameObject chest = player.chest;
+        GameObject gloves = player.gloves;
+        GameObject boots = player.boots;
+
+        Assert.Null(helm);
+        Assert.Null(chest);
+        Assert.Null(gloves);
+        Assert.Null(boots);
 
     }
 
 
-
-
-    /*[Test]
-    public void TestMaxHealth() {
-        Enemy enemy = instantiator.InstantiateScript<Enemy>();
-
-        Health health = enemy.gameObject.GetComponent<Health>();
-
-        Assert.AreEqual(100, health.health);
-    }
-    
-    [Test]
-    public void TestLosingNegativeHealth() {
-        Enemy enemy = instantiator.InstantiateScript<Enemy>();
-        enemy.GetComponent<Health>().health = 50;
-        enemy.LoseHealth(-100);
-
-        Assert.AreEqual(enemy.maxHealth, enemy.GetHealth());
-    }
-
-    [Test]
-    public void TestLosingHealth() {
-        Enemy enemy = instantiator.InstantiateScript<Enemy>();
-        enemy.maxHealth = 50;
-        enemy.LoseHealth(-enemy.maxHealth);
-        enemy.LoseHealth(5);
-
-        Assert.AreEqual(enemy.maxHealth - 5, enemy.GetHealth());
-    }
-
-    [Test]
-    public void TestDeath() {
-        Enemy enemy = instantiator.InstantiateScript<Enemy>();
-        enemy.maxHealth = 50;
-        enemy.LoseHealth(-enemy.maxHealth);
-        enemy.LoseHealth(50);
-
-        Assert.AreEqual(enemy.GetHealth(), 0);
-    }*/
 }
