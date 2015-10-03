@@ -2,7 +2,7 @@
 using System.Collections;
 
 public abstract class Item : MonoBehaviour {
-
+    private const int WEAPON_CHANCE = 50;
     private bool onFloor = true;
 
     public abstract void PickUp();
@@ -21,7 +21,7 @@ public abstract class Item : MonoBehaviour {
         GameObject item = (Instantiate(Resources.Load("GroundGun"), v, Quaternion.identity)) as GameObject;
         int type = Random.Range(0, 100);
         //75% chance a dropped item will be a weapon
-        //if (type < 75)
+        //if (type < WEAPON_CHANCE)
         //{
            return item;
         //}
