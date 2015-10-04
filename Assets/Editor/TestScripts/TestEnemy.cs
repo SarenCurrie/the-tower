@@ -18,6 +18,29 @@ public class TestEnemy {
 
     }
 
+    /*
+    [Test]
+    public void TestEnemyrStartingMovementSpeed()
+    {
+        float desiredMovementSpeed = 20.0f;
+        //TODO
+        Player player = instantiator.InstantiateScript<Player>();
+        float movementSpeed = player.movementSpeed;
+        Assert.AreEqual(desiredMovementSpeed, movementSpeed);
+
+    }
+    */
+    //TODO
+    [Test]
+    public void TestEnemyStartsWithWeapon()
+    {
+        //TODO
+        Enemy enemy = instantiator.InstantiateScript<Enemy>();
+        GameObject weapon= enemy.weapon;
+        //Weapon weapon1 = weapon1Object.GetComponent<Weapon>();
+        //Assert.IsNotNull(weapon1Object);
+
+    }
 	/*[Test]
 	public void TestMaxHealth() {
 		Enemy enemy = instantiator.InstantiateScript<Enemy>();
