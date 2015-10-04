@@ -38,15 +38,11 @@ public class healthManager : MonoBehaviour
 	{
 		delay = .015f+health/4000f;
 
-
-		StartCoroutine("PlayLoop",delay);
+		StartCoroutine("PlayLoop", delay);
 
 		mySprite.sprite = sprites[frameCounter];
         health = GameManager.GetPlayer().GetComponent<Health>().health;
 		this.transform.Find("health_text").GetComponent<Text>().text=health.ToString();
-        
-    
-
 	}
 	
 	//The following methods return a IEnumerator so they can be yielded:
