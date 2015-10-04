@@ -39,6 +39,8 @@ public class TestEnemy {
         //Assert.IsNotNull(weapon1Object);
 
     }
+
+
 	/*[Test]
 	public void TestMaxHealth() {
 		Enemy enemy = instantiator.InstantiateScript<Enemy>();
