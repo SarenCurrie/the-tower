@@ -1354,6 +1354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mySkin: {fileID: 11400000, guid: 7953503d9e83f8d469b84619849edd4e, type: 2}
+  startScreenName: StartScreen
 --- !u!114 &2013585210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1367,3 +1368,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mySkin: {fileID: 11400000, guid: 7953503d9e83f8d469b84619849edd4e, type: 2}
   firstLevelName: ui-world-manager
+  startScreenName: StartScreen
