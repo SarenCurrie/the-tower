@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class EndScreen : MonoBehaviour {
 
@@ -12,6 +13,7 @@ public class EndScreen : MonoBehaviour {
 	private static float winTop = 0 - Screen.height;
 	private static float winBottom = (Screen.height)/2;
 	private Rect winRect = new Rect((Screen.width - winWidth)/2, winTop, winWidth, winHeight);
+	private Image image;
 	
 	void WinArea(int windowID) 
 	{
@@ -48,9 +50,23 @@ public class EndScreen : MonoBehaviour {
 		GUILayout.EndHorizontal();
 	}
 	
-	void Start () {}
+	void Start() {
+		image = this.GetComponent<Image> ();
+		InvokeRepeating("Flicker", 0, 5f);
+	}
 	
-	void Update () {}
+	void Update() {
+	}
+	
+	IEnumerator Flicker()
+	{
+		// Want to flicker image here.
+		float alpha = Random.Range(0.2f, 0.8f);
+		float wait = Random.Range(1.0f, 2.0f);
+		image.CrossFadeAlpha(alpha, 0.5f, false);
+		
+		yield return new WaitForSeconds(wait);
+	}
 	
 	void OnGUI () {
 		// Stop pausing from happening

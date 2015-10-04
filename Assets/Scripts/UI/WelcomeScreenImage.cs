@@ -57,11 +57,20 @@ public class WelcomeScreenImage : MonoBehaviour {
 
 	void Start() {
 		image = this.GetComponent<Image> ();
+		InvokeRepeating("Flicker", 0, 5f);
+	}
+	
+	void Update() {
 	}
 
-
-	void Update() {
+	IEnumerator Flicker()
+	{
 		// Want to flicker image here.
+		float alpha = Random.Range(0.2f, 0.8f);
+		float wait = Random.Range(1.0f, 2.0f);
+		image.CrossFadeAlpha(alpha, 0.5f, false);
+
+		yield return new WaitForSeconds(wait);
 	}
 
 	void OnGUI() {
