@@ -41,9 +41,6 @@ public abstract class Item : MonoBehaviour {
         {
             PickUp();
 
-            // Stop the sprite rendering
-            gameObject.GetComponent<SpriteRenderer>().enabled = false;
-
             // Clear the onFloor flag
             onFloor = false;
         }
@@ -57,8 +54,14 @@ public abstract class Item : MonoBehaviour {
         // Start the sprite rendering again
         gameObject.GetComponent<SpriteRenderer>().enabled = true;
 
+		gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Item_Dropped";
+
+		//Stop following the player
+		transform.parent = null;
+
         // Set the onFloor flag
         onFloor = true;
+
     }
 
     // Get the player object
