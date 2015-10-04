@@ -7,6 +7,7 @@ public class WelcomeScreenImage : MonoBehaviour {
 	public GUISkin mySkin;
 	public string firstLevelName;
 	public static bool continueEnabled = false;
+
 	// Start rect above the screen
 	private Rect buttonRect = new Rect(Screen.width/20, 0 - Screen.height, 280, 230);
 	private bool onStartScreen = true;
