@@ -29,8 +29,9 @@ GameObject:
   - 50: {fileID: 5031886}
   - 58: {fileID: 5894054}
   - 114: {fileID: 11425604}
-  - 114: {fileID: 11474220}
   - 114: {fileID: 11415532}
+  - 114: {fileID: 11405834}
+  - 114: {fileID: 11490298}
   m_Layer: 14
   m_Name: SingleShotEnemy
   m_TagString: Enemy
@@ -92,6 +93,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: .256000012
+--- !u!114 &11405834
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 142788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16d1272992c1344f5931d1eb2dadb1f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preferedDistance: 3
+  preferedDistanceRange: 0
+  movementSpeed: 2000
 --- !u!114 &11415532
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -103,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2b23a97780dae14db79ed393ac574b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 475210, guid: c154e1ab5c984f441b1114dfe548458e, type: 2}
   minBurstTime: 0
   maxBurstTime: 5
   minFireWait: 0
@@ -141,7 +156,7 @@ MonoBehaviour:
   - Player
   - Enemy
   - PlayerProjectile
---- !u!114 &11474220
+--- !u!114 &11490298
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -149,12 +164,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 142788}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c305ad83a87afe428430747324a1650, type: 3}
+  m_Script: {fileID: 11500000, guid: 6616aa5ec43b64f87969bac954839e71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  preferedDistance: 3
-  preferedDistanceRange: 0
-  movementSpeed: 2000
+  maxHealth: 100
+  health: 100
+  regenerateSpeed: 0
+  invincible: 0
+  dead: 0
+  damagePrefab: {fileID: 0}
+  damageEffectTransform: {fileID: 0}
+  damageEffectMultiplier: 1
+  damageEffectCentered: 1
+  scorchMarkPrefab: {fileID: 0}
+  damageSignals:
+    onlyOnce: 0
+    receivers: []
+  dieSignals:
+    onlyOnce: 0
+    receivers: []
 --- !u!212 &21203302
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -242,6 +270,10 @@ Prefab:
       propertyPath: damage
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 475210, guid: c154e1ab5c984f441b1114dfe548458e, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 142788}
