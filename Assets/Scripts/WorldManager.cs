@@ -104,7 +104,7 @@ public class WorldManager : MonoBehaviour {
 			print("YOU SUCK");     
     }
 
-    private GameObject GetPlayer()
+    public GameObject GetPlayer()
     {
         return GameManager.GetPlayer();
     }

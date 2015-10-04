@@ -9,14 +9,38 @@ public class TestPlayer
 {
     ScriptInstantiator instantiator = new ScriptInstantiator();
 
-
     [Test]
     public void TestCreatePlayer()
     {
+
         Player player = instantiator.InstantiateScript<Player>();
 
         Assert.IsNotNull(player);
 
+    }
+
+    //[Test]
+    public void TestPlayerHealth()
+    {
+        instantiator.InstantiateScript<GameManager>();
+        GameObject player = GameManager.player;
+
+        //float health = player.GetComponent<Health>().health;
+
+        Assert.IsNotNull(player);
+       // Assert.AreEqual(100,health);
+
+    }
+
+    //[Test]
+    public void TestMaxHealth()
+    {
+        instantiator.InstantiateScript<GameManager>();
+        GameObject player = GameManager.player;
+
+        Health health = player.gameObject.GetComponent<Health>();
+
+        Assert.AreEqual(100, health.health);
     }
 
     [Test]
