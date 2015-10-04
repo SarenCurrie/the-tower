@@ -207,9 +207,9 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 242757368}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a889a381721c854b8140dd1a97837d8, type: 3}
+  m_Script: {fileID: 11500000, guid: eb775fb2f5f8c4e43bc87110f806ca75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &242757371
@@ -293,10 +293,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 320428002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eae8abef291f50b449752e07001376d7, type: 3}
+  m_Script: {fileID: 11500000, guid: eb775fb2f5f8c4e43bc87110f806ca75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mySkin: {fileID: 11400000, guid: 7953503d9e83f8d469b84619849edd4e, type: 2}
 --- !u!114 &320428005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -477,14 +476,14 @@ RectTransform:
   m_GameObject: {fileID: 570112681}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: .99000001, y: .99000001, z: .99000001}
   m_Children: []
   m_Father: {fileID: 1844029277}
   m_RootOrder: 0
   m_AnchorMin: {x: 1, y: .5}
   m_AnchorMax: {x: 1, y: .5}
-  m_AnchoredPosition: {x: -37.2999992, y: -28.6000004}
-  m_SizeDelta: {x: 23.1000004, y: 12.6999998}
+  m_AnchoredPosition: {x: -96.6999969, y: -19.1000004}
+  m_SizeDelta: {x: 79.4000015, y: 31.7000008}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &570112683
 MonoBehaviour:
@@ -518,7 +517,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 8
+    m_FontSize: 25
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 10
@@ -547,7 +546,7 @@ GameObject:
   - 4: {fileID: 579870623}
   - 114: {fileID: 579870622}
   m_Layer: 0
-  m_Name: WorldManager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -561,20 +560,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 579870621}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d12524675aa04749b7e7af1ee62474a, type: 3}
+  m_Script: {fileID: 11500000, guid: e2950332f19737146988318faed03e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyTypes:
-  - {fileID: 142788, guid: a9f7cb6d46da5424f81a0a7b1a8b1582, type: 2}
   rooms:
   - {fileID: 158058, guid: 3ced777be4918b845a3dcd398f02da6f, type: 2}
+  enemyTypes:
+  - {fileID: 142788, guid: a9f7cb6d46da5424f81a0a7b1a8b1582, type: 2}
   playerPrefab: {fileID: 124720, guid: e8af01c63e511704fbe0773330730626, type: 2}
-  enemyCount: 3
-  enemies: []
-  room: {fileID: 0}
-  player: {fileID: 429756, guid: e8af01c63e511704fbe0773330730626, type: 2}
-  finishedRoom: 0
-  roomCreated: 0
+  floorMapCreated: 0
 --- !u!4 &579870623
 Transform:
   m_ObjectHideFlags: 0
@@ -1034,6 +1028,7 @@ GameObject:
   - 224: {fileID: 1165986158}
   - 222: {fileID: 1165986160}
   - 114: {fileID: 1165986159}
+  - 114: {fileID: 1165986161}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -1089,13 +1084,26 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 10700
+  m_Text: '0
+
+'
 --- !u!222 &1165986160
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1165986157}
+--- !u!114 &1165986161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1165986157}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb775fb2f5f8c4e43bc87110f806ca75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1844029276
 GameObject:
   m_ObjectHideFlags: 0

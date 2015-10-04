@@ -43,7 +43,7 @@ public class healthManager : MonoBehaviour
 
 		mySprite.sprite = sprites[frameCounter];
 		this.transform.Find("health_text").GetComponent<Text>().text=health.ToString();
-        health = GameManager.GetPlayer().GetComponent<Health>().health;
+        //health = GameManager.GetPlayer().GetComponent<Health>().health;
     
 
 	}
