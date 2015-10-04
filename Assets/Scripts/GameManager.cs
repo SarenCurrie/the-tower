@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour {
     {
         player.transform.position = new Vector3(-20, -20);
     }
-
+    
     // Use this for initialization
     void Start () {
         // player starts off the screen
@@ -71,23 +71,8 @@ public class GameManager : MonoBehaviour {
         {
             for(int y = 0; y < ROOM_Y; y++)
             {
-                float ycast = y;
-                ycast = -ycast * (float)5.4;
-                worldManager.Generate(floorMap[x][y], enemyTypes,x*9,ycast);
+                worldManager.Generate(floorMap[x][y], enemyTypes,x,y,ROOM_X - 1, ROOM_Y - 1);
             }
         }
     }
-
-    // Get the player
-    public static GameObject GetPlayer()
-    {
-        if (player == null)
-            print("YOU HAVE MADE A MISTAKE, MAX WILL FIX IT");
-        return player;
-    }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }
