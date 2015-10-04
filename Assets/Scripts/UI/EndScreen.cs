@@ -7,6 +7,7 @@ public class EndScreen : MonoBehaviour {
 	// Use this for initialization
 	public GUISkin mySkin;
 	public string firstLevelName;
+	public string startScreenName;
 	
 	private static float winHeight = 200f;
 	private static float winWidth = 350f;
