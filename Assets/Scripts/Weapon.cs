@@ -24,6 +24,9 @@ public class Weapon : Item {
 
     public Sprite[] looks;
 
+	public Sprite[] possibleProjectileSprites;
+	private Sprite projectileSprite;
+
     public void Fire (Player p)
     {
         Fire(CalculateDamage(p));
@@ -36,6 +39,7 @@ public class Weapon : Item {
             for (int i = 0; i < spread; i++)
             {
                 Transform projectile = Instantiate(projectilePrefab, transform.position, transform.rotation) as Transform;
+				projectile.GetComponent<SpriteRenderer>().sprite = projectileSprite;
                 Transform projectileTransform = projectile.GetComponent<Transform>();
                 if (spread > 1)
                 {
@@ -60,7 +64,10 @@ public class Weapon : Item {
         look = UnityEngine.Random.Range(0, looks.Length);
         gameObject.GetComponent<SpriteRenderer>().sprite = looks[look];
 
-        int spreadRand = UnityEngine.Random.Range (1, 4);
+		int projectileSpriteIndex = UnityEngine.Random.Range(0, possibleProjectileSprites.Length);
+		projectileSprite = possibleProjectileSprites[projectileSpriteIndex];
+
+		int spreadRand = UnityEngine.Random.Range (1, 4);
         switch (spreadRand)
         {
             case 1:

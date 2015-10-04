@@ -53,7 +53,10 @@ public class Armour : Item {
     */
     public override void PickUp()
     {
-        switch (GetSlot())
+		// Stop the sprite rendering
+		gameObject.GetComponent<SpriteRenderer>().enabled = false;
+
+		switch (GetSlot())
         {
             case 0:
                 // helmet
