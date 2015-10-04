@@ -105,7 +105,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 475210, guid: c154e1ab5c984f441b1114dfe548458e, type: 2}
   looks:
   - {fileID: 21300000, guid: ec5f076a1ef21004ba51f127e330342f, type: 3}
-  - {fileID: 21300000, guid: 28bcaf5ebee2d6a4392de8b2faf09104, type: 3}
+  - {fileID: 21300000, guid: 0596e5afa1b0f5c4486f1bc49468d383, type: 3}
   possibleProjectileSprites:
   - {fileID: 21300000, guid: ebe4c5176d748c342aacdc63f75e1bbd, type: 3}
   - {fileID: 21300000, guid: 7f406c7ad6388cb4baa394fc149579e0, type: 3}
@@ -274,6 +274,11 @@ Prefab:
       propertyPath: possibleProjectileSprites.Array.data[9]
       value: 
       objectReference: {fileID: 21300000, guid: 5d41bfa3f684f0848a7918244531e89e,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: looks.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 0596e5afa1b0f5c4486f1bc49468d383,
         type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
