@@ -165,7 +165,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 999604933
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: d774f64137caac34cbe4ae3369120b99, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21272680
 SpriteRenderer:
@@ -223,11 +223,11 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: weapon1
       value: 
-      objectReference: {fileID: 160408, guid: ab99800a8503f1b439227c48f320b181, type: 2}
+      objectReference: {fileID: 113880}
     - target: {fileID: 0}
       propertyPath: weapon2
       value: 
-      objectReference: {fileID: 160408, guid: ab99800a8503f1b439227c48f320b181, type: 2}
+      objectReference: {fileID: 113880}
     - target: {fileID: 0}
       propertyPath: m_UsedByEffector
       value: 0
