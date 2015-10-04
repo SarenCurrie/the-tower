@@ -50,16 +50,21 @@ public class healthManager : MonoBehaviour
 		StartCoroutine("PlayLoop", delay);
 
 		mySprite.sprite = sprites[frameCounter];
-        health = GameManager.GetPlayer().GetComponent<UnitHealth>().health;
-		this.transform.Find("health_text").GetComponent<Text>().text=health.ToString();
 
-        if (health <= 0)
+        if (GameManager.GetPlayer() != null)
         {
-            health = 0;
-            DeathMenu.dead = true;
+            health = GameManager.GetPlayer().GetComponent<UnitHealth>().health;
+            this.transform.Find("health_text").GetComponent<Text>().text = health.ToString();
 
+            if (health <= 0)
+            {
+                health = 0;
+                DeathMenu.dead = true;
+
+            }
         }
-	}
+    }
+	
 
 	//The following methods return a IEnumerator so they can be yielded:
 	//A method to play the animation in a loop
