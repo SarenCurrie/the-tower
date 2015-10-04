@@ -113,18 +113,12 @@ public class Weapon : Item {
     */
     public override void PickUp()
     {
-        if (GetPlayer().currentWeapon == 0)
-        {
-            GetPlayer().weapon1 = this.gameObject;
-        }
-        else
-        {
-            GetPlayer().weapon2 = this.gameObject;
-        }
-
         // Set the position of the weapon to that of the player.
         transform.position = GetPlayer().transform.position;
         transform.rotation = GetPlayer().transform.rotation;
         transform.parent = GetPlayer().transform; //Weapon will follow the player.
-    }
+		GetComponent<SpriteRenderer>().sortingLayerName = "Held_Weapon";
+
+		GetPlayer().GetComponent<Player>().PickUpWeapon(this);
+	}
 }

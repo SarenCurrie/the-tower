@@ -49,9 +49,15 @@ TagManager:
   - name: Ground_Floor
     uniqueID: 643252735
     locked: 0
-  - name: Units
-    uniqueID: 3568364171
+  - name: Item_Dropped
+    uniqueID: 3676171801
     locked: 0
   - name: Projectiles
     uniqueID: 2764566173
+    locked: 0
+  - name: Units
+    uniqueID: 3568364171
+    locked: 0
+  - name: Held_Weapon
+    uniqueID: 2747096095
     locked: 0
