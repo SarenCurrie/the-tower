@@ -95,7 +95,7 @@ GameObject:
   - 4: {fileID: 579870623}
   - 114: {fileID: 579870622}
   m_Layer: 0
-  m_Name: WorldManager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,20 +109,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 579870621}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d12524675aa04749b7e7af1ee62474a, type: 3}
+  m_Script: {fileID: 11500000, guid: e2950332f19737146988318faed03e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyTypes:
-  - {fileID: 142788, guid: a9f7cb6d46da5424f81a0a7b1a8b1582, type: 2}
   rooms:
   - {fileID: 158058, guid: 3ced777be4918b845a3dcd398f02da6f, type: 2}
+  enemyTypes:
+  - {fileID: 142788, guid: a9f7cb6d46da5424f81a0a7b1a8b1582, type: 2}
   playerPrefab: {fileID: 124720, guid: e8af01c63e511704fbe0773330730626, type: 2}
-  enemyCount: 3
-  enemies: []
-  room: {fileID: 0}
-  player: {fileID: 429756, guid: e8af01c63e511704fbe0773330730626, type: 2}
-  finishedRoom: 0
-  roomCreated: 0
+  floorMapCreated: 0
 --- !u!4 &579870623
 Transform:
   m_ObjectHideFlags: 0
