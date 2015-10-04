@@ -75,4 +75,9 @@ public class GameManager : MonoBehaviour {
             }
         }
     }
+
+    public static GameObject GetPlayer()
+    {
+        return GameObject.FindObjectOfType<Player>().gameObject;
+    }
 }

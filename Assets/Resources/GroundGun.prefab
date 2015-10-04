@@ -11,9 +11,10 @@ GameObject:
   - 212: {fileID: 21231088}
   - 114: {fileID: 11417484}
   - 61: {fileID: 6119930}
-  m_Layer: 0
+  - 50: {fileID: 5020852}
+  m_Layer: 11
   m_Name: GroundGun
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,6 +31,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!50 &5020852
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184112}
+  m_Mass: 1
+  m_LinearDrag: 10
+  m_AngularDrag: 8
+  m_GravityScale: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &6119930
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -38,7 +55,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 184112}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
@@ -57,7 +74,18 @@ MonoBehaviour:
   projectilePrefab: {fileID: 477814, guid: fd5a1769471d40840a1e5a75244ab3ff, type: 2}
   looks:
   - {fileID: 21300000, guid: ec5f076a1ef21004ba51f127e330342f, type: 3}
-  - {fileID: 21300000, guid: 28bcaf5ebee2d6a4392de8b2faf09104, type: 3}
+  - {fileID: 21300000, guid: 0596e5afa1b0f5c4486f1bc49468d383, type: 3}
+  possibleProjectileSprites:
+  - {fileID: 21300000, guid: 5d41bfa3f684f0848a7918244531e89e, type: 3}
+  - {fileID: 21300000, guid: ebe4c5176d748c342aacdc63f75e1bbd, type: 3}
+  - {fileID: 21300000, guid: 7f406c7ad6388cb4baa394fc149579e0, type: 3}
+  - {fileID: 21300000, guid: 87c83908edaa08447a800eeb1739daca, type: 3}
+  - {fileID: 21300000, guid: 5964bd75ed142ad4e83f08fb3ff280a5, type: 3}
+  - {fileID: 21300000, guid: bf293a24ca0d32a4caf15a9d381d357d, type: 3}
+  - {fileID: 21300000, guid: d9ddcb20e312f4643b294aaa2c440c6b, type: 3}
+  - {fileID: 21300000, guid: 2cae16e5aa237c2458d66b133364d03b, type: 3}
+  - {fileID: 21300000, guid: aec686b92f475ac40b5037d8dfcbfc10, type: 3}
+  - {fileID: 21300000, guid: aedfb0871cf61d044ba3fc459485d6fb, type: 3}
 --- !u!212 &21231088
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -80,7 +108,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -726603125
+  m_SortingLayerID: -618795495
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -96,8 +124,12 @@ Prefab:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
+      propertyPath: possibleProjectileSprites.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: m_SortingLayerID
-      value: -726603125
+      value: -618795495
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: projectilePrefab
@@ -105,7 +137,7 @@ Prefab:
       objectReference: {fileID: 477814, guid: fd5a1769471d40840a1e5a75244ab3ff, type: 2}
     - target: {fileID: 0}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Size.x
@@ -115,6 +147,88 @@ Prefab:
       propertyPath: m_Size.y
       value: .5
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LinearDrag
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_AngularDrag
+      value: 8
+      objectReference: {fileID: 0}
+      propertyPath: possibleProjectileSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 5d41bfa3f684f0848a7918244531e89e,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleProjectileSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: ebe4c5176d748c342aacdc63f75e1bbd,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleProjectileSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 7f406c7ad6388cb4baa394fc149579e0,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleProjectileSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 87c83908edaa08447a800eeb1739daca,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleProjectileSprites.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: 5964bd75ed142ad4e83f08fb3ff280a5,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleProjectileSprites.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: bf293a24ca0d32a4caf15a9d381d357d,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleProjectileSprites.Array.data[6]
+      value: 
+      objectReference: {fileID: 21300000, guid: d9ddcb20e312f4643b294aaa2c440c6b,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleProjectileSprites.Array.data[7]
+      value: 
+      objectReference: {fileID: 21300000, guid: 2cae16e5aa237c2458d66b133364d03b,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleProjectileSprites.Array.data[8]
+      value: 
+      objectReference: {fileID: 21300000, guid: aec686b92f475ac40b5037d8dfcbfc10,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleProjectileSprites.Array.data[9]
+      value: 
+      objectReference: {fileID: 21300000, guid: aedfb0871cf61d044ba3fc459485d6fb,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: looks.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 0596e5afa1b0f5c4486f1bc49468d383,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 184112}
