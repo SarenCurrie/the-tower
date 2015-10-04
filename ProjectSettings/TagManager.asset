@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Floor
+  - Wall
+  - Enemy
+  - PlayerProjectile
+  - EnemyProjectile
   layers:
   - Default
   - TransparentFX
@@ -13,31 +18,46 @@ TagManager:
   - UI
   - 
   - 
+  - Floor
+  - 
+  - LowObject
+  - DroppedItem
   - 
   - 
+  - Enemy
   - 
   - 
+  - Player
+  - PlayerArmour
   - 
   - 
+  - Enemy
+  - Weapon
   - 
+  - MidObject
+  - FlyingEnemy
   - 
+  - EnemyProjectile
+  - PlayerProjectile
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - HighObject
+  - Wall
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ground_Floor
+    uniqueID: 643252735
+    locked: 0
+  - name: Item_Dropped
+    uniqueID: 4236922667
+    locked: 0
+  - name: Projectiles
+    uniqueID: 2764566173
+    locked: 0
+  - name: Units
+    uniqueID: 3568364171
+    locked: 0
+  - name: Held_Weapon
+    uniqueID: 999604933
     locked: 0
