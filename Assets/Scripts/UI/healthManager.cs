@@ -36,6 +36,7 @@ public class healthManager : MonoBehaviour
 	
 	void Update ()
 	{
+        this.transform.Find("health_text").GetComponent<Text>().text = health.ToString();
 		delay = .015f+health/4000f;
 
 		StartCoroutine("PlayLoop", delay);
@@ -43,6 +44,13 @@ public class healthManager : MonoBehaviour
 		mySprite.sprite = sprites[frameCounter];
         health = GameManager.GetPlayer().GetComponent<Health>().health;
 		this.transform.Find("health_text").GetComponent<Text>().text=health.ToString();
+
+        if (health <= 0)
+        {
+            health = 0;
+            DeathMenu.dead = true;
+
+        }
 	}
 	
 	//The following methods return a IEnumerator so they can be yielded:

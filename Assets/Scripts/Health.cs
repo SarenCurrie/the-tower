@@ -30,9 +30,10 @@ public class Health : MonoBehaviour {
             // Cannot excede max health
             health = maxHealth;
         }
-        else if (health <= 0)
+        else if (health < 0)
         {
             // If dead, die.
+            health = 0;
             Die();
         }
     }
@@ -62,8 +63,9 @@ public class Health : MonoBehaviour {
                     // Cannot excede max health
                     health = maxHealth;
                 }
-                else if (health <= 0)
+                else if (health < 0)
                 {
+                    health = 0;
                     Die();
                 }
             }
@@ -78,10 +80,20 @@ public class Health : MonoBehaviour {
 	 */
     public void Die()
     {
+        health = 0;
         //Increment the player score upon killing an enemy;
         GameManager.GetPlayer().GetComponent<Player>().score+=100;
         //Makes the dead thing drop an item
         GameObject a = Item.GenerateItem(gameObject.GetComponent<Transform>().position);
+        string tag = gameObject.tag;
+        Debug.Log("ENTITY:"+tag);
+        if (tag.Equals("Player"))
+        {
+            DeathMenu.dead = true;
+
+        }
+        
         Destroy(gameObject);
+       
     }
 }

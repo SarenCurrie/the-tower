@@ -4,7 +4,7 @@ using System.Collections;
 public class DeathMenu : MonoBehaviour {
 
 	public GUISkin mySkin;
-	public static bool dead = true;
+	public static bool dead = false;
 	public string firstLevelName;
 
 	private static float deathHeight = 200f;

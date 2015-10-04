@@ -209,7 +209,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 242757368}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb775fb2f5f8c4e43bc87110f806ca75, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a3e24b2f1e821f4f8a8927fbcf08c36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &242757371
@@ -849,7 +849,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -1160,7 +1160,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1844029276}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 788ab33196e724e07b562acd209d6e0a, type: 3}
+  m_Script: {fileID: 11500000, guid: f7b618aeb3354954b8beb6db96963577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1844029280
@@ -1208,6 +1208,8 @@ GameObject:
   - 114: {fileID: 2013585207}
   - 114: {fileID: 2013585206}
   - 114: {fileID: 2013585205}
+  - 114: {fileID: 2013585210}
+  - 114: {fileID: 2013585209}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1340,3 +1342,28 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!114 &2013585209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2013585203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d97c42809cbe24bf4834f5b23c7c65ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mySkin: {fileID: 11400000, guid: 7953503d9e83f8d469b84619849edd4e, type: 2}
+--- !u!114 &2013585210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2013585203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9b9192cab2d64468bedf976368b1b1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mySkin: {fileID: 11400000, guid: 7953503d9e83f8d469b84619849edd4e, type: 2}
+  firstLevelName: 
