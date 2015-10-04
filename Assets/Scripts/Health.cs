@@ -4,7 +4,10 @@ using System.Collections;
 /// <summary>
 /// 
 /// This class represents the Health behaviour that both enemies and the player
-/// currently
+/// currently inherit this behaviour. 
+/// 
+/// The class is responsible for decreasing the health of the entity as well
+/// as causing the entity to die.
 /// 
 /// </summary>
 public class Health : MonoBehaviour {

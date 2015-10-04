@@ -1,6 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// 
+/// This class represents all equippable armour in the game.
+/// 
+/// It declares the unique properties of each Weapon, the main attributes include:
+/// 
+/// -strength - How much the armour improves the Player's strength stat by
+/// -dexterity -  How much the armour improves the Player's dexterity stat by
+/// -intelligence -  How much the armour improves the Player's intelligence stat by
+/// 
+/// 
+/// </summary>
 public class Armour : Item {
 
     // The number of points allocated between the different stats

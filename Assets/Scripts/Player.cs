@@ -1,6 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+/// <summary>
+/// 
+/// This class represents the Main player of the game
+/// 
+/// The class is responsible for assigning the main player's attributes score,
+/// current weapon and items.
+/// 
+/// It also is responsible for handling the movement/navigation of the player and 
+/// checks to deal with the player firing their current weapon.
+/// 
+/// </summary>
 public class Player : MonoBehaviour {
 
 	// The base value of all stats
