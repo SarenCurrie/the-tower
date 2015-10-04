@@ -15,6 +15,8 @@ public class WorldManager : MonoBehaviour {
 
     //The number of enemies in the room
     public int enemyCount = 3;
+    const float ROOM_SIZE_X = 4.4f;
+    const float ROOM_SIZE_Y = 2.4f;
 
     // The list of enemies that are in the room.
     public GameObject[] enemies;
@@ -60,10 +62,36 @@ public class WorldManager : MonoBehaviour {
                     enemies[2] = Instantiate(enemyTypes[enemyType], new Vector3(-2+x, -2+y, 0), Quaternion.identity) as GameObject;
                     break;
             }
+            foreach (GameObject enemy in enemies)
+            {
+                if (enemy != null)
+                    enemy.transform.parent = this.room.transform;
+            }
         }
 
         generatedRoom = true;
         SpawnPlayer();
+        disableEnemies(x,y);
+        
+    }
+
+    /**
+    *
+    */
+    public void disableEnemies(float x,float y)
+    {
+        bool enable = false;
+        if ((GetPlayer().transform.position.x > -ROOM_SIZE_X + x && GetPlayer().transform.position.x < ROOM_SIZE_X + x) &&
+            (GetPlayer().transform.position.y > -ROOM_SIZE_Y + y && GetPlayer().transform.position.y < ROOM_SIZE_Y + y))
+        {
+            enable = true;
+        }
+
+        foreach (Transform child in this.room.transform)
+        {
+            if (child.tag == "Enemy")
+                child.gameObject.SetActive(enable);
+        }
     }
 
     /**
@@ -79,6 +107,7 @@ public class WorldManager : MonoBehaviour {
             //An enemy is alive
             if (enemies[i] != null)
                 return;
+            
         }
 
         //All the enemies are dead

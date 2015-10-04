@@ -27,10 +27,10 @@ public class GameManager : MonoBehaviour {
     private WorldManager worldManager;
 
     //X Rooms
-    public const int ROOM_X = 3;
+    public const int ROOM_X = 7;
 
     //Y Rooms
-    public const int ROOM_Y = 2;
+    public const int ROOM_Y = 7;
 
     /**
      * Moves the player off the screen (as in out of the camera).
