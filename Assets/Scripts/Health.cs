@@ -78,6 +78,8 @@ public class Health : MonoBehaviour {
 	 */
     public void Die()
     {
+        //Increment the player score upon killing an enemy;
+        GameManager.GetPlayer().GetComponent<Player>().score+=100;
         //Makes the dead thing drop an item
         GameObject a = Item.GenerateItem(gameObject.GetComponent<Transform>().position);
         Destroy(gameObject);
