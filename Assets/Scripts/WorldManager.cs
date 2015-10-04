@@ -15,6 +15,8 @@ public class WorldManager : MonoBehaviour {
 
     //The number of enemies in the room
     public int enemyCount = 3;
+    const float ROOM_SIZE_X = 4.4f;
+    const float ROOM_SIZE_Y = 2.4f;
 
     // The list of enemies that are in the room.
     public GameObject[] enemies;
@@ -26,15 +28,38 @@ public class WorldManager : MonoBehaviour {
 
     public bool finishedRoom = false;
 
+    private float x;
+    private float y;
+
     /**
      * With luck, this will generate a room.
      */
-    public void Generate(GameObject roomTo, GameObject[] enemyTypes)
+    public void Generate(GameObject roomTo, GameObject[] enemyTypes, int x, int y, int maxX, int maxY)
     {
+        float worldY = -y * (float)5.4;
+        float worldX = x * 9;
+
         enemies = new GameObject[enemyCount];
 
         // Sets up the room.
-        this.room = Instantiate(roomTo, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+        this.room = Instantiate(roomTo, new Vector3(worldX, worldY, 0), Quaternion.identity) as GameObject;
+        this.room.transform.position = new Vector3(worldX, worldY, 0);
+
+        //Disables doors on the edges
+        foreach (Transform t in room.transform)
+        {
+            if (t.gameObject.tag == "Door")
+            {
+                Door door = t.GetComponent<Door>();
+                if ((x == 0 && door.orientation == Door.DOOR_ORIENTATION.LEFT)
+                    || (x == maxX && door.orientation == Door.DOOR_ORIENTATION.RIGHT)
+                    || (y == 0 && door.orientation == Door.DOOR_ORIENTATION.TOP)
+                    || (y == maxY && door.orientation == Door.DOOR_ORIENTATION.BOTTOM))
+                {
+                    door.orientation = Door.DOOR_ORIENTATION.DISABLED;
+                }
+            }
+        }
 
         // How do you do something like this? I Googled but I think I'm using the wrong terminology
         //Vector3 playerSpawn = room.GetComponentInChildren<Entrance>().
@@ -49,19 +74,47 @@ public class WorldManager : MonoBehaviour {
             switch (j)
             {
                 case 0:
-                    enemies[0] = Instantiate(enemyTypes[enemyType], new Vector3(3, -2, 0), Quaternion.identity) as GameObject;
+                    enemies[0] = Instantiate(enemyTypes[enemyType], new Vector3(3+worldX, -2+worldY, 0), Quaternion.identity) as GameObject;
                     break;
                 case 1:
-                    enemies[1] = Instantiate(enemyTypes[enemyType], new Vector3(3, 2, 0), Quaternion.identity) as GameObject;
+                    enemies[1] = Instantiate(enemyTypes[enemyType], new Vector3(3+worldX, 2+worldY, 0), Quaternion.identity) as GameObject;
                     break;
                 case 2:
-                    enemies[2] = Instantiate(enemyTypes[enemyType], new Vector3(-2, -2, 0), Quaternion.identity) as GameObject;
+                    enemies[2] = Instantiate(enemyTypes[enemyType], new Vector3(-2+worldX, -2+worldY, 0), Quaternion.identity) as GameObject;
                     break;
+            }
+            foreach (GameObject enemy in enemies)
+            {
+                if (enemy != null)
+                    enemy.transform.parent = this.room.transform;
             }
         }
 
+        this.x = worldX;
+        this.y = worldY;
+
         generatedRoom = true;
         SpawnPlayer();
+        //DisableEnableEnemies();     
+    }
+
+    /**
+    *
+    */
+    public void DisableEnableEnemies()
+    {
+        bool enable = false;
+        if ((GetPlayer().transform.position.x > -ROOM_SIZE_X + x && GetPlayer().transform.position.x < ROOM_SIZE_X + x) &&
+            (GetPlayer().transform.position.y > -ROOM_SIZE_Y + y && GetPlayer().transform.position.y < ROOM_SIZE_Y + y))
+        {
+            enable = true;
+        }
+
+        foreach (Transform child in this.room.transform)
+        {
+            if (child.tag == "Enemy")
+                child.gameObject.SetActive(enable);
+        }
     }
 
     /**
@@ -77,6 +130,7 @@ public class WorldManager : MonoBehaviour {
             //An enemy is alive
             if (enemies[i] != null)
                 return;
+            
         }
 
         //All the enemies are dead
@@ -89,7 +143,7 @@ public class WorldManager : MonoBehaviour {
     //on which door the player entered the room from.
     public void SpawnPlayer()
     {
-        GetPlayer().transform.position = new Vector3(-4, 0);
+        GetPlayer().transform.position = new Vector3(-4, 2);
     }
 
     /**
@@ -98,15 +152,14 @@ public class WorldManager : MonoBehaviour {
     public void checkPlayer()
     {
 		if (!generatedRoom)
-			return;
-		//Player died
-		if (GetPlayer() == null)
-			print("YOU SUCK");     
+			return; 
     }
+
+   
 
     private GameObject GetPlayer()
     {
-        return GameManager.GetPlayer();
+        return GameObject.FindObjectOfType<Player>().gameObject;
     }
 
 
