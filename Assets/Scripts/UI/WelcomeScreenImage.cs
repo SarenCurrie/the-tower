@@ -11,6 +11,7 @@ public class WelcomeScreenImage : MonoBehaviour {
 	// Start rect above the screen
 	private Rect buttonRect = new Rect(Screen.width/20, 0 - Screen.height, 280, 230);
 	private bool onStartScreen = true;
+	private Image image;
 
 	void ButtonArea(int windowID){
 		GUILayout.BeginHorizontal();
@@ -54,13 +55,13 @@ public class WelcomeScreenImage : MonoBehaviour {
 		GUILayout.EndHorizontal();
 	}
 
-
-	// Use this for initialization
 	void Start() {
+		image = this.GetComponent<Image> ();
 	}
-	
-	// Update is called once per frame
+
+
 	void Update() {
+		// Want to flicker image here.
 	}
 
 	void OnGUI() {
