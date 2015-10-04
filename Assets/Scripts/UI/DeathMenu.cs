@@ -6,6 +6,7 @@ public class DeathMenu : MonoBehaviour {
 	public GUISkin mySkin;
 	public static bool dead = false;
 	public string firstLevelName;
+	public string startScreenName;
 
 	private static float deathHeight = 200f;
 	private static float deathWidth = 350f;
@@ -32,13 +33,15 @@ public class DeathMenu : MonoBehaviour {
 		GUILayout.BeginHorizontal ();
 		GUILayout.FlexibleSpace();
 		if (GUILayout.Button("Restart", "ShortButton")) {
+			dead = false;
 			// Restart the game
 			Application.LoadLevel(firstLevelName);
 		}
 		GUILayout.FlexibleSpace();
 		if (GUILayout.Button ("Quit", "ShortButton")) {
+			dead = false;
 			// Quit the game
-			Application.Quit();
+			Application.LoadLevel(startScreenName);
 		}
 		GUILayout.FlexibleSpace();
 		GUILayout.EndHorizontal ();
