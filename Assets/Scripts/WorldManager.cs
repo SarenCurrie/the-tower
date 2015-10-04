@@ -13,17 +13,6 @@ using System.Collections;
  */
 public class WorldManager : MonoBehaviour {
 
-    // The types of enemies that can be spawned
-    //TODO: Make 3 different versions for the different tiers
-    public GameObject[] enemyTypes;
-
-    // The list of possible rooms that can be spawned
-    //TODO: Make 3 different versions for the different tiers
-    public GameObject[] rooms;
-
-    // The player prefab
-    public GameObject playerPrefab;
-
     //The number of enemies in the room
     public int enemyCount = 3;
 
@@ -33,37 +22,28 @@ public class WorldManager : MonoBehaviour {
     //The room that this world manager is managing.
     public GameObject room;
 
-    // The actual player
-    public GameObject player;
+    public bool generatedRoom = false;
 
     public bool finishedRoom = false;
-
-    // This is probably bad too but this is just a prototype
-    public bool roomCreated = false;
 
     /**
      * With luck, this will generate a room.
      */
-    private void Generate()
+    public void Generate(GameObject roomTo, GameObject[] enemyTypes)
     {
         enemies = new GameObject[enemyCount];
 
-        int i = Random.Range(0, rooms.Length);
-
         // Sets up the room.
-        room = Instantiate(rooms[i], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+        this.room = Instantiate(roomTo, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
 
         // How do you do something like this? I Googled but I think I'm using the wrong terminology
         //Vector3 playerSpawn = room.GetComponentInChildren<Entrance>().
-
-        //Hardcoded player spawn location
-        player = Instantiate(playerPrefab, new Vector3(-4, 0), Quaternion.identity) as GameObject;
 
         int enemyType;
 
         // This is really dumb but it's because I can't solve the problem mentioned above so I am
         // hardcoding all the spawn locations to correlate with the spawn points in the room.
-        for(int j = 0; j < enemies.Length; j++)
+        for (int j = 0; j < enemies.Length; j++)
         {
             enemyType = Random.Range(0, enemyTypes.Length);
             switch (j)
@@ -80,7 +60,8 @@ public class WorldManager : MonoBehaviour {
             }
         }
 
-        roomCreated = true;
+        generatedRoom = true;
+        SpawnPlayer();
     }
 
     /**
@@ -88,13 +69,9 @@ public class WorldManager : MonoBehaviour {
      */
     public void checkEnemies()
     {
-        if (!roomCreated)
+        if (!generatedRoom)
             return;
 
-        //Just going to take a moment out here to say that I absolutely loathe my keyboard
-        //and if anyone wants a mechanical keyboard they can have it for $100, it is a fancy
-        //ducky one but I honestly don't know how anyone is supposed to type quickly or accurately
-        //when all the keys are the size of dinner plates.
         for (int i = 0; i < enemies.Length; i++)
         {
             //An enemy is alive
@@ -108,23 +85,33 @@ public class WorldManager : MonoBehaviour {
 
 		//TODO: Make clicking the door something, I just don't know how to reference it.
     }
+    //Currently hard coded location, should derive location for spawn based
+    //on which door the player entered the room from.
+    public void SpawnPlayer()
+    {
+        GetPlayer().transform.position = new Vector3(-4, 0);
+    }
 
     /**
      * Check if the player is dead
      */
     public void checkPlayer()
     {
-		if (!roomCreated)
+		if (!generatedRoom)
 			return;
 		//Player died
-		if (player == null)
+		if (GetPlayer() == null)
 			print("YOU SUCK");     
+    }
+
+    private GameObject GetPlayer()
+    {
+        return GameManager.GetPlayer();
     }
 
 
 	// Use this for initialization
 	void Start () {
-        Generate();
 	}
 	
 	// Update is called once per frame
