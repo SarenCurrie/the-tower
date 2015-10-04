@@ -113,6 +113,9 @@ public class Weapon : Item {
     */
     public override void PickUp()
     {
+        // Disable the Rigidbody
+        GetComponent<Rigidbody2D>().isKinematic = true;
+
         // Set the position of the weapon to that of the player.
         transform.position = GetPlayer().transform.position;
         transform.rotation = GetPlayer().transform.rotation;
