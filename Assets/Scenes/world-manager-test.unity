@@ -245,19 +245,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22455498, guid: 8712fb94c019cf246a9b3d98791cd27a, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 675
+      value: 640
       objectReference: {fileID: 0}
     - target: {fileID: 22455498, guid: 8712fb94c019cf246a9b3d98791cd27a, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 298.5
+      value: 332
       objectReference: {fileID: 0}
     - target: {fileID: 22455498, guid: 8712fb94c019cf246a9b3d98791cd27a, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 1350
+      value: 1280
       objectReference: {fileID: 0}
     - target: {fileID: 22455498, guid: 8712fb94c019cf246a9b3d98791cd27a, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 597
+      value: 664
       objectReference: {fileID: 0}
     - target: {fileID: 22455498, guid: 8712fb94c019cf246a9b3d98791cd27a, type: 2}
       propertyPath: m_AnchorMin.x
@@ -335,7 +335,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
