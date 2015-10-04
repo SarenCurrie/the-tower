@@ -45,7 +45,7 @@ public class healthManager : MonoBehaviour
 	void Update ()
 	{
         this.transform.Find("health_text").GetComponent<Text>().text = health.ToString();
-		delay = .015f+health/4000f;
+		delay = 0.5f * health/4000f;
 
 		StartCoroutine("PlayLoop", delay);
 

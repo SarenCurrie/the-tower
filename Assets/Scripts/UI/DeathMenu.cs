@@ -34,12 +34,14 @@ public class DeathMenu : MonoBehaviour {
 		GUILayout.FlexibleSpace();
 		if (GUILayout.Button("Restart", "ShortButton")) {
 			dead = false;
+			PauseMenu.canPause = true;
 			// Restart the game
 			Application.LoadLevel(firstLevelName);
 		}
 		GUILayout.FlexibleSpace();
 		if (GUILayout.Button ("Quit", "ShortButton")) {
 			dead = false;
+			PauseMenu.canPause = true;
 			// Quit the game
 			Application.LoadLevel(startScreenName);
 		}
