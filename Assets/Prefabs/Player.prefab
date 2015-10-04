@@ -102,8 +102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abb159c4182a74a17896dc871f743721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon1: {fileID: 113880}
-  weapon2: {fileID: 113880}
+  weapon1: {fileID: 0}
+  weapon2: {fileID: 0}
   helm: {fileID: 0}
   chest: {fileID: 0}
   gloves: {fileID: 0}
@@ -165,7 +165,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -726603125
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d774f64137caac34cbe4ae3369120b99, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21272680
 SpriteRenderer:
@@ -223,11 +223,11 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: weapon1
       value: 
-      objectReference: {fileID: 113880}
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: weapon2
       value: 
-      objectReference: {fileID: 113880}
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_UsedByEffector
       value: 0
@@ -236,11 +236,6 @@ Prefab:
       propertyPath: m_Name
       value: PlayerGun
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: d774f64137caac34cbe4ae3369120b99,
-        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 124720}
