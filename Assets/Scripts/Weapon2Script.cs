@@ -3,7 +3,8 @@ using UnityEngine.UI;
 using System.Collections;
 
 
-public class Weapon1Script : MonoBehaviour {
+public class Weapon2Script : MonoBehaviour
+{
 
     private Object[] objects;
     private Sprite[] sprites;
@@ -13,13 +14,15 @@ public class Weapon1Script : MonoBehaviour {
     {
         this.weapon = this.GetComponent<Image>();
 
+        // Debug.Log("(((OBJECT )" + objects[0]);
+
 
     }
     void Start()
     {
         this.objects = new Object[2];
-        this.objects[0] = Resources.Load("Holographic/output/main/bg/Baxia_U", typeof(Sprite));
-        this.objects[1] = Resources.Load("Holographic/output/main/bg/Baxia_S", typeof(Sprite));
+        this.objects[0] = Resources.Load("Holographic/output/main/bg/Insanity'sTeardrop_U", typeof(Sprite));
+        this.objects[1] = Resources.Load("Holographic/output/main/bg/Insanity'sTeardrop_S", typeof(Sprite));
         Debug.Log("OBJECT )" + objects[0]);
 
 
@@ -34,24 +37,22 @@ public class Weapon1Script : MonoBehaviour {
         weapon.sprite = sprites[0];
 
 
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        //playerScore++;
-        //this.transform.Find("Score").GetComponent<Text>().text = playerScore.ToString();
-
-        if (Input.GetMouseButtonDown(0))
+        int currentWeapon = GameManager.GetPlayer().GetComponent<Player>().currentWeapon;
+        if (currentWeapon == 1)
         {
             weapon.sprite = sprites[0];
         }
 
-        if (Input.GetMouseButtonDown(1))
+        if (currentWeapon == 0)
         {
             weapon.sprite = sprites[1];
         }
-
 
 
     }

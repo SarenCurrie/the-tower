@@ -42,8 +42,9 @@ public class healthManager : MonoBehaviour
 		StartCoroutine("PlayLoop",delay);
 
 		mySprite.sprite = sprites[frameCounter];
-		this.transform.Find("health_text").GetComponent<Text>().text=health.ToString();
         health = GameManager.GetPlayer().GetComponent<Health>().health;
+		this.transform.Find("health_text").GetComponent<Text>().text=health.ToString();
+        
     
 
 	}
