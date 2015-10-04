@@ -14,6 +14,7 @@ public class EndScreen : MonoBehaviour {
 	private static float winBottom = (Screen.height)/2;
 	private Rect winRect = new Rect((Screen.width - winWidth)/2, winTop, winWidth, winHeight);
 	private Image image;
+	private string victoryText = "You have defeated the tower!";
 	
 	void WinArea(int windowID) 
 	{
@@ -25,6 +26,10 @@ public class EndScreen : MonoBehaviour {
 		GUILayout.FlexibleSpace();
 		GUILayout.Label("VICTORY","Shortlabel");
 		GUILayout.FlexibleSpace();
+		GUILayout.EndHorizontal ();
+
+		GUILayout.BeginHorizontal ();
+		GUILayout.Box(victoryText, "OutlineText");
 		GUILayout.EndHorizontal ();
 		
 		GUILayout.BeginHorizontal ();
