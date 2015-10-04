@@ -1,6 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// 
+/// This class represents the Health behaviour that both enemies and the player
+/// currently
+/// 
+/// </summary>
 public class Health : MonoBehaviour {
 
     public float maxHealth;

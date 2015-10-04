@@ -2,6 +2,14 @@
 using UnityEngine.UI;
 using System.Collections;
 
+/// <summary>
+/// This class is used to manage the health related elements for the Graphical User Interface HUD.
+/// It is used to set and update the Health meter of the player and also to update the heartRate
+/// monitor and heartrate (Not yet implemented).
+/// 
+///  @author Harry
+/// 
+/// </summary>
 public class healthManager : MonoBehaviour
 {
 	//An integer to advance frames

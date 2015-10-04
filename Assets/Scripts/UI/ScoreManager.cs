@@ -2,6 +2,13 @@
 using UnityEngine.UI;
 using System.Collections;
 
+/// <summary>
+/// This class is used to manage the score related elements for the Graphical User Interface HUD.
+/// It is used to set and update the current score of the player 
+/// 
+///  @author Harry
+/// 
+/// </summary>
 public class ScoreManager : MonoBehaviour {
 
 	// Use this for initialization
