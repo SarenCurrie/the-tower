@@ -29,12 +29,14 @@ public class WorldManager : MonoBehaviour {
     /**
      * With luck, this will generate a room.
      */
-    public void Generate(GameObject roomTo, GameObject[] enemyTypes)
+    public void Generate(GameObject roomTo, GameObject[] enemyTypes, float x, float y)
     {
+        
         enemies = new GameObject[enemyCount];
 
         // Sets up the room.
-        this.room = Instantiate(roomTo, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+        this.room = Instantiate(roomTo, new Vector3(x, y, 0), Quaternion.identity) as GameObject;
+        this.room.transform.position = new Vector3(x, y, 0);
 
         // How do you do something like this? I Googled but I think I'm using the wrong terminology
         //Vector3 playerSpawn = room.GetComponentInChildren<Entrance>().
@@ -49,13 +51,13 @@ public class WorldManager : MonoBehaviour {
             switch (j)
             {
                 case 0:
-                    enemies[0] = Instantiate(enemyTypes[enemyType], new Vector3(3, -2, 0), Quaternion.identity) as GameObject;
+                    enemies[0] = Instantiate(enemyTypes[enemyType], new Vector3(3+x, -2+y, 0), Quaternion.identity) as GameObject;
                     break;
                 case 1:
-                    enemies[1] = Instantiate(enemyTypes[enemyType], new Vector3(3, 2, 0), Quaternion.identity) as GameObject;
+                    enemies[1] = Instantiate(enemyTypes[enemyType], new Vector3(3+x, 2+y, 0), Quaternion.identity) as GameObject;
                     break;
                 case 2:
-                    enemies[2] = Instantiate(enemyTypes[enemyType], new Vector3(-2, -2, 0), Quaternion.identity) as GameObject;
+                    enemies[2] = Instantiate(enemyTypes[enemyType], new Vector3(-2+x, -2+y, 0), Quaternion.identity) as GameObject;
                     break;
             }
         }

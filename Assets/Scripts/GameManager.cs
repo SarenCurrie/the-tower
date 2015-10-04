@@ -67,7 +67,15 @@ public class GameManager : MonoBehaviour {
         worldManager = new WorldManager();
         //Generate the first room, pass the enemytypes that are relevant for this floor
         //pass the predetermined room gameobject that this world manager is for
-        worldManager.Generate(floorMap[0][0], enemyTypes);
+        for(int x = 0; x < ROOM_X; x++)
+        {
+            for(int y = 0; y < ROOM_Y; y++)
+            {
+                float ycast = y;
+                ycast = -ycast * (float)5.4;
+                worldManager.Generate(floorMap[x][y], enemyTypes,x*9,ycast);
+            }
+        }
     }
 
     // Get the player

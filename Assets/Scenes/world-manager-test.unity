@@ -113,7 +113,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rooms:
-  - {fileID: 158058, guid: 3ced777be4918b845a3dcd398f02da6f, type: 2}
+  - {fileID: 115190, guid: 3ced777be4918b845a3dcd398f02da6f, type: 2}
+  - {fileID: 136332, guid: a41ff5726ad9b8e4a845065d9d659f4e, type: 2}
+  - {fileID: 100868, guid: a575e649994dc304bb254dda7dd1aaf9, type: 2}
   enemyTypes:
   - {fileID: 142788, guid: a9f7cb6d46da5424f81a0a7b1a8b1582, type: 2}
   playerPrefab: {fileID: 124720, guid: e8af01c63e511704fbe0773330730626, type: 2}
@@ -190,7 +192,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3.53586698
+  orthographic size: 3.32219982
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -212,7 +214,7 @@ Transform:
   m_GameObject: {fileID: 1004189770}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: .699999988, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 8.64140129, y: 5.69406748, z: 3.40547872}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
