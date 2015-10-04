@@ -1,6 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+/// <summary>
+/// 
+/// This class represents the projectiles (bullets) that are fired
+/// from each weapon.
+/// 
+/// Has a specific speed and damage which can be set.
+/// 
+/// </summary>
 public class Projectile : MonoBehaviour {
 
 	public float speed;

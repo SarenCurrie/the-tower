@@ -1,33 +1,76 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+/// <summary>
+/// 
+/// This class represents the Main player of the game
+/// 
+/// The class is responsible for assigning the main player's attributes score,
+/// current weapon and items.
+/// 
+/// It also is responsible for handling the movement/navigation of the player and 
+/// checks to deal with the player firing their current weapon.
+/// 
+/// </summary>
 public class Player : MonoBehaviour {
 
 	// The base value of all stats
 	private const int MIN_STAT = 1;
+
+    //Player score
+    private int _score=0;
+    public int score
+    {
+        get
+        {
+            return _score;
+        }
+        set
+        {
+            _score = value;
+
+        }
+    }
 
 	// Player stats
 	private int strength = 1;
 	private int dexterity = 1;
 	private int intelligence = 1;
 
-    public GameObject weapon1;
-    public GameObject weapon2;
+	public GameObject[] weapons = new GameObject[2];
 
-    public GameObject helm;
-    public GameObject chest;
-    public GameObject gloves;
-    public GameObject boots;
+	public GameObject helm;
+	public GameObject chest;
+	public GameObject gloves;
+	public GameObject boots;
 
-    public float movementSpeed = 20.0f;
+	public float movementSpeed = 20.0f;
 
 	private Rigidbody2D rigidBody;
 
-    //Which weapon is the player currently using?
-    public int currentWeapon = 0;
+	//Which weapon is the player currently using?
+	public int currentWeapon
+	{
+        get
+		{
+			return _currentWeapon;
+		}
+		set
+		{
+			if (weapons[currentWeapon] != null)
+			{
+				weapons[currentWeapon].GetComponent<SpriteRenderer>().enabled = false;
+            }
+			_currentWeapon = value;
+			weapons[currentWeapon].GetComponent<SpriteRenderer>().enabled = true;
+		}
+    }
+	//DO NOT TOUCH
+	private int _currentWeapon = 0;
 
-    // Use this for initialization
-    void Start () {
+	// Use this for initialization
+	void Start () {
 		rigidBody = GetComponent<Rigidbody2D>();
     }
 
@@ -77,15 +120,8 @@ public class Player : MonoBehaviour {
     */
     void CheckForFire()
     {
-		if (Input.GetMouseButton (0)) {
-            if (currentWeapon == 0 && weapon1 != null)
-            {
-                weapon1.GetComponent<Weapon>().Fire(this);
-            }
-            else if (weapon2 != null)
-            {
-                weapon2.GetComponent<Weapon>().Fire(this);
-            }
+		if (Input.GetMouseButton (0) && weapons[currentWeapon] != null) {
+			weapons[currentWeapon].GetComponent<Weapon>().Fire(this);
 		}
     }
 
@@ -96,10 +132,27 @@ public class Player : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if(weapon2 != null)
-                currentWeapon = currentWeapon == 0 ? 1 : 0;
+			if (weapons[(currentWeapon + 1) % weapons.Length] != null)
+			{
+				currentWeapon = (currentWeapon + 1) % weapons.Length;
+			}
         }
     }
+
+	public void PickUpWeapon(Weapon weapon)
+	{
+		int nextWeapon = (currentWeapon + 1) % weapons.Length;
+		if (weapons[nextWeapon] == null)
+		{
+			weapons[nextWeapon] = weapon.gameObject;
+			currentWeapon = nextWeapon;
+		}
+		else
+		{
+			weapons[currentWeapon].GetComponent<Weapon>().ReturnToFloor();
+			weapons[currentWeapon] = weapon.gameObject;
+		}
+	}
 
 	// Update is called once per frame
 	void Update () {

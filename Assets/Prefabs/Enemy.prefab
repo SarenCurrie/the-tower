@@ -105,7 +105,18 @@ MonoBehaviour:
   projectilePrefab: {fileID: 475210, guid: c154e1ab5c984f441b1114dfe548458e, type: 2}
   looks:
   - {fileID: 21300000, guid: ec5f076a1ef21004ba51f127e330342f, type: 3}
-  - {fileID: 21300000, guid: 28bcaf5ebee2d6a4392de8b2faf09104, type: 3}
+  - {fileID: 21300000, guid: 0596e5afa1b0f5c4486f1bc49468d383, type: 3}
+  possibleProjectileSprites:
+  - {fileID: 21300000, guid: ebe4c5176d748c342aacdc63f75e1bbd, type: 3}
+  - {fileID: 21300000, guid: 7f406c7ad6388cb4baa394fc149579e0, type: 3}
+  - {fileID: 21300000, guid: 87c83908edaa08447a800eeb1739daca, type: 3}
+  - {fileID: 21300000, guid: 5964bd75ed142ad4e83f08fb3ff280a5, type: 3}
+  - {fileID: 21300000, guid: bf293a24ca0d32a4caf15a9d381d357d, type: 3}
+  - {fileID: 21300000, guid: d9ddcb20e312f4643b294aaa2c440c6b, type: 3}
+  - {fileID: 21300000, guid: 2cae16e5aa237c2458d66b133364d03b, type: 3}
+  - {fileID: 21300000, guid: aec686b92f475ac40b5037d8dfcbfc10, type: 3}
+  - {fileID: 21300000, guid: aedfb0871cf61d044ba3fc459485d6fb, type: 3}
+  - {fileID: 21300000, guid: 5d41bfa3f684f0848a7918244531e89e, type: 3}
 --- !u!114 &11425604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -114,10 +125,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 142788}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5df96648cd016b4cb416e9fddbbe3bc, type: 3}
+  m_Script: {fileID: 11500000, guid: d077cd82f98bf4742a90bc080b3c1078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  health: 0
   damagedBy:
   - Player
   - Enemy
@@ -206,9 +218,68 @@ Prefab:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
+      propertyPath: possibleProjectileSprites.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: m_Name
       value: EnemyGun
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleProjectileSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: ebe4c5176d748c342aacdc63f75e1bbd,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleProjectileSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 7f406c7ad6388cb4baa394fc149579e0,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleProjectileSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 87c83908edaa08447a800eeb1739daca,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleProjectileSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 5964bd75ed142ad4e83f08fb3ff280a5,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleProjectileSprites.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: bf293a24ca0d32a4caf15a9d381d357d,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleProjectileSprites.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: d9ddcb20e312f4643b294aaa2c440c6b,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleProjectileSprites.Array.data[6]
+      value: 
+      objectReference: {fileID: 21300000, guid: 2cae16e5aa237c2458d66b133364d03b,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleProjectileSprites.Array.data[7]
+      value: 
+      objectReference: {fileID: 21300000, guid: aec686b92f475ac40b5037d8dfcbfc10,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleProjectileSprites.Array.data[8]
+      value: 
+      objectReference: {fileID: 21300000, guid: aedfb0871cf61d044ba3fc459485d6fb,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleProjectileSprites.Array.data[9]
+      value: 
+      objectReference: {fileID: 21300000, guid: 5d41bfa3f684f0848a7918244531e89e,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: looks.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 0596e5afa1b0f5c4486f1bc49468d383,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 142788}

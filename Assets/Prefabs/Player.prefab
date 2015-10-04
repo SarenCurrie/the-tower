@@ -10,7 +10,9 @@ GameObject:
   - 4: {fileID: 422556}
   - 212: {fileID: 21237958}
   - 114: {fileID: 11482112}
-  m_Layer: 22
+  - 61: {fileID: 6157998}
+  - 50: {fileID: 5017878}
+  m_Layer: 11
   m_Name: PlayerGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,6 +80,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!50 &5017878
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 113880}
+  m_Mass: 1
+  m_LinearDrag: 10
+  m_AngularDrag: 8
+  m_GravityScale: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!58 &5842912
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -91,6 +109,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: .256000012
+--- !u!61 &6157998
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 113880}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: .5, y: .5}
 --- !u!114 &11416798
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -102,14 +133,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abb159c4182a74a17896dc871f743721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon1: {fileID: 113880}
-  weapon2: {fileID: 113880}
+  weapons:
+  - {fileID: 113880}
+  - {fileID: 0}
   helm: {fileID: 0}
   chest: {fileID: 0}
   gloves: {fileID: 0}
   boots: {fileID: 0}
   movementSpeed: 5000
-  currentWeapon: 0
 --- !u!114 &11482112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -124,7 +155,18 @@ MonoBehaviour:
   projectilePrefab: {fileID: 477814, guid: fd5a1769471d40840a1e5a75244ab3ff, type: 2}
   looks:
   - {fileID: 21300000, guid: ec5f076a1ef21004ba51f127e330342f, type: 3}
-  - {fileID: 21300000, guid: 28bcaf5ebee2d6a4392de8b2faf09104, type: 3}
+  - {fileID: 21300000, guid: 0596e5afa1b0f5c4486f1bc49468d383, type: 3}
+  possibleProjectileSprites:
+  - {fileID: 21300000, guid: 5d41bfa3f684f0848a7918244531e89e, type: 3}
+  - {fileID: 21300000, guid: ebe4c5176d748c342aacdc63f75e1bbd, type: 3}
+  - {fileID: 21300000, guid: 7f406c7ad6388cb4baa394fc149579e0, type: 3}
+  - {fileID: 21300000, guid: 87c83908edaa08447a800eeb1739daca, type: 3}
+  - {fileID: 21300000, guid: 5964bd75ed142ad4e83f08fb3ff280a5, type: 3}
+  - {fileID: 21300000, guid: bf293a24ca0d32a4caf15a9d381d357d, type: 3}
+  - {fileID: 21300000, guid: d9ddcb20e312f4643b294aaa2c440c6b, type: 3}
+  - {fileID: 21300000, guid: 2cae16e5aa237c2458d66b133364d03b, type: 3}
+  - {fileID: 21300000, guid: aec686b92f475ac40b5037d8dfcbfc10, type: 3}
+  - {fileID: 21300000, guid: aedfb0871cf61d044ba3fc459485d6fb, type: 3}
 --- !u!114 &11488504
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -133,14 +175,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 124720}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5df96648cd016b4cb416e9fddbbe3bc, type: 3}
+  m_Script: {fileID: 11500000, guid: d077cd82f98bf4742a90bc080b3c1078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1000
+  maxHealth: 500
   health: 0
   damagedBy:
   - Player
-  - Enemy
+  - EnemyProjectile
 --- !u!212 &21237958
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -163,7 +205,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -726603125
+  m_SortingLayerID: -1547871201
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d774f64137caac34cbe4ae3369120b99, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -191,7 +233,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -726603125
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2e7e396ef093a401fa93a0c0c64c6f60, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6881735c11229c44f91593c74aa5e3b1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
@@ -209,12 +251,16 @@ Prefab:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
+      propertyPath: possibleProjectileSprites.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: m_Layer
-      value: 22
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: maxHealth
-      value: 1000
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: damagedBy.Array.data[2]
@@ -237,9 +283,96 @@ Prefab:
       value: PlayerGun
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: m_Sprite
+      propertyPath: weapons.Array.data[0]
       value: 
       objectReference: {fileID: 21300000, guid: d774f64137caac34cbe4ae3369120b99,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleProjectileSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 5d41bfa3f684f0848a7918244531e89e,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleProjectileSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: ebe4c5176d748c342aacdc63f75e1bbd,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleProjectileSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 7f406c7ad6388cb4baa394fc149579e0,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleProjectileSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 87c83908edaa08447a800eeb1739daca,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleProjectileSprites.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: 5964bd75ed142ad4e83f08fb3ff280a5,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleProjectileSprites.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: bf293a24ca0d32a4caf15a9d381d357d,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleProjectileSprites.Array.data[6]
+      value: 
+      objectReference: {fileID: 21300000, guid: d9ddcb20e312f4643b294aaa2c440c6b,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleProjectileSprites.Array.data[7]
+      value: 
+      objectReference: {fileID: 21300000, guid: 2cae16e5aa237c2458d66b133364d03b,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleProjectileSprites.Array.data[8]
+      value: 
+      objectReference: {fileID: 21300000, guid: aec686b92f475ac40b5037d8dfcbfc10,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleProjectileSprites.Array.data[9]
+      value: 
+      objectReference: {fileID: 21300000, guid: aedfb0871cf61d044ba3fc459485d6fb,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: damagedBy.Array.data[1]
+      value: EnemyProjectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.x
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.y
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LinearDrag
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_AngularDrag
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_SortingLayerID
+      value: -1547871201
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6881735c11229c44f91593c74aa5e3b1,
         type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
