@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour {
 	public GUISkin mySkin;
 	public static bool paused = false;
 	public static bool canPause = true;
+	public string startScreenName;
 
 	private static float pauseHeight = 300f;
 	private static float pauseWidth = 280f;
@@ -58,8 +59,9 @@ public class PauseMenu : MonoBehaviour {
 		GUILayout.BeginHorizontal ();
 		GUILayout.FlexibleSpace();
 		if (GUILayout.Button("Quit", "ShortButton")) {
+			paused = false;
 			// Exit the game
-			Application.Quit();
+			Application.LoadLevel(startScreenName);
 		}
 		GUILayout.FlexibleSpace();
 		GUILayout.EndHorizontal ();

@@ -3,6 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
+/// <summary>
+/// 
+/// This class represents all equippable weapons in the game.
+/// 
+/// It declares the unique properties of each Weapon, the main attributes include:
+/// 
+/// -spread - How much the weapon spreads
+/// -fireForce - The force of the weapon projectiles
+/// -fireFrequency - How often the weapon can fire a projectile
+/// -damage - based on the Entity's statistics and the damageMod (damage modifier)
+/// 
+/// 
+/// </summary>
 public class Weapon : Item {
 
     private const float BASE_HIT_DAMAGE = 0.01f;

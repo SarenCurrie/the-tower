@@ -1,6 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// 
+/// This class represents the Health behaviour that both enemies and the player
+/// currently inherit this behaviour. 
+/// 
+/// The class is responsible for decreasing the health of the entity as well
+/// as causing the entity to die.
+/// 
+/// </summary>
 public class Health : MonoBehaviour {
 
     public float maxHealth;
@@ -30,9 +39,10 @@ public class Health : MonoBehaviour {
             // Cannot excede max health
             health = maxHealth;
         }
-        else if (health <= 0)
+        else if (health < 0)
         {
             // If dead, die.
+            health = 0;
             Die();
         }
     }
@@ -62,8 +72,9 @@ public class Health : MonoBehaviour {
                     // Cannot excede max health
                     health = maxHealth;
                 }
-                else if (health <= 0)
+                else if (health < 0)
                 {
+                    health = 0;
                     Die();
                 }
             }
@@ -78,10 +89,20 @@ public class Health : MonoBehaviour {
 	 */
     public void Die()
     {
+        health = 0;
         //Increment the player score upon killing an enemy;
         GameManager.GetPlayer().GetComponent<Player>().score+=100;
         //Makes the dead thing drop an item
         GameObject a = Item.GenerateItem(gameObject.GetComponent<Transform>().position);
+        string tag = gameObject.tag;
+        Debug.Log("ENTITY:"+tag);
+        if (tag.Equals("Player"))
+        {
+            DeathMenu.dead = true;
+
+        }
+        
         Destroy(gameObject);
+       
     }
 }

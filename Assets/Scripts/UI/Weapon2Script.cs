@@ -2,7 +2,14 @@
 using UnityEngine.UI;
 using System.Collections;
 
-
+/// <summary>
+/// This class is used to manage the first weapon related elements for the Graphical User Interface HUD.
+/// It is used to set and update the current sprites for the first weapon slot above the health meter
+/// and highlight the weapon if it is currently selected/.
+/// 
+///  @author Harry
+/// 
+/// </summary>
 public class Weapon2Script : MonoBehaviour
 {
 

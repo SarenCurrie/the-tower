@@ -2,6 +2,14 @@
 using UnityEngine.UI;
 using System.Collections;
 
+/// <summary>
+/// This class is used to manage the health related elements for the Graphical User Interface HUD.
+/// It is used to set and update the Health meter of the player and also to update the heartRate
+/// monitor and heartrate (Not yet implemented).
+/// 
+///  @author Harry
+/// 
+/// </summary>
 public class healthManager : MonoBehaviour
 {
 	//An integer to advance frames
@@ -36,6 +44,7 @@ public class healthManager : MonoBehaviour
 	
 	void Update ()
 	{
+        this.transform.Find("health_text").GetComponent<Text>().text = health.ToString();
 		delay = .015f+health/4000f;
 
 		StartCoroutine("PlayLoop", delay);
@@ -43,6 +52,13 @@ public class healthManager : MonoBehaviour
 		mySprite.sprite = sprites[frameCounter];
         health = GameManager.GetPlayer().GetComponent<Health>().health;
 		this.transform.Find("health_text").GetComponent<Text>().text=health.ToString();
+
+        if (health <= 0)
+        {
+            health = 0;
+            DeathMenu.dead = true;
+
+        }
 	}
 	
 	//The following methods return a IEnumerator so they can be yielded:

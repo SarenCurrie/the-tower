@@ -1,6 +1,14 @@
 ﻿using UnityEngine; 
 using System.Collections;
 
+/// <summary>
+/// 
+/// This class represents all Equippable items in the Tower,
+/// including weapons and armour. These items are randomly generated
+/// on the fly with a unique sprite, and unique properties (such
+/// as spread and fire rate for weapons)
+/// 
+/// </summary>
 public abstract class Item : MonoBehaviour {
 	private const int WEAPON_CHANCE = 50;
 	private bool onFloor = true;
