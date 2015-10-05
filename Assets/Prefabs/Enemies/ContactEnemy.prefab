@@ -32,7 +32,7 @@ GameObject:
   - 114: {fileID: 11483382}
   - 114: {fileID: 11452434}
   m_Layer: 14
-  m_Name: Enemy 2
+  m_Name: ContactEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
