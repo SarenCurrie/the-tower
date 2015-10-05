@@ -1,6 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// 
+/// This class represents a ranged enemy that attacks the player
+/// from range. It deals with moving away from and to a player to 
+/// obtain an optimal range.
+/// 
+/// </summary>
 public class RangedEnemy : MonoBehaviour
 {
 

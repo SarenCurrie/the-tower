@@ -2,6 +2,13 @@
 using System.Collections;
 using UnityEngine.UI;
 
+
+/// <summary>
+/// 
+/// This class is responsible for creating the pause screen for the tower,
+/// showing the options to the player when they pause the game.
+/// 
+/// </summary>
 public class PauseMenu : MonoBehaviour {
 
 	public GUISkin mySkin;

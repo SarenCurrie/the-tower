@@ -2,6 +2,14 @@
 using System.Collections;
 using UnityEngine.UI;
 
+
+
+/// <summary>
+/// 
+/// This class is responsible for creating the start screen for the tower,
+/// giving the player the options they require to play the game.
+/// 
+/// </summary>
 public class WelcomeScreenImage : MonoBehaviour {
 		
 	public GUISkin mySkin;

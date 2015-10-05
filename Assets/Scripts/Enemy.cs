@@ -1,6 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// 
+/// This class represents the generic enemies in the tower, and is responsible 
+/// for the navigation of the enemy towards the player.
+/// 
+/// </summary>
 public class Enemy : MonoBehaviour
 {
 

@@ -2,6 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 
+
+/// <summary>
+/// 
+/// This class represents a contactable enemy which is an enemy
+/// that the player can collide with.
+/// 
+/// </summary>
 public class ContactEnemy : MonoBehaviour
 {
 

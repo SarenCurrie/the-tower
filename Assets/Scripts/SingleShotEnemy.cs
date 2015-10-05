@@ -2,6 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/// <summary>
+/// 
+/// This class represents an enemy that has a single 
+/// shot attack type.
+/// 
+/// </summary>
 public class SingleShotEnemy : MonoBehaviour
 {
 

@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// 
+/// This class represents the doors in different rooms in the tower.
+/// 
+/// </summary>
 public class Door : MonoBehaviour {
 
     public enum DOOR_ORIENTATION { TOP, BOTTOM, LEFT, RIGHT, DISABLED };
