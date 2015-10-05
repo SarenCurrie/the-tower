@@ -21,7 +21,6 @@ public class ScoreManager : MonoBehaviour {
 	void Update () {
 
         int updatedScore = GameManager.GetPlayer().GetComponent<Player>().score;
-        Debug.Log(updatedScore);
         this.transform.Find("Score").GetComponent<Text>().text = updatedScore.ToString();
         score = updatedScore;
 
