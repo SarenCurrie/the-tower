@@ -294,13 +294,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rooms:
-<<<<<<< HEAD
   - {fileID: 161076, guid: 8846dc68ffda6d846b2b71c7d2d75ce7, type: 2}
   - {fileID: 115014, guid: a575e649994dc304bb254dda7dd1aaf9, type: 2}
-=======
-  - {fileID: 115014, guid: a575e649994dc304bb254dda7dd1aaf9, type: 2}
-  - {fileID: 161076, guid: 8846dc68ffda6d846b2b71c7d2d75ce7, type: 2}
->>>>>>> de819a26dcc6b4f906a73ad5017d1be3aeeada46
   - {fileID: 138330, guid: 3ced777be4918b845a3dcd398f02da6f, type: 2}
   enemyTypes:
   - {fileID: 142788, guid: a9f7cb6d46da5424f81a0a7b1a8b1582, type: 2}
