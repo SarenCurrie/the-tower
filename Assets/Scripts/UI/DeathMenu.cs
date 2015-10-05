@@ -1,6 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+/// <summary>
+/// 
+/// This class is responsible for creating the death screen for the tower,
+/// notifying the player when they die.
+/// 
+/// </summary>
 public class DeathMenu : MonoBehaviour {
 
 	public GUISkin mySkin;

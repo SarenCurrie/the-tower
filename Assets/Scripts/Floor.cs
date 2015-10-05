@@ -1,6 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// 
+/// This class represents each floor on the tower and 
+/// the random generation of a floor plan from a pool of
+/// potential rooms.
+/// 
+/// </summary>
 public class Floor : MonoBehaviour {
 
 	public const int NO_ROOMS_X = 3;

@@ -2,6 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/// <summary>
+/// 
+/// This class represents each room in a floor of the tower and is responsible
+/// for spawning enemies, making doors disabled and setting enemies to be disabled
+/// or enabled depending on what room the player is in.
+/// 
+/// </summary>
 public class Room : MonoBehaviour {
 
 	public const float ROOM_WIDTH = 9.0f;

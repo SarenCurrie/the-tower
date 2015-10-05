@@ -1,6 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// 
+/// This GameManager class is responsible for instantiating a floor and player, and
+/// moving the player to that floor.
+/// 
+/// </summary>
 public class GameManager : MonoBehaviour {
 
 	public GameObject floorPrefab;

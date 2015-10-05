@@ -2,6 +2,12 @@
 using System.Collections;
 using UnityEngine.UI;
 
+/// <summary>
+/// 
+/// This class is responsible for creating the ending screen for the tower,
+/// congratulating the player when they win.
+/// 
+/// </summary>
 public class EndScreen : MonoBehaviour {
 
 	// Use this for initialization
