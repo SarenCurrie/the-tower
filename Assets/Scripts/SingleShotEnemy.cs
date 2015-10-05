@@ -29,6 +29,9 @@ public class SingleShotEnemy : MonoBehaviour
 	private float fireStopTime = 0;
 	private bool waitingToFire = false;
 
+	public Sprite[] possibleProjectileSprites;
+	private Sprite projectileSprite;
+
 	void Start()
 	{
 		Generate();
@@ -51,6 +54,7 @@ public class SingleShotEnemy : MonoBehaviour
 			for (int i = 0; i < spread; i++)
 			{
 				Transform projectile = Instantiate(projectilePrefab, transform.position, transform.rotation) as Transform;
+				projectile.GetComponent<SpriteRenderer>().sprite = projectileSprite;
 				Transform projectileTransform = projectile.GetComponent<Transform>();
 				if (spread > 1)
 				{
@@ -76,6 +80,8 @@ public class SingleShotEnemy : MonoBehaviour
 		spreadRange = 1;
 		damageMod = (float)((50 * 25) / 
 			(20 * (System.Math.Pow(fireForce, 0.2)) + 15 * (System.Math.Pow(fireFrequency, 1.2))));
+		int projectileSpriteIndex = UnityEngine.Random.Range(0, possibleProjectileSprites.Length);
+		projectileSprite = possibleProjectileSprites[projectileSpriteIndex];
 	}
 
 	private void MaybeFireAtPlayer()

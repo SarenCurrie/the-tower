@@ -29,6 +29,9 @@ public class SpreadShotEnemy : MonoBehaviour
 	private float fireStopTime = 0;
 	private bool waitingToFire = false;
 
+	public Sprite[] possibleProjectileSprites;
+	private Sprite projectileSprite;
+
 	void Start()
 	{
 		Generate();
@@ -51,13 +54,14 @@ public class SpreadShotEnemy : MonoBehaviour
 			for (int i = 0; i < spread; i++)
 			{
 				Transform projectile = Instantiate(projectilePrefab, transform.position, transform.rotation) as Transform;
-				Transform projectileTransform = projectile.GetComponent<Transform>();
-				if (spread > 1)
-				{
-					projectileTransform.Rotate(new Vector3(0, 0, -(spreadRange / 2) + i * (spreadRange / (spread - 1))));
-				}
-				projectile.GetComponent<Rigidbody2D>().AddForce((projectileTransform.up) * fireForce);
-				projectile.GetComponent<Projectile>().SetDamage(damage);
+				projectile.GetComponent<SpriteRenderer>().sprite = projectileSprite;
+                Transform projectileTransform = projectile.GetComponent<Transform>();
+                if (spread > 1)
+                {
+                    projectileTransform.Rotate(new Vector3(0, 0, -(spreadRange / 2) + i * (spreadRange / (spread - 1))));
+                }
+                projectile.GetComponent<Rigidbody2D>().AddForce((projectileTransform.up) * fireForce);
+                projectile.GetComponent<Projectile>().SetDamage(damage);
 			}
 			lastFired = Time.time;
 		}
@@ -78,6 +82,8 @@ public class SpreadShotEnemy : MonoBehaviour
 		damageMod = (float)(
 			((50) + (System.Math.Pow(spreadRange, 0.7f))) / 
 			(((System.Math.Pow(fireFrequency, 1.1f))) * System.Math.Pow(spread, 1.1f)));
+		int projectileSpriteIndex = UnityEngine.Random.Range(0, possibleProjectileSprites.Length);
+		projectileSprite = possibleProjectileSprites[projectileSpriteIndex];
 	}
 
 	private void MaybeFireAtPlayer()

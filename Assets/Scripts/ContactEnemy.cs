@@ -25,7 +25,7 @@ public class ContactEnemy : MonoBehaviour
 			CircleCollider2D player = GameObject.FindWithTag("Player").GetComponent<CircleCollider2D>();
 			if (body.IsTouching(player))
 			{
-				Health playerHealth = GameObject.FindWithTag("Player").GetComponent<Health>();
+				UnitHealth playerHealth = GameObject.FindWithTag("Player").GetComponent<UnitHealth>();
 				playerHealth.LoseHealth(10);
 			}
 			attackTick = Time.time;
