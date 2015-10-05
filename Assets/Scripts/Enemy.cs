@@ -1,41 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy : MonoBehaviour {
-
-	public GameObject weapon;
+public class Enemy : MonoBehaviour
+{
 
 	public float preferedDistance;
 	public float preferedDistanceRange;
 	public float movementSpeed;
 
-	public float minBurstTime;
-	public float maxBurstTime;
-
-	public float minFireWait;
-	public float maxFireWait;
-
-	public float damage;
-
-	private float nextFireTime = 0;
-	private float fireStopTime = 0;
-	private bool waitingToFire = false;
-
 	private Rigidbody2D rigidBody;
 
 	// Use this for initialization
-	void Start () {
+	void Start()
+	{
 		rigidBody = GetComponent<Rigidbody2D>();
 	}
 
 	// Update is called once per frame
-	void Update () {
+	void Update()
+	{
 		RotateToFacePlayer();
 		AdjustDistanceFromPlayer();
-		MaybeFireAtPlayer();
 	}
 
-	private void AdjustDistanceFromPlayer ()
+	private void AdjustDistanceFromPlayer()
 	{
 		Vector3 relativePlayerPosition = GetRelativePlayerPosition();
 		if (relativePlayerPosition.magnitude - preferedDistanceRange > preferedDistance)
@@ -48,12 +36,12 @@ public class Enemy : MonoBehaviour {
 		}
 	}
 
-	private Player GetPlayer ()
+	private Player GetPlayer()
 	{
 		return GameObject.FindObjectOfType<Player>();
-    }
+	}
 
-	private Vector3 GetRelativePlayerPosition ()
+	private Vector3 GetRelativePlayerPosition()
 	{
 		return GetPlayer().GetComponent<Transform>().position - transform.position;
 	}
@@ -61,33 +49,11 @@ public class Enemy : MonoBehaviour {
 	private void MoveToPlayer()
 	{
 		rigidBody.AddForce(transform.up * movementSpeed);
-    }
+	}
 
 	private void FleePlayer()
 	{
 
-	}
-
-	private void MaybeFireAtPlayer()
-	{
-		if (!waitingToFire)
-		{
-			if (Time.time > fireStopTime)
-			{
-				nextFireTime = Time.time + Random.Range(minFireWait, maxFireWait);
-				waitingToFire = true;
-			} else {
-				Fire();
-			}
-		} else if (Time.time > nextFireTime) {
-			fireStopTime = Time.time + Random.Range(minBurstTime, maxBurstTime);
-			waitingToFire = false;
-		}
-    }
-
-	private void Fire()
-	{
-		weapon.GetComponent<Weapon>().Fire(damage);
 	}
 
 	private void MoveAwayFromPlayer()

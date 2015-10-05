@@ -30,6 +30,7 @@ GameObject:
   - 58: {fileID: 5894054}
   - 114: {fileID: 11425604}
   - 114: {fileID: 11483382}
+  - 114: {fileID: 11453572}
   m_Layer: 14
   m_Name: Enemy 4
   m_TagString: Enemy
@@ -134,6 +135,25 @@ MonoBehaviour:
   - Player
   - Enemy
   - PlayerProjectile
+--- !u!114 &11453572
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 142788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2b23a97780dae14db79ed393ac574b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 475210, guid: c154e1ab5c984f441b1114dfe548458e, type: 2}
+  minBurstTime: 2
+  maxBurstTime: 5
+  minFireWait: .5
+  maxFireWait: 1
+  damage: 1
+  possibleProjectileSprites:
+  - {fileID: 21300000, guid: 5d41bfa3f684f0848a7918244531e89e, type: 3}
 --- !u!114 &11483382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -145,15 +165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16d1272992c1344f5931d1eb2dadb1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 106428}
-  preferedDistance: 1
+  preferedDistance: 3
   preferedDistanceRange: .5
   movementSpeed: 1000
-  minBurstTime: 0
-  maxBurstTime: 10
-  minFireWait: 0
-  maxFireWait: 3
-  damage: 1
 --- !u!212 &21203302
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -219,7 +233,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: possibleProjectileSprites.Array.size
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Name
@@ -285,6 +299,34 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 2e7e396ef093a401fa93a0c0c64c6f60,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxFireWait
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: minFireWait
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxBurstTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: minBurstTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 475210, guid: c154e1ab5c984f441b1114dfe548458e, type: 2}
+    - target: {fileID: 0}
+      propertyPath: preferedDistance
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 142788}

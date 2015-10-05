@@ -28,17 +28,6 @@ public class TestEnemy {
         Assert.AreEqual(desiredMovementSpeed, movementSpeed);
 
     }
-    */
-    //TODO
-    [Test]
-    public void TestEnemyStartsWithWeapon()
-    {
-        Enemy enemy = instantiator.InstantiateScript<Enemy>();
-        GameObject weapon= enemy.weapon;
-        //Weapon weapon1 = weapon1Object.GetComponent<Weapon>();
-        //Assert.IsNotNull(weapon1Object);
-
-    }
 
 
 	/*[Test]
