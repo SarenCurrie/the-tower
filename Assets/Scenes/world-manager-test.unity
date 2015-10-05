@@ -293,16 +293,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2950332f19737146988318faed03e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rooms:
-  - {fileID: 115014, guid: a575e649994dc304bb254dda7dd1aaf9, type: 2}
-  - {fileID: 161076, guid: 8846dc68ffda6d846b2b71c7d2d75ce7, type: 2}
-  - {fileID: 138330, guid: 3ced777be4918b845a3dcd398f02da6f, type: 2}
-  enemyTypes:
-  - {fileID: 142788, guid: a9f7cb6d46da5424f81a0a7b1a8b1582, type: 2}
-  - {fileID: 142788, guid: a9f7cb6d46da5424f81a0a7b1a8b1582, type: 2}
-  - {fileID: 142788, guid: a9f7cb6d46da5424f81a0a7b1a8b1582, type: 2}
+  floorPrefab: {fileID: 167694, guid: dfd0b0f123ee626468a314822df31cd4, type: 2}
   playerPrefab: {fileID: 124720, guid: e8af01c63e511704fbe0773330730626, type: 2}
-  floorMapCreated: 0
 --- !u!4 &579870623
 Transform:
   m_ObjectHideFlags: 0
@@ -511,8 +503,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 501.5, y: 138.5}
-  m_SizeDelta: {x: 1003, y: 277}
+  m_AnchoredPosition: {x: 478, y: 288}
+  m_SizeDelta: {x: 956, y: 576}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &965361234
 MonoBehaviour:

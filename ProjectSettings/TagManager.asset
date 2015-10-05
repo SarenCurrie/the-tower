@@ -9,6 +9,10 @@ TagManager:
   - Enemy
   - PlayerProjectile
   - EnemyProjectile
+  - Door
+  - GameManager
+  - DroppedItem
+  - Player_Spawn
   layers:
   - Default
   - TransparentFX

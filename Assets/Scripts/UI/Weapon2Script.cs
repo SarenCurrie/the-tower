@@ -30,8 +30,6 @@ public class Weapon2Script : MonoBehaviour
         this.objects = new Object[2];
         this.objects[0] = Resources.Load("Holographic/output/main/bg/Insanity'sTeardrop_U", typeof(Sprite));
         this.objects[1] = Resources.Load("Holographic/output/main/bg/Insanity'sTeardrop_S", typeof(Sprite));
-        Debug.Log("OBJECT )" + objects[0]);
-
 
         //Initialize the array of sprites with the same size as the objects array
         this.sprites = new Sprite[objects.Length];
@@ -42,8 +40,6 @@ public class Weapon2Script : MonoBehaviour
             this.sprites[i] = (Sprite)this.objects[i];
         }
         weapon.sprite = sprites[0];
-
-
 
     }
 
