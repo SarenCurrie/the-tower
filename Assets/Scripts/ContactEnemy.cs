@@ -26,7 +26,7 @@ public class ContactEnemy : MonoBehaviour
 			if (body.IsTouching(player))
 			{
 				UnitHealth playerHealth = GameObject.FindWithTag("Player").GetComponent<UnitHealth>();
-				playerHealth.LoseHealth(10);
+				playerHealth.LoseHealth(damage);
 			}
 			attackTick = Time.time;
 		}

@@ -30,9 +30,9 @@ GameObject:
   - 58: {fileID: 5894054}
   - 114: {fileID: 11425604}
   - 114: {fileID: 11483382}
-  - 114: {fileID: 11452434}
+  - 114: {fileID: 11453572}
   m_Layer: 14
-  m_Name: ContactEnemy
+  m_Name: SingleShotEnemyTank
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,7 +58,7 @@ Transform:
   m_GameObject: {fileID: 142788}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.01999998, y: .75999999, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: .699999988, y: .699999988, z: 1}
   m_Children:
   - {fileID: 405354}
   m_Father: {fileID: 0}
@@ -135,7 +135,7 @@ MonoBehaviour:
   - Player
   - Enemy
   - PlayerProjectile
---- !u!114 &11452434
+--- !u!114 &11453572
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -143,10 +143,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 142788}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f71d398e9b4b8da4a93ecd889b84e8ff, type: 3}
+  m_Script: {fileID: 11500000, guid: d2b23a97780dae14db79ed393ac574b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  projectilePrefab: {fileID: 475210, guid: c154e1ab5c984f441b1114dfe548458e, type: 2}
+  minBurstTime: 2
+  maxBurstTime: 5
+  minFireWait: .5
+  maxFireWait: 1
+  damage: 5
+  possibleProjectileSprites:
+  - {fileID: 21300000, guid: 5d41bfa3f684f0848a7918244531e89e, type: 3}
 --- !u!114 &11483382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -158,9 +165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16d1272992c1344f5931d1eb2dadb1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  preferedDistance: 0
-  preferedDistanceRange: 0
-  movementSpeed: 1000
+  preferedDistance: 3
+  preferedDistanceRange: .5
+  movementSpeed: 1800
   baseScore: 250
 --- !u!212 &21203302
 SpriteRenderer:
@@ -212,7 +219,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -726603125
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c1a47d2ea6ae245eb9059ed10d3c9290, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 34f00d1051297164b9748ed78f519e37, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
@@ -227,7 +234,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: possibleProjectileSprites.Array.size
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Name
@@ -291,35 +298,55 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: c1a47d2ea6ae245eb9059ed10d3c9290,
+      objectReference: {fileID: 21300000, guid: 34f00d1051297164b9748ed78f519e37,
         type: 3}
     - target: {fileID: 0}
-      propertyPath: m_LocalScale.x
+      propertyPath: damage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxFireWait
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: m_LocalScale.y
-      value: 1
+      propertyPath: minFireWait
+      value: .5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: m_LocalScale.z
-      value: 1
+      propertyPath: maxBurstTime
+      value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: minBurstTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 475210, guid: c154e1ab5c984f441b1114dfe548458e, type: 2}
     - target: {fileID: 0}
       propertyPath: preferedDistance
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: preferedDistanceRange
-      value: 0
+      propertyPath: baseScore
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: health
       value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: baseScore
-      value: 250
+      propertyPath: m_LocalScale.x
+      value: .699999988
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: .699999988
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: movementSpeed
+      value: 1800
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
