@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 
 /// <summary>
@@ -62,21 +63,19 @@ public class UnitHealth : MonoBehaviour {
      */
     void OnCollisionEnter2D(Collision2D collision)
     {
-        for (int i = 0; i < damagedBy.Length; i++)
+        int ind = Array.IndexOf(damagedBy, collision.gameObject.tag);
+        if (ind > -1)
         {
-            if (collision.gameObject.tag == damagedBy[i])
+            health -= collision.gameObject.GetComponent<Projectile>().GetDamage();
+            if (health > maxHealth)
             {
-                health -= collision.gameObject.GetComponent<Projectile>().GetDamage();
-                if (health > maxHealth)
-                {
-                    // Cannot excede max health
-                    health = maxHealth;
-                }
-                else if (health < 0)
-                {
-                    health = 0;
-                    Die();
-                }
+                // Cannot excede max health
+                health = maxHealth;
+            }
+            else if (health < 0)
+            {
+                health = 0;
+                Die();
             }
         }
     }
@@ -89,12 +88,19 @@ public class UnitHealth : MonoBehaviour {
 	 */
     public void Die()
     {
+        string tag = gameObject.tag;
         health = 0;
         //Increment the player score upon killing an enemy;
-        GameManager.GetPlayer().GetComponent<Player>().score+=100;
+        if (tag.Equals("Enemy")) {
+            int baseScore = gameObject.GetComponent<Enemy>().baseScore;
+            if (baseScore == null) {
+                baseScore = 100;
+            }
+            baseScore += (int) GameManager.GetPlayer().GetComponent<UnitHealth>().health;
+            GameManager.GetPlayer().GetComponent<Player>().score += baseScore;
+        }
         //Makes the dead thing drop an item
         GameObject a = Item.GenerateItem(gameObject.GetComponent<Transform>().position);
-        string tag = gameObject.tag;
         Debug.Log("ENTITY:"+tag);
         if (tag.Equals("Player"))
         {

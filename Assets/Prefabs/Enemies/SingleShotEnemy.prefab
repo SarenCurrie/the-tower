@@ -168,6 +168,7 @@ MonoBehaviour:
   preferedDistance: 3
   preferedDistanceRange: .5
   movementSpeed: 1000
+  baseScore: 250
 --- !u!212 &21203302
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -326,6 +327,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: preferedDistance
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: baseScore
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: health
+      value: 500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
