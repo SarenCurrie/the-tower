@@ -3,12 +3,13 @@ using System.Collections;
 
 public class Door : MonoBehaviour {
 
-    public enum DOOR_ORIENTATION { TOP, BOTTOM, LEFT, RIGHT, DISABLED };
-    public DOOR_ORIENTATION orientation;
+	public enum DOOR_ORIENTATION { TOP, BOTTOM, LEFT, RIGHT, DISABLED };
+	public DOOR_ORIENTATION orientation;
 
 	//How far to move player
-    public const float DOOR_MOVEMENT_VALUE = 1.3f;
+	public const float DOOR_MOVEMENT_VALUE = 1.3f;
 
+	//How long player must stand in door before it works
 	public const float DOOR_CONTACT_TIME = 1;
 
 	private float collision_start_time = Mathf.Infinity;
@@ -32,10 +33,10 @@ public class Door : MonoBehaviour {
 		}
 	}
 
-    void OnTriggerEnter2D(Collider2D other) {
+	void OnTriggerEnter2D(Collider2D other) {
 		if (other.gameObject.transform.tag == Tags.PLAYER && orientation != DOOR_ORIENTATION.DISABLED)
 		{
 			collision_start_time = Time.time;
 		}
-    }
+	}
 }
