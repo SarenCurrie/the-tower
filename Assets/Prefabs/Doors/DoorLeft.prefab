@@ -54,7 +54,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39a085fc2e546c34f8205ece1a1ed1dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orientation: 0
+  orientation: 2
 --- !u!212 &21268260
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -96,6 +96,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_SortingLayerID
       value: 643252735
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: orientation
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
