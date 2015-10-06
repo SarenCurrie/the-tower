@@ -149,6 +149,7 @@ MonoBehaviour:
   preferedDistance: 1
   preferedDistanceRange: .5
   movementSpeed: 1000
+  baseScore: 250
 --- !u!114 &11488284
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -337,6 +338,14 @@ Prefab:
       propertyPath: projectilePrefab
       value: 
       objectReference: {fileID: 475210, guid: c154e1ab5c984f441b1114dfe548458e, type: 2}
+    - target: {fileID: 0}
+      propertyPath: health
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: baseScore
+      value: 250
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 142788}
