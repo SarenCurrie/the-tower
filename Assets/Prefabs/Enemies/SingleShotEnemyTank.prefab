@@ -151,7 +151,7 @@ MonoBehaviour:
   maxBurstTime: 5
   minFireWait: .5
   maxFireWait: 1
-  damage: 2.5
+  damage: 5
   possibleProjectileSprites:
   - {fileID: 21300000, guid: 5d41bfa3f684f0848a7918244531e89e, type: 3}
 --- !u!114 &11483382
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   preferedDistance: 3
   preferedDistanceRange: .5
-  movementSpeed: 1000
+  movementSpeed: 1800
   baseScore: 250
 --- !u!212 &21203302
 SpriteRenderer:
@@ -302,7 +302,7 @@ Prefab:
         type: 3}
     - target: {fileID: 0}
       propertyPath: damage
-      value: 2.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: maxFireWait
@@ -343,6 +343,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalScale.y
       value: .699999988
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: movementSpeed
+      value: 1800
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

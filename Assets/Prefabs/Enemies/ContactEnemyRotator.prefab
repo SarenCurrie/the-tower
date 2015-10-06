@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d077cd82f98bf4742a90bc080b3c1078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 150
   health: 0
   damagedBy:
   - Player
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f71d398e9b4b8da4a93ecd889b84e8ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 25
+  damage: 50
 --- !u!114 &11483382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   preferedDistance: 0
   preferedDistanceRange: 0
-  movementSpeed: 1800
+  movementSpeed: 2200
   baseScore: 250
 --- !u!212 &21203302
 SpriteRenderer:
@@ -323,15 +323,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: damage
-      value: 25
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: movementSpeed
-      value: 1800
+      value: 2200
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxHealth
+      value: 150
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

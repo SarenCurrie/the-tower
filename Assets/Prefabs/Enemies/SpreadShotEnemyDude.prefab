@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d077cd82f98bf4742a90bc080b3c1078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 120
   health: 0
   damagedBy:
   - Player
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   preferedDistance: 1
   preferedDistanceRange: .5
-  movementSpeed: 1000
+  movementSpeed: 1500
   baseScore: 250
 --- !u!114 &11488284
 MonoBehaviour:
@@ -166,7 +166,7 @@ MonoBehaviour:
   maxBurstTime: 4
   minFireWait: .5
   maxFireWait: 2
-  damage: 1.5
+  damage: 3
   possibleProjectileSprites:
   - {fileID: 21300000, guid: bf293a24ca0d32a4caf15a9d381d357d, type: 3}
   - {fileID: 21300000, guid: aec686b92f475ac40b5037d8dfcbfc10, type: 3}
@@ -316,7 +316,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: damage
-      value: 1.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: maxFireWait
@@ -345,6 +345,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: health
       value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: movementSpeed
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxHealth
+      value: 120
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
