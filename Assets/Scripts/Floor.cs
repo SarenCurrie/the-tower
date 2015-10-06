@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Floor : MonoBehaviour {
 
-	public const int NO_ROOMS_X = 3;
-	public const int NO_ROOMS_Y = 3;
+	public const int NO_ROOMS_X = 9;
+	public const int NO_ROOMS_Y = 9;
 
 	public const int STARTING_ROOM_X = 0;
 	public const int STARTING_ROOM_Y = 0;
@@ -60,7 +60,7 @@ public class Floor : MonoBehaviour {
 				Room roomScript = room.GetComponent<Room>();
 				floorMap[x][y] = room;
 
-				//roomScript.SpawnEnemies(enemies);
+				roomScript.SpawnEnemies(enemies);
 				roomScript.DisableOrEnableEnemies(false);
 
 				if (x == 0)
@@ -115,5 +115,6 @@ public class Floor : MonoBehaviour {
 	{
 		currentRoom.MovePlayerToRoom(player);
 		currentRoom.DisableOrEnableEnemies(true);
+		Camera.main.transform.position = currentRoom.GetCameraPosition();
 	}
 }
