@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons:
-  - {fileID: 113880}
+  - {fileID: 0}
   - {fileID: 0}
   helm: {fileID: 0}
   chest: {fileID: 0}
@@ -180,6 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 250
   health: 0
+  blood: {fileID: 143992, guid: cb8413ee05b11407f9e8b689c12b6ca3, type: 2}
   damagedBy:
   - Player
   - EnemyProjectile
@@ -285,8 +286,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: weapons.Array.data[0]
       value: 
-      objectReference: {fileID: 21300000, guid: d774f64137caac34cbe4ae3369120b99,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: possibleProjectileSprites.Array.data[0]
       value: 
@@ -386,6 +386,10 @@ Prefab:
       propertyPath: movementSpeed
       value: 5000
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 143992, guid: cb8413ee05b11407f9e8b689c12b6ca3, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 124720}

@@ -40,6 +40,16 @@ public abstract class Item : MonoBehaviour {
 		//}
 	}
 
+	/**
+	* Static method that will definitely generate a weapon.
+	*/
+	public static GameObject GenerateWeapon(Vector3 v)
+	{
+		GameObject weapon = (Instantiate(Resources.Load("GroundGun"), v, Quaternion.identity)) as GameObject;
+
+		return weapon;
+	}
+
 	/*
 	*  Pick up the item it is on the ground and clicked
 	*/
