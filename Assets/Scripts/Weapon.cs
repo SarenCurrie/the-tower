@@ -72,44 +72,44 @@ public class Weapon : Item {
                 p.GetIntelligence() * intelligenceModifier) * damageMod);
     }
 
-    public override void Generate()
-    {
-        look = UnityEngine.Random.Range(0, looks.Length);
-        gameObject.GetComponent<SpriteRenderer>().sprite = looks[look];
+	public override void Generate()
+	{
+		look = UnityEngine.Random.Range(0, looks.Length);
+		gameObject.GetComponent<SpriteRenderer>().sprite = looks[look];
 
 		int projectileSpriteIndex = UnityEngine.Random.Range(0, possibleProjectileSprites.Length);
 		projectileSprite = possibleProjectileSprites[projectileSpriteIndex];
 
 		int spreadRand = UnityEngine.Random.Range (1, 4);
-        switch (spreadRand)
-        {
-            case 1:
-            //Multiple projectiles
-            spread = UnityEngine.Random.Range (5, 10);
-            fireForce = UnityEngine.Random.Range(15, 20);
-            fireFrequency = UnityEngine.Random.Range(1f, 5);
-            spreadRange = UnityEngine.Random.Range(15, 61);
-            damageMod = (float)(((50) + (System.Math.Pow(spreadRange, 0.7f))) / (((System.Math.Pow(fireFrequency, 1.1f)))*System.Math.Pow(spread, 1.1f)));
-            break;
-            case 2:
-            //Low fire rate single fire weapon
-            spread = 1;
-            fireForce = UnityEngine.Random.Range(80, 100);
-            fireFrequency = UnityEngine.Random.Range(1f, 2.5f);
-            spreadRange = 1;
-            damageMod = (float)((50 * 1.5 )/ (System.Math.Pow(fireFrequency, 1.5f)));
-            break;
-            case 3:
-            //High fire rate  single fire weapon
-            spread = 1;
-            fireForce = UnityEngine.Random.Range(20, 35);
-            fireFrequency = UnityEngine.Random.Range(15f, 30);
-            spreadRange = 1;
-            //(DPS_CONST * SOME_CONST) / ((MIN_FORCE * FORSE^FORCE_CONST) + MIN_FREQ * FREQ^FREQ_CONST))
-            //lower damage for higher fire rate and/or faster bullet speed (total difference of roughly .3 of a second)
-            damageMod = (float)((50 * 25) / (20 * (System.Math.Pow(fireForce, 0.2)) + 15 * (System.Math.Pow(fireFrequency, 1.2))));
-            break;
-        }
+		switch (spreadRand)
+		{
+			case 1:
+				//Multiple projectiles
+				spread = UnityEngine.Random.Range (5, 10);
+				fireForce = UnityEngine.Random.Range(15, 20);
+				fireFrequency = UnityEngine.Random.Range(1f, 5);
+				spreadRange = UnityEngine.Random.Range(15, 61);
+				damageMod = (float)(((50) + (System.Math.Pow(spreadRange, 0.7f))) / (((System.Math.Pow(fireFrequency, 1.1f)))*System.Math.Pow(spread, 1.1f)));
+				break;
+			case 2:
+				//Low fire rate single fire weapon
+				spread = 1;
+				fireForce = UnityEngine.Random.Range(80, 100);
+				fireFrequency = UnityEngine.Random.Range(1f, 2.5f);
+				spreadRange = 1;
+				damageMod = (float)((50 * 1.5 )/ (System.Math.Pow(fireFrequency, 1.5f)));
+				break;
+			case 3:
+				//High fire rate  single fire weapon
+				spread = 1;
+				fireForce = UnityEngine.Random.Range(20, 35);
+				fireFrequency = UnityEngine.Random.Range(15f, 30);
+				spreadRange = 1;
+				//(DPS_CONST * SOME_CONST) / ((MIN_FORCE * FORSE^FORCE_CONST) + MIN_FREQ * FREQ^FREQ_CONST))
+				//lower damage for higher fire rate and/or faster bullet speed (total difference of roughly .3 of a second)
+				damageMod = (float)((50 * 25) / (20 * (System.Math.Pow(fireForce, 0.2)) + 15 * (System.Math.Pow(fireFrequency, 1.2))));
+				break;
+		}
 
         //Generate main attributes
         List<int> attributes = new List<int>(new int[] { 0, 1, 2 });
