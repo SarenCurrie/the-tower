@@ -43,7 +43,7 @@ public class Door : MonoBehaviour {
 	private void MovePlayer()
 	{
 		Floor currentFloor = GameManager.currentFloor;
-		currentFloor.currentRoom = currentFloor.GetDoorDestination(this);
+		currentFloor.currentRoom = currentFloor.GetDoorDestination(orientation);
 
 		//In case camera pan doesn't make it all the way
 		Camera.main.transform.position = GameManager.currentFloor.currentRoom.GetCameraPosition();
@@ -87,7 +87,7 @@ public class Door : MonoBehaviour {
 		{
 			cameraState = CAMERA_STATE.MOVEING_ROOM;
 			t = 0f;
-			cameraDestination = GameManager.currentFloor.GetDoorDestination(this).GetCameraPosition();
+			cameraDestination = GameManager.currentFloor.GetDoorDestination(orientation).GetCameraPosition();
 		}
 	}
 }
