@@ -7,6 +7,14 @@ public class Room : MonoBehaviour {
 	public const float ROOM_WIDTH = 9.0f;
 	public const float ROOM_HEIGHT = 5.4f;
 
+	public const float CAMERA_HEIGHT = -10f;
+
+	public Vector3 GetCameraPosition()
+	{
+		Vector2 pos = transform.position;
+		return new Vector3(pos.x, pos.y, CAMERA_HEIGHT);
+	}
+
 	public void SpawnEnemies(GameObject[] enemies)
 	{
 		foreach (Transform t in transform)
