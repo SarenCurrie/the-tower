@@ -84,38 +84,31 @@ public class Weapon : Item {
         switch (spreadRand)
         {
             case 1:
-            //Multiple projectiles
-            spread = UnityEngine.Random.Range (5, 10);
-            fireForce = UnityEngine.Random.Range(15, 20);
-            fireFrequency = UnityEngine.Random.Range(1f, 5);
-            spreadRange = UnityEngine.Random.Range(45, 61);
-            damageMod = (float)(((50) + (System.Math.Pow(spreadRange, 0.7f))) /
-					(((System.Math.Pow(fireFrequency, 1.1f)))*System.Math.Pow(spread, 1.1f)));
-            break;
+				//Multiple projectiles
+				spread = UnityEngine.Random.Range (5, 10);
+				fireForce = UnityEngine.Random.Range(15, 20);
+				fireFrequency = UnityEngine.Random.Range(1f, 5);
+				spreadRange = UnityEngine.Random.Range(45, 61);
+				damageMod = (float)(((50 * (4.5 / 3)) + (System.Math.Pow(spreadRange, 0.5f))) /
+					(((System.Math.Pow(fireFrequency, 1.1f))) * spread));
+				break;
             case 2:
-            //Low fire rate single fire weapon
-            spread = 1;
-            fireForce = UnityEngine.Random.Range(80, 100);
-            fireFrequency = UnityEngine.Random.Range(1f, 2.5f);
-            spreadRange = 1;
-			damageMod = (float)((50 * 1.2) / (System.Math.Pow(fireFrequency, 1.3f)));
-			break;
+				//Low fire rate single fire weapon
+				spread = 1;
+				fireForce = UnityEngine.Random.Range(80, 100);
+				fireFrequency = UnityEngine.Random.Range(1f, 2.5f);
+				spreadRange = 1;
+				damageMod = (float)((50 * 1.2) / (System.Math.Pow(fireFrequency, 1.3f)));
+				break;
             case 3:
-            //High fire rate  single fire weapon
-            spread = 1;
-            fireForce = UnityEngine.Random.Range(20, 35);
-            fireFrequency = UnityEngine.Random.Range(15f, 30);
-            spreadRange = 1;
-			damageMod = (float)((50) / (fireFrequency));
-            break;
+				//High fire rate  single fire weapon
+				spread = 1;
+				fireForce = UnityEngine.Random.Range(20, 35);
+				fireFrequency = UnityEngine.Random.Range(15f, 30);
+				spreadRange = 1;
+				damageMod = (float)((50) / (fireFrequency));
+				break;
         }
-
-		spread = 9;
-		fireFrequency = 5f;
-		fireForce = 15;
-		spreadRange = 60;
-		damageMod = (float)(((50 * (4.5/3)) + (System.Math.Pow(spreadRange, 0.5f))) /
-			(((System.Math.Pow(fireFrequency, 1.1f))) * spread));
 
 		//Generate main attributes
 		List<int> attributes = new List<int>(new int[] { 0, 1, 2 });
