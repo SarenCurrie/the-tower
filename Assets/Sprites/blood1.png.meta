@@ -1,15 +1,15 @@
 fileFormatVersion: 2
-guid: 92626091e4e7e2049ac56e206608fb1e
-timeCreated: 1444188262
+guid: 7efdacfb3fb4f8a40bda510ebe1f0027
+timeCreated: 1444189368
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Blood1_0
-    21300002: Blood1_1
-    21300004: Blood1_2
-    21300006: Blood1_3
-    21300008: Blood1_4
-    21300010: Blood1_5
+    21300000: blood1_0
+    21300002: blood1_1
+    21300004: blood1_2
+    21300006: blood1_3
+    21300008: blood1_4
+    21300010: blood1_5
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -56,62 +56,62 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: Blood1_0
+    - name: blood1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 25
+        width: 24
         height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blood1_1
+    - name: blood1_1
       rect:
         serializedVersion: 2
-        x: 25
+        x: 24
         y: 0
-        width: 25
+        width: 24
         height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blood1_2
+    - name: blood1_2
       rect:
         serializedVersion: 2
-        x: 50
+        x: 48
         y: 0
-        width: 25
+        width: 24
         height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blood1_3
+    - name: blood1_3
       rect:
         serializedVersion: 2
-        x: 75
+        x: 72
         y: 0
-        width: 25
+        width: 24
         height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blood1_4
+    - name: blood1_4
       rect:
         serializedVersion: 2
-        x: 100
+        x: 96
         y: 0
-        width: 25
+        width: 24
         height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Blood1_5
+    - name: blood1_5
       rect:
         serializedVersion: 2
-        x: 125
+        x: 120
         y: 0
-        width: 25
+        width: 24
         height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
