@@ -6,6 +6,7 @@ public class ContactEnemy : MonoBehaviour
 {
 
 	private float attackTick = 0;
+	public float attackTime;
 	public float damage;
 
 	void Start()
@@ -19,7 +20,7 @@ public class ContactEnemy : MonoBehaviour
 
 	void ContactDamage()
 	{
-		if (Time.time > attackTick + 0.5f)
+		if (Time.time > attackTick + attackTime)
 		{
 			Rigidbody2D body = GetComponent<Rigidbody2D>();
 			CircleCollider2D player = GameObject.FindWithTag("Player").GetComponent<CircleCollider2D>();
