@@ -15,6 +15,10 @@ public class UnitHealth : MonoBehaviour {
 
     public float maxHealth;
     public float health;
+    public GameObject blood;
+    public const int MIN_BLOOD_ON_DEATH = 50;
+    public const int MAX_BLOOD_ON_DEATH = 100;
+    public const float BLOOD_SPATTER = 1;
 
     /**
      * This is an array of tags which specifies what the attached gameObject
@@ -67,6 +71,10 @@ public class UnitHealth : MonoBehaviour {
         if (ind > -1)
         {
             health -= collision.gameObject.GetComponent<Projectile>().GetDamage();
+
+            // Spawn a blood object
+            if (blood != null)
+                Instantiate(blood, gameObject.transform.position, gameObject.transform.rotation);
             if (health > maxHealth)
             {
                 // Cannot excede max health
@@ -75,6 +83,14 @@ public class UnitHealth : MonoBehaviour {
             else if (health < 0)
             {
                 health = 0;
+                if (blood != null) 
+                {
+                    for (int i = 0; i < UnityEngine.Random.Range(MIN_BLOOD_ON_DEATH, MAX_BLOOD_ON_DEATH); i++)
+                    {
+                        Vector3 bloodOffset = new Vector3(UnityEngine.Random.Range(-BLOOD_SPATTER,BLOOD_SPATTER), UnityEngine.Random.Range(-BLOOD_SPATTER,BLOOD_SPATTER));
+                        Instantiate(blood, gameObject.transform.position + bloodOffset, gameObject.transform.rotation);
+                    }
+                }
                 Die();
             }
         }
