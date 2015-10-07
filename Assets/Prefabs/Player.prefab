@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons:
-  - {fileID: 113880}
+  - {fileID: 0}
   - {fileID: 0}
   helm: {fileID: 0}
   chest: {fileID: 0}
@@ -286,8 +286,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: weapons.Array.data[0]
       value: 
-      objectReference: {fileID: 21300000, guid: d774f64137caac34cbe4ae3369120b99,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: possibleProjectileSprites.Array.data[0]
       value: 

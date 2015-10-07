@@ -1,13 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Floor : MonoBehaviour {
 
-	public const int NO_ROOMS_X = 9;
-	public const int NO_ROOMS_Y = 9;
+	public const int NO_ROOMS_X = 7;
+	public const int NO_ROOMS_Y = 7;
 
-	public const int STARTING_ROOM_X = 0;
-	public const int STARTING_ROOM_Y = 0;
+	public const int STARTING_ROOM_X = NO_ROOMS_X/2;
+	public const int STARTING_ROOM_Y = NO_ROOMS_Y/2;
+
+	//How many rooms there will be. Guaranteed to be reachable.
+	int NO_ROOMS = 14;
 
 	//Posible enemies to have on this floor
 	public GameObject[] enemies;
@@ -15,6 +19,9 @@ public class Floor : MonoBehaviour {
 	//The list of possible rooms that can be spawned
 	//TODO: Make 3 different versions for the different tiers
 	public GameObject[] rooms;
+
+	//Stores the generated path of room indexes
+	private List<int[]> roomPath = new List<int[]>();
 
 	//The current floor map
 	private GameObject[][] floorMap = new GameObject[NO_ROOMS_X][];
@@ -49,28 +56,59 @@ public class Floor : MonoBehaviour {
 
 	public void GenerateFloor()
 	{
-		for (int x = 0; x < NO_ROOMS_X; x++)
+		for (int i = 0; i < NO_ROOMS_X; i++)
+			floorMap[i] = new GameObject[NO_ROOMS_Y];
+
+		int x = STARTING_ROOM_X;
+		int y = STARTING_ROOM_Y;
+
+		int room_num = 0;
+		while (room_num < NO_ROOMS)
 		{
-			floorMap[x] = new GameObject[NO_ROOMS_Y];
-			for (int y = 0; y < NO_ROOMS_Y; y++)
+			if (floorMap[x][y] == null)
 			{
+				//Which room to spawn
 				int randRoomIndex = Random.Range(0, rooms.Length);
+				//Where to spawn it
 				Vector2 worldPosition = new Vector2(x * Room.ROOM_WIDTH, -y * Room.ROOM_HEIGHT);
+
+				//Spawn the room and add it to the grid
 				GameObject room = Instantiate(rooms[randRoomIndex], worldPosition, Quaternion.identity) as GameObject;
 				Room roomScript = room.GetComponent<Room>();
 				floorMap[x][y] = room;
+				roomPath.Add(new int[] {x, y});
 
-				roomScript.SpawnEnemies(enemies);
-				roomScript.DisableOrEnableEnemies(false);
+				//No enemies in the first room
+				if (room_num != 0)
+				{
+					roomScript.SpawnEnemies(enemies);
+					roomScript.DisableOrEnableEnemies(false);
+				}
 
-				if (x == 0)
-					roomScript.DisableDoor(Door.DOOR_ORIENTATION.LEFT);
-				if (x == NO_ROOMS_X + 1)
-					roomScript.DisableDoor(Door.DOOR_ORIENTATION.RIGHT);
-				if (y == 0)
-					roomScript.DisableDoor(Door.DOOR_ORIENTATION.TOP);
-				if (y == NO_ROOMS_Y + 1)
-					roomScript.DisableDoor(Door.DOOR_ORIENTATION.BOTTOM);
+				room_num++;
+			}
+
+			//Choose new direction
+			int  direction = Random.Range(0, 4);
+			if (direction == 0 && x + 1 < NO_ROOMS_X)
+				x++;
+			else if (direction == 1 && x - 1 >= 0)
+				x--;
+			else if (direction == 2 && y + 1 < NO_ROOMS_Y)
+				y++;
+			else if (direction == 3 && y - 1 >= 0)
+				y--;
+		}
+
+		//Disable all doors that don't lead somewhere
+		foreach (int[] roomIndex in roomPath)
+		{
+			foreach (Door.DOOR_ORIENTATION orientation in System.Enum.GetValues(typeof(Door.DOOR_ORIENTATION)))
+			{
+				if (GetDoorDestination(roomIndex[0], roomIndex[1], orientation) == floorMap[roomIndex[0]][roomIndex[1]])
+				{
+					floorMap[roomIndex[0]][roomIndex[1]].GetComponent<Room>().DisableDoor(orientation);
+				}
 			}
 		}
 	}
@@ -84,27 +122,29 @@ public class Floor : MonoBehaviour {
 		return enemyCount;
 	}
 
-	public Room GetDoorDestination(Door door)
+	public Room GetDoorDestination(Door.DOOR_ORIENTATION orientation)
 	{
-		int x = currentRoomX;
-		int y = currentRoomY;
+		return GetDoorDestination(currentRoomX, currentRoomY, orientation);
+	}
 
-		switch (door.orientation)
+	public Room GetDoorDestination(int x, int y, Door.DOOR_ORIENTATION orientation)
+	{
+		switch (orientation)
 		{
 			case Door.DOOR_ORIENTATION.BOTTOM:
-				if (currentRoomY < NO_ROOMS_Y - 1)
+				if (y < NO_ROOMS_Y - 1 && floorMap[x][y + 1] != null)
 					y++;
 				break;
 			case Door.DOOR_ORIENTATION.TOP:
-				if (currentRoomY > 0)
+				if (y > 0 && floorMap[x][y - 1] != null)
 					y--;
 				break;
 			case Door.DOOR_ORIENTATION.LEFT:
-				if (currentRoomX > 0)
+				if (x > 0 && floorMap[x - 1][y] != null)
 					x--;
 				break;
 			case Door.DOOR_ORIENTATION.RIGHT:
-				if (currentRoomX < NO_ROOMS_X - 1)
+				if (x < NO_ROOMS_X - 1 && floorMap[x + 1][y] != null)
 					x++;
 				break;
 		}

@@ -67,11 +67,16 @@ public class Player : MonoBehaviour {
 		}
     }
 	//DO NOT TOUCH
-	private int _currentWeapon = 0;
+	private int _currentWeapon = -1;
 
 	// Use this for initialization
 	void Start () {
 		rigidBody = GetComponent<Rigidbody2D>();
+
+		// Instantiate and pick up a starting weapon
+		GameObject w = Item.GenerateWeapon(gameObject.GetComponent<Transform>().position);
+
+		w.GetComponent<Weapon>().PickUp();
     }
 
     /*
@@ -141,16 +146,24 @@ public class Player : MonoBehaviour {
 
 	public void PickUpWeapon(Weapon weapon)
 	{
-		int nextWeapon = (currentWeapon + 1) % weapons.Length;
-		if (weapons[nextWeapon] == null)
+		// Picking up the first weapon
+		if (_currentWeapon == -1)
 		{
-			weapons[nextWeapon] = weapon.gameObject;
-			currentWeapon = nextWeapon;
-		}
-		else
+			weapons[0] = weapon.gameObject;
+			_currentWeapon = 0;
+		} else 
 		{
-			weapons[currentWeapon].GetComponent<Weapon>().ReturnToFloor();
-			weapons[currentWeapon] = weapon.gameObject;
+			int nextWeapon = (currentWeapon + 1) % weapons.Length;
+			if (weapons[nextWeapon] == null)
+			{
+				weapons[nextWeapon] = weapon.gameObject;
+				currentWeapon = nextWeapon;
+			}
+			else
+			{
+				weapons[currentWeapon].GetComponent<Weapon>().ReturnToFloor();
+				weapons[currentWeapon] = weapon.gameObject;
+			}
 		}
 	}
 
