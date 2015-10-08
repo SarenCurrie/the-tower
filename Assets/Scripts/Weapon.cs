@@ -162,6 +162,7 @@ public class Weapon : Item {
     public static bool showWindow = false;
     void OnMouseEnter()
     {
+        new WaitForSeconds(2);
         showWindow = true;
     }
 

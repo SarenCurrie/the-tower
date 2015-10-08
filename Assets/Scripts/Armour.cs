@@ -134,6 +134,7 @@ public class Armour : Item {
     public static bool showWindow = false;
     void OnMouseEnter()
     {
+        new WaitForSeconds(2);
         showWindow = true;
     }
 
@@ -151,37 +152,50 @@ public class Armour : Item {
         Armour armourPiece = null;
         if (this.slot == SLOTS.helm)
         {
-            armourPiece = player.helm.GetComponent<Armour>();
+            if (player.helm != null)
+            {
+                armourPiece = player.helm.GetComponent<Armour>();
+            }
             type = "Helmet";
         }
         else if (this.slot == SLOTS.chest)
         {
-            armourPiece = player.chest.GetComponent<Armour>();
+            if (player.chest != null) {
+                armourPiece = player.chest.GetComponent<Armour>();
+            }
             type = "Chest";
         }
         else if (this.slot == SLOTS.gloves)
         {
-            armourPiece = player.gloves.GetComponent<Armour>();
+            if (player.gloves != null)
+            {
+                armourPiece = player.gloves.GetComponent<Armour>();
+            } 
             type = "Gloves";
         }
         else if (this.slot == SLOTS.boots)
         {
-            armourPiece = player.boots.GetComponent<Armour>();
+            if (player.boots != null)
+            {
+                armourPiece = player.boots.GetComponent<Armour>();
+            } 
             type = "Boots";
 
         }
 
-        int intelligenceFromArmour = armourPiece.intelligence;
-        int strengthFromArmour = armourPiece.strength;
-        int dexterityFromArmour = armourPiece.dexterity;
+        if (armourPiece != null)
+        {
+            int intelligenceFromArmour = armourPiece.intelligence;
+            int strengthFromArmour = armourPiece.strength;
+            int dexterityFromArmour = armourPiece.dexterity;
 
-        GUILayout.TextField(type+":\nStrength: " + strengthFromArmour + "\nDexterity:  " + dexterityFromArmour + "\nIntelligence " + intelligenceFromArmour + "\n", "OutlineText");
+            GUILayout.TextField(type + ":\nStrength: " + strengthFromArmour + "\nDexterity:  " + dexterityFromArmour + "\nIntelligence " + intelligenceFromArmour + "\n", "OutlineText");
+        }
     }
 
     void DoWindow1(int windowID)
     {
 
-        Armour armourPiece = null;
         if (this.slot == SLOTS.helm)
         {
             type = "Helmet";
