@@ -105,7 +105,7 @@ public class Floor : MonoBehaviour {
 		{
 			foreach (Door.DOOR_ORIENTATION orientation in System.Enum.GetValues(typeof(Door.DOOR_ORIENTATION)))
 			{
-				if (GetDoorDestination(roomIndex[0], roomIndex[1], orientation) == floorMap[roomIndex[0]][roomIndex[1]])
+				if (GetDoorDestination(roomIndex[0], roomIndex[1], orientation) == floorMap[roomIndex[0]][roomIndex[1]].GetComponent<Room>())
 				{
 					floorMap[roomIndex[0]][roomIndex[1]].GetComponent<Room>().DisableDoor(orientation);
 				}
