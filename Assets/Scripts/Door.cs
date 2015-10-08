@@ -33,7 +33,7 @@ public class Door : MonoBehaviour {
 			}
 			else
 			{
-				print(t / DOOR_CONTACT_TIME);
+				//print(t / DOOR_CONTACT_TIME);
 				Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, cameraDestination, (t / DOOR_CONTACT_TIME)/10);
 				t += Time.deltaTime;
 			}

@@ -16,6 +16,7 @@ using System;
 ///
 ///
 /// </summary>
+/// 
 public class Weapon : Item {
 
     private const float BASE_HIT_DAMAGE = 0.01f;
@@ -28,10 +29,10 @@ public class Weapon : Item {
     private int spread = 1;
     private float spreadRange;
     private float fireForce;
-    private float fireFrequency;
-    private float strengthModifier;
-    private float dexterityModifier;
-    private float intelligenceModifier;
+    private float fireFrequency;//
+    private float strengthModifier;//
+    private float dexterityModifier;//
+    private float intelligenceModifier;//
     private float damageMod;
 
     private float lastFired = 0;
@@ -42,6 +43,11 @@ public class Weapon : Item {
 
 	public Sprite[] possibleProjectileSprites;
 	private Sprite projectileSprite;
+
+    public GUISkin mySkin;
+
+    private UnityEngine.Object[] hoverElements;
+
 
     public void Fire (Player p)
     {
@@ -147,4 +153,42 @@ public class Weapon : Item {
 
 		GetPlayer().GetComponent<Player>().PickUpWeapon(this);
 	}
+
+    public override void showComparison()
+    {
+        Debug.Log("showing comparison");
+    }
+
+    public static bool showWindow = false;
+    void OnMouseEnter()
+    {
+        showWindow = true;
+    }
+
+    void OnMouseExit()
+    {
+        showWindow = false;
+    }
+
+
+    
+    void DoWindow0(int windowID)
+    {
+        GUI.Box(new Rect(Input.mousePosition.x, Screen.height - Input.mousePosition.y-150, 150, 150), "Click Me!");
+    }
+    void OnGUI()
+    {
+        GUI.skin = mySkin;
+        Texture2D texture = Resources.Load("Holographic/output/main/bg/bg") as Texture2D;
+        //doWindow0 = GUI.Toggle(new Rect(10, 10, 100, 20), doWindow0, "Window 0");
+        
+        if (showWindow)
+        {
+            GUI.DrawTexture(new Rect(Input.mousePosition.x, Screen.height - Input.mousePosition.y, 150, 150), texture);
+            GUI.DrawTexture(new Rect(Input.mousePosition.x+100, Screen.height - Input.mousePosition.y, 150, 150), texture);
+            GUI.Window(0, new Rect(110, 10, 200, 60), DoWindow0,"TEST");  
+
+        }
+    }
 }
+    

@@ -112,6 +112,12 @@ public class Armour : Item {
         GetPlayer().UpdateStats();
     }
 
+    public override void showComparison()
+    {
+        Debug.Log("showing comparison");
+    }
+
+
     // Getters
     public int GetSlot()
     {
