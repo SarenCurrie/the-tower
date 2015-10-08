@@ -9,11 +9,12 @@ public class SpreadShotEnemy : MonoBehaviour
 
 	public Transform projectilePrefab;
 
-	private int spread = 1;
-	private float spreadRange;
-	private float fireForce;
-	private float fireFrequency;
+	public int spread;
+	public float spreadRange;
+	public float fireForce;
+	public float fireFrequency;
 	private float damageMod;
+	public float DAMAGEMULTIPLIER;
 
 	private float lastFired = 0;
 
@@ -69,16 +70,11 @@ public class SpreadShotEnemy : MonoBehaviour
 
 	private float CalculateDamage()
 	{
-		return (1.0f * damageMod);
+		return (DAMAGEMULTIPLIER * damageMod);
 	}
 
 	public void Generate()
 	{
-		//Multiple projectiles
-		spread = UnityEngine.Random.Range(5, 10);
-		fireForce = UnityEngine.Random.Range(15, 20);
-		fireFrequency = UnityEngine.Random.Range(1f, 5);
-		spreadRange = UnityEngine.Random.Range(15, 61);
 		damageMod = (float)(
 			((50) + (System.Math.Pow(spreadRange, 0.7f))) / 
 			(((System.Math.Pow(fireFrequency, 1.1f))) * System.Math.Pow(spread, 1.1f)));
