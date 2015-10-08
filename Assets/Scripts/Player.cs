@@ -151,7 +151,8 @@ public class Player : MonoBehaviour {
 		{
 			weapons[0] = weapon.gameObject;
 			_currentWeapon = 0;
-		} else 
+		}
+        else 
 		{
 			int nextWeapon = (currentWeapon + 1) % weapons.Length;
 			if (weapons[nextWeapon] == null)
@@ -166,6 +167,51 @@ public class Player : MonoBehaviour {
 			}
 		}
 	}
+
+    public void PickUpArmour(Armour armour)
+    {
+        switch (armour.slot)
+        {
+            case Armour.SLOTS.helm:
+                // helmet
+                if (helm != null)
+                {
+                    helm.GetComponent<Armour>().ReturnToFloor();
+                }
+                helm = armour.gameObject;
+                break;
+            case Armour.SLOTS.chest:
+                // chest
+                if (chest != null)
+                {
+                    chest.GetComponent<Armour>().ReturnToFloor();
+                }
+
+                chest = armour.gameObject;
+                break;
+            case Armour.SLOTS.gloves:
+                // gloves
+                if (gloves != null)
+                {
+                    gloves.GetComponent<Armour>().ReturnToFloor();
+                }
+
+                gloves = armour.gameObject;
+                break;
+            case Armour.SLOTS.boots:
+                // boots
+                if (boots != null)
+                {
+                    boots.GetComponent<Armour>().ReturnToFloor();
+                }
+
+                boots = armour.gameObject;
+                break;
+        }
+
+        // Update player stats
+        UpdateStats();
+    }
 
 	// Update is called once per frame
 	void Update () {
