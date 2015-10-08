@@ -293,7 +293,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2950332f19737146988318faed03e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floorPrefab: {fileID: 167694, guid: dfd0b0f123ee626468a314822df31cd4, type: 2}
+  floorPrefabs:
+  - {fileID: 151502, guid: 0dd8386a7faf311498b64578b1f52372, type: 2}
+  - {fileID: 167694, guid: dfd0b0f123ee626468a314822df31cd4, type: 2}
   playerPrefab: {fileID: 124720, guid: e8af01c63e511704fbe0773330730626, type: 2}
 --- !u!4 &579870623
 Transform:
@@ -503,8 +505,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 683, y: 299}
-  m_SizeDelta: {x: 1366, y: 598}
+  m_AnchoredPosition: {x: 478, y: 288}
+  m_SizeDelta: {x: 956, y: 576}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &965361234
 MonoBehaviour:
