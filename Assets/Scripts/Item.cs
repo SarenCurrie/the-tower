@@ -72,6 +72,9 @@ public abstract class Item : MonoBehaviour {
 		// Start the sprite rendering again
 		gameObject.GetComponent<SpriteRenderer>().enabled = true;
 
+        //Re-enable the box collider
+        gameObject.GetComponent<BoxCollider2D>().enabled = true;
+
 		gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Item_Dropped";
 
 		//Stop following the player
