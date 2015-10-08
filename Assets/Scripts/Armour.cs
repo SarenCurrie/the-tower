@@ -5,7 +5,7 @@ using System.Collections;
 /// 
 /// This class represents all equippable armour in the game.
 /// 
-/// It declares the unique properties of each Weapon, the main attributes include:
+/// It declares the unique properties of a piece of armour, the main attributes are:
 /// 
 /// -strength - How much the armour improves the Player's strength stat by
 /// -dexterity -  How much the armour improves the Player's dexterity stat by
@@ -23,22 +23,49 @@ public class Armour : Item {
     private int intelligence;
 
     private string armourName;
-    private int slot;
-    private int look;
 
-    public Sprite[] looks;
+    //The slot this armour is
+    public SLOTS slot;
+
+    //The different possible slots for an armour
+    public enum SLOTS
+    {
+        helm = 0,
+        chest = 1,
+        gloves = 2,
+        boots = 3
+    }
+
+    //The looks for different slots
+    //TODO: In future these could be arrays with the potential looks
+    public Sprite helm;
+    public Sprite chest;
+    public Sprite boots;
+    public Sprite gloves;
 
     /*
     *  Called when the GameObject is created, generates the armour piece
     */
     public override void Generate()
     {
-        //look = Random.Range(0, looks.Length);
-        //GetComponent<SpriteRenderer>().sprite = looks[look];
-
         // Generate the slot the item will exist in
         // This might change to an enum at a later date
-        slot = Random.Range(0, 4);
+        slot = (SLOTS)(Random.Range(0, 4));
+        switch(slot)
+        {
+            case SLOTS.helm:
+                gameObject.GetComponent<SpriteRenderer>().sprite = helm;
+                break;
+            case SLOTS.chest:
+                gameObject.GetComponent<SpriteRenderer>().sprite = chest;
+                break;
+            case SLOTS.gloves:
+                gameObject.GetComponent<SpriteRenderer>().sprite = gloves;
+                break;
+            case SLOTS.boots:
+                gameObject.GetComponent<SpriteRenderer>().sprite = boots;
+                break;
+        }
 
         // Assign the stat points
         for (int i = 0; i < STAT_POINTS; i++)
@@ -65,57 +92,21 @@ public class Armour : Item {
     */
     public override void PickUp()
     {
-		// Stop the sprite rendering
-		gameObject.GetComponent<SpriteRenderer>().enabled = false;
 
-		switch (GetSlot())
-        {
-            case 0:
-                // helmet
-                if (GetPlayer().helm != null)
-                {
-                    GetPlayer().helm.GetComponent<Armour>().ReturnToFloor();
-                }
+        // Stop the sprite rendering
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
 
-                GetPlayer().helm = this.gameObject;
-                break;
-            case 1:
-                // chest
-                if (GetPlayer().chest != null)
-                {
-                    GetPlayer().chest.GetComponent<Armour>().ReturnToFloor();
-                }
+        // Disable the Rigidbody
+        GetComponent<Rigidbody2D>().isKinematic = true;
 
-                GetPlayer().chest = this.gameObject;
-                break;
-            case 2:
-                // gloves
-                if (GetPlayer().gloves != null)
-                {
-                    GetPlayer().gloves.GetComponent<Armour>().ReturnToFloor();
-                }
+        // Set the position of the armour to that of the player.
+        transform.position = GetPlayer().transform.position;
+        transform.rotation = GetPlayer().transform.rotation;
+        transform.parent = GetPlayer().transform; //Weapon will follow the player.
+        GetComponent<SpriteRenderer>().sortingLayerName = "Held_Weapon";
 
-                GetPlayer().gloves = this.gameObject;
-                break;
-            case 3:
-                // boots
-                if (GetPlayer().boots != null)
-                {
-                    GetPlayer().boots.GetComponent<Armour>().ReturnToFloor();
-                }
+        GetPlayer().GetComponent<Player>().PickUpArmour(this);
 
-                GetPlayer().boots = this.gameObject;
-                break;
-        }
-
-        // Update player stats
-        GetPlayer().UpdateStats();
-    }
-
-    // Getters
-    public int GetSlot()
-    {
-        return slot;
     }
 
     public int GetStrength()
