@@ -186,15 +186,16 @@ public class Weapon : Item {
 
     void DoWindow1(int windowID)
     {
-        Weapon weapon = this.gameObject.GetComponent<Weapon>();
-        Debug.Log(weapon.damageMod);
-        float damageFloor = weapon.damageMod;
-        int spreadFloor = weapon.spread;
-        float forceFloor = weapon.fireForce;
+            Weapon weapon = this.gameObject.GetComponent<Weapon>();
 
-        GUILayout.TextField("Damage:   " + Math.Round(damageMod, 2) + "\nSpread:       " + spread + "\nForce:          " + fireForce + "\n", "OutlineText");
+            float damageFloor = weapon.damageMod;
+            int spreadFloor = weapon.spread;
+            float forceFloor = weapon.fireForce;
+
+
+            GUILayout.TextField("Damage:   " + Math.Round(damageFloor, 2) + "\nSpread:       " + spreadFloor + "\nForce:          " + forceFloor + "\n", "OutlineText");
+
         
-
     }
     void OnGUI()
     {
