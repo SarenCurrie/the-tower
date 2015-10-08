@@ -223,6 +223,8 @@ public class Armour : Item {
         GUI.skin = mySkin;
         //GUI.skin.window = mySkin ;
         Texture2D texture = Resources.Load("Holographic/output/main/bg/bg") as Texture2D;
+        Texture2D armour = Resources.Load("Holographic/output/main/bg/doom") as Texture2D;
+
         //doWindow0 = GUI.Toggle(new Rect(10, 10, 100, 20), doWindow0, "Window 0");
 
         if (showWindow)
@@ -233,6 +235,8 @@ public class Armour : Item {
 
             GUI.DrawTexture(new Rect(Input.mousePosition.x - 160, Screen.height - Input.mousePosition.y - offset, 150, 150), texture);
             GUI.DrawTexture(new Rect(Input.mousePosition.x - 20, Screen.height - Input.mousePosition.y - offset, 150, 150), texture);
+            GUI.DrawTexture(new Rect(Input.mousePosition.x - 110, Screen.height - Input.mousePosition.y - 45, 55, 45), armour);
+            GUI.DrawTexture(new Rect(Input.mousePosition.x + 30, Screen.height - Input.mousePosition.y - 45, 55, 45), armour);
             GUI.Window(0, new Rect(Input.mousePosition.x - 250, Screen.height - Input.mousePosition.y + 120 - offset, 250, 200), DoWindow0, "Current armour:");
 
             GUI.Window(1, new Rect(Input.mousePosition.x - 25, Screen.height - Input.mousePosition.y + 120 - offset, 250, 200), DoWindow1, "Floor armour:");
