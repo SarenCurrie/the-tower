@@ -10,6 +10,8 @@ using System.Collections;
 /// 
 /// </summary>
 public abstract class Item : MonoBehaviour {
+
+    //This should be much higher but is 50% for testing purposes
 	private const int WEAPON_CHANCE = 50;
 	private bool onFloor = true;
 
@@ -26,19 +28,16 @@ public abstract class Item : MonoBehaviour {
 	*/
 	public static GameObject GenerateItem(Vector3 v)
 	{
-        //GameObject item = (Instantiate(Resources.Load("GroundGun"), v, Quaternion.identity)) as GameObject;
-        GameObject item = (Instantiate(Resources.Load("GroundArmour"), v, Quaternion.identity)) as GameObject;
-        int type = Random.Range(0, 100);
-		//75% chance a dropped item will be a weapon
-		//if (type < WEAPON_CHANCE)
-		//{
-			return item;
-		//}
-		//else
-		//{
-		//    item.GetComponent<Armour>().Generate();
-		//    return item;
-		//}
+        GameObject item;
+        int type = Random.Range(0, 101);
+        if (type < WEAPON_CHANCE)
+        {
+            return item = (Instantiate(Resources.Load("GroundGun"), v, Quaternion.identity)) as GameObject; ;
+        }
+        else
+        {
+            return item = (Instantiate(Resources.Load("GroundArmour"), v, Quaternion.identity)) as GameObject; ;
+        }
 	}
 
 	/**
