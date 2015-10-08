@@ -18,8 +18,6 @@ public abstract class Item : MonoBehaviour {
 	public abstract void PickUp();
 	public abstract void Generate();
 
-    public abstract void showComparison();
-
 
 
 	void Start()

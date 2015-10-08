@@ -157,10 +157,7 @@ public class Weapon : Item {
 		GetPlayer().GetComponent<Player>().PickUpWeapon(this);
 	}
 
-    public override void showComparison()
-    {
-        Debug.Log("showing comparison");
-    }
+  
 
     public static bool showWindow = false;
     void OnMouseEnter()
@@ -194,7 +191,7 @@ public class Weapon : Item {
         int spreadFloor = weapon.spread;
         float forceFloor = weapon.fireForce;
 
-        GUILayout.TextField("Damage:   " + Math.Round(damageFloor, 2) + "\nSpread:       " + spreadFloor + "\nForce:          " + forceFloor + "\n", "OutlineText");
+        GUILayout.TextField("Damage:   " + Math.Round(damageMod, 2) + "\nSpread:       " + spread + "\nForce:          " + fireForce + "\n", "OutlineText");
         
 
     }
@@ -208,15 +205,15 @@ public class Weapon : Item {
         if (showWindow)
         {
             int offset = 100;
-            if (this.gameObject.name.Contains("Ground"))
-            {
+            //if (this.gameObject.name.Contains("Ground") || this.gameObject.name.Contains("Enemy") )
+            //{
 
                 GUI.DrawTexture(new Rect(Input.mousePosition.x - 160, Screen.height - Input.mousePosition.y - offset, 150, 150), texture);
                 GUI.DrawTexture(new Rect(Input.mousePosition.x - 20, Screen.height - Input.mousePosition.y - offset, 150, 150), texture);
                 GUI.Window(0, new Rect(Input.mousePosition.x - 250, Screen.height - Input.mousePosition.y + 120 - offset, 250, 200), DoWindow0, "Current weapon:");
 
                 GUI.Window(1, new Rect(Input.mousePosition.x - 25, Screen.height - Input.mousePosition.y + 120 - offset, 250, 200), DoWindow1, "Floor weapon:");
-            }
+            //}
         }
     }
 }

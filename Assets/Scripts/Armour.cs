@@ -27,6 +27,8 @@ public class Armour : Item {
     //The slot this armour is
     public SLOTS slot;
 
+    private string type;
+
     //The different possible slots for an armour
     public enum SLOTS
     {
@@ -42,6 +44,9 @@ public class Armour : Item {
     public Sprite chest;
     public Sprite boots;
     public Sprite gloves;
+
+    public GUISkin mySkin;
+
 
     /*
     *  Called when the GameObject is created, generates the armour piece
@@ -109,6 +114,8 @@ public class Armour : Item {
 
     }
 
+
+
     public int GetStrength()
     {
         return strength;
@@ -123,4 +130,82 @@ public class Armour : Item {
     {
         return intelligence;
     }
+
+    public static bool showWindow = false;
+    void OnMouseEnter()
+    {
+        showWindow = true;
+    }
+
+    void OnMouseExit()
+    {
+        showWindow = false;
+    }
+
+
+
+    void DoWindow0(int windowID)
+    {
+        Player player = GetPlayer().GetComponent<Player>();
+
+        Armour armourPiece = null;
+        if (this.slot == SLOTS.helm)
+        {
+            armourPiece = player.helm.GetComponent<Armour>();
+            type = "Helmet";
+        }
+        else if (this.slot == SLOTS.chest)
+        {
+            armourPiece = player.chest.GetComponent<Armour>();
+            type = "Chest";
+        }
+        else if (this.slot == SLOTS.gloves)
+        {
+            armourPiece = player.gloves.GetComponent<Armour>();
+            type = "Gloves";
+        }
+        else if (this.slot == SLOTS.boots)
+        {
+            armourPiece = player.boots.GetComponent<Armour>();
+            type = "Boots";
+
+        }
+
+        int intelligenceFromArmour = armourPiece.intelligence;
+        int strengthFromArmour = armourPiece.strength;
+        int dexterityFromArmour = armourPiece.dexterity;
+
+        GUILayout.TextField(type+":\nStrength: " + strengthFromArmour + "\nDexterity:  " + dexterityFromArmour + "\nIntelligence " + intelligenceFromArmour + "\n", "OutlineText");
+    }
+
+    void DoWindow1(int windowID)
+    {
+
+
+        GUILayout.TextField(type + ":\nStrength: " + this.strength + "\nDexterity: " + this.dexterity + "\nIntelligence: " + this.intelligence + "\n", "OutlineText");
+
+
+    }
+    void OnGUI()
+    {
+        GUI.skin = mySkin;
+        //GUI.skin.window = mySkin ;
+        Texture2D texture = Resources.Load("Holographic/output/main/bg/bg") as Texture2D;
+        //doWindow0 = GUI.Toggle(new Rect(10, 10, 100, 20), doWindow0, "Window 0");
+
+        if (showWindow)
+        {
+            int offset = 100;
+            //if (this.gameObject.name.Contains("Ground") || this.gameObject.name.Contains("Enemy") )
+            //{
+
+            GUI.DrawTexture(new Rect(Input.mousePosition.x - 160, Screen.height - Input.mousePosition.y - offset, 150, 150), texture);
+            GUI.DrawTexture(new Rect(Input.mousePosition.x - 20, Screen.height - Input.mousePosition.y - offset, 150, 150), texture);
+            GUI.Window(0, new Rect(Input.mousePosition.x - 250, Screen.height - Input.mousePosition.y + 120 - offset, 250, 200), DoWindow0, "Current armour:");
+
+            GUI.Window(1, new Rect(Input.mousePosition.x - 25, Screen.height - Input.mousePosition.y + 120 - offset, 250, 200), DoWindow1, "Floor armour:");
+            //}
+        }
+    }
+
 }
