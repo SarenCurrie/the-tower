@@ -78,7 +78,7 @@ public class Room : MonoBehaviour {
 	/// Gets a list of enemies in a room
 	/// </summary>
 	/// <returns></returns>
-	public List<GameObject> getEnemiesInRoom()
+	public List<GameObject> GetEnemiesInRoom()
 	{
 		List<GameObject> enemies = new List<GameObject>();
 
