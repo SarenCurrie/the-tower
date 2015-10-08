@@ -11,5 +11,9 @@ namespace Achievements {
 			name = n;
 			text = t;
 		}
+
+		public void Achieve() {
+			AchievementManager.DoAchievement(this);
+		}
 	}
 }
