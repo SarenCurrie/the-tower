@@ -45,7 +45,8 @@ public class healthManager : MonoBehaviour
 
 	void Update ()
 	{
-		delay = .015f+health/4000f;
+		// Delay depends on health - speeds up as player loses health
+		delay = 0.5f * health/4000f;
 
 		StartCoroutine("PlayLoop", delay);
 
@@ -63,13 +64,14 @@ public class healthManager : MonoBehaviour
 				damageCheck = health;
 				DamageFlash.flashDamage();
 			}
-            this.transform.Find("health_text").GetComponent<Text>().text = health.ToString();
+			
+			// Cast to int to stop decimal display
+            this.transform.Find("health_text").GetComponent<Text>().text = ((int)health).ToString();
 
             if (health <= 0)
             {
                 health = 0;
                 DeathMenu.dead = true;
-
             }
         }
     }
