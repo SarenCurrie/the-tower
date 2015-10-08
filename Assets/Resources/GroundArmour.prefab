@@ -71,9 +71,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da5b3ff7047a840a2a397b217e6c55d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  looks:
-  - {fileID: 21300000, guid: ec5f076a1ef21004ba51f127e330342f, type: 3}
-  - {fileID: 21300000, guid: 0596e5afa1b0f5c4486f1bc49468d383, type: 3}
+  slot: 0
+  helm: {fileID: 21300000, guid: 662b16e154f264c4daf6159aef92c6e4, type: 3}
+  chest: {fileID: 21300000, guid: 662b16e154f264c4daf6159aef92c6e4, type: 3}
+  boots: {fileID: 21300000, guid: 662b16e154f264c4daf6159aef92c6e4, type: 3}
+  gloves: {fileID: 21300000, guid: 662b16e154f264c4daf6159aef92c6e4, type: 3}
 --- !u!212 &21231088
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -221,6 +223,26 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: helm
+      value: 
+      objectReference: {fileID: 21300000, guid: 662b16e154f264c4daf6159aef92c6e4,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: chest
+      value: 
+      objectReference: {fileID: 21300000, guid: 662b16e154f264c4daf6159aef92c6e4,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: boots
+      value: 
+      objectReference: {fileID: 21300000, guid: 662b16e154f264c4daf6159aef92c6e4,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: gloves
+      value: 
+      objectReference: {fileID: 21300000, guid: 662b16e154f264c4daf6159aef92c6e4,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 184112}
