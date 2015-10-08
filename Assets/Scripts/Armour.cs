@@ -13,7 +13,8 @@ using System.Collections;
 /// 
 /// 
 /// </summary>
-public class Armour : Item {
+public class Armour : Item
+{
 
     // The number of points allocated between the different stats
     private const int STAT_POINTS = 3;
@@ -56,7 +57,7 @@ public class Armour : Item {
         // Generate the slot the item will exist in
         // This might change to an enum at a later date
         slot = (SLOTS)(Random.Range(0, 4));
-        switch(slot)
+        switch (slot)
         {
             case SLOTS.helm:
                 gameObject.GetComponent<SpriteRenderer>().sprite = helm;
@@ -101,6 +102,8 @@ public class Armour : Item {
         // Stop the sprite rendering
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
 
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
+
         // Disable the Rigidbody
         GetComponent<Rigidbody2D>().isKinematic = true;
 
@@ -131,56 +134,56 @@ public class Armour : Item {
         return intelligence;
     }
 
-    public static bool showWindow = false;
+    public bool showWindow = false;
     void OnMouseEnter()
     {
-        new WaitForSeconds(2);
-        showWindow = true;
+        if(!showWindow)
+            showWindow = true;
     }
 
     void OnMouseExit()
     {
-        showWindow = false;
+        if(showWindow)
+            showWindow = false;
     }
 
 
 
-    void DoWindow0(int windowID)
+    private void DoWindow0(int windowID)
     {
         Player player = GetPlayer().GetComponent<Player>();
 
         Armour armourPiece = null;
-        if (this.slot == SLOTS.helm)
+        switch (slot)
         {
-            if (player.helm != null)
-            {
-                armourPiece = player.helm.GetComponent<Armour>();
-            }
-            type = "Helmet";
-        }
-        else if (this.slot == SLOTS.chest)
-        {
-            if (player.chest != null) {
-                armourPiece = player.chest.GetComponent<Armour>();
-            }
-            type = "Chest";
-        }
-        else if (this.slot == SLOTS.gloves)
-        {
-            if (player.gloves != null)
-            {
-                armourPiece = player.gloves.GetComponent<Armour>();
-            } 
-            type = "Gloves";
-        }
-        else if (this.slot == SLOTS.boots)
-        {
-            if (player.boots != null)
-            {
-                armourPiece = player.boots.GetComponent<Armour>();
-            } 
-            type = "Boots";
-
+            case SLOTS.helm:
+                if (player.helm != null)
+                {
+                    armourPiece = player.helm.GetComponent<Armour>();
+                }
+                type = "Helmet";
+                break;
+            case SLOTS.chest:
+                if (player.chest != null)
+                {
+                    armourPiece = player.chest.GetComponent<Armour>();
+                }
+                type = "Chest";
+                break;
+            case SLOTS.gloves:
+                if (player.gloves != null)
+                {
+                    armourPiece = player.gloves.GetComponent<Armour>();
+                }
+                type = "Gloves";
+                break;
+            case SLOTS.boots:
+                if (player.boots != null)
+                {
+                    armourPiece = player.boots.GetComponent<Armour>();
+                }
+                type = "Boots";
+                break;
         }
 
         if (armourPiece != null)
@@ -193,28 +196,25 @@ public class Armour : Item {
         }
     }
 
-    void DoWindow1(int windowID)
+    private void DoWindow1(int windowID)
     {
-
-        if (this.slot == SLOTS.helm)
+        switch (slot)
         {
-            type = "Helmet";
-        }
-        else if (this.slot == SLOTS.chest)
-        {
-            type = "Chest";
-        }
-        else if (this.slot == SLOTS.gloves)
-        {
-            type = "Gloves";
-        }
-        else if (this.slot == SLOTS.boots)
-        {
-            type = "Boots";
-
+            case SLOTS.helm:
+                type = "Helmet";
+                break;
+            case SLOTS.chest:
+                type = "Chest";
+                break;
+            case SLOTS.gloves:
+                type = "Gloves";
+                break;
+            case SLOTS.boots:
+                type = "Boots";
+                break;
         }
 
-        GUILayout.TextField(type + ":\nStrength: " + this.strength + "\nDexterity: " + this.dexterity + "\nIntelligence: " + this.intelligence + "\n", "OutlineText");
+        GUILayout.TextField(type + ":\nStrength: " + strength + "\nDexterity: " + dexterity + "\nIntelligence: " + intelligence + "\n", "OutlineText");
 
 
     }
