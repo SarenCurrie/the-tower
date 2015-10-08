@@ -181,7 +181,7 @@ public class Weapon : Item {
     void DoWindow1(int windowID)
     {
         //GUI.TextField(new Rect(Input.mousePosition.x, Screen.height - Input.mousePosition.y-150, 150, 150), "Click Me!");
-        GUILayout.TextField("Goodbye", "OutlineText");
+        GUILayout.TextField("Goodbye\nTesting\nNewline", "OutlineText");
     }
     void OnGUI()
     {
@@ -194,8 +194,8 @@ public class Weapon : Item {
         {
             GUI.DrawTexture(new Rect(Input.mousePosition.x-125, Screen.height - Input.mousePosition.y, 150, 150), texture);
             GUI.DrawTexture(new Rect(Input.mousePosition.x-25, Screen.height - Input.mousePosition.y, 150, 150), texture);
-            GUI.Window(0, new Rect(Input.mousePosition.x-100, Screen.height - Input.mousePosition.y+130, 100, 40), DoWindow0,"Test");
-            GUI.Window(1, new Rect(Input.mousePosition.x, Screen.height - Input.mousePosition.y + 130, 100, 40), DoWindow1, "Test"); 
+            GUI.Window(0, new Rect(Input.mousePosition.x-175, Screen.height - Input.mousePosition.y+120, 200, 180), DoWindow0,"Test");
+            GUI.Window(1, new Rect(Input.mousePosition.x, Screen.height - Input.mousePosition.y + 120, 200, 180), DoWindow1, "Test"); 
 
         }
     }
