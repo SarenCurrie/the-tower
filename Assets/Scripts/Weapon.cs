@@ -174,19 +174,28 @@ public class Weapon : Item {
     
     void DoWindow0(int windowID)
     {
-        GUI.Box(new Rect(Input.mousePosition.x, Screen.height - Input.mousePosition.y-150, 150, 150), "Click Me!");
+        //GUI.TextField(new Rect(Input.mousePosition.x, Screen.height - Input.mousePosition.y-150, 150, 150), "Click Me!");
+        GUILayout.TextField("Hello", "OutlineText");
+    }
+
+    void DoWindow1(int windowID)
+    {
+        //GUI.TextField(new Rect(Input.mousePosition.x, Screen.height - Input.mousePosition.y-150, 150, 150), "Click Me!");
+        GUILayout.TextField("Goodbye", "OutlineText");
     }
     void OnGUI()
     {
         GUI.skin = mySkin;
+        //GUI.skin.window = mySkin ;
         Texture2D texture = Resources.Load("Holographic/output/main/bg/bg") as Texture2D;
         //doWindow0 = GUI.Toggle(new Rect(10, 10, 100, 20), doWindow0, "Window 0");
         
         if (showWindow)
         {
-            GUI.DrawTexture(new Rect(Input.mousePosition.x, Screen.height - Input.mousePosition.y, 150, 150), texture);
-            GUI.DrawTexture(new Rect(Input.mousePosition.x+100, Screen.height - Input.mousePosition.y, 150, 150), texture);
-            GUI.Window(0, new Rect(110, 10, 200, 60), DoWindow0,"TEST");  
+            GUI.DrawTexture(new Rect(Input.mousePosition.x-125, Screen.height - Input.mousePosition.y, 150, 150), texture);
+            GUI.DrawTexture(new Rect(Input.mousePosition.x-25, Screen.height - Input.mousePosition.y, 150, 150), texture);
+            GUI.Window(0, new Rect(Input.mousePosition.x-100, Screen.height - Input.mousePosition.y+130, 100, 40), DoWindow0,"Test");
+            GUI.Window(1, new Rect(Input.mousePosition.x, Screen.height - Input.mousePosition.y + 130, 100, 40), DoWindow1, "Test"); 
 
         }
     }
