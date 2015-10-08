@@ -12,7 +12,7 @@ public class PauseMenu : MonoBehaviour {
 	private static float pauseHeight = 300f;
 	private static float pauseWidth = 280f;
 	private static float pauseTop = 0 - Screen.height;
-	private static float pauseBottom = (Screen.height - pauseHeight)/2;
+	private static float pauseBottom = (Screen.height)/2;
 	private Rect pauseRect = new Rect((Screen.width - pauseWidth)/2, pauseTop, pauseWidth, pauseHeight);
 
 	void PauseArea(int windowID) 

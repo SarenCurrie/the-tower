@@ -142,6 +142,9 @@ public class Weapon : Item {
     */
     public override void PickUp()
     {
+        //disable the box collider
+        GetComponent<BoxCollider2D>().enabled = false;
+
         // Disable the Rigidbody
         GetComponent<Rigidbody2D>().isKinematic = true;
 
