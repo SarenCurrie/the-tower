@@ -10,10 +10,11 @@ public class SingleShotEnemy : MonoBehaviour
 	public Transform projectilePrefab;
 
 	private int spread = 1;
-	private float spreadRange;
-	private float fireForce;
-	private float fireFrequency;
+	private float spreadRange = 1f;
+	public float fireForce;
+	public float fireFrequency;
 	private float damageMod;
+	public float DAMAGEMULTIPLIER;
 
 	private float lastFired = 0;
 
@@ -69,15 +70,11 @@ public class SingleShotEnemy : MonoBehaviour
 
 	private float CalculateDamage()
 	{
-		return (1.0f * damageMod);
+		return (DAMAGEMULTIPLIER * damageMod);
 	}
 
 	public void Generate()
 	{
-		spread = 1;
-		fireForce = UnityEngine.Random.Range(20, 35);
-		fireFrequency = UnityEngine.Random.Range(15f, 30);
-		spreadRange = 1;
 		damageMod = (float)((50 * 25) / 
 			(20 * (System.Math.Pow(fireForce, 0.2)) + 15 * (System.Math.Pow(fireFrequency, 1.2))));
 		int projectileSpriteIndex = UnityEngine.Random.Range(0, possibleProjectileSprites.Length);
