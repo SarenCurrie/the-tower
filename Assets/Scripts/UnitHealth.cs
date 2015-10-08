@@ -15,13 +15,15 @@ public class UnitHealth : MonoBehaviour {
 
     public float maxHealth;
     public float health;
-    public GameObject blood;
+    public GameObject[] bloodPrefabs;
 
     // Blood constants
-    public const int MIN_BLOOD_ON_DEATH = 50;
-    public const int MAX_BLOOD_ON_DEATH = 100;
-    public const float BLOOD_SPATTER_DEATH = 1;
+    public const int MIN_BLOOD_ON_DEATH = 8;
+    public const int MAX_BLOOD_ON_DEATH = 20;
+    public const float BLOOD_SPATTER_DEATH = 2;
     public const float BLOOD_SPATTER = 0.2f;
+    public const float BLOOD_SIZE_MIN = 0.5f;
+    public const float BLOOD_SIZE_MAX = 1.2f;
 
     /**
      * This is an array of tags which specifies what the attached gameObject
@@ -75,11 +77,8 @@ public class UnitHealth : MonoBehaviour {
         {
             health -= collision.gameObject.GetComponent<Projectile>().GetDamage();
 
-            // Spawn a blood object
-            if (blood != null) {
-                Vector3 bloodOSet = new Vector3(UnityEngine.Random.Range(-BLOOD_SPATTER,BLOOD_SPATTER), UnityEngine.Random.Range(-BLOOD_SPATTER,BLOOD_SPATTER));
-                Instantiate(blood, gameObject.transform.position + bloodOSet, gameObject.transform.rotation);
-            }
+            MakeBlood();
+
             if (health > maxHealth)
             {
                 // Cannot excede max health
@@ -88,16 +87,30 @@ public class UnitHealth : MonoBehaviour {
             else if (health < 0)
             {
                 health = 0;
-                if (blood != null) 
+                if (bloodPrefabs.Length > 0) 
                 {
                     for (int i = 0; i < UnityEngine.Random.Range(MIN_BLOOD_ON_DEATH, MAX_BLOOD_ON_DEATH); i++)
                     {
-                        Vector3 bloodOffset = new Vector3(UnityEngine.Random.Range(-BLOOD_SPATTER_DEATH,BLOOD_SPATTER_DEATH), UnityEngine.Random.Range(-BLOOD_SPATTER_DEATH,BLOOD_SPATTER_DEATH));
-                        Instantiate(blood, gameObject.transform.position + bloodOffset, gameObject.transform.rotation);
+                        MakeBlood();
                     }
                 }
                 Die();
             }
+        }
+    }
+
+    private void MakeBlood()
+    {
+        // Spawn a blood object
+        if (bloodPrefabs.Length > 0)
+        {
+            Vector3 rotation = Vector3.forward * UnityEngine.Random.Range(0f, 360f);
+            GameObject bloodPrefab = bloodPrefabs[UnityEngine.Random.Range(0, bloodPrefabs.Length)];
+            Vector3 bloodOSet = new Vector3(UnityEngine.Random.Range(-BLOOD_SPATTER, BLOOD_SPATTER), UnityEngine.Random.Range(-BLOOD_SPATTER, BLOOD_SPATTER));
+            GameObject blood = Instantiate(bloodPrefab, gameObject.transform.position + bloodOSet, Quaternion.identity) as GameObject;
+            blood.transform.parent = GameManager.currentFloor.currentRoom.transform;
+            blood.transform.localScale *= UnityEngine.Random.Range(BLOOD_SIZE_MIN, BLOOD_SIZE_MAX);
+            blood.transform.Rotate(rotation);
         }
     }
 
