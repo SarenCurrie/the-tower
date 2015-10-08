@@ -20,6 +20,7 @@ public class healthManager : MonoBehaviour
 	private Sprite[] sprites;
 	private Image mySprite;
 	private float health = 100f;
+	private float damageCheck = -1f;
 
 	void Awake(){
 		// store all sprites
@@ -53,6 +54,15 @@ public class healthManager : MonoBehaviour
         if (GameManager.GetPlayer() != null)
         {
             health = GameManager.GetPlayer().GetComponent<UnitHealth>().health;
+
+			if (damageCheck == -1){
+				damageCheck = health;
+			}
+			// Compare damage check to health, to see if we have been hit
+			if (damageCheck != health){
+				damageCheck = health;
+				DamageFlash.flashDamage();
+			}
             this.transform.Find("health_text").GetComponent<Text>().text = health.ToString();
 
             if (health <= 0)
