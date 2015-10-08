@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections;
+using Achievements;
 
 /// <summary>
 ///
@@ -88,7 +89,7 @@ public class UnitHealth : MonoBehaviour {
             else if (health < 0)
             {
                 health = 0;
-                if (blood != null) 
+                if (blood != null)
                 {
                     for (int i = 0; i < UnityEngine.Random.Range(MIN_BLOOD_ON_DEATH, MAX_BLOOD_ON_DEATH); i++)
                     {
@@ -131,5 +132,6 @@ public class UnitHealth : MonoBehaviour {
 
         Destroy(gameObject);
 
+		AchievementManager.DoAchievement(AchievementFactory.TEST_ACHIEVEMENT);
     }
 }
