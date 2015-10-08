@@ -47,6 +47,7 @@ MonoBehaviour:
   - {fileID: 161840, guid: 8846dc68ffda6d846b2b71c7d2d75ce7, type: 2}
   - {fileID: 188336, guid: a575e649994dc304bb254dda7dd1aaf9, type: 2}
   - {fileID: 125318, guid: 3ced777be4918b845a3dcd398f02da6f, type: 2}
+  elevatorRoom: {fileID: 188336, guid: a575e649994dc304bb254dda7dd1aaf9, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -78,6 +79,10 @@ Prefab:
       propertyPath: enemies.Array.data[0]
       value: 
       objectReference: {fileID: 142788, guid: 1de057c51b804b246830f1c373e8c873, type: 2}
+    - target: {fileID: 0}
+      propertyPath: elevatorRoom
+      value: 
+      objectReference: {fileID: 188336, guid: a575e649994dc304bb254dda7dd1aaf9, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 167694}
