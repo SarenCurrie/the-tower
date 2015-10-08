@@ -14,6 +14,7 @@ GameObject:
   - 114: {fileID: 11467876}
   - 114: {fileID: 11413610}
   - 58: {fileID: 5839362}
+  - 114: {fileID: 11433308}
   m_Layer: 14
   m_Name: ExplosionEnemy
   m_TagString: Enemy
@@ -74,7 +75,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  health: 0
+  health: 100
   bloodPrefabs: []
   damagedBy:
   - Player
@@ -96,6 +97,18 @@ MonoBehaviour:
   preferedDistanceRange: 0
   movementSpeed: 1000
   baseScore: 0
+--- !u!114 &11433308
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca1ddbfb8188db942b3f856cf69c7ff9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionForceModifier: 1
 --- !u!114 &11467876
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -108,7 +121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionForce: 100000
-  explosionRadius: 2
+  explosionRadius: 100
+  damage: 100
 --- !u!212 &21207972
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -161,7 +175,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: explosionRadius
-      value: 2
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: movementSpeed
@@ -190,6 +204,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Layer
       value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damage
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: explosionForceModifier
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

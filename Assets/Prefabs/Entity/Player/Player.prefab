@@ -13,7 +13,7 @@ GameObject:
   - 50: {fileID: 5004608}
   - 58: {fileID: 5842912}
   - 114: {fileID: 11488504}
-  - 114: {fileID: 11454918}
+  - 114: {fileID: 11476020}
   m_Layer: 17
   m_Name: Player
   m_TagString: Player
@@ -81,7 +81,7 @@ MonoBehaviour:
   gloves: {fileID: 0}
   boots: {fileID: 0}
   movementSpeed: 5000
---- !u!114 &11454918
+--- !u!114 &11476020
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -92,6 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca1ddbfb8188db942b3f856cf69c7ff9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionForceModifier: 1
 --- !u!114 &11488504
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -349,6 +350,14 @@ Prefab:
       propertyPath: bloodPrefabs.Array.data[9]
       value: 
       objectReference: {fileID: 196840, guid: 490416a499f6e424faed7fcd7bccb7db, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: explosionForceModifier
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 124720}

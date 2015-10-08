@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RigidBodyExpansion : MonoBehaviour
+public class RigidbodyExpansion : MonoBehaviour
 {
 
 	public float explosionForceModifier;

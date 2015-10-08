@@ -9,9 +9,9 @@ public class ExplosionEnemy : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		MaybeExplode();
@@ -19,7 +19,7 @@ public class ExplosionEnemy : MonoBehaviour {
 
 	void MaybeExplode()
 	{
-		
+
 		Rigidbody2D body = GetComponent<Rigidbody2D>();
 		GameObject player = GameObject.FindWithTag("Player");
 		if (body.IsTouching(player.GetComponent<CircleCollider2D>()))
@@ -29,11 +29,11 @@ public class ExplosionEnemy : MonoBehaviour {
 			Vector3 explosionPosition = body.transform.position;
 			foreach (GameObject enemy in GameManager.currentFloor.currentRoom.GetEnemiesInRoom())
 			{
-				RigidBodyExpansion enemyBodyExp = enemy.GetComponent<RigidBodyExpansion>();
+				RigidbodyExpansion enemyBodyExp = enemy.GetComponent<RigidbodyExpansion>();
 				enemyBodyExp.Explosion(enemy.GetComponent<Rigidbody2D>(),
 					explosionForce, explosionPosition, explosionRadius);
 			}
-			player.GetComponent<RigidBodyExpansion>().Explosion(player.GetComponent<Rigidbody2D>(),
+			player.GetComponent<RigidbodyExpansion>().Explosion(player.GetComponent<Rigidbody2D>(),
 			   explosionForce, explosionPosition, explosionRadius);
 			player.GetComponent<UnitHealth>().LoseHealth(damage);
         }
