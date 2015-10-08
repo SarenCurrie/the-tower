@@ -163,11 +163,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 475210, guid: c154e1ab5c984f441b1114dfe548458e, type: 2}
+  spread: 7
+  spreadRange: 60
+  fireForce: 15
+  fireFrequency: 3
+  DAMAGEMULTIPLIER: 1
   minBurstTime: 3
-  maxBurstTime: 4
+  maxBurstTime: 5
   minFireWait: .5
-  maxFireWait: 2
-  damage: 3
+  maxFireWait: 2.5
+  damage: 1.5
   possibleProjectileSprites:
   - {fileID: 21300000, guid: bf293a24ca0d32a4caf15a9d381d357d, type: 3}
   - {fileID: 21300000, guid: aec686b92f475ac40b5037d8dfcbfc10, type: 3}
@@ -317,11 +322,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: damage
-      value: 3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: maxFireWait
-      value: 2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: minFireWait
@@ -329,7 +334,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: maxBurstTime
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: minBurstTime
@@ -359,6 +364,26 @@ Prefab:
       propertyPath: blood
       value: 
       objectReference: {fileID: 143992, guid: cb8413ee05b11407f9e8b689c12b6ca3, type: 2}
+    - target: {fileID: 0}
+      propertyPath: spreadRange
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: spread
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: fireForce
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: fireFrequency
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: DAMAGEMULTIPLIER
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 142788}
