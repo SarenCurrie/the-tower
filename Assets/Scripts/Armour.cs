@@ -148,7 +148,7 @@ public class Armour : Item
     }
 
 
-
+    //Creates current armour textfield for popup comparison
     private void DoWindow0(int windowID)
     {
         Player player = GetPlayer().GetComponent<Player>();
@@ -196,6 +196,7 @@ public class Armour : Item
         }
     }
 
+    //Creates ground armour textfield for popup comparison
     private void DoWindow1(int windowID)
     {
         switch (slot)
@@ -218,29 +219,27 @@ public class Armour : Item
 
 
     }
+    //Called every frame to check if the on hover will open a comparison popup for the weaopn
     void OnGUI()
     {
         GUI.skin = mySkin;
-        //GUI.skin.window = mySkin ;
+        //Loads the textures being used for popup
         Texture2D texture = Resources.Load("Holographic/output/main/bg/bg") as Texture2D;
         Texture2D armour = Resources.Load("Holographic/output/main/bg/doom") as Texture2D;
 
-        //doWindow0 = GUI.Toggle(new Rect(10, 10, 100, 20), doWindow0, "Window 0");
 
         if (showWindow)
         {
             int offset = 100;
-            //if (this.gameObject.name.Contains("Ground") || this.gameObject.name.Contains("Enemy") )
-            //{
-
+            //Draws the textures being used for popup
             GUI.DrawTexture(new Rect(Input.mousePosition.x - 160, Screen.height - Input.mousePosition.y - offset, 150, 150), texture);
             GUI.DrawTexture(new Rect(Input.mousePosition.x - 20, Screen.height - Input.mousePosition.y - offset, 150, 150), texture);
             GUI.DrawTexture(new Rect(Input.mousePosition.x - 110, Screen.height - Input.mousePosition.y - 45, 55, 45), armour);
             GUI.DrawTexture(new Rect(Input.mousePosition.x + 30, Screen.height - Input.mousePosition.y - 45, 55, 45), armour);
+            //Generates new Window for the current weapon and floor weapon stats 
             GUI.Window(0, new Rect(Input.mousePosition.x - 250, Screen.height - Input.mousePosition.y + 120 - offset, 250, 200), DoWindow0, "Current armour:");
-
             GUI.Window(1, new Rect(Input.mousePosition.x - 25, Screen.height - Input.mousePosition.y + 120 - offset, 250, 200), DoWindow1, "Floor armour:");
-            //}
+            
         }
     }
 

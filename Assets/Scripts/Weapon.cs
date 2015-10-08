@@ -174,7 +174,7 @@ public class Weapon : Item
     }
 
 
-
+    //Creates current weapon textfield for popup comparison
     private void DoWindow0(int windowID)
     {
         Player player = GetPlayer().GetComponent<Player>();
@@ -186,36 +186,32 @@ public class Weapon : Item
         GUILayout.TextField("Damage:   " + Math.Round(damageCurrent, 2) + "\nSpread:       " + spreadCurrent + "\nForce:          " + forceCurrent + "\n", "OutlineText");
     }
 
+    //Creates ground weapon textfield for popup comparison
     private void DoWindow1(int windowID)
     {
-        print("Hello, it's me you're looking for.");
-
         GUILayout.TextField("Damage:   " + Math.Round(damageMod, 2) + "\nSpread:       " + spread + "\nForce:          " + fireForce + "\n", "OutlineText");
     }
 
+    //Called every frame to check if the on hover will open a comparison popup for the weaopn
     void OnGUI()
     {
         GUI.skin = mySkin;
-        //GUI.skin.window = mySkin ;
+        //Loads the textures being used for popup
         Texture2D texture = Resources.Load("Holographic/output/main/bg/bg") as Texture2D;
-        //doWindow0 = GUI.Toggle(new Rect(10, 10, 100, 20), doWindow0, "Window 0");
         Texture2D weapon1 = Resources.Load("Holographic/output/main/bg/Baxia_S") as Texture2D;
         Texture2D weapon2 = Resources.Load("Holographic/output/main/bg/Insanity'sTeardrop_S") as Texture2D;
 
         if (showWindow)
         {
             int offset = 100;
-            //if (this.gameObject.name.Contains("Ground") || this.gameObject.name.Contains("Enemy") )
-            //{
-
+            //Draws the textures being used for popup
             GUI.DrawTexture(new Rect(Input.mousePosition.x - 160, Screen.height - Input.mousePosition.y - offset, 150, 150), texture);
             GUI.DrawTexture(new Rect(Input.mousePosition.x - 20, Screen.height - Input.mousePosition.y - offset, 150, 150), texture);
             GUI.DrawTexture(new Rect(Input.mousePosition.x - 115, Screen.height - Input.mousePosition.y - 50, 60, 60), weapon1);
             GUI.DrawTexture(new Rect(Input.mousePosition.x + 15, Screen.height - Input.mousePosition.y - 50, 80, 50), weapon2);
+            //Generates new Window for the current weapon and floor weapon stats 
             GUI.Window(0, new Rect(Input.mousePosition.x - 250, Screen.height - Input.mousePosition.y + 120 - offset, 250, 200), DoWindow0, "Current weapon:");
-
             GUI.Window(1, new Rect(Input.mousePosition.x - 25, Screen.height - Input.mousePosition.y + 120 - offset, 250, 200), DoWindow1, "Floor weapon:");
-            //}
         }
     }
 }
