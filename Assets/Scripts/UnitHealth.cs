@@ -114,10 +114,7 @@ public class UnitHealth : MonoBehaviour {
         health = 0;
         //Increment the player score upon killing an enemy;
         if (tag.Equals("Enemy")) {
-            int baseScore = gameObject.GetComponent<Enemy>().baseScore;
-            if (baseScore == null) {
-                baseScore = 100;
-            }
+            int baseScore = (int) gameObject.GetComponent<UnitHealth>().maxHealth;
             baseScore += (int) GameManager.GetPlayer().GetComponent<UnitHealth>().health;
             GameManager.GetPlayer().GetComponent<Player>().score += baseScore;
         }
@@ -131,7 +128,5 @@ public class UnitHealth : MonoBehaviour {
         }
 
         Destroy(gameObject);
-
-		AchievementManager.DoAchievement(AchievementFactory.TEST_ACHIEVEMENT);
     }
 }
