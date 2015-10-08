@@ -26,8 +26,9 @@ public abstract class Item : MonoBehaviour {
 	*/
 	public static GameObject GenerateItem(Vector3 v)
 	{
-		GameObject item = (Instantiate(Resources.Load("GroundGun"), v, Quaternion.identity)) as GameObject;
-		int type = Random.Range(0, 100);
+        //GameObject item = (Instantiate(Resources.Load("GroundGun"), v, Quaternion.identity)) as GameObject;
+        GameObject item = (Instantiate(Resources.Load("GroundArmour"), v, Quaternion.identity)) as GameObject;
+        int type = Random.Range(0, 100);
 		//75% chance a dropped item will be a weapon
 		//if (type < WEAPON_CHANCE)
 		//{
