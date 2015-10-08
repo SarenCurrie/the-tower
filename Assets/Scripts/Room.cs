@@ -75,6 +75,24 @@ public class Room : MonoBehaviour {
 	}
 
 	/// <summary>
+	/// Gets an array of enemies in a room
+	/// </summary>
+	/// <returns></returns>
+	public List<GameObject> getEnemiesInRoom()
+	{
+		List<GameObject> enemies = new List<GameObject>();
+
+		foreach (Transform t in transform)
+		{
+			if (t.gameObject.tag == Tags.ENEMY)
+			{
+				enemies.Add(t.gameObject);
+			}
+		}
+		return enemies;
+	}
+
+	/// <summary>
 	/// Move an existing player gameobject to the player spawnpoint in the room
 	/// </summary>
 	/// <param name="player">The player gameobject</param>
