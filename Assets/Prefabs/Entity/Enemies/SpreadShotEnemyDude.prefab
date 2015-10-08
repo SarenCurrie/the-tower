@@ -31,6 +31,7 @@ GameObject:
   - 114: {fileID: 11425604}
   - 114: {fileID: 11483382}
   - 114: {fileID: 11488284}
+  - 114: {fileID: 11465416}
   m_Layer: 14
   m_Name: SpreadShotEnemyDude
   m_TagString: Enemy
@@ -144,6 +145,18 @@ MonoBehaviour:
   - Player
   - Enemy
   - PlayerProjectile
+--- !u!114 &11465416
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 142788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca1ddbfb8188db942b3f856cf69c7ff9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionForceModifier: 1
 --- !u!114 &11483382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -424,6 +437,10 @@ Prefab:
       propertyPath: bloodPrefabs.Array.data[7]
       value: 
       objectReference: {fileID: 159418, guid: ad4db083d533462488f69479d030daf4, type: 2}
+    - target: {fileID: 0}
+      propertyPath: explosionForceModifier
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 142788}

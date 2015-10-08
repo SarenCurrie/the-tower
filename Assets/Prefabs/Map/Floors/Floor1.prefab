@@ -37,12 +37,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea2bd5a944b9b0544bde7362fb6a255d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   enemies:
-  - {fileID: 142788, guid: 1de057c51b804b246830f1c373e8c873, type: 2}
-  - {fileID: 142788, guid: 4169dc2e43898d04595f60dabe7fa381, type: 2}
-  - {fileID: 142788, guid: cd802890af0622f4aa52ecc30f7a5d81, type: 2}
+  - {fileID: 159516, guid: 57a9c93d37de7954595282b915698d3b, type: 2}
   rooms:
   - {fileID: 161840, guid: 8846dc68ffda6d846b2b71c7d2d75ce7, type: 2}
   - {fileID: 188336, guid: a575e649994dc304bb254dda7dd1aaf9, type: 2}
@@ -63,35 +61,35 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: enemies.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: rooms.Array.data[0]
-      value: 
+      value:
       objectReference: {fileID: 161840, guid: 8846dc68ffda6d846b2b71c7d2d75ce7, type: 2}
     - target: {fileID: 0}
       propertyPath: rooms.Array.data[1]
-      value: 
+      value:
       objectReference: {fileID: 188336, guid: a575e649994dc304bb254dda7dd1aaf9, type: 2}
     - target: {fileID: 0}
       propertyPath: rooms.Array.data[2]
-      value: 
+      value:
       objectReference: {fileID: 125318, guid: 3ced777be4918b845a3dcd398f02da6f, type: 2}
     - target: {fileID: 0}
       propertyPath: enemies.Array.data[0]
-      value: 
+      value:
       objectReference: {fileID: 142788, guid: 1de057c51b804b246830f1c373e8c873, type: 2}
     - target: {fileID: 0}
       propertyPath: rooms.Array.data[3]
-      value: 
+      value:
       objectReference: {fileID: 187704, guid: 171aee03a2b739743ac7b967868fa4aa, type: 2}
     - target: {fileID: 0}
       propertyPath: rooms.Array.data[4]
-      value: 
+      value:
       objectReference: {fileID: 146140, guid: 17772a99673644a4ab05bed9cd71c817, type: 2}
     - target: {fileID: 0}
       propertyPath: rooms.Array.data[5]
-      value: 
+      value:
       objectReference: {fileID: 142954, guid: e68f1d8942d9a8d46b8df3099c204e66, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
