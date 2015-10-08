@@ -180,15 +180,19 @@ public class Weapon : Item {
         int spreadCurrent = weapon.spread;
         float forceCurrent = weapon.fireForce;
 
-        //GUI.TextField(new Rect(Input.mousePosition.x, Screen.height - Input.mousePosition.y-150, 150, 150), "Click Me!");
         GUILayout.TextField("Damage:   " + Math.Round(damageCurrent, 2) + "\nSpread:       " + spreadCurrent + "\nForce:          " + forceCurrent + "\n", "OutlineText");
     }
 
     void DoWindow1(int windowID)
     {
-        //GUI.TextField(new Rect(Input.mousePosition.x, Screen.height - Input.mousePosition.y-150, 150, 150), "Click Me!");
-        GUILayout.TextField("Damage:   " + Math.Round(this.damageMod, 2) + "\nSpread:       " + this.spread + "\nForce:          " + this.fireForce + "\n", "OutlineText");
-         
+        Weapon weapon = this.gameObject.GetComponent<Weapon>();
+        Debug.Log(weapon.damageMod);
+        float damageFloor = weapon.damageMod;
+        int spreadFloor = weapon.spread;
+        float forceFloor = weapon.fireForce;
+
+        GUILayout.TextField("Damage:   " + Math.Round(damageFloor, 2) + "\nSpread:       " + spreadFloor + "\nForce:          " + forceFloor + "\n", "OutlineText");
+        
 
     }
     void OnGUI()
@@ -201,11 +205,15 @@ public class Weapon : Item {
         if (showWindow)
         {
             int offset = 100;
-            GUI.DrawTexture(new Rect(Input.mousePosition.x-160,  Screen.height-Input.mousePosition.y-offset, 150, 150), texture);
-            GUI.DrawTexture(new Rect(Input.mousePosition.x - 20, Screen.height - Input.mousePosition.y - offset, 150, 150), texture);
-            GUI.Window(0, new Rect(Input.mousePosition.x - 250, Screen.height - Input.mousePosition.y + 120 - offset, 250, 200), DoWindow0, "Current weapon");
-            GUI.Window(1, new Rect(Input.mousePosition.x - 25, Screen.height - Input.mousePosition.y + 120 - offset, 250, 200), DoWindow1, "Floor weapon"); 
+            if (this.gameObject.name.Contains("Ground"))
+            {
 
+                GUI.DrawTexture(new Rect(Input.mousePosition.x - 160, Screen.height - Input.mousePosition.y - offset, 150, 150), texture);
+                GUI.DrawTexture(new Rect(Input.mousePosition.x - 20, Screen.height - Input.mousePosition.y - offset, 150, 150), texture);
+                GUI.Window(0, new Rect(Input.mousePosition.x - 250, Screen.height - Input.mousePosition.y + 120 - offset, 250, 200), DoWindow0, "Current weapon:");
+
+                GUI.Window(1, new Rect(Input.mousePosition.x - 25, Screen.height - Input.mousePosition.y + 120 - offset, 250, 200), DoWindow1, "Floor weapon:");
+            }
         }
     }
 }
