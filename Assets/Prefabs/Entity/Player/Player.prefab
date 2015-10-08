@@ -13,6 +13,7 @@ GameObject:
   - 50: {fileID: 5004608}
   - 58: {fileID: 5842912}
   - 114: {fileID: 11488504}
+  - 114: {fileID: 11454918}
   m_Layer: 17
   m_Name: Player
   m_TagString: Player
@@ -80,6 +81,17 @@ MonoBehaviour:
   gloves: {fileID: 0}
   boots: {fileID: 0}
   movementSpeed: 5000
+--- !u!114 &11454918
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca1ddbfb8188db942b3f856cf69c7ff9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11488504
 MonoBehaviour:
   m_ObjectHideFlags: 1

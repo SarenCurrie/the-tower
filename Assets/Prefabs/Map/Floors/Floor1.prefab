@@ -40,9 +40,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 142788, guid: 1de057c51b804b246830f1c373e8c873, type: 2}
-  - {fileID: 142788, guid: 4169dc2e43898d04595f60dabe7fa381, type: 2}
-  - {fileID: 142788, guid: cd802890af0622f4aa52ecc30f7a5d81, type: 2}
+  - {fileID: 159516, guid: 57a9c93d37de7954595282b915698d3b, type: 2}
   rooms:
   - {fileID: 161840, guid: 8846dc68ffda6d846b2b71c7d2d75ce7, type: 2}
   - {fileID: 188336, guid: a575e649994dc304bb254dda7dd1aaf9, type: 2}
@@ -60,7 +58,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: enemies.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: rooms.Array.data[0]
@@ -77,7 +75,19 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: enemies.Array.data[0]
       value: 
-      objectReference: {fileID: 142788, guid: 1de057c51b804b246830f1c373e8c873, type: 2}
+      objectReference: {fileID: 159516, guid: 57a9c93d37de7954595282b915698d3b, type: 2}
+    - target: {fileID: 0}
+      propertyPath: enemies.Array.data[3]
+      value: 
+      objectReference: {fileID: 159516, guid: 57a9c93d37de7954595282b915698d3b, type: 2}
+    - target: {fileID: 0}
+      propertyPath: enemies.Array.data[2]
+      value: 
+      objectReference: {fileID: 159516, guid: 57a9c93d37de7954595282b915698d3b, type: 2}
+    - target: {fileID: 0}
+      propertyPath: enemies.Array.data[1]
+      value: 
+      objectReference: {fileID: 159516, guid: 57a9c93d37de7954595282b915698d3b, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 167694}

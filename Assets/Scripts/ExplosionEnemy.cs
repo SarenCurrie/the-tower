@@ -5,6 +5,7 @@ public class ExplosionEnemy : MonoBehaviour {
 
 	public float explosionForce;
 	public float explosionRadius;
+	public float damage;
 
 	// Use this for initialization
 	void Start () {
@@ -23,14 +24,19 @@ public class ExplosionEnemy : MonoBehaviour {
 		GameObject player = GameObject.FindWithTag("Player");
 		if (body.IsTouching(player.GetComponent<CircleCollider2D>()))
 		{
+
+			GetComponent<UnitHealth>().Die();
 			Vector3 explosionPosition = body.transform.position;
-			foreach (Enemy enemy in GameManager.currentFloor.currentRoom.GetEnemiesInRoom())
+			foreach (GameObject enemy in GameManager.currentFloor.currentRoom.GetEnemiesInRoom())
 			{
-				enemy.GetComponent<RigidbodyExplansion>().Explosion(enemy.GetComponent<RigidBody>(),
+				RigidBodyExpansion enemyBodyExp = enemy.GetComponent<RigidBodyExpansion>();
+				enemyBodyExp.Explosion(enemy.GetComponent<Rigidbody2D>(),
 					explosionForce, explosionPosition, explosionRadius);
 			}
-			player.GetComponent<RigidbodyExpansion>().Explosion(player.GetComponent<RigidBody2D>(),
+			player.GetComponent<RigidBodyExpansion>().Explosion(player.GetComponent<Rigidbody2D>(),
 			   explosionForce, explosionPosition, explosionRadius);
-		}
+			player.GetComponent<UnitHealth>().LoseHealth(damage);
+        }
+
     }
 }
