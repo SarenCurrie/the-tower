@@ -20,6 +20,10 @@ public class Floor : MonoBehaviour {
 	//TODO: Make 3 different versions for the different tiers
 	public GameObject[] rooms;
 
+    //The prefab for the elevator room
+    //TODO: Make this an array with the index corresponding to the floor number
+    public GameObject elevatorRoom;
+
 	//Stores the generated path of room indexes
 	private List<int[]> roomPath = new List<int[]>();
 
@@ -62,7 +66,14 @@ public class Floor : MonoBehaviour {
 		int x = STARTING_ROOM_X;
 		int y = STARTING_ROOM_Y;
 
-		int room_num = 0;
+        Vector2 worldPosition = new Vector2(x * Room.ROOM_WIDTH, -y * Room.ROOM_HEIGHT);
+
+        //Create the elevator room
+        GameObject room = Instantiate(elevatorRoom, worldPosition, Quaternion.identity) as GameObject;
+        roomPath.Add(new int[] { x, y });
+        floorMap[x][y] = room;
+
+        int room_num = 1;
 		while (room_num < NO_ROOMS)
 		{
 			if (floorMap[x][y] == null)
@@ -70,10 +81,10 @@ public class Floor : MonoBehaviour {
 				//Which room to spawn
 				int randRoomIndex = Random.Range(0, rooms.Length);
 				//Where to spawn it
-				Vector2 worldPosition = new Vector2(x * Room.ROOM_WIDTH, -y * Room.ROOM_HEIGHT);
+				worldPosition = new Vector2(x * Room.ROOM_WIDTH, -y * Room.ROOM_HEIGHT);
 
 				//Spawn the room and add it to the grid
-				GameObject room = Instantiate(rooms[randRoomIndex], worldPosition, Quaternion.identity) as GameObject;
+				room = Instantiate(rooms[randRoomIndex], worldPosition, Quaternion.identity) as GameObject;
 				Room roomScript = room.GetComponent<Room>();
 				floorMap[x][y] = room;
 				roomPath.Add(new int[] {x, y});
