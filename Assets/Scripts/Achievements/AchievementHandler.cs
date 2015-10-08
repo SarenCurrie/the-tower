@@ -20,5 +20,13 @@ namespace Achievements {
 				AchievementFactory.KILL_ONE_ENEMY.Achieve();
 			}
 		}
+
+		public static void AddScore() {
+			int score = GameManager.GetPlayer().GetComponent<Player>().score;
+
+			if (score > 10000) {
+				AchievementFactory.SCORE_TEN_THOUSAND.Achieve();
+			}
+		}
 	}
 }

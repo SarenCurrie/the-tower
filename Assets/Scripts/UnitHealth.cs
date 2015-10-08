@@ -132,8 +132,9 @@ public class UnitHealth : MonoBehaviour {
 			baseScore += (int) GameManager.GetPlayer().GetComponent<UnitHealth>().health;
 			GameManager.GetPlayer().GetComponent<Player>().score += baseScore;
 
-			// log kill for achievemnts
+			// log kill and score for achievemnts
 			AchievementHandler.AddKill();
+			AchievementHandler.AddScore();
 		}
 		//Makes the dead thing drop an item
 		GameObject a = Item.GenerateItem(gameObject.GetComponent<Transform>().position);
