@@ -131,7 +131,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 150
   health: 0
-  blood: {fileID: 143992, guid: cb8413ee05b11407f9e8b689c12b6ca3, type: 2}
+  bloodPrefabs:
+  - {fileID: 143992, guid: cb8413ee05b11407f9e8b689c12b6ca3, type: 2}
+  - {fileID: 198288, guid: 4d23b9abbec7704438d032e22cdbcdc0, type: 2}
+  - {fileID: 103594, guid: 4e3ad30932138a24288254a65b8e2d52, type: 2}
+  - {fileID: 153918, guid: 65df8e80c6cda05458b57289eb521680, type: 2}
+  - {fileID: 193986, guid: 02974fd00f929054ebaa400b9825d0de, type: 2}
+  - {fileID: 171710, guid: 86e544c40a678c145bd3949d0ff99e69, type: 2}
+  - {fileID: 196840, guid: 490416a499f6e424faed7fcd7bccb7db, type: 2}
+  - {fileID: 159418, guid: ad4db083d533462488f69479d030daf4, type: 2}
   damagedBy:
   - Player
   - Enemy
@@ -226,6 +234,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: looks.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bloodPrefabs.Array.size
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: possibleProjectileSprites.Array.size
@@ -347,6 +359,50 @@ Prefab:
       propertyPath: attackTime
       value: .25
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bloodPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 143992, guid: cb8413ee05b11407f9e8b689c12b6ca3, type: 2}
+    - target: {fileID: 0}
+      propertyPath: bloodPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 198288, guid: 4d23b9abbec7704438d032e22cdbcdc0, type: 2}
+    - target: {fileID: 0}
+      propertyPath: bloodPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 103594, guid: 4e3ad30932138a24288254a65b8e2d52, type: 2}
+    - target: {fileID: 0}
+      propertyPath: bloodPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 153918, guid: 65df8e80c6cda05458b57289eb521680, type: 2}
+    - target: {fileID: 0}
+      propertyPath: bloodPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 193986, guid: 02974fd00f929054ebaa400b9825d0de, type: 2}
+    - target: {fileID: 0}
+      propertyPath: bloodPrefabs.Array.data[5]
+      value: 
+      objectReference: {fileID: 171710, guid: 86e544c40a678c145bd3949d0ff99e69, type: 2}
+    - target: {fileID: 0}
+      propertyPath: bloodPrefabs.Array.data[8]
+      value: 
+      objectReference: {fileID: 196840, guid: 490416a499f6e424faed7fcd7bccb7db, type: 2}
+    - target: {fileID: 0}
+      propertyPath: bloodPrefabs.Array.data[9]
+      value: 
+      objectReference: {fileID: 196840, guid: 490416a499f6e424faed7fcd7bccb7db, type: 2}
+    - target: {fileID: 0}
+      propertyPath: bloodPrefabs.Array.data[10]
+      value: 
+      objectReference: {fileID: 196840, guid: 490416a499f6e424faed7fcd7bccb7db, type: 2}
+    - target: {fileID: 0}
+      propertyPath: bloodPrefabs.Array.data[11]
+      value: 
+      objectReference: {fileID: 196840, guid: 490416a499f6e424faed7fcd7bccb7db, type: 2}
+    - target: {fileID: 0}
+      propertyPath: bloodPrefabs.Array.data[7]
+      value: 
+      objectReference: {fileID: 159418, guid: ad4db083d533462488f69479d030daf4, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 142788}
