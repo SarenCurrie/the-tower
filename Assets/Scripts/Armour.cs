@@ -181,6 +181,24 @@ public class Armour : Item {
     void DoWindow1(int windowID)
     {
 
+        Armour armourPiece = null;
+        if (this.slot == SLOTS.helm)
+        {
+            type = "Helmet";
+        }
+        else if (this.slot == SLOTS.chest)
+        {
+            type = "Chest";
+        }
+        else if (this.slot == SLOTS.gloves)
+        {
+            type = "Gloves";
+        }
+        else if (this.slot == SLOTS.boots)
+        {
+            type = "Boots";
+
+        }
 
         GUILayout.TextField(type + ":\nStrength: " + this.strength + "\nDexterity: " + this.dexterity + "\nIntelligence: " + this.intelligence + "\n", "OutlineText");
 

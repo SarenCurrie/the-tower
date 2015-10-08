@@ -34,11 +34,11 @@ public abstract class Item : MonoBehaviour {
         int type = Random.Range(0, 101);
         if (type < WEAPON_CHANCE)
         {
-            return item = (Instantiate(Resources.Load("GroundGun"), v, Quaternion.identity)) as GameObject; ;
+            return item = (Instantiate(Resources.Load("GroundGun"), v, Quaternion.identity)) as GameObject; 
         }
         else
         {
-            return item = (Instantiate(Resources.Load("GroundArmour"), v, Quaternion.identity)) as GameObject; ;
+            return item = (Instantiate(Resources.Load("GroundArmour"), v, Quaternion.identity)) as GameObject; 
         }
 	}
 
