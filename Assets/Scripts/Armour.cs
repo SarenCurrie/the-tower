@@ -13,7 +13,8 @@ using System.Collections;
 /// 
 /// 
 /// </summary>
-public class Armour : Item {
+public class Armour : Item
+{
 
     // The number of points allocated between the different stats
     private const int STAT_POINTS = 3;
@@ -26,6 +27,8 @@ public class Armour : Item {
 
     //The slot this armour is
     public SLOTS slot;
+
+    private string type;
 
     //The different possible slots for an armour
     public enum SLOTS
@@ -43,6 +46,9 @@ public class Armour : Item {
     public Sprite boots;
     public Sprite gloves;
 
+    public GUISkin mySkin;
+
+
     /*
     *  Called when the GameObject is created, generates the armour piece
     */
@@ -51,7 +57,7 @@ public class Armour : Item {
         // Generate the slot the item will exist in
         // This might change to an enum at a later date
         slot = (SLOTS)(Random.Range(0, 4));
-        switch(slot)
+        switch (slot)
         {
             case SLOTS.helm:
                 gameObject.GetComponent<SpriteRenderer>().sprite = helm;
@@ -96,6 +102,8 @@ public class Armour : Item {
         // Stop the sprite rendering
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
 
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
+
         // Disable the Rigidbody
         GetComponent<Rigidbody2D>().isKinematic = true;
 
@@ -108,6 +116,8 @@ public class Armour : Item {
         GetPlayer().GetComponent<Player>().PickUpArmour(this);
 
     }
+
+
 
     public int GetStrength()
     {
@@ -123,4 +133,114 @@ public class Armour : Item {
     {
         return intelligence;
     }
+
+    public bool showWindow = false;
+    void OnMouseEnter()
+    {
+        if(!showWindow)
+            showWindow = true;
+    }
+
+    void OnMouseExit()
+    {
+        if(showWindow)
+            showWindow = false;
+    }
+
+
+    //Creates current armour textfield for popup comparison
+    private void DoWindow0(int windowID)
+    {
+        Player player = GetPlayer().GetComponent<Player>();
+
+        Armour armourPiece = null;
+        switch (slot)
+        {
+            case SLOTS.helm:
+                if (player.helm != null)
+                {
+                    armourPiece = player.helm.GetComponent<Armour>();
+                }
+                type = "Helmet";
+                break;
+            case SLOTS.chest:
+                if (player.chest != null)
+                {
+                    armourPiece = player.chest.GetComponent<Armour>();
+                }
+                type = "Chest";
+                break;
+            case SLOTS.gloves:
+                if (player.gloves != null)
+                {
+                    armourPiece = player.gloves.GetComponent<Armour>();
+                }
+                type = "Gloves";
+                break;
+            case SLOTS.boots:
+                if (player.boots != null)
+                {
+                    armourPiece = player.boots.GetComponent<Armour>();
+                }
+                type = "Boots";
+                break;
+        }
+
+        if (armourPiece != null)
+        {
+            int intelligenceFromArmour = armourPiece.intelligence;
+            int strengthFromArmour = armourPiece.strength;
+            int dexterityFromArmour = armourPiece.dexterity;
+
+            GUILayout.TextField(type + ":\nStrength: " + strengthFromArmour + "\nDexterity:  " + dexterityFromArmour + "\nIntelligence " + intelligenceFromArmour + "\n", "OutlineText");
+        }
+    }
+
+    //Creates ground armour textfield for popup comparison
+    private void DoWindow1(int windowID)
+    {
+        switch (slot)
+        {
+            case SLOTS.helm:
+                type = "Helmet";
+                break;
+            case SLOTS.chest:
+                type = "Chest";
+                break;
+            case SLOTS.gloves:
+                type = "Gloves";
+                break;
+            case SLOTS.boots:
+                type = "Boots";
+                break;
+        }
+
+        GUILayout.TextField(type + ":\nStrength: " + strength + "\nDexterity: " + dexterity + "\nIntelligence: " + intelligence + "\n", "OutlineText");
+
+
+    }
+    //Called every frame to check if the on hover will open a comparison popup for the weaopn
+    void OnGUI()
+    {
+        GUI.skin = mySkin;
+        //Loads the textures being used for popup
+        Texture2D texture = Resources.Load("Holographic/output/main/bg/bg") as Texture2D;
+        Texture2D armour = Resources.Load("Holographic/output/main/bg/doom") as Texture2D;
+
+
+        if (showWindow)
+        {
+            int offset = 100;
+            //Draws the textures being used for popup
+            GUI.DrawTexture(new Rect(Input.mousePosition.x - 160, Screen.height - Input.mousePosition.y - offset, 150, 150), texture);
+            GUI.DrawTexture(new Rect(Input.mousePosition.x - 20, Screen.height - Input.mousePosition.y - offset, 150, 150), texture);
+            GUI.DrawTexture(new Rect(Input.mousePosition.x - 110, Screen.height - Input.mousePosition.y - 45, 55, 45), armour);
+            GUI.DrawTexture(new Rect(Input.mousePosition.x + 30, Screen.height - Input.mousePosition.y - 45, 55, 45), armour);
+            //Generates new Window for the current weapon and floor weapon stats 
+            GUI.Window(0, new Rect(Input.mousePosition.x - 250, Screen.height - Input.mousePosition.y + 120 - offset, 250, 200), DoWindow0, "Current armour:");
+            GUI.Window(1, new Rect(Input.mousePosition.x - 25, Screen.height - Input.mousePosition.y + 120 - offset, 250, 200), DoWindow1, "Floor armour:");
+            
+        }
+    }
+
 }
