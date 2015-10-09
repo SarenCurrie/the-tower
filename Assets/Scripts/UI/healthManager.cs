@@ -54,6 +54,7 @@ public class healthManager : MonoBehaviour
         if (GameManager.GetPlayer() != null)
         {
             health = GameManager.GetPlayer().GetComponent<UnitHealth>().health;
+			
 			// Cast to int to stop decimal display
             this.transform.Find("health_text").GetComponent<Text>().text = ((int)health).ToString();
 
