@@ -43,7 +43,10 @@ public class UnitHealth : MonoBehaviour {
 	 */
     public void LoseHealth(float val)
     {
-		DamageFlash.flashDamage();
+		if (gameObject.tag == Tags.PLAYER) {
+			DamageFlash.flashDamage ();
+		}
+
         health -= val;
         if (health > maxHealth)
         {
