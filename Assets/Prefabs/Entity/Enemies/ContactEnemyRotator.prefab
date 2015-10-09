@@ -71,7 +71,7 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 142788}
   m_Mass: .200000003
-  m_LinearDrag: 10
+  m_LinearDrag: 1.5
   m_AngularDrag: .0500000007
   m_GravityScale: 0
   m_IsKinematic: 0
@@ -106,7 +106,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 475210, guid: c154e1ab5c984f441b1114dfe548458e, type: 2}
   looks:
   - {fileID: 21300000, guid: ec5f076a1ef21004ba51f127e330342f, type: 3}
-  - {fileID: 21300000, guid: 0596e5afa1b0f5c4486f1bc49468d383, type: 3}
+  - {fileID: 0}
   possibleProjectileSprites:
   - {fileID: 21300000, guid: ebe4c5176d748c342aacdc63f75e1bbd, type: 3}
   - {fileID: 21300000, guid: 7f406c7ad6388cb4baa394fc149579e0, type: 3}
@@ -118,6 +118,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: aec686b92f475ac40b5037d8dfcbfc10, type: 3}
   - {fileID: 21300000, guid: aedfb0871cf61d044ba3fc459485d6fb, type: 3}
   - {fileID: 21300000, guid: 5d41bfa3f684f0848a7918244531e89e, type: 3}
+  mySkin: {fileID: 0}
+  showWindow: 0
 --- !u!114 &11425604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -129,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d077cd82f98bf4742a90bc080b3c1078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 150
+  maxHealth: 75
   health: 0
   bloodPrefabs:
   - {fileID: 143992, guid: cb8413ee05b11407f9e8b689c12b6ca3, type: 2}
@@ -141,8 +143,6 @@ MonoBehaviour:
   - {fileID: 196840, guid: 490416a499f6e424faed7fcd7bccb7db, type: 2}
   - {fileID: 159418, guid: ad4db083d533462488f69479d030daf4, type: 2}
   damagedBy:
-  - Player
-  - Enemy
   - PlayerProjectile
 --- !u!114 &11452434
 MonoBehaviour:
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   preferedDistance: 0
   preferedDistanceRange: 0
-  movementSpeed: 5
+  movementSpeed: 75
   baseScore: 250
 --- !u!212 &21203302
 SpriteRenderer:
@@ -234,6 +234,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: looks.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damagedBy.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: bloodPrefabs.Array.size
@@ -341,7 +345,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: movementSpeed
-      value: 5
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Enabled
@@ -349,7 +353,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: maxHealth
-      value: 150
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: blood
@@ -403,6 +407,22 @@ Prefab:
       propertyPath: bloodPrefabs.Array.data[7]
       value: 
       objectReference: {fileID: 159418, guid: ad4db083d533462488f69479d030daf4, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_LinearDrag
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damagedBy.Array.data[1]
+      value: PlayerProjectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damagedBy.Array.data[2]
+      value: PlayerProjectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damagedBy.Array.data[0]
+      value: PlayerProjectile
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 142788}

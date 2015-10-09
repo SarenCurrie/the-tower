@@ -18,8 +18,7 @@ public class SingleShotEnemy : MonoBehaviour
 
 	private float lastFired = 0;
 
-	public float minBurstTime;
-	public float maxBurstTime;
+	public float burstTime;
 
 	public float minFireWait;
 	public float maxFireWait;
@@ -97,7 +96,7 @@ public class SingleShotEnemy : MonoBehaviour
 		}
 		else if (Time.time > nextFireTime)
 		{
-			fireStopTime = Time.time + Random.Range(minBurstTime, maxBurstTime);
+			fireStopTime = Time.time + burstTime;
 			waitingToFire = false;
 		}
 	}
