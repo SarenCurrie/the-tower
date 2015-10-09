@@ -7,7 +7,6 @@ public class Enemy : MonoBehaviour
 	public float preferedDistance;
 	public float preferedDistanceRange;
 	public float movementSpeed;
-	public int baseScore;
 
 	private Rigidbody2D rigidBody;
 
