@@ -96,7 +96,11 @@ public class Floor : MonoBehaviour {
 					roomScript.SpawnEnemies(enemies);
 					roomScript.DisableOrEnableEnemies(false);
 				}
-				//Add to path of generated rooms
+
+                //Rooms should be removed when the floor is
+                floorMap[x][y].transform.parent = transform;
+
+                //Add to path of generated rooms
 				roomPath.Add(new int[] { x, y });
 				roomNum++;
 			}

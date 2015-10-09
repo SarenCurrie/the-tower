@@ -32,13 +32,20 @@ public class GameManager : MonoBehaviour {
 	public static void MovePlayerToNextFloor()
 	{
 		if (currentFloor != null)
-			Destroy(currentFloor);
+			Destroy(currentFloor.gameObject);
 
 		currentFloorNumber++;
 
-		//Spawn the floor, generate it, and move the player to it
-		currentFloor = Instantiate(staticFloorPrefabs[currentFloorNumber]).GetComponent<Floor>();
-		currentFloor.GenerateFloor();
-		currentFloor.MovePlayerToFloor(player);
+        if (currentFloorNumber < staticFloorPrefabs.Length)
+        {
+            //Spawn the floor, generate it, and move the player to it
+            currentFloor = Instantiate(staticFloorPrefabs[currentFloorNumber]).GetComponent<Floor>();
+            currentFloor.GenerateFloor();
+            currentFloor.MovePlayerToFloor(player);
+        }
+        else
+        {
+            print("You are already at the top floor!");
+        }
 	}
 }
