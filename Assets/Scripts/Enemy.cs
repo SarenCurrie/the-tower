@@ -49,7 +49,7 @@ public class Enemy : MonoBehaviour
 
 	private void MoveToPlayer()
 	{
-		rigidBody.AddForce(transform.up * movementSpeed);
+		rigidBody.AddForce(transform.up * movementSpeed * Time.deltaTime);
 	}
 
 	private void FleePlayer()
