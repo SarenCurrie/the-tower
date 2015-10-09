@@ -13,7 +13,6 @@ TagManager:
   - GameManager
   - DroppedItem
   - Player_Spawn
-  - Elevator
   layers:
   - Default
   - TransparentFX
