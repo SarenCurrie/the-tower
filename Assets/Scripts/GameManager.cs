@@ -3,42 +3,23 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour {
 
-	//Non static fields can be edited with the Unity editor.
-	public GameObject[] floorPrefabs;
-	//Will be set to floorPrefabs
-	public static GameObject[] staticFloorPrefabs;
+	public GameObject floorPrefab;
 
-	//The player to instantiate
-	public GameObject playerPrefab;
+    public GameObject playerPrefab;
 
     public static GameObject player;
 
-	//Player does not start on a floor
-	private static int currentFloorNumber = -1;
-	public static Floor currentFloor;
+    public static Floor currentFloor;
     
     void Start () {
-		staticFloorPrefabs = floorPrefabs;
-
+		currentFloor = Instantiate(floorPrefab).GetComponent<Floor>();
+		currentFloor.GenerateFloor();
 		player = Instantiate(playerPrefab) as GameObject;
-		MovePlayerToNextFloor();
+		currentFloor.MovePlayerToFloor(player);
     }
 
     public static GameObject GetPlayer()
     {
 		return player;
     }
-
-	public static void MovePlayerToNextFloor()
-	{
-		if (currentFloor != null)
-			Destroy(currentFloor);
-
-		currentFloorNumber++;
-
-		//Spawn the floor, generate it, and move the player to it
-		currentFloor = Instantiate(staticFloorPrefabs[currentFloorNumber]).GetComponent<Floor>();
-		currentFloor.GenerateFloor();
-		currentFloor.MovePlayerToFloor(player);
-	}
 }
