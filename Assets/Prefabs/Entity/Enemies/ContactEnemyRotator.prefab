@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d077cd82f98bf4742a90bc080b3c1078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 75
   health: 0
   bloodPrefabs:
   - {fileID: 143992, guid: cb8413ee05b11407f9e8b689c12b6ca3, type: 2}
@@ -353,7 +353,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: maxHealth
-      value: 50
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: blood
