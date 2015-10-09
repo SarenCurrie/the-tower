@@ -143,10 +143,13 @@ public class Weapon : Item {
         GetComponent<Rigidbody2D>().isKinematic = true;
 
         // Set the position of the weapon to that of the player.
+        
         transform.position = GetPlayer().transform.position;
         transform.rotation = GetPlayer().transform.rotation;
+       
         transform.parent = GetPlayer().transform; //Weapon will follow the player.
-		GetComponent<SpriteRenderer>().sortingLayerName = "Held_Weapon";
+        transform.localPosition = new Vector3(0.15f, 0.3f, 0);
+        GetComponent<SpriteRenderer>().sortingLayerName = "Held_Weapon";
 
 		GetPlayer().GetComponent<Player>().PickUpWeapon(this);
 	}
