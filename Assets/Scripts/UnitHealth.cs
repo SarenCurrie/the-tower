@@ -43,6 +43,7 @@ public class UnitHealth : MonoBehaviour {
 	 */
     public void LoseHealth(float val)
     {
+		DamageFlash.flashDamage();
         health -= val;
         if (health > maxHealth)
         {
