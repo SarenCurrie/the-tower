@@ -76,6 +76,7 @@ MonoBehaviour:
   chest: {fileID: 21300000, guid: 8a00f97330637c543970310e17f54d7c, type: 3}
   boots: {fileID: 21300000, guid: a986a5e0662c3dd4b91a237ed91b18c3, type: 3}
   gloves: {fileID: 21300000, guid: 7bb395b15048a664795b44f87c39b4b5, type: 3}
+  mySkin: {fileID: 11400000, guid: 7953503d9e83f8d469b84619849edd4e, type: 2}
 --- !u!212 &21231088
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -243,6 +244,11 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 7bb395b15048a664795b44f87c39b4b5,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: mySkin
+      value: 
+      objectReference: {fileID: 11400000, guid: 7953503d9e83f8d469b84619849edd4e,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 184112}

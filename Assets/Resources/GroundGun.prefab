@@ -90,6 +90,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2cae16e5aa237c2458d66b133364d03b, type: 3}
   - {fileID: 21300000, guid: aec686b92f475ac40b5037d8dfcbfc10, type: 3}
   - {fileID: 21300000, guid: aedfb0871cf61d044ba3fc459485d6fb, type: 3}
+  mySkin: {fileID: 11400000, guid: 7953503d9e83f8d469b84619849edd4e, type: 2}
 --- !u!212 &21231088
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -257,6 +258,10 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 91874a4553ba7e2479256c8bf7e7413a,
         type: 3}
+      propertyPath: mySkin
+      value: 
+      objectReference: {fileID: 11400000, guid: 7953503d9e83f8d469b84619849edd4e,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 184112}
