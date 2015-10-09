@@ -43,6 +43,7 @@ public class UnitHealth : MonoBehaviour {
 	 */
     public void LoseHealth(float val)
     {
+		DamageFlash.flashDamage();
         health -= val;
         if (health > maxHealth)
         {
@@ -76,6 +77,8 @@ public class UnitHealth : MonoBehaviour {
         if (ind > -1)
         {
             health -= collision.gameObject.GetComponent<Projectile>().GetDamage();
+
+			DamageFlash.flashDamage();
 
             MakeBlood();
 
