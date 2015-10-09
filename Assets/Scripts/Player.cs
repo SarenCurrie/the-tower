@@ -87,19 +87,19 @@ public class Player : MonoBehaviour {
     {
         if (Input.GetKey(KeyCode.A))
         {
-			rigidBody.AddForce(Vector2.left * movementSpeed);
+			rigidBody.AddForce(Vector2.left * movementSpeed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.D))
         {
-			rigidBody.AddForce(Vector2.right * movementSpeed);
+			rigidBody.AddForce(Vector2.right * movementSpeed * Time.deltaTime);
 		}
         if (Input.GetKey(KeyCode.W))
         {
-			rigidBody.AddForce(Vector2.up * movementSpeed);
+			rigidBody.AddForce(Vector2.up * movementSpeed * Time.deltaTime);
 		}
         if (Input.GetKey(KeyCode.S))
         {
-			rigidBody.AddForce(Vector2.down * movementSpeed);
+			rigidBody.AddForce(Vector2.down * movementSpeed * Time.deltaTime);
 		}
     }
 
