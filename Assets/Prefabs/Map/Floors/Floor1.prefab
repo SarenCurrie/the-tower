@@ -47,6 +47,9 @@ MonoBehaviour:
   - {fileID: 161840, guid: 8846dc68ffda6d846b2b71c7d2d75ce7, type: 2}
   - {fileID: 188336, guid: a575e649994dc304bb254dda7dd1aaf9, type: 2}
   - {fileID: 125318, guid: 3ced777be4918b845a3dcd398f02da6f, type: 2}
+  - {fileID: 187704, guid: 171aee03a2b739743ac7b967868fa4aa, type: 2}
+  - {fileID: 146140, guid: 17772a99673644a4ab05bed9cd71c817, type: 2}
+  - {fileID: 142954, guid: e68f1d8942d9a8d46b8df3099c204e66, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -56,7 +59,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: rooms.Array.size
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: enemies.Array.size
@@ -78,6 +81,18 @@ Prefab:
       propertyPath: enemies.Array.data[0]
       value: 
       objectReference: {fileID: 142788, guid: 1de057c51b804b246830f1c373e8c873, type: 2}
+    - target: {fileID: 0}
+      propertyPath: rooms.Array.data[3]
+      value: 
+      objectReference: {fileID: 187704, guid: 171aee03a2b739743ac7b967868fa4aa, type: 2}
+    - target: {fileID: 0}
+      propertyPath: rooms.Array.data[4]
+      value: 
+      objectReference: {fileID: 146140, guid: 17772a99673644a4ab05bed9cd71c817, type: 2}
+    - target: {fileID: 0}
+      propertyPath: rooms.Array.data[5]
+      value: 
+      objectReference: {fileID: 142954, guid: e68f1d8942d9a8d46b8df3099c204e66, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 167694}
