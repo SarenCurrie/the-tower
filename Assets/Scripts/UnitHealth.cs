@@ -72,6 +72,10 @@ public class UnitHealth : MonoBehaviour {
      */
     void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.GetComponent<Projectile>() == null)
+            return;
+
+
         int ind = Array.IndexOf(damagedBy, collision.gameObject.tag);
         if (ind > -1)
         {
