@@ -20,6 +20,8 @@ using System;
 public class Weapon : Item
 {
 
+    public enum WeaponStat { Str, Dex, Int };
+
     private const float BASE_HIT_DAMAGE = 0.01f;
     public const float SINGLE_SHOT_MULTIPLIER = 0.65f;
     public const float SPREAD_SHOT_MULTIPLIER = 1.1f;
@@ -27,14 +29,17 @@ public class Weapon : Item
 
     public Transform projectilePrefab;
 
-    private int spread = 1;
-    private float spreadRange;
-    private float fireForce;
-    private float fireFrequency;//
-    private float strengthModifier;//
-    private float dexterityModifier;//
-    private float intelligenceModifier;//
-    private float damageMod;
+    public int spread = 1;
+    public float spreadRange;
+    public float fireForce;
+    public float fireFrequency;//
+    public float strengthModifier;//
+    public float dexterityModifier;//
+    public float intelligenceModifier;//
+    public float damageMod;
+
+    public WeaponStat weaponMajor;
+    public WeaponStat weaponMinor;
 
     private float lastFired = 0;
 
@@ -48,6 +53,8 @@ public class Weapon : Item
     public GUISkin mySkin;
 
     private UnityEngine.Object[] hoverElements;
+
+
 
 
     public void Fire(Player p)
@@ -126,11 +133,17 @@ public class Weapon : Item
         float[] modifiers = new float[3] { 0, 0, 0 };
 
         int major = UnityEngine.Random.Range(0, 3);
+        weaponMajor = (WeaponStat) major;
         float majorMod = UnityEngine.Random.Range(0.5f, 0.85f);
 
         modifiers[attributes[major]] = majorMod;
-        attributes.RemoveAt(major);
-        int minor = UnityEngine.Random.Range(0, 2);
+       
+        int minor = UnityEngine.Random.Range(0, 3);
+        while (minor == major)
+        {
+            minor = UnityEngine.Random.Range(0, 3);
+        }
+        weaponMinor = (WeaponStat)minor;
         modifiers[attributes[minor]] = 1 - majorMod;
 
         strengthModifier = modifiers[0];
@@ -166,7 +179,7 @@ public class Weapon : Item
 
 
     public bool showWindow = false;
-    void OnMouseEnter()
+    void OnMouseOver()
     {
         if(!showWindow)
             showWindow = true;
@@ -185,16 +198,22 @@ public class Weapon : Item
         Player player = GetPlayer().GetComponent<Player>();
         Weapon weapon = player.weapons[player.currentWeapon].GetComponent<Weapon>();
         float damageCurrent = weapon.damageMod;
+        float currentArc = weapon.spreadRange;
         int spreadCurrent = weapon.spread;
-        float forceCurrent = weapon.fireForce;
+        float fireRateCurrent = weapon.fireFrequency;
+        WeaponStat currentMajor = weapon.weaponMajor;
+        WeaponStat currentMinor = weapon.weaponMinor;
 
-        GUILayout.TextField("Damage:   " + Math.Round(damageCurrent, 2) + "\nSpread:       " + spreadCurrent + "\nForce:          " + forceCurrent + "\n", "OutlineText");
+
+
+
+        GUILayout.TextField("Damage:     " + Math.Round(damageCurrent, 2) + "\n#Projectiles: " + spreadCurrent + "\nFire Rate:      " + Math.Round(fireRateCurrent, 2) + "\nMaj/Min:    " + currentMajor + "-" + currentMinor, "OutlineText");
     }
 
     //Creates ground weapon textfield for popup comparison
     private void DoWindow1(int windowID)
     {
-        GUILayout.TextField("Damage:   " + Math.Round(damageMod, 2) + "\nSpread:       " + spread + "\nForce:          " + fireForce + "\n", "OutlineText");
+        GUILayout.TextField("Damage:     " + Math.Round(damageMod, 2) + "\n#Projectiles: " + spreadRange + "\nFire Rate:      " + Math.Round(fireFrequency, 2) + "\nMaj/Min:    " + weaponMajor + "-" + weaponMinor, "OutlineText");
     }
 
     //Called every frame to check if the on hover will open a comparison popup for the weaopn
