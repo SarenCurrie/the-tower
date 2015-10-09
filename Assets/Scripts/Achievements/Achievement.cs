@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 namespace Achievements {
-	public class Achievement : MonoBehaviour {
+	public class Achievement {
 		public string name;
 		public string text;
 		public bool hasAchieved = false;

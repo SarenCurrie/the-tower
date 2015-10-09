@@ -13,6 +13,7 @@ namespace Achievements {
 
 		public static void AddKill() {
 			kills++;
+
 			if (kills > 50) {
 				AchievementFactory.KILL_FIFTY_ENEMIES.Achieve();
 			}
