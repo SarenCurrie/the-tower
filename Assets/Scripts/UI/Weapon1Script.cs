@@ -97,7 +97,6 @@ public class Weapon1Script : MonoBehaviour {
         GUI.skin = mySkin;
         if (showWindow)
         {
-            int offset = 100;
             //Draws the textures being used for popup
             //Generates new Window for the current weapon and floor weapon stats 
             GUI.Window(0, new Rect( 250, 200, 250, 200), DoWindow0, "Current weapon:");

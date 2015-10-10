@@ -46,6 +46,7 @@ public class Weapon : Item
     private int look;
 
     public Sprite[] looks;
+    public Sprite[] sideLooks;
 
     public Sprite[] possibleProjectileSprites;
     private Sprite projectileSprite;
@@ -54,6 +55,7 @@ public class Weapon : Item
 
     private UnityEngine.Object[] hoverElements;
 
+    private Sprite currentSprite;
 
 
 
@@ -92,6 +94,7 @@ public class Weapon : Item
     public override void Generate()
     {
         look = UnityEngine.Random.Range(0, looks.Length);
+        currentSprite = sideLooks[look];
         gameObject.GetComponent<SpriteRenderer>().sprite = looks[look];
 
         int projectileSpriteIndex = UnityEngine.Random.Range(0, possibleProjectileSprites.Length);
@@ -223,7 +226,7 @@ public class Weapon : Item
         //Loads the textures being used for popup
         Texture2D texture = Resources.Load("Holographic/output/main/bg/bg") as Texture2D;
         Texture2D weapon1 = Resources.Load("Holographic/output/main/bg/Baxia_S") as Texture2D;
-        Texture2D weapon2 = Resources.Load("Holographic/output/main/bg/Insanity'sTeardrop_S") as Texture2D;
+        Texture2D weapon2 = currentSprite.texture as Texture2D;
 
         if (showWindow)
         {
@@ -232,7 +235,7 @@ public class Weapon : Item
             GUI.DrawTexture(new Rect(Input.mousePosition.x - 160, Screen.height - Input.mousePosition.y - offset, 150, 150), texture);
             GUI.DrawTexture(new Rect(Input.mousePosition.x - 20, Screen.height - Input.mousePosition.y - offset, 150, 150), texture);
             GUI.DrawTexture(new Rect(Input.mousePosition.x - 115, Screen.height - Input.mousePosition.y - 50, 60, 60), weapon1);
-            GUI.DrawTexture(new Rect(Input.mousePosition.x + 15, Screen.height - Input.mousePosition.y - 50, 80, 50), weapon2);
+            GUI.DrawTexture(new Rect(Input.mousePosition.x + 20, Screen.height - Input.mousePosition.y - 45, 70, 40), weapon2);
             //Generates new Window for the current weapon and floor weapon stats 
 
             if (Input.mousePosition.y <= (Screen.height / 3))
