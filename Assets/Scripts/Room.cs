@@ -62,10 +62,28 @@ public class Room : MonoBehaviour {
 		foreach (Transform child in transform)
 		{
 			if (child.tag == Tags.ENEMY)
-				child.gameObject.SetActive(enable);
+			{
+				EnemyMovement movement = child.GetComponent<EnemyMovement>();
+				RangedEnemy attack = child.GetComponent<RangedEnemy>();
+
+				if (movement != null)
+					movement.enabled = enable;
+				if (attack != null)
+					attack.enabled = enable;
+			}
 		}
 	}
 
+	public void ShowOrHideEnemies(bool show)
+	{
+		foreach (Transform child in transform)
+		{
+			if (child.tag == Tags.ENEMY)
+			{
+				child.GetComponent<SpriteRenderer>().enabled = show;
+			}
+		}
+	}
 	/// <summary>
 	/// Gets the number of enemies left in the room
 	/// </summary>
