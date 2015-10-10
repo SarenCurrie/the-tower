@@ -904,13 +904,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 477814, guid: fd5a1769471d40840a1e5a75244ab3ff, type: 2}
+  spread: 1
+  spreadRange: 0
+  fireForce: 0
+  fireFrequency: 0
+  strengthModifier: 0
+  dexterityModifier: 0
+  intelligenceModifier: 0
+  damageMod: 0
+  weaponMajor: 0
+  weaponMinor: 0
   looks:
-  - {fileID: 21300000, guid: ec5f076a1ef21004ba51f127e330342f, type: 3}
+  - {fileID: 21300000, guid: 58678f30106ed544095810e9025991e2, type: 3}
   - {fileID: 21300000, guid: 18a50bd6ce8c8904eb53bdb80fcddbe0, type: 3}
   - {fileID: 21300000, guid: 98c1221ca2bbb934f8cdf53d484f9cfb, type: 3}
   - {fileID: 21300000, guid: 82cacb6eb0c6e4540809aee4541e61d4, type: 3}
   - {fileID: 21300000, guid: 91874a4553ba7e2479256c8bf7e7413a, type: 3}
-  - {fileID: 21300000, guid: 58678f30106ed544095810e9025991e2, type: 3}
+  selectedSideLooks:
+  - {fileID: 21300000, guid: 0a503f03f1cd174458157c5b520c7e21, type: 3}
+  - {fileID: 21300000, guid: 0d14c56033a68ff43afe1f4cbf4341fb, type: 3}
+  - {fileID: 21300000, guid: a3a9e67f5b479ab4d9547447dcb4e804, type: 3}
+  - {fileID: 21300000, guid: 278b3ec4204d2334ea9f16f1f9be256d, type: 3}
+  - {fileID: 21300000, guid: 7aa41bbf9af5a094991d9dcc3f11b097, type: 3}
+  unseletedSideLooks:
+  - {fileID: 21300000, guid: 88d0533a0fcd2fc46a4bf6264d13c1c6, type: 3}
+  - {fileID: 21300000, guid: 6a02fce02bb2641478201cb163dfd18e, type: 3}
+  - {fileID: 21300000, guid: 3cca53d84b7569e47813441fe14e8ec3, type: 3}
+  - {fileID: 21300000, guid: 237e0b03e28105143bc96f0717162648, type: 3}
+  - {fileID: 21300000, guid: 94ec2ffe9c7ad3e47a64671fea3d8f0d, type: 3}
   possibleProjectileSprites:
   - {fileID: 21300000, guid: 5d41bfa3f684f0848a7918244531e89e, type: 3}
   - {fileID: 21300000, guid: ebe4c5176d748c342aacdc63f75e1bbd, type: 3}
@@ -938,6 +959,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 25fd7ad1e281847f58db2f285b6fff47, type: 3}
   - {fileID: 8300000, guid: d9efb9bb3536a4e9c8ca5fa56786c0fb, type: 3}
   mySkin: {fileID: 11400000, guid: 7953503d9e83f8d469b84619849edd4e, type: 2}
+  selectedSprite: {fileID: 21300000, guid: 7aa41bbf9af5a094991d9dcc3f11b097, type: 3}
+  unSelectedSprite: {fileID: 21300000, guid: 94ec2ffe9c7ad3e47a64671fea3d8f0d, type: 3}
   showWindow: 0
 --- !u!114 &11480342
 MonoBehaviour:
@@ -1321,7 +1344,89 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: looks.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: selectedSideLooks.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: unseletedSideLooks.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: looks.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: 58678f30106ed544095810e9025991e2,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: selectedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7aa41bbf9af5a094991d9dcc3f11b097,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: unSelectedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 94ec2ffe9c7ad3e47a64671fea3d8f0d,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: selectedSideLooks.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 0d14c56033a68ff43afe1f4cbf4341fb,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: selectedSideLooks.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: a3a9e67f5b479ab4d9547447dcb4e804,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: selectedSideLooks.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 278b3ec4204d2334ea9f16f1f9be256d,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: selectedSideLooks.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: 7aa41bbf9af5a094991d9dcc3f11b097,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: selectedSideLooks.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 0a503f03f1cd174458157c5b520c7e21,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: unseletedSideLooks.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 88d0533a0fcd2fc46a4bf6264d13c1c6,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: unseletedSideLooks.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 6a02fce02bb2641478201cb163dfd18e,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: unseletedSideLooks.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 3cca53d84b7569e47813441fe14e8ec3,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: unseletedSideLooks.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 237e0b03e28105143bc96f0717162648,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: unseletedSideLooks.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: 94ec2ffe9c7ad3e47a64671fea3d8f0d,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: looks.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 58678f30106ed544095810e9025991e2,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 105838}
