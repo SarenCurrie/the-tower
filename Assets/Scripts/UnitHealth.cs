@@ -132,6 +132,7 @@ public class UnitHealth : MonoBehaviour {
 				int baseScore = (int) gameObject.GetComponent<UnitHealth>().maxHealth;
 				baseScore += (int) GameManager.GetPlayer().GetComponent<UnitHealth>().health;
 				GameManager.GetPlayer().GetComponent<Player>().score += baseScore;
+				gameObject.GetComponent<Enemy>().enabled = false;
 
 				if (shouldDrop)
 				{

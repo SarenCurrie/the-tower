@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RangedEnemy : MonoBehaviour
+public class RangedEnemy : Enemy
 {
     private const float BASE_HIT_DAMAGE = 0.01f;
 
