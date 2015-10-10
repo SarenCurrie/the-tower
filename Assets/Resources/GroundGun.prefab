@@ -169,7 +169,7 @@ MonoBehaviour:
   possibleShotgunSounds:
   - {fileID: 8300000, guid: 28d3947910f76489a839ae531d30ec79, type: 3}
   - {fileID: 8300000, guid: 8928fac6adbe74ab0ac97bfc34efba13, type: 3}
-  - {fileID: 8300000, guid: 7fa820df58a8a49d58de70cb13e39e8d, type: 3}
+  - {fileID: 8300000, guid: d8aba8a1bce614e31ba5a44d469f1c16, type: 3}
   - {fileID: 8300000, guid: b48fd2d66794045d3a6bd8e662529971, type: 3}
   possibleSmgSounds:
   - {fileID: 8300000, guid: ab754e41137a34978a67f78ae99134b7, type: 3}
@@ -384,7 +384,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: possibleShotgunSounds.Array.data[2]
       value: 
-      objectReference: {fileID: 8300000, guid: 7fa820df58a8a49d58de70cb13e39e8d, type: 3}
+      objectReference: {fileID: 8300000, guid: d8aba8a1bce614e31ba5a44d469f1c16, type: 3}
     - target: {fileID: 0}
       propertyPath: possibleShotgunSounds.Array.data[3]
       value: 
