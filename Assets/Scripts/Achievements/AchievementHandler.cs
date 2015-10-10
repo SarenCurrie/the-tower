@@ -6,27 +6,40 @@ namespace Achievements {
 	 * Stores information regaridng achievements
 	 */
 	public class AchievementHandler {
-		private static int kills;
-		private static float totalDamage;
-		private static int totalBlood;
-		private static int roomsVisited;
+		private int kills;
+		private float totalDamage;
+		private int totalBlood;
+		private int roomsVisited;
+		private AchievementFactory achievementFactory;
 
-		public static void AddKill() {
+		public AchievementHandler() {
+			kills = 0;
+			totalDamage = 0;
+			totalBlood = 0;
+			roomsVisited = 0;
+			achievementFactory = new AchievementFactory();
+		}
+
+		public void AddKill() {
 			kills++;
 
-			if (kills > 50) {
-				AchievementFactory.KILL_FIFTY_ENEMIES.Achieve();
+			Debug.Log(kills);
+
+			if (kills >= 50) {
+				achievementFactory.KILL_FIFTY_ENEMIES.Achieve();
 			}
-			else if (kills > 1) {
-				AchievementFactory.KILL_ONE_ENEMY.Achieve();
+			else if (kills >= 1) {
+				achievementFactory.KILL_ONE_ENEMY.Achieve();
 			}
 		}
 
-		public static void AddScore() {
+		public void AddScore() {
 			int score = GameManager.GetPlayer().GetComponent<Player>().score;
 
+			Debug.Log(score);
+
 			if (score > 10000) {
-				AchievementFactory.SCORE_TEN_THOUSAND.Achieve();
+				achievementFactory.SCORE_TEN_THOUSAND.Achieve();
 			}
 		}
 	}

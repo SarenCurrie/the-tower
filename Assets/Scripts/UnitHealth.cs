@@ -134,8 +134,8 @@ public class UnitHealth : MonoBehaviour {
 			GameObject a = Item.GenerateItem(gameObject.GetComponent<Transform>().position);
 
 			// log kill and score for achievemnts
-			AchievementHandler.AddKill();
-			AchievementHandler.AddScore();
+			GameManager.achievementHandler.AddKill();
+			GameManager.achievementHandler.AddScore();
 		}
 		else if (tag.Equals("Player"))
 		{
