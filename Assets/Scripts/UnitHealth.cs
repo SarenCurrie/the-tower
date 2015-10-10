@@ -112,8 +112,7 @@ public class UnitHealth : MonoBehaviour {
 	*/
 	public void Die()
 	{
-		Renderer renderer = GetComponent<Renderer>();
-		if (renderer.enabled) {
+		if (enabled) {
 			health = 0;
 
 			//Make some blood
@@ -147,9 +146,11 @@ public class UnitHealth : MonoBehaviour {
 
 			AudioSource audioSource = GetComponent<AudioSource>();
 			if (audioSource != null) {
+				Renderer renderer = GetComponent<Renderer>();
 				audioSource.clip = deathSound;
 				audioSource.Play();
 				renderer.enabled = false;
+				enabled = false;
 				Destroy(gameObject, deathSound.length);
 			}
 			else {
