@@ -32,6 +32,9 @@ public class SingleShotEnemy : MonoBehaviour
 	public Sprite[] possibleProjectileSprites;
 	private Sprite projectileSprite;
 
+	public AudioClip[] possibleSounds;
+	private AudioClip actualSound;
+
 	void Start()
 	{
 		Generate();
@@ -64,6 +67,11 @@ public class SingleShotEnemy : MonoBehaviour
 				projectile.GetComponent<Projectile>().SetDamage(damage);
 			}
 			lastFired = Time.time;
+
+			// Play Sound
+			AudioSource source = GetComponent<AudioSource>();
+			source.clip = actualSound;
+			source.Play();
 		}
 	}
 
@@ -74,10 +82,16 @@ public class SingleShotEnemy : MonoBehaviour
 
 	public void Generate()
 	{
-		damageMod = (float)((50 * 25) / 
+		damageMod = (float)((50 * 25) /
 			(20 * (System.Math.Pow(fireForce, 0.2)) + 15 * (System.Math.Pow(fireFrequency, 1.2))));
+
+		// generate projectile
 		int projectileSpriteIndex = UnityEngine.Random.Range(0, possibleProjectileSprites.Length);
 		projectileSprite = possibleProjectileSprites[projectileSpriteIndex];
+
+		// generate sound
+		int soundIndex = UnityEngine.Random.Range(0, possibleSounds.Length);
+		actualSound = possibleSounds[soundIndex];
 	}
 
 	private void MaybeFireAtPlayer()
