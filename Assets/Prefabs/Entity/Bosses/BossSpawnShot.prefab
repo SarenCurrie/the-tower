@@ -73,7 +73,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   killTime: 2
-  explosion: {fileID: 407632, guid: 4169dc2e43898d04595f60dabe7fa381, type: 2}
+  explosion: {fileID: 434708, guid: d76eec15b048b894e9e85ae5ca1cc42d, type: 2}
 --- !u!212 &21258334
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -110,7 +110,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: explosion
       value: 
-      objectReference: {fileID: 407632, guid: 4169dc2e43898d04595f60dabe7fa381, type: 2}
+      objectReference: {fileID: 434708, guid: d76eec15b048b894e9e85ae5ca1cc42d, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 199940}

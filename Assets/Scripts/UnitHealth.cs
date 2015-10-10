@@ -16,7 +16,7 @@ public class UnitHealth : MonoBehaviour {
     public float maxHealth;
     public float health;
     public GameObject[] bloodPrefabs;
-
+    public Boolean shouldDrop;
     // Blood constants
     public const int MIN_BLOOD_ON_DEATH = 15;
     public const int MAX_BLOOD_ON_DEATH = 28;
@@ -128,8 +128,11 @@ public class UnitHealth : MonoBehaviour {
             baseScore += (int) GameManager.GetPlayer().GetComponent<UnitHealth>().health;
             GameManager.GetPlayer().GetComponent<Player>().score += baseScore;
 
-			//Makes the dead thing drop an item
-			GameObject a = Item.GenerateItem(gameObject.GetComponent<Transform>().position);
+            //Makes the dead thing drop an item
+            if (shouldDrop)
+            {
+                GameObject a = Item.GenerateItem(gameObject.GetComponent<Transform>().position);
+            }
 		}
 		else if (tag.Equals("Player"))
 		{
