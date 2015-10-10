@@ -51,6 +51,14 @@ MonoBehaviour:
   - {fileID: 187704, guid: 171aee03a2b739743ac7b967868fa4aa, type: 2}
   - {fileID: 146140, guid: 17772a99673644a4ab05bed9cd71c817, type: 2}
   - {fileID: 142954, guid: e68f1d8942d9a8d46b8df3099c204e66, type: 2}
+  enterDialog: Forgot to mention, security will know you aren't meant to be here.
+    Expect hostility.
+  exitDialog: Impressive, I didn't think you'd make it look so easy.
+  floorDialog:
+  - To think, you lived BELOW this floor when I found you.
+  - The citizens are probably used to hiding when they here gunfire down here.
+  - We don't even need security this far down, there's enough violence to keep the
+    citizens in line.
   firstRoom: {fileID: 187704, guid: 171aee03a2b739743ac7b967868fa4aa, type: 2}
   bossRoom: {fileID: 128328, guid: 9d24bbc637492394eaac4bcb2a12210e, type: 2}
 --- !u!1001 &100100000
@@ -66,6 +74,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: enemies.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: floorDialog.Array.size
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
@@ -97,6 +109,28 @@ Prefab:
       value: 
       objectReference: {fileID: 142954, guid: e68f1d8942d9a8d46b8df3099c204e66, type: 2}
     - target: {fileID: 0}
+      propertyPath: enterDialog
+      value: Forgot to mention, security will know you aren't meant to be here. Expect
+        hostility.
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: exitDialog
+      value: Impressive, I didn't think you'd make it look so easy.
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: floorDialog.Array.data[0]
+      value: To think, you lived BELOW this floor when I found you.
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: floorDialog.Array.data[1]
+      value: The citizens are probably used to hiding when they here gunfire down
+        here.
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: floorDialog.Array.data[2]
+      value: We don't even need security this far down, there's enough violence to
+        keep the citizens in line.
+      objectReference: {fileID: 0}
       propertyPath: firstRoom
       value: 
       objectReference: {fileID: 187704, guid: 171aee03a2b739743ac7b967868fa4aa, type: 2}
