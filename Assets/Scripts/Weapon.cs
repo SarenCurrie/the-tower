@@ -16,11 +16,9 @@ using System;
 ///
 ///
 /// </summary>
-/// 
+///
 public class Weapon : Item
 {
-
-    public enum WeaponStat { Str, Dex, Int };
 
     private const float BASE_HIT_DAMAGE = 0.01f;
     public const float SINGLE_SHOT_MULTIPLIER = 0.65f;
@@ -29,37 +27,32 @@ public class Weapon : Item
 
     public Transform projectilePrefab;
 
-    public int spread = 1;
-    public float spreadRange;
-    public float fireForce;
-    public float fireFrequency;//
-    public float strengthModifier;//
-    public float dexterityModifier;//
-    public float intelligenceModifier;//
-    public float damageMod;
-
-    public WeaponStat weaponMajor;
-    public WeaponStat weaponMinor;
+    private int spread = 1;
+    private float spreadRange;
+    private float fireForce;
+    private float fireFrequency;//
+    private float strengthModifier;//
+    private float dexterityModifier;//
+    private float intelligenceModifier;//
+    private float damageMod;
 
     private float lastFired = 0;
 
     private int look;
 
     public Sprite[] looks;
-    public Sprite[] selectedSideLooks;
-    public Sprite[] unseletedSideLooks;
 
     public Sprite[] possibleProjectileSprites;
     private Sprite projectileSprite;
 
+    public AudioClip[] possibleRifleSounds;
+    public AudioClip[] possibleShotgunSounds;
+    public AudioClip[] possibleSmgSounds;
+    private AudioClip actualSound;
+
     public GUISkin mySkin;
 
     private UnityEngine.Object[] hoverElements;
-
-    public Sprite selectedSprite;
-    public Sprite unSelectedSprite;
-
-
 
 
     public void Fire(Player p)
@@ -84,6 +77,9 @@ public class Weapon : Item
                 projectile.GetComponent<Projectile>().SetDamage(damage);
             }
             lastFired = Time.time;
+            AudioSource source = GetComponent<AudioSource>();
+            source.clip = actualSound;
+            source.Play();
         }
     }
 
@@ -97,17 +93,14 @@ public class Weapon : Item
     public override void Generate()
     {
         look = UnityEngine.Random.Range(0, looks.Length);
-        if (selectedSideLooks.Length == 5 && unseletedSideLooks.Length == 5)
-        {
-            selectedSprite = selectedSideLooks[look];
-            unSelectedSprite = unseletedSideLooks[look];
-        }
         gameObject.GetComponent<SpriteRenderer>().sprite = looks[look];
 
         int projectileSpriteIndex = UnityEngine.Random.Range(0, possibleProjectileSprites.Length);
         projectileSprite = possibleProjectileSprites[projectileSpriteIndex];
 
         int spreadRand = UnityEngine.Random.Range(1, 4);
+
+        int randSound;
         switch (spreadRand)
         {
             case 1:
@@ -117,6 +110,10 @@ public class Weapon : Item
                 fireFrequency = UnityEngine.Random.Range(1f, 5);
                 spreadRange = UnityEngine.Random.Range(15, 61);
                 damageMod = SPREAD_SHOT_MULTIPLIER * (float)(((50) + (System.Math.Pow(spreadRange, 0.7f))) / (((System.Math.Pow(fireFrequency, 1.1f))) * System.Math.Pow(spread, 1.1f)));
+
+                // generate sound
+                randSound = UnityEngine.Random.Range(0, possibleShotgunSounds.Length);
+                actualSound = possibleShotgunSounds[randSound];
                 break;
             case 2:
                 //Low fire rate single fire weapon
@@ -125,6 +122,10 @@ public class Weapon : Item
                 fireFrequency = UnityEngine.Random.Range(1f, 2.5f);
                 spreadRange = 1;
                 damageMod = SINGLE_SHOT_MULTIPLIER * (float)((50 * 1.5) / (System.Math.Pow(fireFrequency, 1.5f)));
+
+                // generate sound
+                randSound = UnityEngine.Random.Range(0, possibleRifleSounds.Length);
+                actualSound = possibleRifleSounds[randSound];
                 break;
             case 3:
                 //High fire rate  single fire weapon
@@ -135,6 +136,10 @@ public class Weapon : Item
                 //(DPS_CONST * SOME_CONST) / ((MIN_FORCE * FORSE^FORCE_CONST) + MIN_FREQ * FREQ^FREQ_CONST))
                 //lower damage for higher fire rate and/or faster bullet speed (total difference of roughly .3 of a second)
                 damageMod = FAST_SHOT_MULTIPLIER * (float)((50 * 25) / (20 * (System.Math.Pow(fireForce, 0.2)) + 15 * (System.Math.Pow(fireFrequency, 1.2))));
+
+                // generate sound
+                randSound = UnityEngine.Random.Range(0, possibleSmgSounds.Length);
+                actualSound = possibleSmgSounds[randSound];
                 break;
         }
 
@@ -143,17 +148,11 @@ public class Weapon : Item
         float[] modifiers = new float[3] { 0, 0, 0 };
 
         int major = UnityEngine.Random.Range(0, 3);
-        weaponMajor = (WeaponStat) major;
         float majorMod = UnityEngine.Random.Range(0.5f, 0.85f);
 
         modifiers[attributes[major]] = majorMod;
-       
-        int minor = UnityEngine.Random.Range(0, 3);
-        while (minor == major)
-        {
-            minor = UnityEngine.Random.Range(0, 3);
-        }
-        weaponMinor = (WeaponStat)minor;
+        attributes.RemoveAt(major);
+        int minor = UnityEngine.Random.Range(0, 2);
         modifiers[attributes[minor]] = 1 - majorMod;
 
         strengthModifier = modifiers[0];
@@ -173,10 +172,10 @@ public class Weapon : Item
         GetComponent<Rigidbody2D>().isKinematic = true;
 
         // Set the position of the weapon to that of the player.
-        
+
         transform.position = GetPlayer().transform.position;
         transform.rotation = GetPlayer().transform.rotation;
-       
+
         transform.parent = GetPlayer().transform; //Weapon will follow the player.
 
         transform.localPosition = new Vector3(0.15f, 0.3f, 0);
@@ -189,10 +188,9 @@ public class Weapon : Item
 
 
     public bool showWindow = false;
-    void OnMouseOver()
+    void OnMouseEnter()
     {
-
-        if (!showWindow && GameManager.currentFloor.currentRoom.EnemiesLeft() == 0)
+        if(!showWindow)
             showWindow = true;
     }
 
@@ -209,22 +207,16 @@ public class Weapon : Item
         Player player = GetPlayer().GetComponent<Player>();
         Weapon weapon = player.weapons[player.currentWeapon].GetComponent<Weapon>();
         float damageCurrent = weapon.damageMod;
-        float currentArc = weapon.spreadRange;
         int spreadCurrent = weapon.spread;
-        float fireRateCurrent = weapon.fireFrequency;
-        WeaponStat currentMajor = weapon.weaponMajor;
-        WeaponStat currentMinor = weapon.weaponMinor;
+        float forceCurrent = weapon.fireForce;
 
-
-
-
-        GUILayout.TextField("Damage:     " + Math.Round(damageCurrent, 2) + "\n#Projectiles: " + spreadCurrent + "\nFire Rate:      " + Math.Round(fireRateCurrent, 2) + "\nMaj/Min:    " + currentMajor + "-" + currentMinor, "OutlineText");
+        GUILayout.TextField("Damage:   " + Math.Round(damageCurrent, 2) + "\nSpread:       " + spreadCurrent + "\nForce:          " + forceCurrent + "\n", "OutlineText");
     }
 
     //Creates ground weapon textfield for popup comparison
     private void DoWindow1(int windowID)
     {
-        GUILayout.TextField("Damage:     " + Math.Round(damageMod, 2) + "\n#Projectiles: " + spreadRange + "\nFire Rate:      " + Math.Round(fireFrequency, 2) + "\nMaj/Min:    " + weaponMajor + "-" + weaponMinor, "OutlineText");
+        GUILayout.TextField("Damage:   " + Math.Round(damageMod, 2) + "\nSpread:       " + spread + "\nForce:          " + fireForce + "\n", "OutlineText");
     }
 
     //Called every frame to check if the on hover will open a comparison popup for the weaopn
@@ -233,35 +225,20 @@ public class Weapon : Item
         GUI.skin = mySkin;
         //Loads the textures being used for popup
         Texture2D texture = Resources.Load("Holographic/output/main/bg/bg") as Texture2D;
-        
-        
+        Texture2D weapon1 = Resources.Load("Holographic/output/main/bg/Baxia_S") as Texture2D;
+        Texture2D weapon2 = Resources.Load("Holographic/output/main/bg/Insanity'sTeardrop_S") as Texture2D;
 
         if (showWindow)
         {
-            Player player = GetPlayer().GetComponent<Player>();
-            Weapon weapon = player.weapons[player.currentWeapon].GetComponent<Weapon>();
-            //Gets the sidesprites for the popups
-            Texture2D weapon1 = weapon.selectedSprite.texture as Texture2D;
-            Texture2D weapon2 = selectedSprite.texture as Texture2D;
             int offset = 100;
             //Draws the textures being used for popup
             GUI.DrawTexture(new Rect(Input.mousePosition.x - 160, Screen.height - Input.mousePosition.y - offset, 150, 150), texture);
             GUI.DrawTexture(new Rect(Input.mousePosition.x - 20, Screen.height - Input.mousePosition.y - offset, 150, 150), texture);
-            GUI.DrawTexture(new Rect(Input.mousePosition.x - 120, Screen.height - Input.mousePosition.y - 45, 70, 40), weapon1);
-            GUI.DrawTexture(new Rect(Input.mousePosition.x + 20, Screen.height - Input.mousePosition.y - 45, 70, 40), weapon2);
-            //Generates new Window for the current weapon and floor weapon stats 
-
-            if (Input.mousePosition.y <= (Screen.height / 3))
-            {
-                GUI.Window(0, new Rect(Input.mousePosition.x - 250, Screen.height - Input.mousePosition.y - 160 - offset, 250, 200), DoWindow0, "Current weapon:");
-                GUI.Window(1, new Rect(Input.mousePosition.x - 25, Screen.height - Input.mousePosition.y - 160 - offset, 250, 200), DoWindow1, "Floor weapon:");
-            }
-            else
-            {
-                GUI.Window(0, new Rect(Input.mousePosition.x - 250, Screen.height - Input.mousePosition.y + 120 - offset, 250, 200), DoWindow0, "Current weapon:");
-                GUI.Window(1, new Rect(Input.mousePosition.x - 25, Screen.height - Input.mousePosition.y + 120 - offset, 250, 200), DoWindow1, "Floor weapon:");
-            }
-            
-            }
+            GUI.DrawTexture(new Rect(Input.mousePosition.x - 115, Screen.height - Input.mousePosition.y - 50, 60, 60), weapon1);
+            GUI.DrawTexture(new Rect(Input.mousePosition.x + 15, Screen.height - Input.mousePosition.y - 50, 80, 50), weapon2);
+            //Generates new Window for the current weapon and floor weapon stats
+            GUI.Window(0, new Rect(Input.mousePosition.x - 250, Screen.height - Input.mousePosition.y + 120 - offset, 250, 200), DoWindow0, "Current weapon:");
+            GUI.Window(1, new Rect(Input.mousePosition.x - 25, Screen.height - Input.mousePosition.y + 120 - offset, 250, 200), DoWindow1, "Floor weapon:");
+        }
     }
 }
