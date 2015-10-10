@@ -11,9 +11,9 @@ public class Floor : MonoBehaviour {
 	public const int STARTING_ROOM_Y = NO_ROOMS_Y/2;
 
 	//Percentage chance flavour text will be displayed upon entering room
-	public const int DIALOGCHANCE = 100;
+	public const int DIALOGCHANCE = 20;
 	//Amount of time that DIALOG is displayed
-	public const int DIALOGTIME = 5;
+	public const int DIALOGTIME = 10;
 
 	//How many rooms there will be. Guaranteed to be reachable.
 	//Excludes first room and boss room
@@ -202,8 +202,7 @@ public class Floor : MonoBehaviour {
 		if(dialogLength != 0)
 		{
 			int index = UnityEngine.Random.Range(0, dialogLength);
-			// TODO uncomment this when it works
-			//SpeechScreen.ShowDialog(floorDialog[index], DIALOGTIME);
+			SpeechScreen.ShowDialog(floorDialog[index], DIALOGTIME);
 			floorDialog.RemoveAt(index);
 		}
 	}
@@ -213,8 +212,7 @@ public class Floor : MonoBehaviour {
 		currentRoom.MovePlayerToRoom(player);
 		currentRoom.DisableOrEnableEnemies(true);
 		Camera.main.transform.position = currentRoom.GetCameraPosition();
-		// TODO uncomment when this works
 		// Show the entry dialog
-		//SpeechScreen.ShowDialog(enterDialog, DIALOGTIME);
+		SpeechScreen.ShowDialog(enterDialog, DIALOGTIME);
 	}
 }
