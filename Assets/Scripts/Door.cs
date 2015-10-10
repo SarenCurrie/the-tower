@@ -64,17 +64,17 @@ public class Door : MonoBehaviour
 		switch (orientation)
 		{
 			case Door.DOOR_ORIENTATION.BOTTOM:
-			playerOffset = Vector3.down;
-			break;
+				playerOffset = Vector3.down;
+				break;
 			case Door.DOOR_ORIENTATION.TOP:
-			playerOffset = Vector3.up;
-			break;
+				playerOffset = Vector3.up;
+				break;
 			case Door.DOOR_ORIENTATION.LEFT:
-			playerOffset = Vector3.left;
-			break;
+				playerOffset = Vector3.left;
+				break;
 			case Door.DOOR_ORIENTATION.RIGHT:
-			playerOffset = Vector3.right;
-			break;
+				playerOffset = Vector3.right;
+				break;
 		}
 
 		GameManager.player.transform.position += playerOffset * DOOR_MOVEMENT_VALUE;
