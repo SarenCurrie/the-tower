@@ -56,12 +56,12 @@ public class RangedEnemy : Enemy
             projectile.GetComponent<Rigidbody2D>().AddForce((projectileTransform.up) * fireForce);
             projectile.GetComponent<Projectile>().SetDamage(damage);
             lastFired = Time.time;
-        }
 
-        // Play Sound
-        AudioSource source = GetComponent<AudioSource>();
-        source.clip = actualSound;
-        source.Play();
+            // Play Sound
+            AudioSource source = GetComponent<AudioSource>();
+            source.clip = actualSound;
+            source.Play();
+        }
     }
 
     private float CalculateDamage()
@@ -75,6 +75,10 @@ public class RangedEnemy : Enemy
             (20 * (System.Math.Pow(fireForce, 0.2)) + 15 * (System.Math.Pow(fireFrequency, 1.2))));
         int projectileSpriteIndex = UnityEngine.Random.Range(0, possibleProjectileSprites.Length);
         projectileSprite = possibleProjectileSprites[projectileSpriteIndex];
+
+        // generate sound
+        int soundIndex = UnityEngine.Random.Range(0, possibleSounds.Length);
+        actualSound = possibleSounds[soundIndex];
     }
 
     protected void MaybeFireAtPlayer()
