@@ -1,4 +1,4 @@
-﻿﻿using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using Achievements;
 
@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour {
 	public static Floor currentFloor;
 
     public static AchievementHandler achievementHandler;
-    
+
     void Start () {
 		staticFloorPrefabs = floorPrefabs;
 

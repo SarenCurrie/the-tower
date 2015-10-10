@@ -4,14 +4,9 @@ using System.Collections.Generic;
 
 public class ContactEnemy : MonoBehaviour
 {
-
 	private float attackTick = 0;
 	public float attackTime;
 	public float damage;
-
-	void Start()
-	{
-	}
 
 	void Update()
 	{

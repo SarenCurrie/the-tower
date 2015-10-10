@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
 using System.Collections;
 using Achievements;
@@ -16,6 +16,7 @@ public class UnitHealth : MonoBehaviour {
 
 	public float maxHealth;
 	public float health;
+	public bool shouldDrop;
 	public GameObject[] bloodPrefabs;
 	public AudioClip deathSound;
 
@@ -132,8 +133,10 @@ public class UnitHealth : MonoBehaviour {
 				baseScore += (int) GameManager.GetPlayer().GetComponent<UnitHealth>().health;
 				GameManager.GetPlayer().GetComponent<Player>().score += baseScore;
 
-				//Makes the dead thing drop an item
-				GameObject a = Item.GenerateItem(gameObject.GetComponent<Transform>().position);
+				if (shouldDrop)
+				{
+					GameObject a = Item.GenerateItem(gameObject.GetComponent<Transform>().position);
+				}
 
 				// log kill and score for achievemnts
 				GameManager.achievementHandler.AddKill();
