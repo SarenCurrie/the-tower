@@ -145,7 +145,7 @@ public class Armour : Item
     public bool showWindow = false;
     void OnMouseEnter()
     {
-        if(!showWindow)
+        if (!showWindow && GameManager.currentFloor.currentRoom.EnemiesLeft() == 0)
             showWindow = true;
     }
 

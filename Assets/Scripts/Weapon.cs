@@ -94,9 +94,10 @@ public class Weapon : Item
     public override void Generate()
     {
         look = UnityEngine.Random.Range(0, looks.Length);
-        print("LOOKS:" + look);
-
-        currentSprite = sideLooks[look];
+        if (sideLooks.Length == 6)
+        {
+            currentSprite = sideLooks[look];
+        }
         gameObject.GetComponent<SpriteRenderer>().sprite = looks[look];
 
         int projectileSpriteIndex = UnityEngine.Random.Range(0, possibleProjectileSprites.Length);
@@ -186,7 +187,8 @@ public class Weapon : Item
     public bool showWindow = false;
     void OnMouseOver()
     {
-        if(!showWindow)
+
+        if (!showWindow && GameManager.currentFloor.currentRoom.EnemiesLeft() == 0)
             showWindow = true;
     }
 
