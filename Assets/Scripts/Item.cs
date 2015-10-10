@@ -11,8 +11,8 @@ using System.Collections;
 /// </summary>
 public abstract class Item : MonoBehaviour {
 
-    //This should be much higher but is 50% for testing purposes
-	private const int WEAPON_CHANCE = 50;
+    //Weapons are dropped 95% of the time
+	private const int WEAPON_CHANCE = 95;
 	private bool onFloor = true;
 
 	public abstract void PickUp();

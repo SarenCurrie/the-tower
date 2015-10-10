@@ -1,5 +1,6 @@
-﻿using UnityEngine;
+﻿﻿using UnityEngine;
 using System.Collections;
+using Achievements;
 
 public class GameManager : MonoBehaviour {
 
@@ -16,6 +17,8 @@ public class GameManager : MonoBehaviour {
 	//Player does not start on a floor
 	private static int currentFloorNumber = -1;
 	public static Floor currentFloor;
+
+    public static AchievementHandler achievementHandler;
     
     void Start () {
 		staticFloorPrefabs = floorPrefabs;
@@ -42,6 +45,7 @@ public class GameManager : MonoBehaviour {
             currentFloor = Instantiate(staticFloorPrefabs[currentFloorNumber]).GetComponent<Floor>();
             currentFloor.GenerateFloor();
             currentFloor.MovePlayerToFloor(player);
+            achievementHandler = new AchievementHandler();
         }
         else
         {
