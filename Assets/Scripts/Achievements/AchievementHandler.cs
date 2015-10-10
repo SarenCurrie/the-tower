@@ -23,8 +23,6 @@ namespace Achievements {
 		public void AddKill() {
 			kills++;
 
-			Debug.Log(kills);
-
 			if (kills >= 50) {
 				achievementFactory.KILL_FIFTY_ENEMIES.Achieve();
 			}
@@ -35,8 +33,6 @@ namespace Achievements {
 
 		public void AddScore() {
 			int score = GameManager.GetPlayer().GetComponent<Player>().score;
-
-			Debug.Log(score);
 
 			if (score > 10000) {
 				achievementFactory.SCORE_TEN_THOUSAND.Achieve();
