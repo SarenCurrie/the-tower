@@ -10,6 +10,11 @@ public class Floor : MonoBehaviour {
 	public const int STARTING_ROOM_X = NO_ROOMS_X/2;
 	public const int STARTING_ROOM_Y = NO_ROOMS_Y/2;
 
+	//Percentage chance flavour text will be displayed upon entering room
+	public const int DIALOGCHANCE = 100;
+	//Amount of time that DIALOG is displayed
+	public const int DIALOGTIME = 5;
+
 	//How many rooms there will be. Guaranteed to be reachable.
 	int NO_ROOMS = 14;
 
@@ -19,6 +24,15 @@ public class Floor : MonoBehaviour {
 	//The list of possible rooms that can be spawned
 	//TODO: Make 3 different versions for the different tiers
 	public GameObject[] rooms;
+
+	//The flavour text upon entering the floor
+	public string enterDialog;
+
+	//The flavour text upon beating the boss
+	public string exitDialog;
+
+	//The flavour text that can occur throughout the floor
+	public List<string> floorDialog = new List<string>();
 
 	//Stores the generated path of room indexes
 	private List<int[]> roomPath = new List<int[]>();
@@ -50,6 +64,13 @@ public class Floor : MonoBehaviour {
 						currentRoom.DisableOrEnableEnemies(true);
 					}
 				}
+			}
+
+			// Have a chance to display some of the flavour text
+			int r = Random.Range(0, 101);
+			if(r <= DIALOGCHANCE)
+			{
+				DisplayFloorDialog();
 			}
 		}
 	}
@@ -151,10 +172,27 @@ public class Floor : MonoBehaviour {
 		return floorMap[x][y].GetComponent<Room>();
 	}
 
+	// Displays a piece of flavour text and makes sure that it can't be shown again
+	public void DisplayFloorDialog()
+	{
+		int dialogLength = floorDialog.Count;
+
+		if(dialogLength != 0)
+		{
+			int index = UnityEngine.Random.Range(0, dialogLength);
+			// TODO uncomment this when it works
+			//SpeechScreen.ShowDialog(floorDialog[index], DIALOGTIME);
+			floorDialog.RemoveAt(index);
+		}
+	}
+
 	public void MovePlayerToFloor(GameObject player)
 	{
 		currentRoom.MovePlayerToRoom(player);
 		currentRoom.DisableOrEnableEnemies(true);
 		Camera.main.transform.position = currentRoom.GetCameraPosition();
+		// TODO uncomment when this works
+		// Show the entry dialog
+		//SpeechScreen.ShowDialog(enterDialog, DIALOGTIME);
 	}
 }
