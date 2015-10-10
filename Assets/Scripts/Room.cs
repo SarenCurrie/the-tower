@@ -9,6 +9,8 @@ public class Room : MonoBehaviour {
 
 	public const float CAMERA_HEIGHT = -10f;
 
+	private GameObject screenBlacker;
+
 	public Vector3 GetCameraPosition()
 	{
 		Vector2 pos = transform.position;
@@ -26,6 +28,13 @@ public class Room : MonoBehaviour {
 				enemy.transform.parent = transform;
 			}
 		}
+	}
+
+	public void SpawnScreenBlacker(GameObject screenBlackerPrefab)
+	{
+		screenBlacker = Instantiate(screenBlackerPrefab, transform.position, Quaternion.identity) as GameObject;
+		screenBlacker.transform.parent = transform;
+		SetBlackerAlpha(Door.BLACK_ALPHA);
 	}
 
 	public void DisableDoor(Door.DOOR_ORIENTATION disableOrientation)
@@ -53,10 +62,28 @@ public class Room : MonoBehaviour {
 		foreach (Transform child in transform)
 		{
 			if (child.tag == Tags.ENEMY)
-				child.gameObject.SetActive(enable);
+			{
+				EnemyMovement movement = child.GetComponent<EnemyMovement>();
+				RangedEnemy attack = child.GetComponent<RangedEnemy>();
+
+				if (movement != null)
+					movement.enabled = enable;
+				if (attack != null)
+					attack.enabled = enable;
+			}
 		}
 	}
 
+	public void ShowOrHideEnemies(bool show)
+	{
+		foreach (Transform child in transform)
+		{
+			if (child.tag == Tags.ENEMY)
+			{
+				child.GetComponent<SpriteRenderer>().enabled = show;
+			}
+		}
+	}
 	/// <summary>
 	/// Gets the number of enemies left in the room
 	/// </summary>
@@ -102,6 +129,16 @@ public class Room : MonoBehaviour {
 		{
 			if (child.tag == Tags.PLAYER_SPAWN)
 				player.transform.position = child.transform.position;
+		}
+	}
+
+	public void SetBlackerAlpha(float alpha)
+	{
+		if (screenBlacker != null)
+		{
+			Color colour = screenBlacker.GetComponent<SpriteRenderer>().material.color;
+			colour.a = alpha;
+			screenBlacker.GetComponent<SpriteRenderer>().material.color = colour;
 		}
 	}
 }
