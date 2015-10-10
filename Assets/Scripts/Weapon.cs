@@ -46,7 +46,8 @@ public class Weapon : Item
     private int look;
 
     public Sprite[] looks;
-    public Sprite[] sideLooks;
+    public Sprite[] selectedSideLooks;
+    public Sprite[] unseletedSideLooks;
 
     public Sprite[] possibleProjectileSprites;
     private Sprite projectileSprite;
@@ -55,7 +56,9 @@ public class Weapon : Item
 
     private UnityEngine.Object[] hoverElements;
 
-    private Sprite currentSprite;
+    public Sprite selectedSprite;
+    public Sprite unSelectedSprite;
+
 
 
 
@@ -94,9 +97,10 @@ public class Weapon : Item
     public override void Generate()
     {
         look = UnityEngine.Random.Range(0, looks.Length);
-        if (sideLooks.Length == 6)
+        if (selectedSideLooks.Length == 5 && unseletedSideLooks.Length == 5)
         {
-            currentSprite = sideLooks[look];
+            selectedSprite = selectedSideLooks[look];
+            unSelectedSprite = unseletedSideLooks[look];
         }
         gameObject.GetComponent<SpriteRenderer>().sprite = looks[look];
 
@@ -237,8 +241,8 @@ public class Weapon : Item
             Player player = GetPlayer().GetComponent<Player>();
             Weapon weapon = player.weapons[player.currentWeapon].GetComponent<Weapon>();
             //Gets the sidesprites for the popups
-            Texture2D weapon1 = weapon.currentSprite.texture as Texture2D;
-            Texture2D weapon2 = currentSprite.texture as Texture2D;
+            Texture2D weapon1 = weapon.selectedSprite.texture as Texture2D;
+            Texture2D weapon2 = selectedSprite.texture as Texture2D;
             int offset = 100;
             //Draws the textures being used for popup
             GUI.DrawTexture(new Rect(Input.mousePosition.x - 160, Screen.height - Input.mousePosition.y - offset, 150, 150), texture);
