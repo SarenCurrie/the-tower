@@ -22,6 +22,10 @@ public class Door : MonoBehaviour
 	private enum CAMERA_STATE { NONE, MOVING_ROOM, MOVING_BACK };
 	private CAMERA_STATE cameraState = CAMERA_STATE.NONE;
 
+	private const float UNBLACKINGING_TIME = DOOR_CONTACT_TIME;
+	public const float BLACK_ALPHA = 0.8f;
+	public const float UNBLACK_ALPHA = 0f;
+
 	public void Update()
 	{
 		if (cameraState != CAMERA_STATE.NONE)
@@ -40,9 +44,11 @@ public class Door : MonoBehaviour
 			}
 			else
 			{
-				Vector3 currentRoomPos = GameManager.currentFloor.currentRoom.GetCameraPosition();
-				Vector3 nextRoomPos = GameManager.currentFloor.GetDoorDestination(orientation).GetCameraPosition();
-				Camera.main.transform.position = Vector3.Lerp(currentRoomPos, nextRoomPos, (t / DOOR_CONTACT_TIME));
+				Room currentRoom = GameManager.currentFloor.currentRoom;
+				Room nextRoomPos = GameManager.currentFloor.GetDoorDestination(orientation);
+				Camera.main.transform.position = Vector3.Lerp(currentRoom.GetCameraPosition(), nextRoomPos.GetCameraPosition(), (t / DOOR_CONTACT_TIME));
+				currentRoom.SetBlackerAlpha(Mathf.Lerp(UNBLACK_ALPHA, BLACK_ALPHA, t/UNBLACKINGING_TIME));
+				nextRoomPos.SetBlackerAlpha(Mathf.Lerp(BLACK_ALPHA, UNBLACK_ALPHA, t/UNBLACKINGING_TIME));
 
 				if (cameraState == CAMERA_STATE.MOVING_ROOM)
 					t += Time.deltaTime;
