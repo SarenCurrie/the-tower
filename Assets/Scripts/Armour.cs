@@ -239,6 +239,7 @@ public class Armour : Item
         if (showWindow)
         {
             Player player = GetPlayer().GetComponent<Player>();
+            //Gets the sidesprites for the popups
             switch (slot)
             {
                 case SLOTS.helm:

@@ -234,6 +234,7 @@ public class Weapon : Item
         {
             Player player = GetPlayer().GetComponent<Player>();
             Weapon weapon = player.weapons[player.currentWeapon].GetComponent<Weapon>();
+            //Gets the sidesprites for the popups
             Texture2D weapon1 = weapon.currentSprite.texture as Texture2D;
             Texture2D weapon2 = currentSprite.texture as Texture2D;
             int offset = 100;
