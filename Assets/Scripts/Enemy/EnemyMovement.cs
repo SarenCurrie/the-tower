@@ -20,6 +20,8 @@ public class EnemyMovement : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+		if (GetPlayer() == null)
+			return;
 		RotateToFacePlayer();
 		AdjustDistanceFromPlayer();
 	}
