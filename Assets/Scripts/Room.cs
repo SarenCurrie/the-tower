@@ -63,13 +63,14 @@ public class Room : MonoBehaviour {
 		{
 			if (child.tag == Tags.ENEMY)
 			{
-				EnemyMovement movement = child.GetComponent<EnemyMovement>();
-				RangedEnemy attack = child.GetComponent<RangedEnemy>();
+				foreach (Enemy e in child.GetComponents<Enemy>())
+				{
+					e.enabled = enable;	
+				}
 
+				EnemyMovement movement = child.GetComponent<EnemyMovement>();
 				if (movement != null)
 					movement.enabled = enable;
-				if (attack != null)
-					attack.enabled = enable;
 			}
 		}
 	}
