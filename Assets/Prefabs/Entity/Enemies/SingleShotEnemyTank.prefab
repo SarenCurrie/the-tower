@@ -33,6 +33,7 @@ GameObject:
   - 114: {fileID: 11483382}
   - 114: {fileID: 11453572}
   - 82: {fileID: 8230992}
+  - 114: {fileID: 11417230}
   m_Layer: 14
   m_Name: SingleShotEnemyTank
   m_TagString: Enemy
@@ -246,9 +247,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 475210, guid: c154e1ab5c984f441b1114dfe548458e, type: 2}
+  spread: 1
+  spreadRange: 0
+  fireForce: 0
+  fireFrequency: 0
+  strengthModifier: 0
+  dexterityModifier: 0
+  intelligenceModifier: 0
+  damageMod: 0
+  weaponMajor: 0
+  weaponMinor: 0
   looks:
   - {fileID: 21300000, guid: ec5f076a1ef21004ba51f127e330342f, type: 3}
   - {fileID: 0}
+  selectedSideLooks: []
+  unseletedSideLooks: []
   possibleProjectileSprites:
   - {fileID: 21300000, guid: ebe4c5176d748c342aacdc63f75e1bbd, type: 3}
   - {fileID: 21300000, guid: 7f406c7ad6388cb4baa394fc149579e0, type: 3}
@@ -267,7 +280,21 @@ MonoBehaviour:
   possibleShotgunSounds: []
   possibleSmgSounds: []
   mySkin: {fileID: 0}
+  selectedSprite: {fileID: 0}
+  unSelectedSprite: {fileID: 0}
   showWindow: 0
+--- !u!114 &11417230
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 142788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21e91d8b5437e0e43892465c42d3e437, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionForceModifier: 10
 --- !u!114 &11425604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -622,6 +649,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_IsKinematic
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: explosionForceModifier
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
