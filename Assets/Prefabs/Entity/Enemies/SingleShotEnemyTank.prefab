@@ -290,6 +290,7 @@ MonoBehaviour:
   - {fileID: 171710, guid: 86e544c40a678c145bd3949d0ff99e69, type: 2}
   - {fileID: 196840, guid: 490416a499f6e424faed7fcd7bccb7db, type: 2}
   - {fileID: 159418, guid: ad4db083d533462488f69479d030daf4, type: 2}
+  deathSound: {fileID: 8300000, guid: 7fa820df58a8a49d58de70cb13e39e8d, type: 3}
   damagedBy:
   - PlayerProjectile
 --- !u!114 &11453572
@@ -609,6 +610,10 @@ Prefab:
       propertyPath: possibleSounds.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: c7b8685e162577f41b72736b13f8be7a, type: 3}
+    - target: {fileID: 0}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7fa820df58a8a49d58de70cb13e39e8d, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 142788}

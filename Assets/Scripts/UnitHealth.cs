@@ -17,6 +17,7 @@ public class UnitHealth : MonoBehaviour {
 	public float maxHealth;
 	public float health;
 	public GameObject[] bloodPrefabs;
+	public AudioClip deathSound;
 
 	// Blood constants
 	public const int MIN_BLOOD_ON_DEATH = 15;
@@ -111,37 +112,49 @@ public class UnitHealth : MonoBehaviour {
 	*/
 	public void Die()
 	{
-		health = 0;
+		Renderer renderer = GetComponent<Renderer>();
+		if (renderer.enabled) {
+			health = 0;
 
-		//Make some blood
-		if (bloodPrefabs.Length > 0)
-		{
-			for (int i = 0; i < UnityEngine.Random.Range(MIN_BLOOD_ON_DEATH, MAX_BLOOD_ON_DEATH); i++)
+			//Make some blood
+			if (bloodPrefabs.Length > 0)
 			{
-				MakeBlood(BLOOD_SPATTER_DEATH);
+				for (int i = 0; i < UnityEngine.Random.Range(MIN_BLOOD_ON_DEATH, MAX_BLOOD_ON_DEATH); i++)
+				{
+					MakeBlood(BLOOD_SPATTER_DEATH);
+				}
+			}
+
+			string tag = gameObject.tag;
+			//Increment the player score upon killing an enemy;
+			if (tag.Equals("Enemy")) {
+				// add score
+				int baseScore = (int) gameObject.GetComponent<UnitHealth>().maxHealth;
+				baseScore += (int) GameManager.GetPlayer().GetComponent<UnitHealth>().health;
+				GameManager.GetPlayer().GetComponent<Player>().score += baseScore;
+
+				//Makes the dead thing drop an item
+				GameObject a = Item.GenerateItem(gameObject.GetComponent<Transform>().position);
+
+				// log kill and score for achievemnts
+				GameManager.achievementHandler.AddKill();
+				GameManager.achievementHandler.AddScore();
+			}
+			else if (tag.Equals("Player"))
+			{
+				DeathMenu.dead = true;
+			}
+
+			AudioSource audioSource = GetComponent<AudioSource>();
+			if (audioSource != null) {
+				audioSource.clip = deathSound;
+				audioSource.Play();
+				renderer.enabled = false;
+				Destroy(gameObject, deathSound.length);
+			}
+			else {
+				Destroy(gameObject);
 			}
 		}
-
-		string tag = gameObject.tag;
-		//Increment the player score upon killing an enemy;
-		if (tag.Equals("Enemy")) {
-			// add score
-			int baseScore = (int) gameObject.GetComponent<UnitHealth>().maxHealth;
-			baseScore += (int) GameManager.GetPlayer().GetComponent<UnitHealth>().health;
-			GameManager.GetPlayer().GetComponent<Player>().score += baseScore;
-
-			//Makes the dead thing drop an item
-			GameObject a = Item.GenerateItem(gameObject.GetComponent<Transform>().position);
-
-			// log kill and score for achievemnts
-			GameManager.achievementHandler.AddKill();
-			GameManager.achievementHandler.AddScore();
-		}
-		else if (tag.Equals("Player"))
-		{
-			DeathMenu.dead = true;
-		}
-
-		Destroy(gameObject);
 	}
 }
