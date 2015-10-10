@@ -11,7 +11,8 @@ public class Floor : MonoBehaviour {
 	public const int STARTING_ROOM_Y = NO_ROOMS_Y/2;
 
 	//How many rooms there will be. Guaranteed to be reachable.
-	int NO_ROOMS = 14;
+	//Excludes first room and boss room
+	public int numberOfRooms = 14;
 
 	//Posible enemies to have on this floor
 	public GameObject[] enemies;
@@ -19,6 +20,9 @@ public class Floor : MonoBehaviour {
 	//The list of possible rooms that can be spawned
 	//TODO: Make 3 different versions for the different tiers
 	public GameObject[] rooms;
+
+	public GameObject firstRoom;
+	public GameObject bossRoom;
 
 	//Stores the generated path of room indexes
 	private List<int[]> roomPath = new List<int[]>();
@@ -62,30 +66,43 @@ public class Floor : MonoBehaviour {
 		int x = STARTING_ROOM_X;
 		int y = STARTING_ROOM_Y;
 
-		int room_num = 0;
-		while (room_num < NO_ROOMS)
+		int roomNum = -1;
+		while (roomNum <= numberOfRooms)
 		{
 			if (floorMap[x][y] == null)
 			{
-				//Which room to spawn
-				int randRoomIndex = Random.Range(0, rooms.Length);
-				//Where to spawn it
-				Vector2 worldPosition = new Vector2(x * Room.ROOM_WIDTH, -y * Room.ROOM_HEIGHT);
-
-				//Spawn the room and add it to the grid
-				GameObject room = Instantiate(rooms[randRoomIndex], worldPosition, Quaternion.identity) as GameObject;
-				Room roomScript = room.GetComponent<Room>();
-				floorMap[x][y] = room;
-				roomPath.Add(new int[] {x, y});
-
-				//No enemies in the first room
-				if (room_num != 0)
+				if (roomNum == -1)
 				{
+					//Spawn first room
+					floorMap[x][y] = Instantiate(firstRoom, GetWorldPosition(x, y), Quaternion.identity) as GameObject;
+				}
+				else if (roomNum == numberOfRooms)
+				{
+					//Spawn boss room
+					floorMap[x][y] = Instantiate(bossRoom, GetWorldPosition(x, y), Quaternion.identity) as GameObject;
+					floorMap[x][y].GetComponent<Room>().DisableOrEnableEnemies(false);
+				}
+				else
+				{
+					//Spawn a random room
+					int randRoomIndex = Random.Range(0, rooms.Length);
+					GameObject room = Instantiate(rooms[randRoomIndex], GetWorldPosition(x, y), Quaternion.identity) as GameObject;
+					Room roomScript = room.GetComponent<Room>();
+
+					//Spawn the room and add it to the grid
+					floorMap[x][y] = room;
+
+					//Spawn all enemies disabled
 					roomScript.SpawnEnemies(enemies);
 					roomScript.DisableOrEnableEnemies(false);
 				}
 
-				room_num++;
+                //Rooms should be removed when the floor is
+                floorMap[x][y].transform.parent = transform;
+
+                //Add to path of generated rooms
+				roomPath.Add(new int[] { x, y });
+				roomNum++;
 			}
 
 			//Choose new direction
@@ -111,6 +128,11 @@ public class Floor : MonoBehaviour {
 				}
 			}
 		}
+	}
+
+	private Vector3 GetWorldPosition(int x, int y)
+	{
+		return new Vector2(x * Room.ROOM_WIDTH, -y * Room.ROOM_HEIGHT);
 	}
 
 	public int EnemiesLeft()

@@ -13,38 +13,38 @@ TagManager:
   - GameManager
   - DroppedItem
   - Player_Spawn
-  - BossWeapon
+  - Elevator
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  -
   - Water
   - UI
-  - 
-  - 
+  -
+  -
   - Floor
-  - 
+  -
   - LowObject
   - DroppedItem
-  - 
-  - 
+  -
+  -
   - Enemy
-  - 
-  - 
+  -
+  -
   - Player
   - PlayerArmour
-  - 
-  - 
+  -
+  -
   - Enemy
   - Weapon
-  - 
+  -
   - MidObject
   - FlyingEnemy
-  - 
+  -
   - EnemyProjectile
   - PlayerProjectile
-  - 
+  -
   - HighObject
   - Wall
   m_SortingLayers:

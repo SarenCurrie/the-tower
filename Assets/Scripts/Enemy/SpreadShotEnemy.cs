@@ -37,16 +37,25 @@ public class SpreadShotEnemy : RangedEnemy
                 projectile.GetComponent<Projectile>().SetDamage(damage);
 			}
 			lastFired = Time.time;
+			AudioSource source = GetComponent<AudioSource>();
+			source.clip = actualSound;
+			source.Play();
 		}
 	}
 
 	public override void Generate()
 	{
 		damageMod = (float)(
-			((50) + (System.Math.Pow(spreadRange, 0.7f))) / 
+			((50) + (System.Math.Pow(spreadRange, 0.7f))) /
 			(((System.Math.Pow(fireFrequency, 1.1f))) * System.Math.Pow(spread, 1.1f)));
+
+		// generate projectile
 		int projectileSpriteIndex = UnityEngine.Random.Range(0, possibleProjectileSprites.Length);
 		projectileSprite = possibleProjectileSprites[projectileSpriteIndex];
+
+		// generate sound
+		int soundIndex = UnityEngine.Random.Range(0, possibleSounds.Length);
+		actualSound = possibleSounds[soundIndex];
 	}
 
     protected override float CalculateFireStopTime()

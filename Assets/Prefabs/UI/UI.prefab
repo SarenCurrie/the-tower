@@ -502,7 +502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mySkin: {fileID: 11400000, guid: 7953503d9e83f8d469b84619849edd4e, type: 2}
-  firstLevelName: ui-world-manager
+  firstLevelName: world-manager-test
   startScreenName: StartScreen
 --- !u!114 &11444278
 MonoBehaviour:
@@ -1161,7 +1161,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: firstLevelName
+      value: world-manager-test
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 103134}

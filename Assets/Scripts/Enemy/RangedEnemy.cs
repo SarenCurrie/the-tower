@@ -28,6 +28,9 @@ public class RangedEnemy : MonoBehaviour
     public Sprite[] possibleProjectileSprites;
     protected Sprite projectileSprite;
 
+    public AudioClip[] possibleSounds;
+    protected AudioClip actualSound;
+
     void Start()
     {
         Generate();
@@ -54,6 +57,11 @@ public class RangedEnemy : MonoBehaviour
             projectile.GetComponent<Projectile>().SetDamage(damage);
             lastFired = Time.time;
         }
+
+        // Play Sound
+        AudioSource source = GetComponent<AudioSource>();
+        source.clip = actualSound;
+        source.Play();
     }
 
     private float CalculateDamage()
