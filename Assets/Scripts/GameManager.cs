@@ -32,6 +32,12 @@ public class GameManager : MonoBehaviour {
 		return player;
     }
 
+    // To be called when the player restarts the game
+    public static void Restart()
+    {
+        currentFloorNumber = -1;
+    }
+
 	public static void MovePlayerToNextFloor()
 	{
 		if (currentFloor != null)
