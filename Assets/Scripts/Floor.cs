@@ -107,7 +107,11 @@ public class Floor : MonoBehaviour {
 
 			//Choose new direction
 			int  direction = Random.Range(0, 4);
-			if (direction == 0 && x + 1 < NO_ROOMS_X)
+
+			//First room of first floor
+			if (roomNum == 0 && GameManager.GetCurrentFloorNumber() == 0)
+				x++;
+			else if (direction == 0 && x + 1 < NO_ROOMS_X)
 				x++;
 			else if (direction == 1 && x - 1 >= 0)
 				x--;
