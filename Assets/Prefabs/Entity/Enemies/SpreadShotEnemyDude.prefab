@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 405354}
   - 212: {fileID: 21203302}
   - 114: {fileID: 11416070}
+  - 82: {fileID: 8235082}
   m_Layer: 22
   m_Name: EnemyGun
   m_TagString: Untagged
@@ -31,6 +32,7 @@ GameObject:
   - 114: {fileID: 11425604}
   - 114: {fileID: 11483382}
   - 114: {fileID: 11488284}
+  - 82: {fileID: 8273408}
   m_Layer: 14
   m_Name: SpreadShotEnemyDude
   m_TagString: Enemy
@@ -92,6 +94,146 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: .256000012
+--- !u!82 &8235082
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 106428}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: .5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+--- !u!82 &8273408
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 142788}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: .150000006
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!114 &11416070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -118,6 +260,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: aec686b92f475ac40b5037d8dfcbfc10, type: 3}
   - {fileID: 21300000, guid: aedfb0871cf61d044ba3fc459485d6fb, type: 3}
   - {fileID: 21300000, guid: 5d41bfa3f684f0848a7918244531e89e, type: 3}
+  possibleRifleSounds:
+  - {fileID: 8300000, guid: 1cfa6d69443784c178b10795854bf504, type: 3}
+  - {fileID: 8300000, guid: 1c26d72a942c4466fb42921a3447e8f3, type: 3}
+  - {fileID: 8300000, guid: ca7f213e4b90c4250aba7ad96784bc87, type: 3}
+  possibleShotgunSounds: []
+  possibleSmgSounds: []
   mySkin: {fileID: 0}
   showWindow: 0
 --- !u!114 &11425604
@@ -185,6 +333,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: bf293a24ca0d32a4caf15a9d381d357d, type: 3}
   - {fileID: 21300000, guid: aec686b92f475ac40b5037d8dfcbfc10, type: 3}
   - {fileID: 21300000, guid: ebe4c5176d748c342aacdc63f75e1bbd, type: 3}
+  possibleSounds:
+  - {fileID: 8300000, guid: 28d3947910f76489a839ae531d30ec79, type: 3}
 --- !u!212 &21203302
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -255,6 +405,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: bloodPrefabs.Array.size
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleRifleSounds.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: possibleProjectileSprites.Array.size
@@ -440,6 +598,22 @@ Prefab:
       propertyPath: damagedBy.Array.data[2]
       value: PlayerProjectile
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Volume
+      value: .150000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: BypassListenerEffects
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 28d3947910f76489a839ae531d30ec79, type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 59f4fa68581e847b6a4cf815132f5ad9, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 142788}
