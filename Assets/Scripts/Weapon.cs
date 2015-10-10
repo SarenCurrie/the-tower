@@ -234,8 +234,18 @@ public class Weapon : Item
             GUI.DrawTexture(new Rect(Input.mousePosition.x - 115, Screen.height - Input.mousePosition.y - 50, 60, 60), weapon1);
             GUI.DrawTexture(new Rect(Input.mousePosition.x + 15, Screen.height - Input.mousePosition.y - 50, 80, 50), weapon2);
             //Generates new Window for the current weapon and floor weapon stats 
-            GUI.Window(0, new Rect(Input.mousePosition.x - 250, Screen.height - Input.mousePosition.y + 120 - offset, 250, 200), DoWindow0, "Current weapon:");
-            GUI.Window(1, new Rect(Input.mousePosition.x - 25, Screen.height - Input.mousePosition.y + 120 - offset, 250, 200), DoWindow1, "Floor weapon:");
-        }
+
+            if (Input.mousePosition.y <= (Screen.height / 3))
+            {
+                GUI.Window(0, new Rect(Input.mousePosition.x - 250, Screen.height - Input.mousePosition.y - 160 - offset, 250, 200), DoWindow0, "Current weapon:");
+                GUI.Window(1, new Rect(Input.mousePosition.x - 25, Screen.height - Input.mousePosition.y - 160 - offset, 250, 200), DoWindow1, "Floor weapon:");
+            }
+            else
+            {
+                GUI.Window(0, new Rect(Input.mousePosition.x - 250, Screen.height - Input.mousePosition.y + 120 - offset, 250, 200), DoWindow0, "Current weapon:");
+                GUI.Window(1, new Rect(Input.mousePosition.x - 25, Screen.height - Input.mousePosition.y + 120 - offset, 250, 200), DoWindow1, "Floor weapon:");
+            }
+            
+            }
     }
 }
