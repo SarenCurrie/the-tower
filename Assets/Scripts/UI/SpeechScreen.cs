@@ -17,10 +17,10 @@ public class SpeechScreen : MonoBehaviour {
 	private static bool shown = false;
 	
 	private static Rect dialogRect;
-	private static float dialogWidth = 300f;
+	private static float dialogWidth = 200f;
 	private static float dialogHeight = 600f;
-	private static float dialogOut = Screen.width + dialogWidth - 50f;
-	private static float dialogIn = Screen.width * 3;
+	private static float dialogOut = Screen.width - dialogWidth + 10f;
+	private static float dialogIn = Screen.width + 2*dialogWidth;
 
 	// Static method to show dialog
 	public static void ShowDialog(string text, float time)
@@ -88,14 +88,13 @@ public class SpeechScreen : MonoBehaviour {
 	{
 		GUI.skin = mySkin;
 		GUI.skin.textArea.wordWrap = true;
+		dialogRect = GUI.Window (100, dialogRect, DialogArea, "");
 		// If shown, slide out
         if (shown) {
-			dialogRect = GUI.Window (100, dialogRect, DialogArea, "");
-			dialogRect.x = Mathf.MoveTowards (dialogRect.x, dialogOut, 10);
+			dialogRect.x = Mathf.MoveTowards(dialogRect.x, dialogOut, 10);
 		} 
 		// Otherwise 
 		else {
-			dialogRect = GUI.Window (100, dialogRect, DialogArea, "");
 			dialogRect.x = Mathf.MoveTowards (dialogRect.x, dialogIn, 10);
 		}
 	
