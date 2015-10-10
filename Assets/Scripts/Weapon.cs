@@ -94,6 +94,8 @@ public class Weapon : Item
     public override void Generate()
     {
         look = UnityEngine.Random.Range(0, looks.Length);
+        print("LOOKS:" + look);
+
         currentSprite = sideLooks[look];
         gameObject.GetComponent<SpriteRenderer>().sprite = looks[look];
 
@@ -225,13 +227,15 @@ public class Weapon : Item
         GUI.skin = mySkin;
         //Loads the textures being used for popup
         Texture2D texture = Resources.Load("Holographic/output/main/bg/bg") as Texture2D;
-        Player player = GetPlayer().GetComponent<Player>();
-        Weapon weapon = player.weapons[player.currentWeapon].GetComponent<Weapon>();
-        Texture2D weapon1 = weapon.currentSprite.texture as Texture2D;
-        Texture2D weapon2 = currentSprite.texture as Texture2D;
+        
+        
 
         if (showWindow)
         {
+            Player player = GetPlayer().GetComponent<Player>();
+            Weapon weapon = player.weapons[player.currentWeapon].GetComponent<Weapon>();
+            Texture2D weapon1 = weapon.currentSprite.texture as Texture2D;
+            Texture2D weapon2 = currentSprite.texture as Texture2D;
             int offset = 100;
             //Draws the textures being used for popup
             GUI.DrawTexture(new Rect(Input.mousePosition.x - 160, Screen.height - Input.mousePosition.y - offset, 150, 150), texture);

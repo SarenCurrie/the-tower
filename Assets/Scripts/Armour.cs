@@ -28,6 +28,10 @@ public class Armour : Item
     //The slot this armour is
     public SLOTS slot;
 
+    public Sprite[] sideLooks;
+
+    private Sprite sideSprite;
+
     private string type;
 
     //The different possible slots for an armour
@@ -61,15 +65,19 @@ public class Armour : Item
         {
             case SLOTS.helm:
                 gameObject.GetComponent<SpriteRenderer>().sprite = helm;
+                sideSprite = sideLooks[0];
                 break;
             case SLOTS.chest:
                 gameObject.GetComponent<SpriteRenderer>().sprite = chest;
+                sideSprite = sideLooks[1];
                 break;
             case SLOTS.gloves:
                 gameObject.GetComponent<SpriteRenderer>().sprite = gloves;
+                sideSprite = sideLooks[2];
                 break;
             case SLOTS.boots:
                 gameObject.GetComponent<SpriteRenderer>().sprite = boots;
+                sideSprite = sideLooks[3];
                 break;
         }
 
@@ -225,17 +233,39 @@ public class Armour : Item
         GUI.skin = mySkin;
         //Loads the textures being used for popup
         Texture2D texture = Resources.Load("Holographic/output/main/bg/bg") as Texture2D;
-        Texture2D armour = Resources.Load("Holographic/output/main/bg/doom") as Texture2D;
-
+        Texture2D armourPiece=null;
+        
 
         if (showWindow)
         {
+            Player player = GetPlayer().GetComponent<Player>();
+            switch (slot)
+            {
+                case SLOTS.helm:
+                    if(player.helm!=null)
+                    armourPiece = player.helm.GetComponent<Armour>().sideSprite.texture as Texture2D;
+                    break;
+                case SLOTS.chest:
+                    if (player.chest != null)
+                    armourPiece = player.chest.GetComponent<Armour>().sideSprite.texture as Texture2D;
+                    break;
+                case SLOTS.boots:
+                    if (player.boots != null)
+                    armourPiece = player.boots.GetComponent<Armour>().sideSprite.texture as Texture2D;
+                    break;
+                case SLOTS.gloves:
+                    if (player.gloves != null)
+                    armourPiece = player.gloves.GetComponent<Armour>().sideSprite.texture as Texture2D;
+                    break;
+            }
+            Texture2D groundArmourPiece = sideSprite.texture as Texture2D;
+
             int offset = 100;
             //Draws the textures being used for popup
             GUI.DrawTexture(new Rect(Input.mousePosition.x - 160, Screen.height - Input.mousePosition.y - offset, 150, 150), texture);
             GUI.DrawTexture(new Rect(Input.mousePosition.x - 20, Screen.height - Input.mousePosition.y - offset, 150, 150), texture);
-            GUI.DrawTexture(new Rect(Input.mousePosition.x - 110, Screen.height - Input.mousePosition.y - 45, 55, 45), armour);
-            GUI.DrawTexture(new Rect(Input.mousePosition.x + 30, Screen.height - Input.mousePosition.y - 45, 55, 45), armour);
+            GUI.DrawTexture(new Rect(Input.mousePosition.x - 120, Screen.height - Input.mousePosition.y - 60, 70, 70), armourPiece);
+            GUI.DrawTexture(new Rect(Input.mousePosition.x + 20, Screen.height - Input.mousePosition.y - 60, 70, 70), groundArmourPiece);
             //Generates new Window for the current weapon and floor weapon stats 
             if (Input.mousePosition.y <= (Screen.height / 3))
             {
