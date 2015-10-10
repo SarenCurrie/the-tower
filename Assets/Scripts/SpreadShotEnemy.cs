@@ -33,6 +33,9 @@ public class SpreadShotEnemy : MonoBehaviour
 	public Sprite[] possibleProjectileSprites;
 	private Sprite projectileSprite;
 
+	public AudioClip[] possibleSounds;
+	private AudioClip actualSound;
+
 	void Start()
 	{
 		Generate();
@@ -65,6 +68,9 @@ public class SpreadShotEnemy : MonoBehaviour
                 projectile.GetComponent<Projectile>().SetDamage(damage);
 			}
 			lastFired = Time.time;
+			AudioSource source = GetComponent<AudioSource>();
+			source.clip = actualSound;
+			source.Play();
 		}
 	}
 
@@ -76,10 +82,16 @@ public class SpreadShotEnemy : MonoBehaviour
 	public void Generate()
 	{
 		damageMod = (float)(
-			((50) + (System.Math.Pow(spreadRange, 0.7f))) / 
+			((50) + (System.Math.Pow(spreadRange, 0.7f))) /
 			(((System.Math.Pow(fireFrequency, 1.1f))) * System.Math.Pow(spread, 1.1f)));
+
+		// generate projectile
 		int projectileSpriteIndex = UnityEngine.Random.Range(0, possibleProjectileSprites.Length);
 		projectileSprite = possibleProjectileSprites[projectileSpriteIndex];
+
+		// generate sound
+		int soundIndex = UnityEngine.Random.Range(0, possibleSounds.Length);
+		actualSound = possibleSounds[soundIndex];
 	}
 
 	private void MaybeFireAtPlayer()

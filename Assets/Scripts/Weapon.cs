@@ -16,7 +16,7 @@ using System;
 ///
 ///
 /// </summary>
-/// 
+///
 public class Weapon : Item
 {
 
@@ -45,6 +45,11 @@ public class Weapon : Item
     public Sprite[] possibleProjectileSprites;
     private Sprite projectileSprite;
 
+    public AudioClip[] possibleRifleSounds;
+    public AudioClip[] possibleShotgunSounds;
+    public AudioClip[] possibleSmgSounds;
+    private AudioClip actualSound;
+
     public GUISkin mySkin;
 
     private UnityEngine.Object[] hoverElements;
@@ -72,6 +77,9 @@ public class Weapon : Item
                 projectile.GetComponent<Projectile>().SetDamage(damage);
             }
             lastFired = Time.time;
+            AudioSource source = GetComponent<AudioSource>();
+            source.clip = actualSound;
+            source.Play();
         }
     }
 
@@ -91,6 +99,8 @@ public class Weapon : Item
         projectileSprite = possibleProjectileSprites[projectileSpriteIndex];
 
         int spreadRand = UnityEngine.Random.Range(1, 4);
+
+        int randSound;
         switch (spreadRand)
         {
             case 1:
@@ -100,6 +110,10 @@ public class Weapon : Item
                 fireFrequency = UnityEngine.Random.Range(1f, 5);
                 spreadRange = UnityEngine.Random.Range(15, 61);
                 damageMod = SPREAD_SHOT_MULTIPLIER * (float)(((50) + (System.Math.Pow(spreadRange, 0.7f))) / (((System.Math.Pow(fireFrequency, 1.1f))) * System.Math.Pow(spread, 1.1f)));
+
+                // generate sound
+                randSound = UnityEngine.Random.Range(0, possibleShotgunSounds.Length);
+                actualSound = possibleShotgunSounds[randSound];
                 break;
             case 2:
                 //Low fire rate single fire weapon
@@ -108,6 +122,10 @@ public class Weapon : Item
                 fireFrequency = UnityEngine.Random.Range(1f, 2.5f);
                 spreadRange = 1;
                 damageMod = SINGLE_SHOT_MULTIPLIER * (float)((50 * 1.5) / (System.Math.Pow(fireFrequency, 1.5f)));
+
+                // generate sound
+                randSound = UnityEngine.Random.Range(0, possibleRifleSounds.Length);
+                actualSound = possibleRifleSounds[randSound];
                 break;
             case 3:
                 //High fire rate  single fire weapon
@@ -118,6 +136,10 @@ public class Weapon : Item
                 //(DPS_CONST * SOME_CONST) / ((MIN_FORCE * FORSE^FORCE_CONST) + MIN_FREQ * FREQ^FREQ_CONST))
                 //lower damage for higher fire rate and/or faster bullet speed (total difference of roughly .3 of a second)
                 damageMod = FAST_SHOT_MULTIPLIER * (float)((50 * 25) / (20 * (System.Math.Pow(fireForce, 0.2)) + 15 * (System.Math.Pow(fireFrequency, 1.2))));
+
+                // generate sound
+                randSound = UnityEngine.Random.Range(0, possibleSmgSounds.Length);
+                actualSound = possibleSmgSounds[randSound];
                 break;
         }
 
@@ -150,10 +172,10 @@ public class Weapon : Item
         GetComponent<Rigidbody2D>().isKinematic = true;
 
         // Set the position of the weapon to that of the player.
-        
+
         transform.position = GetPlayer().transform.position;
         transform.rotation = GetPlayer().transform.rotation;
-       
+
         transform.parent = GetPlayer().transform; //Weapon will follow the player.
 
         transform.localPosition = new Vector3(0.15f, 0.3f, 0);
@@ -214,7 +236,7 @@ public class Weapon : Item
             GUI.DrawTexture(new Rect(Input.mousePosition.x - 20, Screen.height - Input.mousePosition.y - offset, 150, 150), texture);
             GUI.DrawTexture(new Rect(Input.mousePosition.x - 115, Screen.height - Input.mousePosition.y - 50, 60, 60), weapon1);
             GUI.DrawTexture(new Rect(Input.mousePosition.x + 15, Screen.height - Input.mousePosition.y - 50, 80, 50), weapon2);
-            //Generates new Window for the current weapon and floor weapon stats 
+            //Generates new Window for the current weapon and floor weapon stats
             GUI.Window(0, new Rect(Input.mousePosition.x - 250, Screen.height - Input.mousePosition.y + 120 - offset, 250, 200), DoWindow0, "Current weapon:");
             GUI.Window(1, new Rect(Input.mousePosition.x - 25, Screen.height - Input.mousePosition.y + 120 - offset, 250, 200), DoWindow1, "Floor weapon:");
         }
