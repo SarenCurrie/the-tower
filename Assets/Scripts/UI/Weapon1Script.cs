@@ -22,10 +22,10 @@ public class Weapon1Script : MonoBehaviour {
     {
         this.weapon = this.GetComponent<Image>();
 
-
     }
     void Start()
     {
+       
         loadWeaponSprites();
        
 
