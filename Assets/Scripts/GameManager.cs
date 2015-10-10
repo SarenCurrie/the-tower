@@ -1,29 +1,61 @@
-﻿using UnityEngine;
+﻿﻿using UnityEngine;
 using System.Collections;
 using Achievements;
 
 public class GameManager : MonoBehaviour {
 
-	public GameObject floorPrefab;
+	//Non static fields can be edited with the Unity editor.
+	public GameObject[] floorPrefabs;
+	//Will be set to floorPrefabs
+	public static GameObject[] staticFloorPrefabs;
 
+	//The player to instantiate
 	public GameObject playerPrefab;
 
-	public static GameObject player;
+    public static GameObject player;
 
+	//Player does not start on a floor
+	private static int currentFloorNumber = -1;
 	public static Floor currentFloor;
 
-	public static AchievementHandler achievementHandler;
+    public static AchievementHandler achievementHandler;
+    
+    void Start () {
+		staticFloorPrefabs = floorPrefabs;
 
-	void Start () {
-		currentFloor = Instantiate(floorPrefab).GetComponent<Floor>();
-		currentFloor.GenerateFloor();
 		player = Instantiate(playerPrefab) as GameObject;
-		currentFloor.MovePlayerToFloor(player);
-		achievementHandler = new AchievementHandler();
-	}
+		MovePlayerToNextFloor();
+    }
 
-	public static GameObject GetPlayer()
-	{
+    public static GameObject GetPlayer()
+    {
 		return player;
+    }
+
+    // To be called when the player restarts the game
+    public static void Restart()
+    {
+        currentFloorNumber = -1;
+    }
+
+	public static void MovePlayerToNextFloor()
+	{
+		if (currentFloor != null)
+			Destroy(currentFloor.gameObject);
+
+		currentFloorNumber++;
+
+        if (currentFloorNumber < staticFloorPrefabs.Length)
+        {
+            //Spawn the floor, generate it, and move the player to it
+            currentFloor = Instantiate(staticFloorPrefabs[currentFloorNumber]).GetComponent<Floor>();
+            currentFloor.GenerateFloor();
+            currentFloor.MovePlayerToFloor(player);
+            achievementHandler = new AchievementHandler();
+        }
+        else
+        {
+            print("You are already at the top floor!");
+        }
 	}
 }

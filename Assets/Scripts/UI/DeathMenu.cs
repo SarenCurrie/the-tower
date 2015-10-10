@@ -36,6 +36,7 @@ public class DeathMenu : MonoBehaviour {
 			dead = false;
 			PauseMenu.canPause = true;
 			// Restart the game
+			GameManager.Restart();
 			Application.LoadLevel(firstLevelName);
 		}
 		GUILayout.FlexibleSpace();
@@ -43,6 +44,7 @@ public class DeathMenu : MonoBehaviour {
 			dead = false;
 			PauseMenu.canPause = true;
 			// Quit the game
+			GameManager.Restart();
 			Application.LoadLevel(startScreenName);
 		}
 		GUILayout.FlexibleSpace();
