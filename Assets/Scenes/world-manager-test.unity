@@ -739,7 +739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mySkin: {fileID: 11400000, guid: 7953503d9e83f8d469b84619849edd4e, type: 2}
-  image: {fileID: 2800000, guid: 2f9c51814eb9644b7ba30b4184936588, type: 3}
+  image: {fileID: 2800000, guid: 7d2ec5586695b454d8da7f3fc4a4a268, type: 3}
 --- !u!1 &1004189770
 GameObject:
   m_ObjectHideFlags: 0
@@ -1186,6 +1186,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40ca46ba7b0f16248be24bb53a748fb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mySkin: {fileID: 0}
+  showWindow: 0
 --- !u!114 &1555265577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1323,6 +1325,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66b00ef6852b0f44599c46591404e1e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mySkin: {fileID: 0}
+  showWindow: 0
 --- !u!114 &1583222853
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2,39 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class SpreadShotEnemy : MonoBehaviour
+public class SpreadShotEnemy : RangedEnemy
 {
-
-	private const float BASE_HIT_DAMAGE = 0.01f;
-
-	public Transform projectilePrefab;
-
 	public int spread;
 	public float spreadRange;
-	public float fireForce;
-	public float fireFrequency;
-	private float damageMod;
-	public float DAMAGEMULTIPLIER;
-
-	private float lastFired = 0;
 
 	public float minBurstTime;
 	public float maxBurstTime;
-
-	public float minFireWait;
-	public float maxFireWait;
-
-	public float damage;
-
-	private float nextFireTime = 0;
-	private float fireStopTime = 0;
-	private bool waitingToFire = false;
-
-	public Sprite[] possibleProjectileSprites;
-	private Sprite projectileSprite;
-
-	public AudioClip[] possibleSounds;
-	private AudioClip actualSound;
 
 	void Start()
 	{
@@ -46,12 +20,7 @@ public class SpreadShotEnemy : MonoBehaviour
 		MaybeFireAtPlayer();
 	}
 
-	public void Fire()
-	{
-		Fire(CalculateDamage());
-	}
-
-	public void Fire(float damage)
+	public override void Fire(float damage)
 	{
 		if (Time.time > lastFired + 1 / fireFrequency)
 		{
@@ -74,12 +43,7 @@ public class SpreadShotEnemy : MonoBehaviour
 		}
 	}
 
-	private float CalculateDamage()
-	{
-		return (DAMAGEMULTIPLIER * damageMod);
-	}
-
-	public void Generate()
+	public override void Generate()
 	{
 		damageMod = (float)(
 			((50) + (System.Math.Pow(spreadRange, 0.7f))) /
@@ -94,24 +58,8 @@ public class SpreadShotEnemy : MonoBehaviour
 		actualSound = possibleSounds[soundIndex];
 	}
 
-	private void MaybeFireAtPlayer()
-	{
-		if (!waitingToFire)
-		{
-			if (Time.time > fireStopTime)
-			{
-				nextFireTime = Time.time + Random.Range(minFireWait, maxFireWait);
-				waitingToFire = true;
-			}
-			else
-			{
-				Fire();
-			}
-		}
-		else if (Time.time > nextFireTime)
-		{
-			fireStopTime = Time.time + Random.Range(minBurstTime, maxBurstTime);
-			waitingToFire = false;
-		}
-	}
+    protected override float CalculateFireStopTime()
+    {
+        return Time.time + Random.Range(minBurstTime, maxBurstTime);
+    }
 }
