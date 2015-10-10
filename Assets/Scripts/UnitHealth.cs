@@ -124,7 +124,7 @@ public class UnitHealth : MonoBehaviour {
 		string tag = gameObject.tag;
         //Increment the player score upon killing an enemy;
         if (tag.Equals("Enemy")) {
-            int baseScore = gameObject.GetComponent<Enemy>().baseScore;
+            int baseScore = gameObject.GetComponent<EnemyMovement>().baseScore;
             baseScore += (int) GameManager.GetPlayer().GetComponent<UnitHealth>().health;
             GameManager.GetPlayer().GetComponent<Player>().score += baseScore;
 

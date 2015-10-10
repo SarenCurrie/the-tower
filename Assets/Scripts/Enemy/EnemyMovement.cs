@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RangedEnemy : MonoBehaviour
+public class EnemyMovement : MonoBehaviour
 {
 
 	public float preferedDistance;
 	public float preferedDistanceRange;
 	public float movementSpeed;
+	public int baseScore;
 
 	private Rigidbody2D rigidBody;
 
@@ -48,7 +49,7 @@ public class RangedEnemy : MonoBehaviour
 
 	private void MoveToPlayer()
 	{
-		rigidBody.AddForce(transform.up * movementSpeed);
+		rigidBody.AddForce(transform.up * movementSpeed * Time.deltaTime);
 	}
 
 	private void FleePlayer()

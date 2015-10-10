@@ -10,12 +10,11 @@ public class BossBehaviour : MonoBehaviour {
     void Update()
     {
         if (Time.time > LastChecked+1)
-
         {   //First Phase transition
             if ((gameObject.GetComponent<UnitHealth>().GetHealth() / MaxHealth) < 0.5 * MaxHealth)
             {
                 gameObject.GetComponent<SpreadShotEnemy>().enabled = true;
-                gameObject.GetComponent<SingleShotEnemy>().enabled = true;
+                //gameObject.GetComponent<SingleShotEnemy>().enabled = true;
             }
                 
         }

@@ -414,7 +414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2950332f19737146988318faed03e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floorPrefab: {fileID: 148626, guid: 2c55cf8062416064382e22de70de37c8, type: 2}
+  floorPrefab: {fileID: 167694, guid: dfd0b0f123ee626468a314822df31cd4, type: 2}
   playerPrefab: {fileID: 124720, guid: e8af01c63e511704fbe0773330730626, type: 2}
 --- !u!4 &579870623
 Transform:
