@@ -241,13 +241,13 @@ public class Weapon : Item
 
 
 
-        GUILayout.TextField("Damage:     " + Math.Round(damageCurrent, 2) + "\nProjectiles:  " + spreadCurrent + "\nFire Rate:      " + Math.Round(fireRateCurrent, 2) + "\nMaj/Min:    " + currentMajor + "-" + currentMinor, "OutlineText");
+        GUILayout.TextField("Damage:   " + Math.Round(damageCurrent, 2) + "\nProjectiles:  " + spreadCurrent + "\nFire Rate:    " + Math.Round(fireRateCurrent, 2) + "\nMaj/Min:    " + currentMajor + "-" + currentMinor, "OutlineText");
     }
 
     //Creates ground weapon textfield for popup comparison
     private void DoWindow1(int windowID)
     {
-        GUILayout.TextField("Damage:     " + Math.Round(damageMod, 2) + "\nProjectiles:  " + spreadRange + "\nFire Rate:      " + Math.Round(fireFrequency, 2) + "\nMaj/Min:    " + weaponMajor + "-" + weaponMinor, "OutlineText");
+        GUILayout.TextField("Damage:   " + Math.Round(damageMod, 2) + "\nProjectiles:  " + spreadRange + "\nFire Rate:    " + Math.Round(fireFrequency, 2) + "\nMaj/Min:    " + weaponMajor + "-" + weaponMinor, "OutlineText");
     }
 
     //Called every frame to check if the on hover will open a comparison popup for the weaopn
