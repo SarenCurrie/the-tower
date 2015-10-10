@@ -13,6 +13,7 @@ TagManager:
   - GameManager
   - DroppedItem
   - Player_Spawn
+  - BossWeapon
   layers:
   - Default
   - TransparentFX
