@@ -60,6 +60,8 @@ public class PauseMenu : MonoBehaviour {
 		GUILayout.FlexibleSpace();
 		if (GUILayout.Button("Quit", "ShortButton")) {
 			paused = false;
+			//Restart the game
+			GameManager.Restart();
 			// Exit the game
 			Application.LoadLevel(startScreenName);
 		}

@@ -41,9 +41,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfRooms: 14
   enemies:
-  - {fileID: 142788, guid: cd802890af0622f4aa52ecc30f7a5d81, type: 2}
-  - {fileID: 142788, guid: 4169dc2e43898d04595f60dabe7fa381, type: 2}
-  - {fileID: 142788, guid: 1de057c51b804b246830f1c373e8c873, type: 2}
+  - {fileID: 120536, guid: a94be4a3b889b4473afd134fd093a4c8, type: 2}
+  - {fileID: 143210, guid: 5794c095d2ad84195b8bcb22a34bfad2, type: 2}
+  - {fileID: 149160, guid: dc5d1aa5a7e2e45caa0611393fba63b5, type: 2}
   rooms:
   - {fileID: 161840, guid: 8846dc68ffda6d846b2b71c7d2d75ce7, type: 2}
   - {fileID: 188336, guid: a575e649994dc304bb254dda7dd1aaf9, type: 2}
@@ -83,7 +83,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: enemies.Array.data[0]
       value: 
-      objectReference: {fileID: 142788, guid: cd802890af0622f4aa52ecc30f7a5d81, type: 2}
+      objectReference: {fileID: 120536, guid: a94be4a3b889b4473afd134fd093a4c8, type: 2}
     - target: {fileID: 0}
       propertyPath: rooms.Array.data[3]
       value: 
@@ -107,7 +107,11 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: enemies.Array.data[2]
       value: 
-      objectReference: {fileID: 142788, guid: 1de057c51b804b246830f1c373e8c873, type: 2}
+      objectReference: {fileID: 149160, guid: dc5d1aa5a7e2e45caa0611393fba63b5, type: 2}
+    - target: {fileID: 0}
+      propertyPath: enemies.Array.data[1]
+      value: 
+      objectReference: {fileID: 143210, guid: 5794c095d2ad84195b8bcb22a34bfad2, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 167694}
