@@ -72,10 +72,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slot: 0
-  helm: {fileID: 21300000, guid: 662b16e154f264c4daf6159aef92c6e4, type: 3}
-  chest: {fileID: 21300000, guid: 662b16e154f264c4daf6159aef92c6e4, type: 3}
-  boots: {fileID: 21300000, guid: 662b16e154f264c4daf6159aef92c6e4, type: 3}
-  gloves: {fileID: 21300000, guid: 662b16e154f264c4daf6159aef92c6e4, type: 3}
+  sideLooks:
+  - {fileID: 21300000, guid: a3ee78140ba12b449b38ae830747d84c, type: 3}
+  - {fileID: 21300000, guid: 22c37eca065b91c4493e25b71ab2a05e, type: 3}
+  - {fileID: 21300000, guid: eec8e2cf653ddf24cac56ea919c28434, type: 3}
+  - {fileID: 21300000, guid: 5e757a722dbfbae4ca608f8198c0ca19, type: 3}
+  helm: {fileID: 21300000, guid: 58e2e96a7cf1bd54eaa728b34c65dae8, type: 3}
+  chest: {fileID: 21300000, guid: 8a00f97330637c543970310e17f54d7c, type: 3}
+  boots: {fileID: 21300000, guid: a986a5e0662c3dd4b91a237ed91b18c3, type: 3}
+  gloves: {fileID: 21300000, guid: 7bb395b15048a664795b44f87c39b4b5, type: 3}
+  mySkin: {fileID: 11400000, guid: 7953503d9e83f8d469b84619849edd4e, type: 2}
+  showWindow: 0
 --- !u!212 &21231088
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -112,6 +119,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: looks.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: sideLooks.Array.size
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: possibleProjectileSprites.Array.size
@@ -226,22 +237,47 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: helm
       value: 
-      objectReference: {fileID: 21300000, guid: 662b16e154f264c4daf6159aef92c6e4,
+      objectReference: {fileID: 21300000, guid: 58e2e96a7cf1bd54eaa728b34c65dae8,
         type: 3}
     - target: {fileID: 0}
       propertyPath: chest
       value: 
-      objectReference: {fileID: 21300000, guid: 662b16e154f264c4daf6159aef92c6e4,
+      objectReference: {fileID: 21300000, guid: 8a00f97330637c543970310e17f54d7c,
         type: 3}
     - target: {fileID: 0}
       propertyPath: boots
       value: 
-      objectReference: {fileID: 21300000, guid: 662b16e154f264c4daf6159aef92c6e4,
+      objectReference: {fileID: 21300000, guid: a986a5e0662c3dd4b91a237ed91b18c3,
         type: 3}
     - target: {fileID: 0}
       propertyPath: gloves
       value: 
-      objectReference: {fileID: 21300000, guid: 662b16e154f264c4daf6159aef92c6e4,
+      objectReference: {fileID: 21300000, guid: 7bb395b15048a664795b44f87c39b4b5,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: mySkin
+      value: 
+      objectReference: {fileID: 11400000, guid: 7953503d9e83f8d469b84619849edd4e,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: sideLooks.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: a3ee78140ba12b449b38ae830747d84c,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: sideLooks.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 22c37eca065b91c4493e25b71ab2a05e,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: sideLooks.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: eec8e2cf653ddf24cac56ea919c28434,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: sideLooks.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 5e757a722dbfbae4ca608f8198c0ca19,
         type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
