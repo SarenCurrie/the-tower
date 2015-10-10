@@ -12,6 +12,7 @@ GameObject:
   - 114: {fileID: 11417484}
   - 61: {fileID: 6119930}
   - 50: {fileID: 5020852}
+  - 82: {fileID: 8265330}
   m_Layer: 11
   m_Name: GroundGun
   m_TagString: Floor
@@ -60,6 +61,76 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: .5, y: .5}
+--- !u!82 &8265330
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184112}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: .200000003
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!114 &11417484
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -90,7 +161,23 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2cae16e5aa237c2458d66b133364d03b, type: 3}
   - {fileID: 21300000, guid: aec686b92f475ac40b5037d8dfcbfc10, type: 3}
   - {fileID: 21300000, guid: aedfb0871cf61d044ba3fc459485d6fb, type: 3}
+  possibleRifleSounds:
+  - {fileID: 8300000, guid: b2526ee545197488d8924fc76936ef7f, type: 3}
+  - {fileID: 8300000, guid: 54fdd77919fb84ff3b9ccf99c37ed928, type: 3}
+  - {fileID: 8300000, guid: dc3651cc23c1d4e66bb6effc8768108e, type: 3}
+  - {fileID: 8300000, guid: 3ea592fd5e4bb44259bd84fc4c15e586, type: 3}
+  possibleShotgunSounds:
+  - {fileID: 8300000, guid: 28d3947910f76489a839ae531d30ec79, type: 3}
+  - {fileID: 8300000, guid: 8928fac6adbe74ab0ac97bfc34efba13, type: 3}
+  - {fileID: 8300000, guid: 7fa820df58a8a49d58de70cb13e39e8d, type: 3}
+  - {fileID: 8300000, guid: b48fd2d66794045d3a6bd8e662529971, type: 3}
+  possibleSmgSounds:
+  - {fileID: 8300000, guid: ab754e41137a34978a67f78ae99134b7, type: 3}
+  - {fileID: 8300000, guid: 666ad2ffbd450487e8c2a8ed74bf20cf, type: 3}
+  - {fileID: 8300000, guid: 25fd7ad1e281847f58db2f285b6fff47, type: 3}
+  - {fileID: 8300000, guid: d9efb9bb3536a4e9c8ca5fa56786c0fb, type: 3}
   mySkin: {fileID: 11400000, guid: 7953503d9e83f8d469b84619849edd4e, type: 2}
+  showWindow: 0
 --- !u!212 &21231088
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -127,6 +214,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: looks.Array.size
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleSmgSounds.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleRifleSounds.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleShotgunSounds.Array.size
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: possibleProjectileSprites.Array.size
@@ -258,10 +357,58 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 91874a4553ba7e2479256c8bf7e7413a,
         type: 3}
-      propertyPath: mySkin
+    - target: {fileID: 0}
+      propertyPath: possibleRifleSounds.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 7953503d9e83f8d469b84619849edd4e,
-        type: 2}
+      objectReference: {fileID: 8300000, guid: b2526ee545197488d8924fc76936ef7f, type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleRifleSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 54fdd77919fb84ff3b9ccf99c37ed928, type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_Volume
+      value: .200000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleRifleSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: dc3651cc23c1d4e66bb6effc8768108e, type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleShotgunSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 28d3947910f76489a839ae531d30ec79, type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleShotgunSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 8928fac6adbe74ab0ac97bfc34efba13, type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleShotgunSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 7fa820df58a8a49d58de70cb13e39e8d, type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleShotgunSounds.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: b48fd2d66794045d3a6bd8e662529971, type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleRifleSounds.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3ea592fd5e4bb44259bd84fc4c15e586, type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleSmgSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: ab754e41137a34978a67f78ae99134b7, type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleSmgSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 666ad2ffbd450487e8c2a8ed74bf20cf, type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleSmgSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 25fd7ad1e281847f58db2f285b6fff47, type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleSmgSounds.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: d9efb9bb3536a4e9c8ca5fa56786c0fb, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 184112}
