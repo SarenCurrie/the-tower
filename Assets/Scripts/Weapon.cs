@@ -225,7 +225,9 @@ public class Weapon : Item
         GUI.skin = mySkin;
         //Loads the textures being used for popup
         Texture2D texture = Resources.Load("Holographic/output/main/bg/bg") as Texture2D;
-        Texture2D weapon1 = Resources.Load("Holographic/output/main/bg/Baxia_S") as Texture2D;
+        Player player = GetPlayer().GetComponent<Player>();
+        Weapon weapon = player.weapons[player.currentWeapon].GetComponent<Weapon>();
+        Texture2D weapon1 = weapon.currentSprite.texture as Texture2D;
         Texture2D weapon2 = currentSprite.texture as Texture2D;
 
         if (showWindow)
@@ -234,7 +236,7 @@ public class Weapon : Item
             //Draws the textures being used for popup
             GUI.DrawTexture(new Rect(Input.mousePosition.x - 160, Screen.height - Input.mousePosition.y - offset, 150, 150), texture);
             GUI.DrawTexture(new Rect(Input.mousePosition.x - 20, Screen.height - Input.mousePosition.y - offset, 150, 150), texture);
-            GUI.DrawTexture(new Rect(Input.mousePosition.x - 115, Screen.height - Input.mousePosition.y - 50, 60, 60), weapon1);
+            GUI.DrawTexture(new Rect(Input.mousePosition.x - 120, Screen.height - Input.mousePosition.y - 45, 70, 40), weapon1);
             GUI.DrawTexture(new Rect(Input.mousePosition.x + 20, Screen.height - Input.mousePosition.y - 45, 70, 40), weapon2);
             //Generates new Window for the current weapon and floor weapon stats 
 
