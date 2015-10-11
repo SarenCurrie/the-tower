@@ -41,9 +41,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfRooms: 14
   enemies:
-  - {fileID: 142788, guid: cd802890af0622f4aa52ecc30f7a5d81, type: 2}
-  - {fileID: 142788, guid: 4169dc2e43898d04595f60dabe7fa381, type: 2}
-  - {fileID: 142788, guid: 1de057c51b804b246830f1c373e8c873, type: 2}
+  - {fileID: 186402, guid: 4169dc2e43898d04595f60dabe7fa381, type: 2}
+  - {fileID: 106964, guid: c5048c075e49f4102aa367cdfaf52610, type: 2}
+  - {fileID: 146412, guid: cd802890af0622f4aa52ecc30f7a5d81, type: 2}
   rooms:
   - {fileID: 161840, guid: 8846dc68ffda6d846b2b71c7d2d75ce7, type: 2}
   - {fileID: 188336, guid: a575e649994dc304bb254dda7dd1aaf9, type: 2}
@@ -51,6 +51,14 @@ MonoBehaviour:
   - {fileID: 187704, guid: 171aee03a2b739743ac7b967868fa4aa, type: 2}
   - {fileID: 146140, guid: 17772a99673644a4ab05bed9cd71c817, type: 2}
   - {fileID: 142954, guid: e68f1d8942d9a8d46b8df3099c204e66, type: 2}
+  enterDialog: Forgot to mention, security will know you aren't meant to be here.
+    Expect hostility.
+  exitDialog: Impressive, I didn't think you'd make it look so easy.
+  floorDialog:
+  - To think, you lived BELOW this floor when I found you.
+  - The citizens are probably used to hiding when they here gunfire down here.
+  - We don't even need security this far down, there's enough violence to keep the
+    citizens in line.
   firstRoom: {fileID: 187704, guid: 171aee03a2b739743ac7b967868fa4aa, type: 2}
   bossRoom: {fileID: 128328, guid: 9d24bbc637492394eaac4bcb2a12210e, type: 2}
   screenBlackerPrefab: {fileID: 129008, guid: 02525fa4ad0ec374290310ece9f6b2c4, type: 2}
@@ -70,6 +78,10 @@ Prefab:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
+      propertyPath: floorDialog.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: rooms.Array.data[0]
       value: 
       objectReference: {fileID: 161840, guid: 8846dc68ffda6d846b2b71c7d2d75ce7, type: 2}
@@ -84,7 +96,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: enemies.Array.data[0]
       value: 
-      objectReference: {fileID: 142788, guid: cd802890af0622f4aa52ecc30f7a5d81, type: 2}
+      objectReference: {fileID: 186402, guid: 4169dc2e43898d04595f60dabe7fa381, type: 2}
     - target: {fileID: 0}
       propertyPath: rooms.Array.data[3]
       value: 
@@ -98,9 +110,28 @@ Prefab:
       value: 
       objectReference: {fileID: 142954, guid: e68f1d8942d9a8d46b8df3099c204e66, type: 2}
     - target: {fileID: 0}
-      propertyPath: firstRoom
-      value: 
-      objectReference: {fileID: 187704, guid: 171aee03a2b739743ac7b967868fa4aa, type: 2}
+      propertyPath: enterDialog
+      value: Forgot to mention, security will know you aren't meant to be here. Expect
+        hostility.
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: exitDialog
+      value: Impressive, I didn't think you'd make it look so easy.
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: floorDialog.Array.data[0]
+      value: To think, you lived BELOW this floor when I found you.
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: floorDialog.Array.data[1]
+      value: The citizens are probably used to hiding when they here gunfire down
+        here.
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: floorDialog.Array.data[2]
+      value: We don't even need security this far down, there's enough violence to
+        keep the citizens in line.
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: bossRoom
       value: 
@@ -108,7 +139,15 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: enemies.Array.data[2]
       value: 
-      objectReference: {fileID: 142788, guid: 1de057c51b804b246830f1c373e8c873, type: 2}
+      objectReference: {fileID: 146412, guid: cd802890af0622f4aa52ecc30f7a5d81, type: 2}
+    - target: {fileID: 0}
+      propertyPath: enemies.Array.data[1]
+      value: 
+      objectReference: {fileID: 106964, guid: c5048c075e49f4102aa367cdfaf52610, type: 2}
+    - target: {fileID: 0}
+      propertyPath: enemies.Array.data[3]
+      value: 
+      objectReference: {fileID: 102632, guid: 444a3c53f4fb5104ea81e1c175509fcb, type: 2}
     - target: {fileID: 0}
       propertyPath: screenBlackerPrefab
       value: 
