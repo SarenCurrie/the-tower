@@ -12,7 +12,7 @@ public class StatSummaryText : MonoBehaviour {
 
 	public void updateStats(int str, int dex, int intl)
 	{
-		text.text = "STR:\t" + str.ToString () + "\n" + "DEX:\t" + dex.ToString () + "\n" + "INT: \t" + intl.ToString ();
+		text.text = "STR:\t" + str.ToString () + "\n" + "DEX:\t" + dex.ToString () + "\n" + "INT:  \t" + intl.ToString ();
 	}
 
 	void Update () {

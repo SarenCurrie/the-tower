@@ -1111,7 +1111,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "STR:\t1\nDEX:\t1\nINT: \t1"
+  m_Text: "STR:\t1\nDEX:\t1\nINT:  \t1"
 --- !u!222 &1178931923
 CanvasRenderer:
   m_ObjectHideFlags: 0

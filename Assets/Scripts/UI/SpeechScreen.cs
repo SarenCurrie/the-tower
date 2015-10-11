@@ -17,10 +17,10 @@ public class SpeechScreen : MonoBehaviour {
 	private static bool shown = false;
 	
 	private static Rect dialogRect;
-	private static float dialogWidth = 200f;
+	private static float dialogWidth = 300f;
 	private static float dialogHeight = 600f;
-	private static float dialogOut = Screen.width - dialogWidth + 10f;
-	private static float dialogIn = Screen.width + 2*dialogWidth;
+	private static float dialogOut = Screen.width + dialogWidth - 30f;
+	private static float dialogIn = 2 * Screen.width;
 
 	// Static method to show dialog
 	public static void ShowDialog(string text, float time)
@@ -73,6 +73,9 @@ public class SpeechScreen : MonoBehaviour {
 	}
 
 	void Update () {
+		if (Input.anyKey) {
+			DoDialog ("FUCK",2.0f);
+		}
 	}
 
 	private void Start()
