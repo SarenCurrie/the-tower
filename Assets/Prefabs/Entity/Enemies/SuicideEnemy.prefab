@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 102632}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: .75, y: .75, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -75,7 +75,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: .150000006
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -157,16 +157,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d077cd82f98bf4742a90bc080b3c1078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
+  maxHealth: 50
   health: 0
   shouldDrop: 0
   bloodPrefabs: []
-  deathSound: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: 7fa820df58a8a49d58de70cb13e39e8d, type: 3}
   damagedBy:
-  - Player
-  - Enemy
   - PlayerProjectile
-  - EnemyProjectile
 --- !u!114 &11482392
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -181,6 +178,7 @@ MonoBehaviour:
   explosionForce: 10000
   explosionRadius: 1
   damage: 50
+  explosion: {fileID: 420742, guid: 16eba6684384c7941aeafb45cfd5deba, type: 2}
 --- !u!114 &11491884
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -230,6 +228,10 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: damagedBy.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: m_Mass
       value: 100
       objectReference: {fileID: 0}
@@ -270,6 +272,50 @@ Prefab:
       propertyPath: damage
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.x
+      value: .75
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: .75
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxHealth
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7fa820df58a8a49d58de70cb13e39e8d, type: 3}
+    - target: {fileID: 0}
+      propertyPath: damagedBy.Array.data[0]
+      value: PlayerProjectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damagedBy.Array.data[1]
+      value: EnemyProjectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damagedBy.Array.data[2]
+      value: EnemyProjectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damagedBy.Array.data[3]
+      value: EnemyProjectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: health
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Volume
+      value: .150000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 420742, guid: 16eba6684384c7941aeafb45cfd5deba, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 102632}

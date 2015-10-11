@@ -105,7 +105,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: .400000006
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -537,6 +537,8 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: explosionForceModifier
       value: .00999999978
+      propertyPath: m_Volume
+      value: .400000006
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
