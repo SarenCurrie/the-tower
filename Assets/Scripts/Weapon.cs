@@ -119,32 +119,38 @@ public class Weapon : Item
         int spreadRand = UnityEngine.Random.Range(1, 4);
 
         int randSound;
-        switch (spreadRand)
-        {
-            case 1:
-                //Multiple projectiles
-                spread = UnityEngine.Random.Range(5, 10);
-                fireForce = UnityEngine.Random.Range(15, 20);
-                fireFrequency = UnityEngine.Random.Range(1f, 5);
-                spreadRange = UnityEngine.Random.Range(15, 61);
-                damageMod = SPREAD_SHOT_MULTIPLIER * (float)(((50) + (System.Math.Pow(spreadRange, 0.7f))) / (((System.Math.Pow(fireFrequency, 1.1f))) * System.Math.Pow(spread, 1.1f)));
+		switch (spreadRand)
+		{
+			case 1:
+				//Multiple projectiles
+				spread = UnityEngine.Random.Range(5, 10);
+				fireForce = UnityEngine.Random.Range(15, 20);
+				fireFrequency = UnityEngine.Random.Range(1f, 5);
+				spreadRange = UnityEngine.Random.Range(15, 61);
+				damageMod = SPREAD_SHOT_MULTIPLIER * (float)(((50) + (System.Math.Pow(spreadRange, 0.7f))) / (((System.Math.Pow(fireFrequency, 1.1f))) * System.Math.Pow(spread, 1.1f)));
 
-                // generate sound
-                randSound = UnityEngine.Random.Range(0, possibleShotgunSounds.Length);
-                actualSound = possibleShotgunSounds[randSound];
-                break;
-            case 2:
-                //Low fire rate single fire weapon
-                spread = 1;
-                fireForce = UnityEngine.Random.Range(80, 100);
-                fireFrequency = UnityEngine.Random.Range(1f, 2.5f);
-                spreadRange = 1;
-                damageMod = SINGLE_SHOT_MULTIPLIER * (float)((50 * 1.5) / (System.Math.Pow(fireFrequency, 1.5f)));
+				// generate sound
+				if (possibleShotgunSounds.Length > 0)
+				{
+					randSound = UnityEngine.Random.Range(0, possibleShotgunSounds.Length);
+					actualSound = possibleShotgunSounds[randSound];
+				}
+				break;
+			case 2:
+				//Low fire rate single fire weapon
+				spread = 1;
+				fireForce = UnityEngine.Random.Range(80, 100);
+				fireFrequency = UnityEngine.Random.Range(1f, 2.5f);
+				spreadRange = 1;
+				damageMod = SINGLE_SHOT_MULTIPLIER * (float)((50 * 1.5) / (System.Math.Pow(fireFrequency, 1.5f)));
 
-                // generate sound
-                randSound = UnityEngine.Random.Range(0, possibleRifleSounds.Length);
-                actualSound = possibleRifleSounds[randSound];
-                break;
+				// generate sound
+				if(possibleRifleSounds.Length > 0)
+				{
+					randSound = UnityEngine.Random.Range(0, possibleRifleSounds.Length);
+					actualSound = possibleRifleSounds[randSound];
+				}
+				break;
             case 3:
                 //High fire rate  single fire weapon
                 spread = 1;
@@ -155,9 +161,12 @@ public class Weapon : Item
                 //lower damage for higher fire rate and/or faster bullet speed (total difference of roughly .3 of a second)
                 damageMod = FAST_SHOT_MULTIPLIER * (float)((50 * 25) / (20 * (System.Math.Pow(fireForce, 0.2)) + 15 * (System.Math.Pow(fireFrequency, 1.2))));
 
-                // generate sound
-                randSound = UnityEngine.Random.Range(0, possibleSmgSounds.Length);
-                actualSound = possibleSmgSounds[randSound];
+				// generate sound
+				if (possibleSmgSounds.Length > 0)
+				{
+					randSound = UnityEngine.Random.Range(0, possibleSmgSounds.Length);
+					actualSound = possibleSmgSounds[randSound];
+				}
                 break;
         }
 
@@ -247,7 +256,7 @@ public class Weapon : Item
     //Creates ground weapon textfield for popup comparison
     private void DoWindow1(int windowID)
     {
-        GUILayout.TextField("Damage:   " + Math.Round(damageMod, 2) + "\nProjectiles:  " + spreadRange + "\nFire Rate:    " + Math.Round(fireFrequency, 2) + "\nMaj/Min:    " + weaponMajor + "-" + weaponMinor, "OutlineText");
+        GUILayout.TextField("Damage:   " + Math.Round(damageMod, 2) + "\nProjectiles:  " + spread + "\nFire Rate:    " + Math.Round(fireFrequency, 2) + "\nMaj/Min:    " + weaponMajor + "-" + weaponMinor, "OutlineText");
     }
 
     //Called every frame to check if the on hover will open a comparison popup for the weaopn

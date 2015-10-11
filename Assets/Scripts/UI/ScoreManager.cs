@@ -13,17 +13,12 @@ public class ScoreManager : MonoBehaviour {
 
 	// Use this for initialization
     private float score = 0f;
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
 
-        int updatedScore = GameManager.GetPlayer().GetComponent<Player>().score;
-        this.transform.Find("Score").GetComponent<Text>().text = updatedScore.ToString();
-        score = updatedScore;
-
-	
+	public void updateScore()
+	{
+		int updatedScore = GameManager.GetPlayer().GetComponent<Player>().score;
+		this.transform.Find("Score").GetComponent<Text>().text = updatedScore.ToString();
+		score = updatedScore;
 	}
+
 }
