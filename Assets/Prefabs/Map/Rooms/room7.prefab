@@ -11,7 +11,7 @@ GameObject:
   - 212: {fileID: 21200616}
   - 50: {fileID: 5031954}
   - 61: {fileID: 6102560}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (6)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ GameObject:
   - 212: {fileID: 21250468}
   - 50: {fileID: 5065954}
   - 61: {fileID: 6161766}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (4)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ GameObject:
   - 212: {fileID: 21248400}
   - 50: {fileID: 5077754}
   - 61: {fileID: 6125372}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (3)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - 212: {fileID: 21285318}
   - 50: {fileID: 5068172}
   - 61: {fileID: 6118130}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (1)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   - 212: {fileID: 21204064}
   - 50: {fileID: 5003688}
   - 61: {fileID: 6184412}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ GameObject:
   - 50: {fileID: 5027298}
   - 61: {fileID: 6188514}
   - 212: {fileID: 21296588}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: VertWall (1)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   - 212: {fileID: 21278308}
   - 50: {fileID: 5099960}
   - 61: {fileID: 6176230}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (2)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -235,7 +235,7 @@ GameObject:
   - 50: {fileID: 5068044}
   - 61: {fileID: 6126358}
   - 212: {fileID: 21251548}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: VertWall
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -271,7 +271,7 @@ GameObject:
   - 212: {fileID: 21288248}
   - 50: {fileID: 5086540}
   - 61: {fileID: 6137280}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (5)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -1299,6 +1299,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalRotation.w
       value: .707106709
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 31
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

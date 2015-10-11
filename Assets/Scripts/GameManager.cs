@@ -20,8 +20,13 @@ public class GameManager : MonoBehaviour {
 
     public static AchievementHandler achievementHandler;
 
-    void Start () {
+	//What can enemies see through?
+	public LayerMask enemySightLayerMask;
+	public static LayerMask staticEnemySightLayerMask;
+
+	void Start () {
 		staticFloorPrefabs = floorPrefabs;
+		staticEnemySightLayerMask = enemySightLayerMask;
 
 		player = Instantiate(playerPrefab) as GameObject;
 		MovePlayerToNextFloor();
