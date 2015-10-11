@@ -11,7 +11,7 @@ public class DeathMenu : MonoBehaviour {
 	private static float deathHeight = 200f;
 	private static float deathWidth = 350f;
 	private static float deathTop = 0 - Screen.height;
-	private static float deathBottom = (Screen.height)/2;
+	private static float deathBottom = (Screen.height-deathHeight)/2;
 	private Rect deathRect = new Rect((Screen.width - deathWidth)/2, deathTop, deathWidth, deathHeight);
 
 	void DeathArea(int windowID) 
