@@ -78,7 +78,7 @@ public class SpeechScreen : MonoBehaviour {
 		}
 	}
 
-	private void Start()
+	private void Awake()
 	{
 		// Enfore singleton for dialog so we can use static ShowDialog
 		if (singleton == null) {

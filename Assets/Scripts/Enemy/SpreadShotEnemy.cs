@@ -35,6 +35,9 @@ public class SpreadShotEnemy : RangedEnemy
                 }
                 projectile.GetComponent<Rigidbody2D>().AddForce((projectileTransform.up) * fireForce);
                 projectile.GetComponent<Projectile>().SetDamage(damage);
+
+				//Should be added as part of the current room
+				projectile.parent = GameManager.currentFloor.currentRoom.transform;
 			}
 			lastFired = Time.time;
 			AudioSource source = GetComponent<AudioSource>();

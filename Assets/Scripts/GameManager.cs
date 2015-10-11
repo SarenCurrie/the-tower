@@ -38,6 +38,11 @@ public class GameManager : MonoBehaviour {
         currentFloorNumber = -1;
     }
 
+	public static int GetCurrentFloorNumber()
+	{
+		return currentFloorNumber;
+	}
+
 	public static void MovePlayerToNextFloor()
 	{
 		if (currentFloor != null)

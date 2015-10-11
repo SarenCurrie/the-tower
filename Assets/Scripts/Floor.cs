@@ -10,6 +10,11 @@ public class Floor : MonoBehaviour {
 	public const int STARTING_ROOM_X = NO_ROOMS_X/2;
 	public const int STARTING_ROOM_Y = NO_ROOMS_Y/2;
 
+	//Percentage chance flavour text will be displayed upon entering room
+	public const int DIALOGCHANCE = 20;
+	//Amount of time that DIALOG is displayed
+	public const int DIALOGTIME = 10;
+
 	//How many rooms there will be. Guaranteed to be reachable.
 	//Excludes first room and boss room
 	public int numberOfRooms = 14;
@@ -21,8 +26,19 @@ public class Floor : MonoBehaviour {
 	//TODO: Make 3 different versions for the different tiers
 	public GameObject[] rooms;
 
+	//The flavour text upon entering the floor
+	public string enterDialog;
+
+	//The flavour text upon beating the boss
+	public string exitDialog;
+
+	//The flavour text that can occur throughout the floor
+	public List<string> floorDialog = new List<string>();
+
 	public GameObject firstRoom;
 	public GameObject bossRoom;
+
+	public GameObject screenBlackerPrefab;
 
 	//Stores the generated path of room indexes
 	private List<int[]> roomPath = new List<int[]>();
@@ -54,6 +70,13 @@ public class Floor : MonoBehaviour {
 						currentRoom.DisableOrEnableEnemies(true);
 					}
 				}
+			}
+
+			// Have a chance to display some of the flavour text
+			int r = Random.Range(0, 101);
+			if(r <= DIALOGCHANCE)
+			{
+				DisplayFloorDialog();
 			}
 		}
 	}
@@ -95,6 +118,9 @@ public class Floor : MonoBehaviour {
 					//Spawn all enemies disabled
 					roomScript.SpawnEnemies(enemies);
 					roomScript.DisableOrEnableEnemies(false);
+
+					if (screenBlackerPrefab != null)
+						floorMap[x][y].GetComponent<Room>().SpawnScreenBlacker(screenBlackerPrefab);
 				}
 
                 //Rooms should be removed when the floor is
@@ -107,7 +133,11 @@ public class Floor : MonoBehaviour {
 
 			//Choose new direction
 			int  direction = Random.Range(0, 4);
-			if (direction == 0 && x + 1 < NO_ROOMS_X)
+
+			//First room of first floor
+			if (roomNum == 0 && GameManager.GetCurrentFloorNumber() == 0)
+				x++;
+			else if (direction == 0 && x + 1 < NO_ROOMS_X)
 				x++;
 			else if (direction == 1 && x - 1 >= 0)
 				x--;
@@ -173,10 +203,25 @@ public class Floor : MonoBehaviour {
 		return floorMap[x][y].GetComponent<Room>();
 	}
 
+	// Displays a piece of flavour text and makes sure that it can't be shown again
+	public void DisplayFloorDialog()
+	{
+		int dialogLength = floorDialog.Count;
+
+		if(dialogLength != 0)
+		{
+			int index = UnityEngine.Random.Range(0, dialogLength);
+			SpeechScreen.ShowDialog(floorDialog[index], DIALOGTIME);
+			floorDialog.RemoveAt(index);
+		}
+	}
+
 	public void MovePlayerToFloor(GameObject player)
 	{
 		currentRoom.MovePlayerToRoom(player);
 		currentRoom.DisableOrEnableEnemies(true);
 		Camera.main.transform.position = currentRoom.GetCameraPosition();
+		// Show the entry dialog
+		SpeechScreen.ShowDialog(enterDialog, DIALOGTIME);
 	}
 }

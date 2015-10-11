@@ -9,6 +9,8 @@ public class Room : MonoBehaviour {
 
 	public const float CAMERA_HEIGHT = -10f;
 
+	private GameObject screenBlacker;
+
 	public Vector3 GetCameraPosition()
 	{
 		Vector2 pos = transform.position;
@@ -28,6 +30,13 @@ public class Room : MonoBehaviour {
 		}
 	}
 
+	public void SpawnScreenBlacker(GameObject screenBlackerPrefab)
+	{
+		screenBlacker = Instantiate(screenBlackerPrefab, transform.position, Quaternion.identity) as GameObject;
+		screenBlacker.transform.parent = transform;
+		SetBlackerAlpha(Door.BLACK_ALPHA);
+	}
+
 	public void DisableDoor(Door.DOOR_ORIENTATION disableOrientation)
 	{
 		foreach (Transform t in transform)
@@ -43,20 +52,40 @@ public class Room : MonoBehaviour {
 		}
 	}
 
-	/// <summary>
-	/// Disable or enable all enemies on this floor. Also makes
-	/// enemies invisible.
-	/// </summary>
-	/// <param name="enable">Should enemies be enabled or not?</param>
+	private void DisableOrEnableEnemies(Transform trans, bool enable)
+	{
+		foreach (Transform child in trans)
+		{
+			if (child.tag == Tags.ENEMY)
+			{
+				foreach (Enemy e in child.GetComponents<Enemy>())
+				{
+					e.enabled = enable;
+				}
+			}
+
+			//Recurse
+			DisableOrEnableEnemies(child, enable);
+		}
+	}
+
+	//Disable or enable all enemies on this floor. Also makes
+	//enemies invisible.
 	public void DisableOrEnableEnemies(bool enable)
+	{
+		DisableOrEnableEnemies(transform, enable);
+	}
+
+	public void ShowOrHideEnemies(bool show)
 	{
 		foreach (Transform child in transform)
 		{
 			if (child.tag == Tags.ENEMY)
-				child.gameObject.SetActive(enable);
+			{
+				child.GetComponent<SpriteRenderer>().enabled = show;
+			}
 		}
 	}
-
 	/// <summary>
 	/// Gets the number of enemies left in the room
 	/// </summary>
@@ -102,6 +131,16 @@ public class Room : MonoBehaviour {
 		{
 			if (child.tag == Tags.PLAYER_SPAWN)
 				player.transform.position = child.transform.position;
+		}
+	}
+
+	public void SetBlackerAlpha(float alpha)
+	{
+		if (screenBlacker != null)
+		{
+			Color colour = screenBlacker.GetComponent<SpriteRenderer>().material.color;
+			colour.a = alpha;
+			screenBlacker.GetComponent<SpriteRenderer>().material.color = colour;
 		}
 	}
 }
