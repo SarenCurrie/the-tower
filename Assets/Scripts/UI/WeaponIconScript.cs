@@ -22,8 +22,8 @@ public class WeaponIconScript : MonoBehaviour {
 	private RectTransform rect;
 	private float startX;
 	private float startY;
-	private float popupHeight = 65;
-	private float popupWidth = 150;
+	private float popupHeight = 85;
+	private float popupWidth = 160;
 
     public GUISkin mySkin;
 
@@ -103,7 +103,9 @@ public class WeaponIconScript : MonoBehaviour {
 				float damageCurrent = weapon.damageMod;
 				int spreadCurrent = weapon.spread;
 				float forceCurrent = weapon.fireForce;
-				GUI.TextField(new Rect (Input.mousePosition.x, Screen.height - Input.mousePosition.y - popupHeight, popupWidth, popupHeight),"Damage:   " + System.Math.Round(damageCurrent, 2) + "\nSpread:       " + spreadCurrent + "\nForce:          " + forceCurrent + "\n","OutlineText");
+				string currentMajor = weapon.weaponMajor.ToString();
+				string currentMinor = weapon.weaponMinor.ToString();
+				GUI.TextField(new Rect (Input.mousePosition.x, Screen.height - Input.mousePosition.y - popupHeight, popupWidth, popupHeight),"Damage:   " + System.Math.Round(damageCurrent, 2) + "\nSpread:       " + spreadCurrent + "\nForce:          " + forceCurrent + "\nMaj/Min:    " + currentMajor + "-" + currentMinor,"OutlineText");
 			}
 		}
     }

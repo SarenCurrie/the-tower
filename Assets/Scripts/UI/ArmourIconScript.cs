@@ -68,7 +68,7 @@ public class ArmourIconScript : MonoBehaviour {
 				Armour item = GameManager.GetPlayer ().GetComponent<Player> ().GetGearDictionary () [slot].GetComponent<Armour> ();
 				if (item != null) {
 					float strength = item.GetStrength ();
-					float intelligence = item.GetStrength ();
+					float intelligence = item.GetIntelligence();
 					float dexterity = item.GetDexterity ();
 					GUI.TextField (new Rect (Input.mousePosition.x, Screen.height - Input.mousePosition.y - popupHeight, popupWidth, popupHeight), slot + ":\nStrength: " + strength + "\nDexterity: " + dexterity + "\nIntelligence: " + intelligence + "\n", "OutlineText");
 				}
