@@ -73,9 +73,6 @@ public class SpeechScreen : MonoBehaviour {
 	}
 
 	void Update () {
-		if (Input.anyKey) {
-			DoDialog ("FUCK",2.0f);
-		}
 	}
 
 	private void Awake()
