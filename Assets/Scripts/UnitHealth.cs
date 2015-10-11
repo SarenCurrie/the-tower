@@ -134,7 +134,8 @@ public class UnitHealth : MonoBehaviour {
 				GameManager.GetPlayer().GetComponent<Player>().score += baseScore;
 				Canvas.FindObjectOfType<ScoreManager>().updateScore();
 
-				gameObject.GetComponent<Enemy>().enabled = false;
+				foreach (Enemy e in gameObject.GetComponents<Enemy>())
+					e.enabled = false;
 
 				if (shouldDrop)
 				{
