@@ -1089,8 +1089,8 @@ GameObject:
   - 222: {fileID: 1555265579}
   - 114: {fileID: 1555265578}
   - 114: {fileID: 1555265577}
-  - 114: {fileID: 1555265576}
   - 114: {fileID: 1555265580}
+  - 114: {fileID: 1555265576}
   m_Layer: 5
   m_Name: Weapon2
   m_TagString: Untagged
@@ -1119,17 +1119,16 @@ RectTransform:
 --- !u!114 &1555265576
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11468290, guid: 8712fb94c019cf246a9b3d98791cd27a,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1555265574}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40ca46ba7b0f16248be24bb53a748fb5, type: 3}
+  m_Script: {fileID: 11500000, guid: 66b00ef6852b0f44599c46591404e1e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponNumber: 1
   mySkin: {fileID: 11400000, guid: 7953503d9e83f8d469b84619849edd4e, type: 2}
-  showWindow: 0
 --- !u!114 &1555265577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1278,6 +1277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66b00ef6852b0f44599c46591404e1e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponNumber: 0
   mySkin: {fileID: 11400000, guid: 7953503d9e83f8d469b84619849edd4e, type: 2}
 --- !u!114 &1583222854
 MonoBehaviour:

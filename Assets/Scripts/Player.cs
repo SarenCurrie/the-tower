@@ -140,6 +140,9 @@ public class Player : MonoBehaviour {
 			if (weapons[(currentWeapon + 1) % weapons.Length] != null)
 			{
 				currentWeapon = (currentWeapon + 1) % weapons.Length;
+				foreach (WeaponIconScript ws in Canvas.FindObjectsOfType<WeaponIconScript>()){
+					ws.toggleWeapon();
+				}
 			}
         }
     }
@@ -165,6 +168,10 @@ public class Player : MonoBehaviour {
 				weapons[currentWeapon].GetComponent<Weapon>().ReturnToFloor();
 				weapons[currentWeapon] = weapon.gameObject;
 			}
+		}
+
+		foreach (WeaponIconScript ws in Canvas.FindObjectsOfType<WeaponIconScript>()){
+			ws.reloadWeaponSprites();
 		}
 	}
 
