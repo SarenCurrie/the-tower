@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 
 /// <summary>
@@ -218,6 +219,11 @@ public class Player : MonoBehaviour {
 
         // Update player stats
         UpdateStats();
+
+		// Update icon sprites
+		foreach (ArmourIconScript ais in Canvas.FindObjectsOfType<ArmourIconScript>()){
+			ais.toggleArmour();
+		}
     }
 
 	// Update is called once per frame
@@ -353,5 +359,19 @@ public class Player : MonoBehaviour {
 	public int GetIntelligence()
 	{
 		return intelligence;
+	}
+
+	public Dictionary<string, GameObject> GetGearDictionary()
+	{
+		Dictionary<string, GameObject> gearDict = new Dictionary<string, GameObject>();
+		if (chest != null)
+			gearDict.Add ("Chest", chest);
+		if (helm != null)
+			gearDict.Add ("Helm", helm);
+		if (gloves != null)
+			gearDict.Add ("Gloves", gloves);
+		if (boots != null)
+			gearDict.Add ("Boots", boots);
+		return gearDict;
 	}
 }
