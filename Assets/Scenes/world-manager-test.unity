@@ -626,8 +626,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-
-  m_SizeDelta: {x: 1600, y: 730}
+  m_AnchoredPosition: {x: 420.5, y: 183}
+  m_SizeDelta: {x: 841, y: 366}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &965361234
 MonoBehaviour:
@@ -1214,6 +1214,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40ca46ba7b0f16248be24bb53a748fb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mySkin: {fileID: 0}
+  showWindow: 0
 --- !u!114 &1555265577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1351,6 +1353,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66b00ef6852b0f44599c46591404e1e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mySkin: {fileID: 0}
+  showWindow: 0
 --- !u!114 &1583222853
 MonoBehaviour:
   m_ObjectHideFlags: 0
