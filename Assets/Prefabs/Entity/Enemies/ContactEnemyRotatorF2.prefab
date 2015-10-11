@@ -17,7 +17,7 @@ GameObject:
   - 82: {fileID: 8265000}
   - 114: {fileID: 11472422}
   m_Layer: 14
-  m_Name: ContactEnemyRotator
+  m_Name: ContactEnemyRotatorF2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

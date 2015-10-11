@@ -41,8 +41,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfRooms: 14
   enemies:
-  - {fileID: 186402, guid: 4169dc2e43898d04595f60dabe7fa381, type: 2}
-  - {fileID: 106964, guid: c5048c075e49f4102aa367cdfaf52610, type: 2}
+  - {fileID: 101716, guid: df0d13e51c27c5140bf14684ba41f2d5, type: 2}
+  - {fileID: 109020, guid: b0f4bb4b0e2695b449c1162b9fbd8ddc, type: 2}
   - {fileID: 146412, guid: cd802890af0622f4aa52ecc30f7a5d81, type: 2}
   rooms:
   - {fileID: 161840, guid: 8846dc68ffda6d846b2b71c7d2d75ce7, type: 2}
@@ -56,11 +56,11 @@ MonoBehaviour:
   exitDialog: Impressive, I didn't think you'd make it look so easy.
   floorDialog:
   - To think, you lived BELOW this floor when I found you.
-  - The citizens are probably used to hiding when they here gunfire down here.
+  - The citizens are probably used to hiding when they hear gunfire down here.
   - We don't even need security this far down, there's enough violence to keep the
     citizens in line.
   firstRoom: {fileID: 187704, guid: 171aee03a2b739743ac7b967868fa4aa, type: 2}
-  bossRoom: {fileID: 128328, guid: 9d24bbc637492394eaac4bcb2a12210e, type: 2}
+  bossRoom: {fileID: 193178, guid: 6c96b564d349f884abbd28cface94821, type: 2}
   screenBlackerPrefab: {fileID: 129008, guid: 02525fa4ad0ec374290310ece9f6b2c4, type: 2}
 --- !u!1001 &100100000
 Prefab:
@@ -96,7 +96,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: enemies.Array.data[0]
       value: 
-      objectReference: {fileID: 186402, guid: 4169dc2e43898d04595f60dabe7fa381, type: 2}
+      objectReference: {fileID: 101716, guid: df0d13e51c27c5140bf14684ba41f2d5, type: 2}
     - target: {fileID: 0}
       propertyPath: rooms.Array.data[3]
       value: 
@@ -124,7 +124,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: floorDialog.Array.data[1]
-      value: The citizens are probably used to hiding when they here gunfire down
+      value: The citizens are probably used to hiding when they hear gunfire down
         here.
       objectReference: {fileID: 0}
     - target: {fileID: 0}
@@ -135,7 +135,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: bossRoom
       value: 
-      objectReference: {fileID: 128328, guid: 9d24bbc637492394eaac4bcb2a12210e, type: 2}
+      objectReference: {fileID: 193178, guid: 6c96b564d349f884abbd28cface94821, type: 2}
     - target: {fileID: 0}
       propertyPath: enemies.Array.data[2]
       value: 
@@ -143,7 +143,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: enemies.Array.data[1]
       value: 
-      objectReference: {fileID: 106964, guid: c5048c075e49f4102aa367cdfaf52610, type: 2}
+      objectReference: {fileID: 109020, guid: b0f4bb4b0e2695b449c1162b9fbd8ddc, type: 2}
     - target: {fileID: 0}
       propertyPath: enemies.Array.data[3]
       value: 
