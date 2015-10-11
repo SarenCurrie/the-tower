@@ -146,6 +146,10 @@ Prefab:
       propertyPath: enemies.Array.data[1]
       value: 
       objectReference: {fileID: 106964, guid: c5048c075e49f4102aa367cdfaf52610, type: 2}
+    - target: {fileID: 0}
+      propertyPath: enemies.Array.data[3]
+      value: 
+      objectReference: {fileID: 102632, guid: 444a3c53f4fb5104ea81e1c175509fcb, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 167694}

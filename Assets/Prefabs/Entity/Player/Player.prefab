@@ -14,6 +14,7 @@ GameObject:
   - 58: {fileID: 5842912}
   - 114: {fileID: 11488504}
   - 82: {fileID: 8234432}
+  - 114: {fileID: 11438620}
   m_Layer: 17
   m_Name: Player
   m_TagString: Player
@@ -151,6 +152,18 @@ MonoBehaviour:
   gloves: {fileID: 0}
   boots: {fileID: 0}
   movementSpeed: 100000
+--- !u!114 &11438620
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21e91d8b5437e0e43892465c42d3e437, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionForceModifier: 10
 --- !u!114 &11488504
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -417,6 +430,9 @@ Prefab:
       propertyPath: deathSound
       value: 
       objectReference: {fileID: 8300000, guid: f0c98d0d5c7ecd54391e3bd2fa4f9be2, type: 3}
+    - target: {fileID: 0}
+      propertyPath: explosionForceModifier
+      value: 10
     - target: {fileID: 0}
       propertyPath: health
       value: 250
