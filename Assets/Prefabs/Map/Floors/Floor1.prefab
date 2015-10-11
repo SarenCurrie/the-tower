@@ -56,7 +56,7 @@ MonoBehaviour:
   exitDialog: Impressive, I didn't think you'd make it look so easy.
   floorDialog:
   - To think, you lived BELOW this floor when I found you.
-  - The citizens are probably used to hiding when they here gunfire down here.
+  - The citizens are probably used to hiding when they hear gunfire down here.
   - We don't even need security this far down, there's enough violence to keep the
     citizens in line.
   firstRoom: {fileID: 187704, guid: 171aee03a2b739743ac7b967868fa4aa, type: 2}
@@ -123,7 +123,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: floorDialog.Array.data[1]
-      value: The citizens are probably used to hiding when they here gunfire down
+      value: The citizens are probably used to hiding when they hear gunfire down
         here.
       objectReference: {fileID: 0}
     - target: {fileID: 0}
@@ -131,9 +131,6 @@ Prefab:
       value: We don't even need security this far down, there's enough violence to
         keep the citizens in line.
       objectReference: {fileID: 0}
-      propertyPath: firstRoom
-      value: 
-      objectReference: {fileID: 187704, guid: 171aee03a2b739743ac7b967868fa4aa, type: 2}
     - target: {fileID: 0}
       propertyPath: bossRoom
       value: 
