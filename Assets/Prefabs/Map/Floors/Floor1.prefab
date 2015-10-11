@@ -39,10 +39,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea2bd5a944b9b0544bde7362fb6a255d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DialogChance: 20
   numberOfRooms: 14
   enemies:
-  - {fileID: 101716, guid: df0d13e51c27c5140bf14684ba41f2d5, type: 2}
-  - {fileID: 109020, guid: b0f4bb4b0e2695b449c1162b9fbd8ddc, type: 2}
+  - {fileID: 180436, guid: df0d13e51c27c5140bf14684ba41f2d5, type: 2}
+  - {fileID: 189728, guid: b0f4bb4b0e2695b449c1162b9fbd8ddc, type: 2}
   - {fileID: 146412, guid: cd802890af0622f4aa52ecc30f7a5d81, type: 2}
   rooms:
   - {fileID: 161840, guid: 8846dc68ffda6d846b2b71c7d2d75ce7, type: 2}
@@ -96,7 +97,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: enemies.Array.data[0]
       value: 
-      objectReference: {fileID: 101716, guid: df0d13e51c27c5140bf14684ba41f2d5, type: 2}
+      objectReference: {fileID: 180436, guid: df0d13e51c27c5140bf14684ba41f2d5, type: 2}
     - target: {fileID: 0}
       propertyPath: rooms.Array.data[3]
       value: 
@@ -143,7 +144,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: enemies.Array.data[1]
       value: 
-      objectReference: {fileID: 109020, guid: b0f4bb4b0e2695b449c1162b9fbd8ddc, type: 2}
+      objectReference: {fileID: 189728, guid: b0f4bb4b0e2695b449c1162b9fbd8ddc, type: 2}
     - target: {fileID: 0}
       propertyPath: enemies.Array.data[3]
       value: 
