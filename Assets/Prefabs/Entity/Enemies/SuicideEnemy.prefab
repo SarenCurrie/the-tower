@@ -178,7 +178,7 @@ MonoBehaviour:
   explosionForce: 10000
   explosionRadius: 1
   damage: 50
-  explosion: {fileID: 420742, guid: 16eba6684384c7941aeafb45cfd5deba, type: 2}
+  explosion: {fileID: 420742, guid: 7e377ed23b45bae498af618f0454a883, type: 2}
 --- !u!114 &11491884
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -315,7 +315,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: explosion
       value: 
-      objectReference: {fileID: 420742, guid: 16eba6684384c7941aeafb45cfd5deba, type: 2}
+      objectReference: {fileID: 420742, guid: 7e377ed23b45bae498af618f0454a883, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 102632}
