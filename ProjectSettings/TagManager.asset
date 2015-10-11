@@ -9,37 +9,42 @@ TagManager:
   - Enemy
   - PlayerProjectile
   - EnemyProjectile
+  - Door
+  - GameManager
+  - DroppedItem
+  - Player_Spawn
+  - Elevator
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  -
   - Water
   - UI
-  - 
-  - 
+  -
+  -
   - Floor
-  - 
+  -
   - LowObject
   - DroppedItem
-  - 
-  - 
+  -
+  -
   - Enemy
-  - 
-  - 
+  -
+  -
   - Player
   - PlayerArmour
-  - 
-  - 
+  -
+  -
   - Enemy
   - Weapon
-  - 
+  -
   - MidObject
   - FlyingEnemy
-  - 
+  -
   - EnemyProjectile
   - PlayerProjectile
-  - 
+  -
   - HighObject
   - Wall
   m_SortingLayers:
@@ -49,9 +54,15 @@ TagManager:
   - name: Ground_Floor
     uniqueID: 643252735
     locked: 0
-  - name: Units
-    uniqueID: 3568364171
+  - name: Item_Dropped
+    uniqueID: 4236922667
     locked: 0
   - name: Projectiles
     uniqueID: 2764566173
+    locked: 0
+  - name: Units
+    uniqueID: 3568364171
+    locked: 0
+  - name: Held_Weapon
+    uniqueID: 999604933
     locked: 0

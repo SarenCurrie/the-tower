@@ -1,102 +1,82 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+/// <summary>
+/// 
+/// This class represents the Main player of the game
+/// 
+/// The class is responsible for assigning the main player's attributes score,
+/// current weapon and items.
+/// 
+/// It also is responsible for handling the movement/navigation of the player and 
+/// checks to deal with the player firing their current weapon.
+/// 
+/// </summary>
 public class Player : MonoBehaviour {
 
 	// The base value of all stats
 	private const int MIN_STAT = 1;
+
+    //Player score
+    private int _score=0;
+    public int score
+    {
+        get
+        {
+            return _score;
+        }
+        set
+        {
+            _score = value;
+
+        }
+    }
 
 	// Player stats
 	private int strength = 1;
 	private int dexterity = 1;
 	private int intelligence = 1;
 
-    public GameObject weapon1;
-    public GameObject weapon2;
+	public GameObject[] weapons = new GameObject[2];
 
-    public GameObject helm;
-    public GameObject chest;
-    public GameObject gloves;
-    public GameObject boots;
+	public GameObject helm;
+	public GameObject chest;
+	public GameObject gloves;
+	public GameObject boots;
 
-    public float movementSpeed = 20.0f;
+	public float movementSpeed = 20.0f;
 
 	private Rigidbody2D rigidBody;
 
-    // Use this for initialization
-    void Start () {
+	//Which weapon is the player currently using?
+	public int currentWeapon
+	{
+        get
+		{
+			return _currentWeapon;
+		}
+		set
+		{
+			if (weapons[currentWeapon] != null)
+			{
+				weapons[currentWeapon].GetComponent<SpriteRenderer>().enabled = false;
+            }
+			_currentWeapon = value;
+			weapons[currentWeapon].GetComponent<SpriteRenderer>().enabled = true;
+		}
+    }
+	//DO NOT TOUCH
+	private int _currentWeapon = -1;
+
+	// Use this for initialization
+	void Start () {
 		rigidBody = GetComponent<Rigidbody2D>();
-    }
 
-    /*
-    *  Picks a weapon up off the ground and puts it in the correct weapon slot
-    */
-    void PickUpWeapon (GameObject w, int position)
-    {
-		if (position == 1)
-		{
-			weapon1 = w;
-		}
-		else
-		{
-			weapon2 = w;
-		}
-        w.transform.parent = transform;
-    }
+		// Instantiate and pick up a starting weapon
+		GameObject w = Item.GenerateWeapon(gameObject.GetComponent<Transform>().position);
 
-    /*
-    *  Picks up a piece of armour and puts it into the correct slot
-    */
-    public void PickUpArmour (GameObject a)
-    {
-    	// Get the armour slot
-    	int slot = a.GetComponent<Armour>().GetSlot();
-
-    	// Switch on the slot
-    	switch(slot)
-    	{
-    	case 0:
-    		// helmet
-    		if(helm != null)
-    		{
-    			helm.GetComponent<Armour>().ReturnToFloor();
-    		}
-
-    		helm = a;
-    		break;
-    	case 1:
-    		// chest
-    		if(chest != null)
-    		{
-    			chest.GetComponent<Armour>().ReturnToFloor();
-    		}
-
-    		chest = a;
-    		break;
-    	case 2:
-    		// gloves
-    		if(gloves != null)
-    		{
-    			gloves.GetComponent<Armour>().ReturnToFloor();
-    		}
-
-    		gloves = a;
-    		break;
-    	case 3:
-    		// boots
-    		if(boots != null)
-    		{
-    			boots.GetComponent<Armour>().ReturnToFloor();
-    		}
-
-    		boots = a;
-    		break;
-    	}
-
-    	// Update player stats
-    	UpdateStats();
-
-    	// TODO if a piece of armour exists in the slot put it on the ground
+		w.GetComponent<Weapon>().PickUp();
     }
 
     /*
@@ -107,19 +87,19 @@ public class Player : MonoBehaviour {
     {
         if (Input.GetKey(KeyCode.A))
         {
-			rigidBody.AddForce(Vector2.left * movementSpeed);
+			rigidBody.AddForce(Vector2.left * movementSpeed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.D))
         {
-			rigidBody.AddForce(Vector2.right * movementSpeed);
+			rigidBody.AddForce(Vector2.right * movementSpeed * Time.deltaTime);
 		}
         if (Input.GetKey(KeyCode.W))
         {
-			rigidBody.AddForce(Vector2.up * movementSpeed);
+			rigidBody.AddForce(Vector2.up * movementSpeed * Time.deltaTime);
 		}
         if (Input.GetKey(KeyCode.S))
         {
-			rigidBody.AddForce(Vector2.down * movementSpeed);
+			rigidBody.AddForce(Vector2.down * movementSpeed * Time.deltaTime);
 		}
     }
 
@@ -139,14 +119,98 @@ public class Player : MonoBehaviour {
     /*
     *  Check if any of the weapon fire buttons have been pressed and fire the appropriate weapon
     *  if it exists
+    *
+    *  TODO: An exception should be thrown in an else as a player should not be able to get to a
+    *  state where they cannot fire.
     */
     void CheckForFire()
     {
-		if (Input.GetMouseButton (0) && weapon1 != null) {
-			weapon1.GetComponent<Weapon> ().Fire (this);
-		} else if (Input.GetMouseButton (1) && weapon2 != null) {
-			weapon2.GetComponent<Weapon> ().Fire (this);
+		if (Input.GetMouseButton (0) && weapons[currentWeapon] != null) {
+			weapons[currentWeapon].GetComponent<Weapon>().Fire(this);
 		}
+    }
+
+    /**
+     * Checks if the player has pressed E, which swaps the weapons.
+     */
+    void CheckForSwap()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+			if (weapons[(currentWeapon + 1) % weapons.Length] != null)
+			{
+				currentWeapon = (currentWeapon + 1) % weapons.Length;
+			}
+        }
+    }
+
+	public void PickUpWeapon(Weapon weapon)
+	{
+		// Picking up the first weapon
+		if (_currentWeapon == -1)
+		{
+			weapons[0] = weapon.gameObject;
+			_currentWeapon = 0;
+		}
+        else 
+		{
+			int nextWeapon = (currentWeapon + 1) % weapons.Length;
+			if (weapons[nextWeapon] == null)
+			{
+				weapons[nextWeapon] = weapon.gameObject;
+				currentWeapon = nextWeapon;
+			}
+			else
+			{
+				weapons[currentWeapon].GetComponent<Weapon>().ReturnToFloor();
+				weapons[currentWeapon] = weapon.gameObject;
+			}
+		}
+	}
+
+    public void PickUpArmour(Armour armour)
+    {
+        switch (armour.slot)
+        {
+            case Armour.SLOTS.helm:
+                // helmet
+                if (helm != null)
+                {
+                    helm.GetComponent<Armour>().ReturnToFloor();
+                }
+                helm = armour.gameObject;
+                break;
+            case Armour.SLOTS.chest:
+                // chest
+                if (chest != null)
+                {
+                    chest.GetComponent<Armour>().ReturnToFloor();
+                }
+
+                chest = armour.gameObject;
+                break;
+            case Armour.SLOTS.gloves:
+                // gloves
+                if (gloves != null)
+                {
+                    gloves.GetComponent<Armour>().ReturnToFloor();
+                }
+
+                gloves = armour.gameObject;
+                break;
+            case Armour.SLOTS.boots:
+                // boots
+                if (boots != null)
+                {
+                    boots.GetComponent<Armour>().ReturnToFloor();
+                }
+
+                boots = armour.gameObject;
+                break;
+        }
+
+        // Update player stats
+        UpdateStats();
     }
 
 	// Update is called once per frame
@@ -154,6 +218,7 @@ public class Player : MonoBehaviour {
         CheckForMovement();
         CheckForRotation();
         CheckForFire();
+        CheckForSwap();
 	}
 
 	/*
@@ -261,7 +326,7 @@ public class Player : MonoBehaviour {
 		return helmIntelligence + chestIntelligence + gloveIntelligence + bootIntelligence;
 	}
 
-	private void UpdateStats()
+	public void UpdateStats()
 	{
 		strength = GetItemStrength() + MIN_STAT;
 		dexterity = GetItemDexterity() + MIN_STAT;
