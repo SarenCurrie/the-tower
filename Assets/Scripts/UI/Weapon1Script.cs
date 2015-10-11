@@ -15,6 +15,12 @@ public class Weapon1Script : MonoBehaviour {
 
     private Sprite[] sprites = new Sprite[2];
     private Image weapon;
+	private bool showWindow = false;
+	private RectTransform rect;
+	private float startX;
+	private float startY;
+	private float popupHeight = 65;
+	private float popupWidth = 150;
 
     public GUISkin mySkin;
 
@@ -25,11 +31,10 @@ public class Weapon1Script : MonoBehaviour {
     }
     void Start()
     {
-       
+		rect = this.GetComponent<RectTransform> ();
+		startX = rect.anchoredPosition.x + rect.rect.width;
+		startY = rect.anchoredPosition.y + popupHeight/2;
         loadWeaponSprites();
-       
-
-
     }
 
     private void loadWeaponSprites()
@@ -52,25 +57,15 @@ public class Weapon1Script : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+		// Check we contain the mouse pointer
+		if (RectTransformUtility.RectangleContainsScreenPoint (rect, Input.mousePosition)) {
+			showWindow = true;
+		} else {
+			showWindow = false;
+		}
+
         loadWeaponSprites();
         checkWeapon();
-       
-        //Vector3 weapon1Position = GetComponent<RectTransform>().transform.position;
-        //int xtolerance = 75;
-        //int ytolerance = 20;
-        //int i = 0;
-        //if ((Input.mousePosition.x < weapon1Position.x + xtolerance && Input.mousePosition.x > weapon1Position.x - xtolerance) && (Input.mousePosition.y < weapon1Position.y + ytolerance && Input.mousePosition.y > weapon1Position.x - ytolerance))
-       // {
-        //    print("HIT"+i);
-        //        showWindow = true;
-        //}
-        //else
-        //{
-        //        showWindow = false;
-        //}
-        
-
-
     }
 
     private void checkWeapon()
@@ -94,42 +89,17 @@ public class Weapon1Script : MonoBehaviour {
 
     }
 
-    public bool showWindow = false;
-    public void OnMouseEnter()
-    {
-        if (!showWindow)
-            showWindow = true;
-    }
-
-    void OnMouseExit()
-    {
-        if (showWindow)
-            showWindow = false;
-    }
-
-
-    //Creates current weapon textfield for popup comparison
-    private void DoWindow0(int windowID)
-    {
-        Player player = GameManager.GetPlayer().GetComponent<Player>();
-        Weapon weapon = player.weapons[0].GetComponent<Weapon>();
-        float damageCurrent = weapon.damageMod;
-        int spreadCurrent = weapon.spread;
-        float forceCurrent = weapon.fireForce;
-
-        GUILayout.TextField("Damage:   " + System.Math.Round(damageCurrent, 2) + "\nSpread:       " + spreadCurrent + "\nForce:          " + forceCurrent + "\n", "OutlineText");
-    }
-
-
     //Called every frame to check if the on hover will open a comparison popup for the weaopn
     void OnGUI()
     {
         GUI.skin = mySkin;
-        if (showWindow)
-        {
-            //Draws the textures being used for popup
-            //Generates new Window for the current weapon and floor weapon stats 
-            GUI.Window(0, new Rect( 250, 200, 250, 200), DoWindow0, "Current weapon:");
+		if (showWindow) {
+			Player player = GameManager.GetPlayer().GetComponent<Player>();
+			Weapon weapon = player.weapons[0].GetComponent<Weapon>();
+			float damageCurrent = weapon.damageMod;
+			int spreadCurrent = weapon.spread;
+			float forceCurrent = weapon.fireForce;
+			GUI.TextField(new Rect (Input.mousePosition.x, Screen.height - Input.mousePosition.y - popupHeight, popupWidth, popupHeight),"Damage:   " + System.Math.Round(damageCurrent, 2) + "\nSpread:       " + spreadCurrent + "\nForce:          " + forceCurrent + "\n","OutlineText");
         }
     }
 
