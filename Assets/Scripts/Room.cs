@@ -52,27 +52,28 @@ public class Room : MonoBehaviour {
 		}
 	}
 
-	/// <summary>
-	/// Disable or enable all enemies on this floor. Also makes
-	/// enemies invisible.
-	/// </summary>
-	/// <param name="enable">Should enemies be enabled or not?</param>
-	public void DisableOrEnableEnemies(bool enable)
+	private void DisableOrEnableEnemies(Transform trans, bool enable)
 	{
-		foreach (Transform child in transform)
+		foreach (Transform child in trans)
 		{
 			if (child.tag == Tags.ENEMY)
 			{
 				foreach (Enemy e in child.GetComponents<Enemy>())
 				{
-					e.enabled = enable;	
+					e.enabled = enable;
 				}
-
-				EnemyMovement movement = child.GetComponent<EnemyMovement>();
-				if (movement != null)
-					movement.enabled = enable;
 			}
+
+			//Recurse
+			DisableOrEnableEnemies(child, enable);
 		}
+	}
+
+	//Disable or enable all enemies on this floor. Also makes
+	//enemies invisible.
+	public void DisableOrEnableEnemies(bool enable)
+	{
+		DisableOrEnableEnemies(transform, enable);
 	}
 
 	public void ShowOrHideEnemies(bool show)
