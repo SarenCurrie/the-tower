@@ -38,6 +38,8 @@ public class Floor : MonoBehaviour {
 	public GameObject firstRoom;
 	public GameObject bossRoom;
 
+	public GameObject screenBlackerPrefab;
+
 	//Stores the generated path of room indexes
 	private List<int[]> roomPath = new List<int[]>();
 
@@ -116,6 +118,9 @@ public class Floor : MonoBehaviour {
 					//Spawn all enemies disabled
 					roomScript.SpawnEnemies(enemies);
 					roomScript.DisableOrEnableEnemies(false);
+
+					if (screenBlackerPrefab != null)
+						floorMap[x][y].GetComponent<Room>().SpawnScreenBlacker(screenBlackerPrefab);
 				}
 
                 //Rooms should be removed when the floor is

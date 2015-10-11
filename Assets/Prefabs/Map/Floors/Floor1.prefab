@@ -61,6 +61,7 @@ MonoBehaviour:
     citizens in line.
   firstRoom: {fileID: 187704, guid: 171aee03a2b739743ac7b967868fa4aa, type: 2}
   bossRoom: {fileID: 128328, guid: 9d24bbc637492394eaac4bcb2a12210e, type: 2}
+  screenBlackerPrefab: {fileID: 129008, guid: 02525fa4ad0ec374290310ece9f6b2c4, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -131,9 +132,6 @@ Prefab:
       value: We don't even need security this far down, there's enough violence to
         keep the citizens in line.
       objectReference: {fileID: 0}
-      propertyPath: firstRoom
-      value: 
-      objectReference: {fileID: 187704, guid: 171aee03a2b739743ac7b967868fa4aa, type: 2}
     - target: {fileID: 0}
       propertyPath: bossRoom
       value: 
@@ -150,6 +148,10 @@ Prefab:
       propertyPath: enemies.Array.data[3]
       value: 
       objectReference: {fileID: 102632, guid: 444a3c53f4fb5104ea81e1c175509fcb, type: 2}
+    - target: {fileID: 0}
+      propertyPath: screenBlackerPrefab
+      value: 
+      objectReference: {fileID: 129008, guid: 02525fa4ad0ec374290310ece9f6b2c4, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 167694}
