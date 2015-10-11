@@ -256,7 +256,7 @@ public class Weapon : Item
     //Creates ground weapon textfield for popup comparison
     private void DoWindow1(int windowID)
     {
-        GUILayout.TextField("Damage:   " + Math.Round(damageMod, 2) + "\nProjectiles:  " + spreadRange + "\nFire Rate:    " + Math.Round(fireFrequency, 2) + "\nMaj/Min:    " + weaponMajor + "-" + weaponMinor, "OutlineText");
+        GUILayout.TextField("Damage:   " + Math.Round(damageMod, 2) + "\nProjectiles:  " + spread + "\nFire Rate:    " + Math.Round(fireFrequency, 2) + "\nMaj/Min:    " + weaponMajor + "-" + weaponMinor, "OutlineText");
     }
 
     //Called every frame to check if the on hover will open a comparison popup for the weaopn
