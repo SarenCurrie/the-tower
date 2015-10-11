@@ -16,38 +16,55 @@ public class Door : MonoBehaviour
 	private Vector3 cameraDestination = Camera.main.transform.position;
 
 	//Current pan time. Will be between 0 and DOOR_CONTACT_TIME
-	private float t = 0f;
+	private float transitionTime = 0f;
 
 	//What the camera is currently doing
 	private enum CAMERA_STATE { NONE, MOVING_ROOM, MOVING_BACK };
 	private CAMERA_STATE cameraState = CAMERA_STATE.NONE;
 
+	private const float UNBLACKINGING_TIME = DOOR_CONTACT_TIME;
+	public const float BLACK_ALPHA = 0.8f;
+	public const float UNBLACK_ALPHA = 0f;
+
+	private const float MAX_FLICKER_VALUE = 0.5f;
+	private const float FLICKER_CHANCE = 0.025f;
+
 	public void Update()
 	{
 		if (cameraState != CAMERA_STATE.NONE)
 		{
-			if (t >= DOOR_CONTACT_TIME)
+			if (transitionTime >= DOOR_CONTACT_TIME)
 			{
 				if (cameraState == CAMERA_STATE.MOVING_ROOM)
 					MovePlayer();
-				t = 0f;
+				transitionTime = 0f;
 				cameraState = CAMERA_STATE.NONE;
 			}
-			else if (t < 0)
+			else if (transitionTime < 0)
 			{
-				t = 0f;
+				transitionTime = 0f;
 				cameraState = CAMERA_STATE.NONE;
 			}
 			else
 			{
-				Vector3 currentRoomPos = GameManager.currentFloor.currentRoom.GetCameraPosition();
-				Vector3 nextRoomPos = GameManager.currentFloor.GetDoorDestination(orientation).GetCameraPosition();
-				Camera.main.transform.position = Vector3.Lerp(currentRoomPos, nextRoomPos, (t / DOOR_CONTACT_TIME));
+				Room currentRoom = GameManager.currentFloor.currentRoom;
+				Room nextRoomPos = GameManager.currentFloor.GetDoorDestination(orientation);
 
+				//Fade camera
+				Camera.main.transform.position = Vector3.Lerp(currentRoom.GetCameraPosition(), nextRoomPos.GetCameraPosition(), (transitionTime / DOOR_CONTACT_TIME));
+
+				//Fade lights
+				float flicker = 0;
+				if (Random.Range(0f, 1f) > 1 - FLICKER_CHANCE)
+					flicker = Random.Range(0, MAX_FLICKER_VALUE);
+				currentRoom.SetBlackerAlpha(Mathf.Lerp(UNBLACK_ALPHA, BLACK_ALPHA, transitionTime/UNBLACKINGING_TIME));
+				nextRoomPos.SetBlackerAlpha(Mathf.Lerp(BLACK_ALPHA, UNBLACK_ALPHA, transitionTime/UNBLACKINGING_TIME) + flicker);
+
+				//Update time
 				if (cameraState == CAMERA_STATE.MOVING_ROOM)
-					t += Time.deltaTime;
+					transitionTime += Time.deltaTime;
 				else if (cameraState == CAMERA_STATE.MOVING_BACK)
-					t -= Time.deltaTime;
+					transitionTime -= Time.deltaTime;
 			}
 		}
 	}
@@ -57,8 +74,9 @@ public class Door : MonoBehaviour
 		Floor currentFloor = GameManager.currentFloor;
 		currentFloor.currentRoom = currentFloor.GetDoorDestination(orientation);
 
-		//In case camera pan doesn't make it all the way
+		//In case lerp doesn't make it all the way
 		Camera.main.transform.position = GameManager.currentFloor.currentRoom.GetCameraPosition();
+		currentFloor.currentRoom.SetBlackerAlpha(UNBLACK_ALPHA);
 
 		Vector3 playerOffset = new Vector3();
 		switch (orientation)

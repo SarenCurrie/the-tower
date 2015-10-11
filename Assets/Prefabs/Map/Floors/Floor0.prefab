@@ -49,6 +49,7 @@ MonoBehaviour:
   floorDialog: []
   firstRoom: {fileID: 105838, guid: 4eb9fc05dd38bc945912fc98f158384a, type: 2}
   bossRoom: {fileID: 116784, guid: 9ddf3740b50bdba4996507a0b99ac0c2, type: 2}
+  screenBlackerPrefab: {fileID: 129008, guid: 02525fa4ad0ec374290310ece9f6b2c4, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -122,6 +123,10 @@ Prefab:
       value: Head to the elevator, I've gotten you clearance to the floors higher
         than your status would normally allow.
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: screenBlackerPrefab
+      value: 
+      objectReference: {fileID: 129008, guid: 02525fa4ad0ec374290310ece9f6b2c4, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 151502}
