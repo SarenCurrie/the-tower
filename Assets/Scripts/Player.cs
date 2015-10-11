@@ -344,6 +344,11 @@ public class Player : MonoBehaviour {
 		strength = GetItemStrength() + MIN_STAT;
 		dexterity = GetItemDexterity() + MIN_STAT;
 		intelligence = GetItemIntelligence() + MIN_STAT;
+
+		// Update icon sprites
+		foreach (StatSummaryText sst in Canvas.FindObjectsOfType<StatSummaryText>()){
+			sst.updateStats(strength,dexterity,intelligence);
+		}
 	}
 
 	public int GetStrength()
