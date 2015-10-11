@@ -1,0 +1,118 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &101010
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 425992}
+  - 114: {fileID: 11472832}
+  m_Layer: 0
+  m_Name: Floor2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &425992
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 101010}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11472832
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 101010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea2bd5a944b9b0544bde7362fb6a255d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfRooms: 14
+  enemies:
+  - {fileID: 176484, guid: 7de440821dd9a5149b6966665c8b980e, type: 2}
+  - {fileID: 186402, guid: 4169dc2e43898d04595f60dabe7fa381, type: 2}
+  - {fileID: 106964, guid: c5048c075e49f4102aa367cdfaf52610, type: 2}
+  rooms:
+  - {fileID: 148256, guid: 23c22d913508d8848879615a1de98049, type: 2}
+  - {fileID: 196098, guid: 89351b15fb176324ca1ed25ee082053e, type: 2}
+  - {fileID: 137086, guid: 156bc63b191ed2e4fbe3e2141f83e7bc, type: 2}
+  - {fileID: 128598, guid: 6ae953c5836d78144921856cd8e082e3, type: 2}
+  - {fileID: 144904, guid: 99db250844aa40d42a59ef741c4c4f96, type: 2}
+  - {fileID: 185492, guid: 1b32568a364617a4ca677f5296b866ff, type: 2}
+  enterDialog: 
+  exitDialog: 
+  floorDialog: []
+  firstRoom: {fileID: 137086, guid: 156bc63b191ed2e4fbe3e2141f83e7bc, type: 2}
+  bossRoom: {fileID: 193178, guid: 6c96b564d349f884abbd28cface94821, type: 2}
+  screenBlackerPrefab: {fileID: 129008, guid: 02525fa4ad0ec374290310ece9f6b2c4, type: 2}
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: enemies.Array.data[0]
+      value: 
+      objectReference: {fileID: 176484, guid: 7de440821dd9a5149b6966665c8b980e, type: 2}
+    - target: {fileID: 0}
+      propertyPath: enemies.Array.data[1]
+      value: 
+      objectReference: {fileID: 186402, guid: 4169dc2e43898d04595f60dabe7fa381, type: 2}
+    - target: {fileID: 0}
+      propertyPath: enemies.Array.data[2]
+      value: 
+      objectReference: {fileID: 106964, guid: c5048c075e49f4102aa367cdfaf52610, type: 2}
+    - target: {fileID: 0}
+      propertyPath: rooms.Array.data[0]
+      value: 
+      objectReference: {fileID: 148256, guid: 23c22d913508d8848879615a1de98049, type: 2}
+    - target: {fileID: 0}
+      propertyPath: rooms.Array.data[1]
+      value: 
+      objectReference: {fileID: 196098, guid: 89351b15fb176324ca1ed25ee082053e, type: 2}
+    - target: {fileID: 0}
+      propertyPath: rooms.Array.data[2]
+      value: 
+      objectReference: {fileID: 137086, guid: 156bc63b191ed2e4fbe3e2141f83e7bc, type: 2}
+    - target: {fileID: 0}
+      propertyPath: rooms.Array.data[3]
+      value: 
+      objectReference: {fileID: 128598, guid: 6ae953c5836d78144921856cd8e082e3, type: 2}
+    - target: {fileID: 0}
+      propertyPath: rooms.Array.data[4]
+      value: 
+      objectReference: {fileID: 144904, guid: 99db250844aa40d42a59ef741c4c4f96, type: 2}
+    - target: {fileID: 0}
+      propertyPath: rooms.Array.data[5]
+      value: 
+      objectReference: {fileID: 185492, guid: 1b32568a364617a4ca677f5296b866ff, type: 2}
+    - target: {fileID: 0}
+      propertyPath: firstRoom
+      value: 
+      objectReference: {fileID: 137086, guid: 156bc63b191ed2e4fbe3e2141f83e7bc, type: 2}
+    - target: {fileID: 0}
+      propertyPath: bossRoom
+      value: 
+      objectReference: {fileID: 193178, guid: 6c96b564d349f884abbd28cface94821, type: 2}
+    - target: {fileID: 0}
+      propertyPath: screenBlackerPrefab
+      value: 
+      objectReference: {fileID: 129008, guid: 02525fa4ad0ec374290310ece9f6b2c4, type: 2}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 101010}
+  m_IsPrefabParent: 1
