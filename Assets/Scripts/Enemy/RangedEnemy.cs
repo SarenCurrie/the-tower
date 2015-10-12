@@ -81,9 +81,12 @@ public class RangedEnemy : Enemy
         projectileSprite = possibleProjectileSprites[projectileSpriteIndex];
 
         // generate sound
-        int soundIndex = UnityEngine.Random.Range(0, possibleSounds.Length);
-        actualSound = possibleSounds[soundIndex];
-    }
+		if(possibleSounds.Length > 0)
+        {
+			int soundIndex = UnityEngine.Random.Range(0, possibleSounds.Length);
+			actualSound = possibleSounds[soundIndex];
+		}
+	}
 
     protected void MaybeFireAtPlayer()
     {
