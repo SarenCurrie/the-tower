@@ -123,6 +123,14 @@ public class UnitHealth : MonoBehaviour {
 	}
 
 	/**
+	 * Sets the health back to the maximum health.
+	 */
+	public void ResetHealth()
+	{
+		health = maxHealth;
+	}
+
+	/**
 	* Destroys the gameObject this script is attached to.
 	*
 	* In the future, this can be used for scoring/loot etc by overriding
@@ -146,7 +154,7 @@ public class UnitHealth : MonoBehaviour {
 		if (tag.Equals("Enemy"))
 		{
 			// Add the enemies health to the players score
-			Canvas.FindObjectOfType<ScoreManager>().incrementScore((int)gameObject.GetComponent<UnitHealth>().maxHealth);
+			Canvas.FindObjectOfType<ScoreManager>().IncrementScore((int)gameObject.GetComponent<UnitHealth>().maxHealth);
 
 			foreach (Enemy e in gameObject.GetComponents<Enemy>())
 			{

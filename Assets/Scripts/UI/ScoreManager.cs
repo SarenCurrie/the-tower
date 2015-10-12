@@ -13,11 +13,41 @@ public class ScoreManager : MonoBehaviour {
 	/**
 	 * Increments the score by an integer value
 	 */
-	public void incrementScore(int score)
+	public void IncrementScore(int score)
 	{
-		this.score += score;
+		SetScore(this.score + score);
+	}
 
-		this.transform.Find("Score").GetComponent<Text>().text = this.score.ToString();
+	/**
+	 * Called when a player finishes a floor. This multiplies the players
+	 * score by the amount of health remaining and the current floor number
+	 * and then resets their health.
+	 */
+	public void FloorClear()
+	{
+		int floorMultiplier = 1;
+
+		for (int i = 0; i < GameManager.staticFloorPrefabs.Length; i++)
+		{
+			if(GameManager.currentFloor.gameObject == GameManager.staticFloorPrefabs[i].gameObject)
+			{
+				print("I work");
+				floorMultiplier = i;
+			}
+		}
+
+		int health = (int)GameManager.GetPlayer().GetComponent<UnitHealth>().health;
+
+		SetScore(this.score * health * floorMultiplier);
+
+		//Resets the player's health.
+		GameManager.GetPlayer().GetComponent<UnitHealth>().ResetHealth();
+	}
+
+	private void SetScore(int newScore)
+	{
+		score = newScore;
+		this.transform.Find("Score").GetComponent<Text>().text = newScore.ToString();
 	}
 
 }
