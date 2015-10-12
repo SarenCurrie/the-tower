@@ -111,7 +111,9 @@ public class Weapon : Item
             selectedSprite = selectedSideLooks[look];
             unSelectedSprite = unseletedSideLooks[look];
         }
-        gameObject.GetComponent<SpriteRenderer>().sprite = looks[look];
+		
+		if(looks.Length > 0)
+			gameObject.GetComponent<SpriteRenderer>().sprite = looks[look];
 
         int projectileSpriteIndex = UnityEngine.Random.Range(0, possibleProjectileSprites.Length);
         projectileSprite = possibleProjectileSprites[projectileSpriteIndex];
