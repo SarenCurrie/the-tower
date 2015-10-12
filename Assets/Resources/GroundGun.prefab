@@ -159,18 +159,27 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 98c1221ca2bbb934f8cdf53d484f9cfb, type: 3}
   - {fileID: 21300000, guid: 82cacb6eb0c6e4540809aee4541e61d4, type: 3}
   - {fileID: 21300000, guid: 91874a4553ba7e2479256c8bf7e7413a, type: 3}
+  - {fileID: 21300000, guid: bdb2f91c64ce65d47a3eec9d7b63bbe9, type: 3}
+  - {fileID: 21300000, guid: 716380e072710244aae2aa6ca61cc3aa, type: 3}
+  - {fileID: 21300000, guid: 753df2e8231b613419f88efcd6551ae1, type: 3}
   selectedSideLooks:
   - {fileID: 21300000, guid: 0a503f03f1cd174458157c5b520c7e21, type: 3}
   - {fileID: 21300000, guid: 0d14c56033a68ff43afe1f4cbf4341fb, type: 3}
   - {fileID: 21300000, guid: a3a9e67f5b479ab4d9547447dcb4e804, type: 3}
   - {fileID: 21300000, guid: 278b3ec4204d2334ea9f16f1f9be256d, type: 3}
   - {fileID: 21300000, guid: 7aa41bbf9af5a094991d9dcc3f11b097, type: 3}
+  - {fileID: 21300000, guid: 10e6052d599e8ce4686b4eec25b9b09d, type: 3}
+  - {fileID: 21300000, guid: 2ea19f08e2067534cac8321b729c5fff, type: 3}
+  - {fileID: 21300000, guid: b3b1b6cff2f1a2644b33c6cf5e114836, type: 3}
   unseletedSideLooks:
   - {fileID: 21300000, guid: 88d0533a0fcd2fc46a4bf6264d13c1c6, type: 3}
   - {fileID: 21300000, guid: 6a02fce02bb2641478201cb163dfd18e, type: 3}
   - {fileID: 21300000, guid: 3cca53d84b7569e47813441fe14e8ec3, type: 3}
   - {fileID: 21300000, guid: 237e0b03e28105143bc96f0717162648, type: 3}
   - {fileID: 21300000, guid: 94ec2ffe9c7ad3e47a64671fea3d8f0d, type: 3}
+  - {fileID: 21300000, guid: 94a2f0c2e708b2a4a98889fb6f57f4ad, type: 3}
+  - {fileID: 21300000, guid: 3c4726a8ddc8ef94badd40558242bb94, type: 3}
+  - {fileID: 21300000, guid: ed26ac6d43f598d46b3a18380963ddc8, type: 3}
   possibleProjectileSprites:
   - {fileID: 21300000, guid: 5d41bfa3f684f0848a7918244531e89e, type: 3}
   - {fileID: 21300000, guid: ebe4c5176d748c342aacdc63f75e1bbd, type: 3}
@@ -236,7 +245,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: looks.Array.size
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: possibleSmgSounds.Array.size
@@ -244,11 +253,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: selectedSideLooks.Array.size
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: unseletedSideLooks.Array.size
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: possibleRifleSounds.Array.size
@@ -371,7 +380,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: looks.Array.data[5]
       value: 
-      objectReference: {fileID: 21300000, guid: 58678f30106ed544095810e9025991e2,
+      objectReference: {fileID: 21300000, guid: bdb2f91c64ce65d47a3eec9d7b63bbe9,
         type: 3}
     - target: {fileID: 0}
       propertyPath: looks.Array.data[2]
@@ -509,6 +518,46 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: looks.Array.data[6]
+      value: 
+      objectReference: {fileID: 21300000, guid: 716380e072710244aae2aa6ca61cc3aa,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: looks.Array.data[7]
+      value: 
+      objectReference: {fileID: 21300000, guid: 753df2e8231b613419f88efcd6551ae1,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: selectedSideLooks.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: 10e6052d599e8ce4686b4eec25b9b09d,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: selectedSideLooks.Array.data[7]
+      value: 
+      objectReference: {fileID: 21300000, guid: b3b1b6cff2f1a2644b33c6cf5e114836,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: unseletedSideLooks.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: 94a2f0c2e708b2a4a98889fb6f57f4ad,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: unseletedSideLooks.Array.data[7]
+      value: 
+      objectReference: {fileID: 21300000, guid: ed26ac6d43f598d46b3a18380963ddc8,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: unseletedSideLooks.Array.data[6]
+      value: 
+      objectReference: {fileID: 21300000, guid: 3c4726a8ddc8ef94badd40558242bb94,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: selectedSideLooks.Array.data[6]
+      value: 
+      objectReference: {fileID: 21300000, guid: 2ea19f08e2067534cac8321b729c5fff,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 184112}
