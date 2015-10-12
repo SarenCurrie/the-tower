@@ -1,0 +1,25 @@
+{
+  "name": "the-tower-high-score-server",
+  "version": "0.7.0",
+  "description": "High score service for The Tower by Studio Scur",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SarenCurrie/the-tower.git"
+  },
+  "dependencies": {
+    "express": "^4.13.1",
+    "morgan": "^1.6.1",
+    "mysql": "^2.9.0",
+    "underscore": "^1.8.3"
+  },
+  "author": "Studio Scur",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SarenCurrie/the-tower/issues"
+  },
+  "homepage": "https://github.com/SarenCurrie/the-tower#readme"
+}
