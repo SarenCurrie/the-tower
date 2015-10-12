@@ -9,6 +9,7 @@ public class ScoreManager : MonoBehaviour {
 
 	//The score for the current play through
 	public int score = 0;
+	public int floorMultiplier = 0;
 
 	/**
 	 * Increments the score by an integer value
@@ -25,16 +26,6 @@ public class ScoreManager : MonoBehaviour {
 	 */
 	public void FloorClear()
 	{
-		int floorMultiplier = 1;
-
-		for (int i = 0; i < GameManager.staticFloorPrefabs.Length; i++)
-		{
-			if(GameManager.currentFloor.gameObject == GameManager.staticFloorPrefabs[i].gameObject)
-			{
-				print("I work");
-				floorMultiplier = i;
-			}
-		}
 
 		int health = (int)GameManager.GetPlayer().GetComponent<UnitHealth>().health;
 
@@ -42,6 +33,9 @@ public class ScoreManager : MonoBehaviour {
 
 		//Resets the player's health.
 		GameManager.GetPlayer().GetComponent<UnitHealth>().ResetHealth();
+
+		//Increment the floor multiplier
+		floorMultiplier++;
 	}
 
 	private void SetScore(int newScore)
