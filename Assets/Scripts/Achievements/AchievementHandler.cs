@@ -32,7 +32,7 @@ namespace Achievements {
 		}
 
 		public void AddScore() {
-			int score = GameManager.GetPlayer().GetComponent<Player>().score;
+			int score = Canvas.FindObjectOfType<ScoreManager>().score;
 
 			if (score > 10000) {
 				achievementFactory.SCORE_TEN_THOUSAND.Achieve();
