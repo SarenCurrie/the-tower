@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EnemyMovement : Enemy
 {
@@ -13,7 +14,9 @@ public class EnemyMovement : Enemy
 	private bool hasSeenPlayer = false;
 	private bool canSeePlayer = false;
 
-	private const float DISTANCE_FROM_LAST_KNOWN_PLAYER_POSITION = 0.2f;
+	private const float DISTANCE_FROM_LAST_KNOWN_PLAYER_POSITION = 0.1f;
+
+	private const float WALL_CLEARANCE = 0.2f;
 
 	private Rigidbody2D rigidBody;
 
@@ -47,11 +50,11 @@ public class EnemyMovement : Enemy
 		Vector3 relativePlayerPosition = GetRelativePlayerPosition();
 		if (relativePlayerPosition.magnitude - preferedDistanceRange > preferedDistance)
 		{
-			MoveToLastKnownPlayerPosition();
+			rigidBody.AddForce(transform.up * movementSpeed * Time.deltaTime);
 		}
-		else if (relativePlayerPosition.magnitude + preferedDistance < preferedDistanceRange)
-		{
-			MoveAwayFromPlayer();
+		else if (relativePlayerPosition.magnitude < preferedDistance - preferedDistanceRange)
+		{ 
+			rigidBody.AddForce(-transform.up * movementSpeed * Time.deltaTime);
 		}
 	}
 
@@ -67,20 +70,46 @@ public class EnemyMovement : Enemy
 
 	private void MoveToLastKnownPlayerPosition()
 	{
-		if ((transform.position - lastKnownPlayerPosition).magnitude > DISTANCE_FROM_LAST_KNOWN_PLAYER_POSITION)
-			hasSeenPlayer = false;
-		rigidBody.AddForce(transform.up * movementSpeed * Time.deltaTime);
+		//if ((transform.position - lastKnownPlayerPosition).magnitude > DISTANCE_FROM_LAST_KNOWN_PLAYER_POSITION)
+		//	hasSeenPlayer = false;
+		rigidBody.AddForce(ChooseMovementDirection() * movementSpeed * Time.deltaTime);
 	}
 
-	private void FleePlayer()
+	private Vector3 ChooseMovementDirection()
 	{
+		Vector3 playerPosition = lastKnownPlayerPosition;
+		//Shoot raycast from both left and right sides of collider
+		Vector3 extentRight = GetComponent<CircleCollider2D>().bounds.extents.x * transform.right;
+		Vector3[] viewPositions = new Vector3[] { transform.position - (2 + WALL_CLEARANCE) * extentRight, transform.position + (2 + WALL_CLEARANCE) * extentRight };
+		List<RaycastHit2D> hits = new List<RaycastHit2D>();
 
-	}
+		//Can the destination be reached by going straight forward?
+		bool canReach = true;
 
-	private void MoveAwayFromPlayer()
-	{
-		rigidBody.AddForce(transform.up * -1 * movementSpeed);
-	}
+		foreach (Vector3 raycastPosition in viewPositions)
+		{
+			Vector3 relativePlayerPosition = playerPosition - raycastPosition;
+			RaycastHit2D hit = Physics2D.Raycast(transform.position, relativePlayerPosition, relativePlayerPosition.magnitude, GameManager.staticEnemySightLayerMask.value);
+			hits.Add(hit);
+			if (hit && hit.collider.tag != Tags.PLAYER)
+			{
+				canReach = false;
+			}
+        }
+
+		if (canReach == false)
+		{
+			for (int i=0; i<viewPositions.Length; i++)
+			{
+				//If the point can be reached from here, move to here
+				if (!hits[i] || hits[i].collider.tag == Tags.PLAYER)
+				{
+					return (playerPosition - viewPositions[i]).normalized;
+				}
+            }
+		}
+		return transform.up;
+    }
 
 	private void RotateToFaceLastKnownPlayerPosition()
 	{
@@ -109,3 +138,4 @@ public class EnemyMovement : Enemy
 		}
 	}
 }
+
