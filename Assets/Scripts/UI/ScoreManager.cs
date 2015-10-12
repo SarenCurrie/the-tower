@@ -3,22 +3,21 @@ using UnityEngine.UI;
 using System.Collections;
 
 /// <summary>
-/// This class is used to manage the score related elements for the Graphical User Interface HUD.
-/// It is used to set and update the current score of the player 
-/// 
-///  @author Harry
-/// 
+/// This script is used to modify the player's score. It handles GUI updating.
 /// </summary>
 public class ScoreManager : MonoBehaviour {
 
-	// Use this for initialization
-    private float score = 0f;
+	//The score for the current play through
+	public int score = 0;
 
-	public void updateScore()
+	/**
+	 * Increments the score by an integer value
+	 */
+	public void incrementScore(int score)
 	{
-		int updatedScore = GameManager.GetPlayer().GetComponent<Player>().score;
-		this.transform.Find("Score").GetComponent<Text>().text = updatedScore.ToString();
-		score = updatedScore;
+		this.score += score;
+
+		this.transform.Find("Score").GetComponent<Text>().text = this.score.ToString();
 	}
 
 }

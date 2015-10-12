@@ -19,21 +19,6 @@ public class Player : MonoBehaviour {
 	// The base value of all stats
 	private const int MIN_STAT = 1;
 
-    //Player score
-    private int _score=0;
-    public int score
-    {
-        get
-        {
-            return _score;
-        }
-        set
-        {
-            _score = value;
-
-        }
-    }
-
 	// Player stats
 	private int strength = 1;
 	private int dexterity = 1;
