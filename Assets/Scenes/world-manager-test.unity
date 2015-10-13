@@ -118,6 +118,9 @@ MonoBehaviour:
   - {fileID: 101010, guid: d12e3c8469a42d84484782ce4f58bf6a, type: 2}
   - {fileID: 145084, guid: 555a205f00929e645957340594996a72, type: 2}
   playerPrefab: {fileID: 124720, guid: e8af01c63e511704fbe0773330730626, type: 2}
+  enemySightLayerMask:
+    serializedVersion: 2
+    m_Bits: 2147614720
 --- !u!4 &579870623
 Transform:
   m_ObjectHideFlags: 0

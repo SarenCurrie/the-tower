@@ -66,6 +66,6 @@ public class SpreadShotEnemy : RangedEnemy
 
     protected override float CalculateFireStopTime()
     {
-        return Time.time + Random.Range(minBurstTime, maxBurstTime);
+        return Random.Range(minBurstTime, maxBurstTime);
     }
 }
