@@ -12,6 +12,14 @@ public class ScoreManager : MonoBehaviour {
 	public int floorMultiplier = 0;
 
 	/**
+	 * Returns the score
+	 */
+	public static int GetScore()
+	{
+		return Canvas.FindObjectOfType<ScoreManager>().score;
+	}
+
+	/**
 	 * Increments the score by an integer value
 	 */
 	public void IncrementScore(int score)

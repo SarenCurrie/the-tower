@@ -49,8 +49,9 @@ public class GameManager : MonoBehaviour {
 			Destroy(currentFloor.gameObject);
 
 		currentFloorNumber++;
+		GameManager.achievementHandler.FinishFloor(currentFloorNumber);
 
-        if (currentFloorNumber < staticFloorPrefabs.Length)
+		if (currentFloorNumber < staticFloorPrefabs.Length)
         {
             //Spawn the floor, generate it, and move the player to it
             currentFloor = Instantiate(staticFloorPrefabs[currentFloorNumber]).GetComponent<Floor>();
@@ -60,7 +61,8 @@ public class GameManager : MonoBehaviour {
         }
         else
         {
-            print("You are already at the top floor!");
+			//The game is over.
+			print("Congratulations, you have finished the game with a score of " + ScoreManager.GetScore());
         }
 	}
 }
