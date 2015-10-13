@@ -16,7 +16,7 @@ public class EnemyMovement : Enemy
 
 	private const float DISTANCE_FROM_LAST_KNOWN_PLAYER_POSITION = 0.1f;
 
-	private const float WALL_CLEARANCE = 0.2f;
+	private const float WALL_CLEARANCE = 0.05f;
 
 	private Rigidbody2D rigidBody;
 
@@ -70,9 +70,10 @@ public class EnemyMovement : Enemy
 
 	private void MoveToLastKnownPlayerPosition()
 	{
-		//if ((transform.position - lastKnownPlayerPosition).magnitude > DISTANCE_FROM_LAST_KNOWN_PLAYER_POSITION)
-		//	hasSeenPlayer = false;
-		rigidBody.AddForce(ChooseMovementDirection() * movementSpeed * Time.deltaTime);
+		if ((transform.position - lastKnownPlayerPosition).magnitude > DISTANCE_FROM_LAST_KNOWN_PLAYER_POSITION)
+			hasSeenPlayer = false;
+		else
+			rigidBody.AddForce(ChooseMovementDirection() * movementSpeed * Time.deltaTime);
 	}
 
 	private Vector3 ChooseMovementDirection()
