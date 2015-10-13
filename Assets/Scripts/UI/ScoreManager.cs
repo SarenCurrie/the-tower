@@ -5,7 +5,7 @@ using System.Collections;
 /// <summary>
 /// This script is used to modify the player's score. It handles GUI updating.
 /// </summary>
-public class ScoreManager : MonoBehaviour {
+public class ScoreManager {
 
 	//The score for the current play through
 	public int score = 0;
@@ -41,7 +41,7 @@ public class ScoreManager : MonoBehaviour {
 	private void SetScore(int newScore)
 	{
 		score = newScore;
-		this.transform.Find("Score").GetComponent<Text>().text = newScore.ToString();
+		UIController.GetUI().SetScore(newScore);
 	}
 
 }

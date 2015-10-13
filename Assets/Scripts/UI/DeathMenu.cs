@@ -1,18 +1,41 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DeathMenu : MonoBehaviour {
+public class DeathMenu {
 
-	public GUISkin mySkin;
-	public static bool dead = false;
-	public string firstLevelName;
-	public string startScreenName;
+	private bool visible = false;
 
-	private static float deathHeight = 200f;
-	private static float deathWidth = 350f;
-	private static float deathTop = 0 - Screen.height;
-	private static float deathBottom = (Screen.height-deathHeight)/2;
-	private Rect deathRect = new Rect((Screen.width - deathWidth)/2, deathTop, deathWidth, deathHeight);
+	private const float deathHeight = 200f;
+	private const float deathWidth = 350f;
+	private float deathTop = 0 - Screen.height;
+	private float deathBottom = (Screen.height-deathHeight)/2;
+
+	private Rect deathRect;
+
+	public DeathMenu()
+	{
+		deathRect = new Rect((Screen.width - deathWidth) / 2, deathTop, deathWidth, deathHeight);
+	}
+
+	void OnGUI()
+	{
+		if (visible)
+		{
+			// Stop pausing from happening
+			PauseMenu.canPause = false;
+
+			GUI.skin = UIController.GetUI().getGui();
+
+			// Create death window
+			deathRect = GUI.Window(3, deathRect, DeathArea, "");
+			deathRect.y = Mathf.MoveTowards(deathRect.y, deathBottom, 10);
+		}
+	}
+
+	public void Show()
+	{
+		visible = true;
+	}
 
 	void DeathArea(int windowID) 
 	{
@@ -32,20 +55,22 @@ public class DeathMenu : MonoBehaviour {
 		
 		GUILayout.BeginHorizontal ();
 		GUILayout.FlexibleSpace();
+
+		//Pressed Restart
 		if (GUILayout.Button("Restart", "ShortButton")) {
-			dead = false;
+			visible = false;
 			PauseMenu.canPause = true;
 			// Restart the game
 			GameManager.Restart();
-			Application.LoadLevel(firstLevelName);
+			Application.LoadLevel(UIController.GetUI().firstLevelName);
 		}
 		GUILayout.FlexibleSpace();
 		if (GUILayout.Button ("Quit", "ShortButton")) {
-			dead = false;
+			visible = false;
 			PauseMenu.canPause = true;
 			// Quit the game
 			GameManager.Restart();
-			Application.LoadLevel(startScreenName);
+			Application.LoadLevel(UIController.GetUI().startScreenName);
 		}
 		GUILayout.FlexibleSpace();
 		GUILayout.EndHorizontal ();
@@ -53,20 +78,5 @@ public class DeathMenu : MonoBehaviour {
 		GUILayout.EndVertical();
 		GUILayout.Space(10);
 		GUILayout.EndHorizontal();
-	}
-
-	void Start () {}
-
-	void Update () {}
-
-	void OnGUI () {
-		if (dead){
-			// Stop pausing from happening
-			PauseMenu.canPause = false;
-			GUI.skin = mySkin;
-			// Create death window
-			deathRect = GUI.Window (3, deathRect, DeathArea, "");
-			deathRect.y = Mathf.MoveTowards (deathRect.y, deathBottom, 10);
-		}
 	}
 }

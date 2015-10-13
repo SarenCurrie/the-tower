@@ -79,6 +79,7 @@ public class UnitHealth : MonoBehaviour {
 			health = 0;
 			Die();
 		}
+		UIController.GetUI().UpdateHealth();
 	}
 
 	/**
@@ -154,7 +155,7 @@ public class UnitHealth : MonoBehaviour {
 		if (tag.Equals("Enemy"))
 		{
 			// Add the enemies health to the players score
-			Canvas.FindObjectOfType<ScoreManager>().IncrementScore((int)gameObject.GetComponent<UnitHealth>().maxHealth);
+			UIController.GetUI().GetScoreManager().IncrementScore((int)gameObject.GetComponent<UnitHealth>().maxHealth);
 
 			foreach (Enemy e in gameObject.GetComponents<Enemy>())
 			{
@@ -177,7 +178,7 @@ public class UnitHealth : MonoBehaviour {
 		}
 		else if (tag.Equals("Player"))
 		{
-			DeathMenu.dead = true;
+			UIController.GetUI().showDeathMenu();
 		}
 
 		AudioSource audioSource = GetComponent<AudioSource>();

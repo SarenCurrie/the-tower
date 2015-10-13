@@ -8,7 +8,7 @@ public class Elevator : MonoBehaviour {
         {
 			//Multiplies the player score by their remaining health
 			//and then sets their health to max health again
-			Canvas.FindObjectOfType<ScoreManager>().FloorClear();
+			UIController.GetUI().GetScoreManager().FloorClear();
 
 			GameManager.MovePlayerToNextFloor();
 		}

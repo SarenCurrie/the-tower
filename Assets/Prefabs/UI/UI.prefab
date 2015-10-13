@@ -12,7 +12,6 @@ GameObject:
   - 114: {fileID: 11471182}
   - 114: {fileID: 11470714}
   - 114: {fileID: 11404600}
-  - 114: {fileID: 11438050}
   - 114: {fileID: 11465908}
   m_Layer: 5
   m_Name: UI
@@ -48,7 +47,6 @@ GameObject:
   - 224: {fileID: 22470762}
   - 222: {fileID: 22225832}
   - 114: {fileID: 11415564}
-  - 114: {fileID: 11489680}
   m_Layer: 5
   m_Name: PlayerScore
   m_TagString: Untagged
@@ -155,7 +153,6 @@ GameObject:
   - 224: {fileID: 22467256}
   - 222: {fileID: 22218600}
   - 114: {fileID: 11453668}
-  - 114: {fileID: 11427256}
   - 114: {fileID: 11476590}
   m_Layer: 5
   m_Name: health
@@ -292,8 +289,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66b00ef6852b0f44599c46591404e1e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponNumber: 0
   mySkin: {fileID: 0}
-  showWindow: 0
 --- !u!114 &11415564
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -423,31 +420,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11427256
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 178686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7b618aeb3354954b8beb6db96963577, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11438050
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 103134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9b9192cab2d64468bedf976368b1b1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mySkin: {fileID: 11400000, guid: 7953503d9e83f8d469b84619849edd4e, type: 2}
-  firstLevelName: world-manager-test
-  startScreenName: StartScreen
 --- !u!114 &11444278
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -743,17 +715,6 @@ MonoBehaviour:
   m_Text: '0
 
 '
---- !u!114 &11489680
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 119052}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a3e24b2f1e821f4f8a8927fbcf08c36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11491270
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -10,7 +10,7 @@ using System.Collections;
 ///  @author Harry
 ///
 /// </summary>
-public class healthManager : MonoBehaviour
+public class HealthManager
 {
 	//An integer to advance frames
 	private int frameCounter = 0;
@@ -18,84 +18,48 @@ public class healthManager : MonoBehaviour
 	private int t=85;
 	private Object[] objects;
 	private Sprite[] sprites;
-	private Image mySprite;
 	private float health = 100f;
 
-	void Awake(){
-		// store all sprites
-		this.mySprite = this.GetComponent<Image>();
-	}
-
-	void Start ()
+	public HealthManager()
 	{
 		//Load all textures found on the Sequence folder, that is placed inside the resources folder
-		this.objects = Resources.LoadAll("Holographic/output/pulse", typeof(Sprite));
+		objects = Resources.LoadAll("Holographic/output/pulse", typeof(Sprite));
 
 		//Initialize the array of sprites with the same size as the objects array
-		this.sprites = new Sprite[objects.Length];
+		sprites = new Sprite[objects.Length];
 
 		//Cast each Object to Sprite and store the result inside the Sprites array
 		for(int i=0; i < objects.Length;i++)
 		{
-			this.sprites[i] = (Sprite)this.objects[i];
+			sprites[i] = (Sprite)objects[i];
 		}
 
 	}
 
-	void Update ()
+	public void UpdateHealth()
 	{
+		health = GameManager.GetPlayer().GetComponent<UnitHealth>().health;
+
+		// Cast to int to stop decimal display
+		UIController.GetUI().transform.Find("health_text").GetComponent<Text>().text = ((int)health).ToString();
+
 		// Delay depends on health - speeds up as player loses health
-		delay = 0.5f * health/4000f;
-
-		StartCoroutine("PlayLoop", delay);
-
-		mySprite.sprite = sprites[frameCounter];
-
-        if (GameManager.GetPlayer() != null)
-        {
-            health = GameManager.GetPlayer().GetComponent<UnitHealth>().health;
-			
-			// Cast to int to stop decimal display
-            this.transform.Find("health_text").GetComponent<Text>().text = ((int)health).ToString();
-
-            if (health <= 0)
-            {
-                health = 0;
-                DeathMenu.dead = true;
-            }
-        }
-    }
-	
-
-	//The following methods return a IEnumerator so they can be yielded:
-	//A method to play the animation in a loop
-	IEnumerator PlayLoop(float delay)
-	{
-		//Wait for the time defined at the delay parameter
-		yield return new WaitForSeconds(delay);
-
-		//Advance one frame
-		frameCounter = (++frameCounter)%sprites.Length;
-
-		//Stop this coroutine
-		StopCoroutine("PlayLoop");
+		delay = 0.5f * health / 4000f;
 	}
 
-	//A method to play the animation just once
-	IEnumerator Play(float delay)
+	public void Process()
 	{
-		//Wait for the time defined at the delay parameter
-		yield return new WaitForSeconds(delay);
+		delay -= Time.deltaTime;
 
-		//If the frame counter isn't at the last frame
-		if(frameCounter < sprites.Length)
+        if (delay <= 0)
 		{
 			//Advance one frame
-			++frameCounter;
-		}
+			frameCounter = (++frameCounter) % sprites.Length;
 
-		//Stop this coroutine
-		StopCoroutine("PlayLoop");
-	}
+			UIController.GetUI().SetHealthSprite(sprites[frameCounter]);
+			// Delay depends on health - speeds up as player loses health
+			delay = 0.5f * health / 4000f;
+		}
+    }
 
 }
