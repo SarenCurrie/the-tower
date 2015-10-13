@@ -25,9 +25,10 @@ public class UIController : MonoBehaviour {
 	private ScoreManager scoreManager;
 	private HealthManager healthManager;
 	private SpeechScreen speechScreen;
+	private DamageFlash damageFlash;
 
 	//Singleton Pattern
-	private static UIController ui;
+	public static UIController ui;
 
 	//How to reference all UI components
 	public static UIController GetUI()
@@ -67,12 +68,13 @@ public class UIController : MonoBehaviour {
 		}
 	}
 
-	void Start()
+	void Awake()
 	{
 		deathMenu = new DeathMenu();
 		scoreManager = new ScoreManager();
 		healthManager = new HealthManager();
 		speechScreen = new SpeechScreen();
+		damageFlash = new DamageFlash();
 	}
 
 	void OnGUI()
@@ -85,6 +87,7 @@ public class UIController : MonoBehaviour {
 	{
 		healthManager.Process();
 		speechScreen.Process();
+		damageFlash.Process();
 	}
 
 	public GUISkin GetGui()
@@ -97,9 +100,26 @@ public class UIController : MonoBehaviour {
 		return speechImage;
 	}
 
+	public Image GetDamageImage()
+	{
+		foreach (RectTransform r in gameObject.GetComponentInChildren<RectTransform>())
+		{
+			if (r.gameObject.tag == Tags.DamageFlash)
+			{
+				return r.GetComponent<Image>();
+			}
+		}
+		return null;
+	}
+
 	public void ShowDeathMenu()
 	{
 		deathMenu.Show();
+	}
+
+	public void FlashDamage()
+	{
+		damageFlash.FlashDamage();
 	}
 
 	public void ShowDialog(string text, float time)

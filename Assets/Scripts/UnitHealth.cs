@@ -57,7 +57,7 @@ public class UnitHealth : MonoBehaviour {
 	public void LoseHealth(float val)
 	{
 		if (gameObject.tag == Tags.PLAYER) {
-			DamageFlash.flashDamage ();
+			UIController.GetUI().FlashDamage();
 		}
 
 		//Make the blood first.

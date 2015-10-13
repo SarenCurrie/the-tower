@@ -1310,10 +1310,9 @@ GameObject:
   - 224: {fileID: 1245015351}
   - 222: {fileID: 1245015354}
   - 114: {fileID: 1245015353}
-  - 114: {fileID: 1245015352}
   m_Layer: 5
   m_Name: DamageScreen
-  m_TagString: Untagged
+  m_TagString: DamageFlash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1335,17 +1334,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 2.21342361e-05}
   m_SizeDelta: {x: 700, y: 339.528564}
   m_Pivot: {x: .5, y: .5}
---- !u!114 &1245015352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1245015350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b16daae428a94becb431e48c1554983, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1245015353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1794,6 +1782,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gui: {fileID: 11400000, guid: 7953503d9e83f8d469b84619849edd4e, type: 2}
+  speechImage: {fileID: 2800000, guid: 2e7e396ef093a401fa93a0c0c64c6f60, type: 3}
+  damageImage: {fileID: 0}
   firstLevelName: world-manager-test
   startScreenName: StartScreen
 --- !u!1 &2143248581

@@ -11,4 +11,5 @@ public static class Tags {
 	public const string HeartCircle = "HeartCircle";
 	public const string HealthElement = "HealthElement";
 	public const string Score = "Score";
+	public const string DamageFlash = "DamageFlash";
 }

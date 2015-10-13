@@ -3,8 +3,8 @@ using System.Collections;
 
 public class SpeechScreen {
 
-	private string dialogText = "";
-	private float waitTime = 1f;
+	private string dialogText;
+	private float waitTime;
 
 	private bool shown = false;
 	
