@@ -1,48 +1,38 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
 
-public class SpeechScreen : MonoBehaviour {
+public class SpeechScreen {
 
+	private string dialogText;
+	private float waitTime;
 
-	public GUISkin mySkin;
-	public Texture image;
-
-	// Singleton speech screen instance - assumed only assigned to one place
-	private static SpeechScreen singleton;
-
-	private static string dialogText = "";
-	private static float waitTime = 1f;
-	private static bool shown = false;
+	private bool shown = false;
 	
-	private static Rect dialogRect;
-	private static float dialogWidth = 300f;
-	private static float dialogHeight = 600f;
-	private static float dialogOut = Screen.width + dialogWidth - 30f;
-	private static float dialogIn = 2 * Screen.width;
+	private Rect dialogRect;
+	private Rect dialogRectangle;
+	private const float dialogWidth = 300f;
+	private const float dialogHeight = 600f;
+	private float dialogOut = Screen.width + dialogWidth - 30f;
+	private float dialogIn = 2 * Screen.width;
 
 	// Static method to show dialog
-	public static void ShowDialog(string text, float time)
-	{
-		// Ask singleton to show dialog
-		singleton.DoDialog(text, time);
-	}
-
-	private void DoDialog(string text, float time)
+	public void Show(string text, float time)
 	{
 		dialogText = text;
 		waitTime = time;
-		this.StartCoroutine("Timeout");
+		shown = true;
 	}
 
-	IEnumerator Timeout()
+	public void Process()
 	{
-		shown = true;
-		yield return new WaitForSeconds(waitTime);
-		shown = false;
-		//Stop this coroutine
-		StopCoroutine("Timeout");
+		if(waitTime > 0)
+			waitTime -= Time.deltaTime;
+
+		if (!shown && waitTime > 0)
+			waitTime = 0f;
+
+		if(waitTime <= 0)
+			shown = false;
 	}
 
 	void DialogArea(int windowID) 
@@ -51,13 +41,12 @@ public class SpeechScreen : MonoBehaviour {
 		GUILayout.BeginVertical();
 
 		GUILayout.BeginHorizontal ();
-		GUILayout.Box(image);
+		GUILayout.Box(UIController.GetUI().GetSpeechImage());
 		GUILayout.EndHorizontal ();
 
 		GUILayout.BeginHorizontal ();
 		GUILayout.Box(dialogText,"OutlineText");
 		GUILayout.EndHorizontal ();
-
 		GUILayout.FlexibleSpace();
 
 		GUILayout.BeginHorizontal ();
@@ -67,37 +56,28 @@ public class SpeechScreen : MonoBehaviour {
 		}
 		GUILayout.FlexibleSpace();
 		GUILayout.EndHorizontal ();
-
 		GUILayout.EndVertical();
 		GUILayout.EndHorizontal();
 	}
 
-	void Update () {
-	}
-
-	private void Awake()
+	public SpeechScreen()
 	{
-		// Enfore singleton for dialog so we can use static ShowDialog
-		if (singleton == null) {
-			singleton = this;
-		}
 		dialogRect = new Rect(Screen.width, (Screen.height - dialogHeight)/2, dialogWidth, dialogHeight);
 	}
 	
-	void OnGUI()
+	public void UI()
 	{
-		GUI.skin = mySkin;
+		GUI.skin = UIController.GetUI().GetGui();
 		GUI.skin.textArea.wordWrap = true;
-		dialogRect = GUI.Window (100, dialogRect, DialogArea, "");
-		// If shown, slide out
-        if (shown) {
-			dialogRect.x = Mathf.MoveTowards(dialogRect.x, dialogOut, 10);
-		} 
-		// Otherwise 
-		else {
-			dialogRect.x = Mathf.MoveTowards (dialogRect.x, dialogIn, 10);
+		dialogRectangle = GUI.Window(100, dialogRect, DialogArea, "");
+		if (shown)
+		{
+			dialogRectangle.x = Mathf.MoveTowards(dialogRectangle.x, dialogOut, 10);
 		}
-	
+		else
+		{
+			dialogRectangle.x = Mathf.MoveTowards(dialogRectangle.x, dialogIn, 10);
+		}
 	}
 
 }

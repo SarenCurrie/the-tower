@@ -18,6 +18,6 @@ public class AchievementManager : MonoBehaviour {
 	 * Displays achievemnt on the screen.
 	 */
 	private static void ShowAchievement(Achievement a) {
-		AchievementPopup.ShowPopup(string.Format("Achievemnt Unlocked!\n{0}: {1}", a.name, a.text));
+		UIController.GetUI().ShowDialog(string.Format("Achievemnt Unlocked!\n{0}: {1}", a.name, a.text), 5f);
 	}
 }

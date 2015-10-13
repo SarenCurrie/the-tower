@@ -2,24 +2,30 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class DamageFlash : MonoBehaviour {
+public class DamageFlash {
 
-	private static DamageFlash singleton;
 	private Image image;
 
-	private float fadeTime = 0.5f;
+	private const float FADE_TIME = 0.5f;
+	private float fadeTime;
 	private bool isImageFading = false;
 
 	// Use this for initialization
-	void Start () {
-		if (singleton == null) {
-			singleton = this;
-		}
-		image = this.GetComponent<Image>();
+	public DamageFlash() {
+		image = UIController.GetUI().GetDamageImage();
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	public void Process() {
+		if (fadeTime > 0)
+			fadeTime -= Time.deltaTime;
+
+		if (fadeTime <= 0)
+		{
+			fadeTime = 0;
+			isImageFading = false;
+		}
+
 		if (isImageFading) {
 			Color newColor = new Color (255f, 255f, 255f, 255f);
 			image.color = newColor;
@@ -27,20 +33,12 @@ public class DamageFlash : MonoBehaviour {
 			Color newColor = new Color (255f, 255f, 255f, 0f);
 			image.color = newColor;
 		}
-
 	}
 
-	// Call this method for default flash
-	public static void flashDamage(){
-		singleton.StartCoroutine("Flash");
-	}
-
-	IEnumerator Flash()
+	public void FlashDamage()
 	{
+		fadeTime = FADE_TIME;
 		isImageFading = true;
-		yield return new WaitForSeconds(fadeTime);
-		isImageFading = false;
-		StopCoroutine ("Flash");
 	}
 
 }
