@@ -17,6 +17,16 @@ public class UnitHealth : MonoBehaviour {
 	public float maxHealth;
 	public float health;
 	public bool shouldDrop;
+
+	/**
+	 * This is is used as a "hack" to prevent the enemy from dying twice.
+	 *
+	 * This needed to be resolved in this manner as it seems the Destroy(GameObject, Float)
+	 * method is broken within the current version of Unity. The first enemy that is killed
+	 * is never destroyed when this method is called (until it is called for a second time.
+	 */
+	public bool isDead = false;
+
 	public GameObject[] bloodPrefabs;
 	public AudioClip deathSound;
 
@@ -47,21 +57,29 @@ public class UnitHealth : MonoBehaviour {
 	public void LoseHealth(float val)
 	{
 		if (gameObject.tag == Tags.PLAYER) {
-			DamageFlash.flashDamage ();
+			UIController.GetUI().FlashDamage();
 		}
 
-		health -= val;
+		//Make the blood first.
+		if(!isDead)
+			MakeBlood(BLOOD_SPATTER);
+
 		if (health > maxHealth)
 		{
 			// Cannot excede max health
 			health = maxHealth;
 		}
-		else if (health < 0)
+
+		if (health - val > 0)
 		{
+			health -= val;
+		}
+		else
+		{
+			health = 0;
 			Die();
 		}
-
-		MakeBlood(BLOOD_SPATTER);
+		UIController.GetUI().UpdateHealth();
 	}
 
 	/**
@@ -106,6 +124,14 @@ public class UnitHealth : MonoBehaviour {
 	}
 
 	/**
+	 * Sets the health back to the maximum health.
+	 */
+	public void ResetHealth()
+	{
+		health = maxHealth;
+	}
+
+	/**
 	* Destroys the gameObject this script is attached to.
 	*
 	* In the future, this can be used for scoring/loot etc by overriding
@@ -113,56 +139,60 @@ public class UnitHealth : MonoBehaviour {
 	*/
 	public void Die()
 	{
-		if (enabled) {
-			health = 0;
-
-			//Make some blood
-			if (bloodPrefabs.Length > 0)
+		//Make some blood
+		if (bloodPrefabs.Length > 0 && !isDead)
+		{
+			for (int i = 0; i < UnityEngine.Random.Range(MIN_BLOOD_ON_DEATH, MAX_BLOOD_ON_DEATH); i++)
 			{
-				for (int i = 0; i < UnityEngine.Random.Range(MIN_BLOOD_ON_DEATH, MAX_BLOOD_ON_DEATH); i++)
-				{
-					MakeBlood(BLOOD_SPATTER_DEATH);
-				}
+				MakeBlood(BLOOD_SPATTER_DEATH);
 			}
+		}
 
-			string tag = gameObject.tag;
-			//Increment the player score upon killing an enemy;
-			if (tag.Equals("Enemy")) {
-				// add score
-				int baseScore = (int) gameObject.GetComponent<UnitHealth>().maxHealth;
-				baseScore += (int) GameManager.GetPlayer().GetComponent<UnitHealth>().health;
-				GameManager.GetPlayer().GetComponent<Player>().score += baseScore;
-				Canvas.FindObjectOfType<ScoreManager>().updateScore();
+		isDead = true;
 
-				foreach (Enemy e in gameObject.GetComponents<Enemy>())
-					e.enabled = false;
+		string tag = gameObject.tag;
+		//Increment the player score upon killing an enemy;
+		if (tag.Equals("Enemy"))
+		{
+			// Add the enemies health to the players score
+			UIController.GetUI().GetScoreManager().IncrementScore((int)gameObject.GetComponent<UnitHealth>().maxHealth);
 
-				if (shouldDrop)
-				{
-					GameObject a = Item.GenerateItem(gameObject.GetComponent<Transform>().position);
-				}
-
-				// log kill and score for achievemnts
-				GameManager.achievementHandler.AddKill();
-				GameManager.achievementHandler.AddScore();
-			}
-			else if (tag.Equals("Player"))
+			foreach (Enemy e in gameObject.GetComponents<Enemy>())
 			{
-				DeathMenu.dead = true;
+				e.enabled = false;
+				//Make the enemy disappear
+				gameObject.GetComponent<SpriteRenderer>().enabled = false;
 			}
 
-			AudioSource audioSource = GetComponent<AudioSource>();
-			if (audioSource != null) {
-				Renderer renderer = GetComponent<Renderer>();
-				audioSource.clip = deathSound;
-				audioSource.Play();
-				renderer.enabled = false;
-				enabled = false;
-				Destroy(gameObject, deathSound.length);
+			if (shouldDrop)
+			{
+				GameObject a = Item.GenerateItem(gameObject.GetComponent<Transform>().position);
+
+				//Prevents any enemy dropping twice on death.
+				shouldDrop = false;
 			}
-			else {
-				Destroy(gameObject);
-			}
+
+			// log kill and score for achievemnts
+			GameManager.achievementHandler.AddKill();
+			GameManager.achievementHandler.AddScore();
+		}
+		else if (tag.Equals("Player"))
+		{
+			UIController.GetUI().ShowDeathMenu();
+		}
+
+		AudioSource audioSource = GetComponent<AudioSource>();
+		if (audioSource != null)
+		{
+			Renderer renderer = GetComponent<Renderer>();
+			audioSource.clip = deathSound;
+			audioSource.Play();
+			renderer.enabled = false;
+			Destroy(gameObject, deathSound.length);
+		}
+		else
+		{
+			Destroy(gameObject);
 		}
 	}
 }

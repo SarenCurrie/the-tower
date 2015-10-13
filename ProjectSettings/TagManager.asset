@@ -14,37 +14,41 @@ TagManager:
   - DroppedItem
   - Player_Spawn
   - Elevator
+  - HeartCircle
+  - HealthElement
+  - Score
+  - DamageFlash
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  -
+  - 
   - Water
   - UI
-  -
-  -
+  - 
+  - 
   - Floor
-  -
+  - 
   - LowObject
   - DroppedItem
-  -
-  -
+  - 
+  - 
   - Enemy
-  -
-  -
+  - 
+  - 
   - Player
   - PlayerArmour
-  -
-  -
+  - 
+  - 
   - Enemy
   - Weapon
-  -
+  - 
   - MidObject
   - FlyingEnemy
-  -
+  - 
   - EnemyProjectile
   - PlayerProjectile
-  -
+  - 
   - HighObject
   - Wall
   m_SortingLayers:

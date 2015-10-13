@@ -48,7 +48,7 @@ public class Weapon : Item
 
     public Sprite[] looks;
     public Sprite[] selectedSideLooks;
-    public Sprite[] unseletedSideLooks;
+    public Sprite[] unselectedSideLooks;
 
     public Sprite[] possibleProjectileSprites;
     private Sprite projectileSprite;
@@ -106,12 +106,18 @@ public class Weapon : Item
     public override void Generate()
     {
         look = UnityEngine.Random.Range(0, looks.Length);
-        if (selectedSideLooks.Length == 5 && unseletedSideLooks.Length == 5)
+        if (selectedSideLooks.Length == unselectedSideLooks.Length && selectedSideLooks.Length == looks.Length)
         {
             selectedSprite = selectedSideLooks[look];
-            unSelectedSprite = unseletedSideLooks[look];
+            unSelectedSprite = unselectedSideLooks[look];
         }
-        gameObject.GetComponent<SpriteRenderer>().sprite = looks[look];
+		else
+		{
+			print("ERROR: Incorrect number of sprites for weapon generation.");
+		}
+		
+		if(looks.Length > 0)
+			gameObject.GetComponent<SpriteRenderer>().sprite = looks[look];
 
         int projectileSpriteIndex = UnityEngine.Random.Range(0, possibleProjectileSprites.Length);
         projectileSprite = possibleProjectileSprites[projectileSpriteIndex];

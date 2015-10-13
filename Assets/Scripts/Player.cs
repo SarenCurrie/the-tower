@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 
 /// <summary>
@@ -17,21 +18,6 @@ public class Player : MonoBehaviour {
 
 	// The base value of all stats
 	private const int MIN_STAT = 1;
-
-    //Player score
-    private int _score=0;
-    public int score
-    {
-        get
-        {
-            return _score;
-        }
-        set
-        {
-            _score = value;
-
-        }
-    }
 
 	// Player stats
 	private int strength = 1;
@@ -140,6 +126,9 @@ public class Player : MonoBehaviour {
 			if (weapons[(currentWeapon + 1) % weapons.Length] != null)
 			{
 				currentWeapon = (currentWeapon + 1) % weapons.Length;
+				foreach (WeaponIconScript ws in Canvas.FindObjectsOfType<WeaponIconScript>()){
+					ws.toggleWeapon();
+				}
 			}
         }
     }
@@ -165,6 +154,10 @@ public class Player : MonoBehaviour {
 				weapons[currentWeapon].GetComponent<Weapon>().ReturnToFloor();
 				weapons[currentWeapon] = weapon.gameObject;
 			}
+		}
+
+		foreach (WeaponIconScript ws in Canvas.FindObjectsOfType<WeaponIconScript>()){
+			ws.reloadWeaponSprites();
 		}
 	}
 
@@ -211,6 +204,11 @@ public class Player : MonoBehaviour {
 
         // Update player stats
         UpdateStats();
+
+		// Update icon sprites
+		foreach (ArmourIconScript ais in Canvas.FindObjectsOfType<ArmourIconScript>()){
+			ais.toggleArmour();
+		}
     }
 
 	// Update is called once per frame
@@ -331,6 +329,11 @@ public class Player : MonoBehaviour {
 		strength = GetItemStrength() + MIN_STAT;
 		dexterity = GetItemDexterity() + MIN_STAT;
 		intelligence = GetItemIntelligence() + MIN_STAT;
+
+		// Update icon sprites
+		foreach (StatSummaryText sst in Canvas.FindObjectsOfType<StatSummaryText>()){
+			sst.updateStats(strength,dexterity,intelligence);
+		}
 	}
 
 	public int GetStrength()
@@ -346,5 +349,19 @@ public class Player : MonoBehaviour {
 	public int GetIntelligence()
 	{
 		return intelligence;
+	}
+
+	public Dictionary<string, GameObject> GetGearDictionary()
+	{
+		Dictionary<string, GameObject> gearDict = new Dictionary<string, GameObject>();
+		if (chest != null)
+			gearDict.Add ("Chest", chest);
+		if (helm != null)
+			gearDict.Add ("Helm", helm);
+		if (gloves != null)
+			gearDict.Add ("Gloves", gloves);
+		if (boots != null)
+			gearDict.Add ("Boots", boots);
+		return gearDict;
 	}
 }
