@@ -49,7 +49,6 @@ public class GameManager : MonoBehaviour {
 			Destroy(currentFloor.gameObject);
 
 		currentFloorNumber++;
-		GameManager.achievementHandler.FinishFloor(currentFloorNumber);
 
 		if (currentFloorNumber < staticFloorPrefabs.Length)
         {
@@ -64,5 +63,6 @@ public class GameManager : MonoBehaviour {
 			//The game is over.
 			print("Congratulations, you have finished the game with a score of " + ScoreManager.GetScore());
         }
+		achievementHandler.FinishFloor(currentFloorNumber-1);
 	}
 }
