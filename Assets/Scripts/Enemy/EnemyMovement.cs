@@ -14,7 +14,7 @@ public class EnemyMovement : Enemy
 	private bool hasSeenPlayer = false;
 	private bool canSeePlayer = false;
 
-	private const float DISTANCE_FROM_LAST_KNOWN_PLAYER_POSITION = 0.1f;
+	private const float DISTANCE_FROM_LAST_KNOWN_PLAYER_POSITION = 0.05f;
 
 	private const float WALL_CLEARANCE = 0.05f;
 
