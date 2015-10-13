@@ -71,6 +71,11 @@ public class UIController : MonoBehaviour {
 		healthManager = new HealthManager();
 	}
 
+	void OnGUI()
+	{
+		deathMenu.UI();
+	}
+
 	void Update()
 	{
 		healthManager.Process();

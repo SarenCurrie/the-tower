@@ -17,7 +17,7 @@ public class DeathMenu {
 		deathRect = new Rect((Screen.width - deathWidth) / 2, deathTop, deathWidth, deathHeight);
 	}
 
-	void OnGUI()
+	public void UI()
 	{
 		if (visible)
 		{
