@@ -171,7 +171,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3cb9b30070083d749ba6d74076d0c5ef, type: 3}
   - {fileID: 21300000, guid: 8ad26ff5e76196c4a9583a813f1e21e3, type: 3}
   - {fileID: 21300000, guid: 8470bd69e934a49429f6d3c242443b69, type: 3}
-  unseletedSideLooks:
+  unselectedSideLooks:
   - {fileID: 21300000, guid: 88d0533a0fcd2fc46a4bf6264d13c1c6, type: 3}
   - {fileID: 21300000, guid: 6a02fce02bb2641478201cb163dfd18e, type: 3}
   - {fileID: 21300000, guid: 3cca53d84b7569e47813441fe14e8ec3, type: 3}
@@ -262,6 +262,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: possibleRifleSounds.Array.size
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: unselectedSideLooks.Array.size
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: possibleShotgunSounds.Array.size
@@ -557,6 +561,41 @@ Prefab:
       propertyPath: selectedSideLooks.Array.data[7]
       value: 
       objectReference: {fileID: 21300000, guid: 8470bd69e934a49429f6d3c242443b69,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: unselectedSideLooks.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 3cca53d84b7569e47813441fe14e8ec3,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: unselectedSideLooks.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 6a02fce02bb2641478201cb163dfd18e,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: unselectedSideLooks.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 88d0533a0fcd2fc46a4bf6264d13c1c6,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: unselectedSideLooks.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 237e0b03e28105143bc96f0717162648,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: unselectedSideLooks.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: 94ec2ffe9c7ad3e47a64671fea3d8f0d,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: unselectedSideLooks.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: 6d61bc1c85bcbf54784ce1752d7dfbe5,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: unselectedSideLooks.Array.data[6]
+      value: 
+      objectReference: {fileID: 21300000, guid: 5784853b26ce7824f91a4a5d0ee456ed,
         type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
