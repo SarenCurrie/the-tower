@@ -23,6 +23,8 @@ connection.connect(function(err) {
   var app = express();
   var port = process.env.PORT || 3000;
 
+  app.use(bodyParser.json());
+
   app.get('/v1/scores', function (req, res) {
     var total = req.query.total || 10;
     var start = req.query.start || 0;
@@ -42,6 +44,31 @@ connection.connect(function(err) {
         res.status(200).send({
           data: rows
         });
+      }
+    });
+  });
+
+  app.post('/v1/scores', function (req, res) {
+    var playerName = req.body.name;
+    var score = req.body.score;
+
+    if (!playerName || !score) {
+      res.status(400).send('missing value');
+      return;
+    }
+
+    score = parseInt(score);
+
+    if (isNaN(score)) {
+      res.send('score must be an integer');
+      return;
+    }
+
+    connection.query('insert into scores (name, score) values(?, ?)', [playerName, score], function (err, rows, fields) {
+      if (err) {
+        res.status(500).send('Mysql error: ' + err);
+      } else {
+        res.status(200).send();
       }
     });
   });
