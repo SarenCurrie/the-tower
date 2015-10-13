@@ -13,14 +13,14 @@ public class Door : MonoBehaviour
 	//How long player must stand in door before the camera fully moves and player is teleported
 	public const float DOOR_CONTACT_TIME = 1f;
 
-	private Vector3 cameraDestination = Camera.main.transform.position;
+	private Vector3 cameraDestination;
 
 	//Current pan time. Will be between 0 and DOOR_CONTACT_TIME
 	private float transitionTime = 0f;
 
 	//What the camera is currently doing
 	private enum CAMERA_STATE { NONE, MOVING_ROOM, MOVING_BACK };
-	private CAMERA_STATE cameraState = CAMERA_STATE.NONE;
+	private CAMERA_STATE cameraState;
 
 	private const float UNBLACKINGING_TIME = DOOR_CONTACT_TIME;
 	public const float BLACK_ALPHA = 0.8f;
@@ -28,6 +28,12 @@ public class Door : MonoBehaviour
 
 	private const float MAX_FLICKER_VALUE = 0.5f;
 	private const float FLICKER_CHANCE = 0.025f;
+
+	void Start()
+	{
+		cameraDestination = Camera.main.transform.position;
+		cameraState = CAMERA_STATE.NONE;
+	}
 
 	public void Update()
 	{
