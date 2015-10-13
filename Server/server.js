@@ -27,19 +27,19 @@ connection.connect(function(err) {
     var total = req.query.total || 10;
     var start = req.query.start || 0;
 
-    function isInt(n) {
-      return Number(n) === n && n % 1 === 0;
-    }
+    total = parseInt(total);
+    start = parseInt(start);
 
-    if (!isInt(total) || !isInt(start)) {
+    if (isNaN(total) || isNaN(start)) {
       res.status(400).send('total and start must be integers');
+      return;
     }
 
     connection.query('select * from scores order by score desc limit ? offset ?', [total, start], function (err, rows, fields) {
       if (err) {
         res.status(500).send('Mysql error');
       } else {
-        res.send({
+        res.status(200).send({
           data: rows
         });
       }
