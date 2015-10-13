@@ -52,11 +52,11 @@ public class GameManager : MonoBehaviour {
 
         if (currentFloorNumber < staticFloorPrefabs.Length)
         {
-            //Spawn the floor, generate it, and move the player to it
-            currentFloor = Instantiate(staticFloorPrefabs[currentFloorNumber]).GetComponent<Floor>();
-            currentFloor.GenerateFloor();
-            currentFloor.MovePlayerToFloor(player);
-            achievementHandler = new AchievementHandler();
+			//Spawn the floor, generate it, and move the player to it
+			currentFloor = Instantiate(staticFloorPrefabs[currentFloorNumber]).GetComponent<Floor>();
+			currentFloor.GenerateFloor();
+			currentFloor.MovePlayerToFloor(player);
+			achievementHandler = new AchievementHandler();
         }
         else
         {

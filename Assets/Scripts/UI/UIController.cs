@@ -14,6 +14,8 @@ public class UIController : MonoBehaviour {
 	//The Gui
 	public GUISkin gui;
 
+	public Texture speechImage;
+
 	//The names of the scenes in the game
 	public string firstLevelName;
 	public string startScreenName;
@@ -22,6 +24,7 @@ public class UIController : MonoBehaviour {
 	private DeathMenu deathMenu;
 	private ScoreManager scoreManager;
 	private HealthManager healthManager;
+	private SpeechScreen speechScreen;
 
 	//Singleton Pattern
 	private static UIController ui;
@@ -69,26 +72,39 @@ public class UIController : MonoBehaviour {
 		deathMenu = new DeathMenu();
 		scoreManager = new ScoreManager();
 		healthManager = new HealthManager();
+		speechScreen = new SpeechScreen();
 	}
 
 	void OnGUI()
 	{
 		deathMenu.UI();
+		speechScreen.UI();
 	}
 
 	void Update()
 	{
 		healthManager.Process();
+		speechScreen.Process();
 	}
 
-	public GUISkin getGui()
+	public GUISkin GetGui()
 	{
 		return gui;
 	}
 
-	public void showDeathMenu()
+	public Texture GetSpeechImage()
+	{
+		return speechImage;
+	}
+
+	public void ShowDeathMenu()
 	{
 		deathMenu.Show();
+	}
+
+	public void ShowDialog(string text, float time)
+	{
+		speechScreen.Show(text, time);
 	}
 
 	public void UpdateHealth()

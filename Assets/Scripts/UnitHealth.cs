@@ -178,7 +178,7 @@ public class UnitHealth : MonoBehaviour {
 		}
 		else if (tag.Equals("Player"))
 		{
-			UIController.GetUI().showDeathMenu();
+			UIController.GetUI().ShowDeathMenu();
 		}
 
 		AudioSource audioSource = GetComponent<AudioSource>();

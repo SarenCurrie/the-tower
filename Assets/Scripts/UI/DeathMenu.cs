@@ -21,10 +21,9 @@ public class DeathMenu {
 	{
 		if (visible)
 		{
+			GUI.skin = UIController.GetUI().GetGui();
 			// Stop pausing from happening
 			PauseMenu.canPause = false;
-
-			GUI.skin = UIController.GetUI().getGui();
 
 			// Create death window
 			deathRect = GUI.Window(3, deathRect, DeathArea, "");
