@@ -154,15 +154,16 @@ public class UnitHealth : MonoBehaviour {
 		//Increment the player score upon killing an enemy;
 		if (tag.Equals("Enemy"))
 		{
+			//Destroy the game object
+			Destroy(gameObject);
+
 			// Add the enemies health to the players score
 			UIController.GetUI().GetScoreManager().IncrementScore((int)gameObject.GetComponent<UnitHealth>().maxHealth);
 
-			foreach (Enemy e in gameObject.GetComponents<Enemy>())
-			{
-				e.enabled = false;
-				//Make the enemy disappear
-				gameObject.GetComponent<SpriteRenderer>().enabled = false;
-			}
+			//Make the current floor play the death sound
+			AudioSource audioSource = AudioManager.GetAudioSource();
+			audioSource.clip = deathSound;
+			audioSource.Play();
 
 			if (shouldDrop)
 			{
@@ -179,20 +180,6 @@ public class UnitHealth : MonoBehaviour {
 		else if (tag.Equals("Player"))
 		{
 			UIController.GetUI().ShowDeathMenu();
-		}
-
-		AudioSource audioSource = GetComponent<AudioSource>();
-		if (audioSource != null)
-		{
-			Renderer renderer = GetComponent<Renderer>();
-			audioSource.clip = deathSound;
-			audioSource.Play();
-			renderer.enabled = false;
-			Destroy(gameObject, deathSound.length);
-		}
-		else
-		{
-			Destroy(gameObject);
 		}
 	}
 }
