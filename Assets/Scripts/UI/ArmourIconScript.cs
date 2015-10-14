@@ -21,7 +21,6 @@ public class ArmourIconScript : MonoBehaviour {
 	private bool showWindow = false;
 	private RectTransform rect;
 	private RectTransform parentRect;
-	private float startY;
 	private float startX;
 	
 	private GameObject myPopUp;
@@ -38,7 +37,6 @@ public class ArmourIconScript : MonoBehaviour {
 	{
 		rect = this.GetComponent<RectTransform>();
 		parentRect = this.transform.parent.GetComponent<RectTransform>();
-		startY = rect.anchoredPosition.y - myPopUp.GetComponent<RectTransform>().rect.height;
 		startX = myPopUp.GetComponent<RectTransform>().anchoredPosition.x;
 	}
 	
@@ -67,7 +65,6 @@ public class ArmourIconScript : MonoBehaviour {
 	{
 		Vector2 pos = myPopUp.GetComponent<RectTransform>().anchoredPosition;
 		if (show) {
-			pos.y = startY;
 			pos.x = startX;
 		} else {
 			pos.x = Screen.width * 2;
