@@ -56,13 +56,16 @@ public class SpreadShotEnemy : RangedEnemy
 		int projectileSpriteIndex = UnityEngine.Random.Range(0, possibleProjectileSprites.Length);
 		projectileSprite = possibleProjectileSprites[projectileSpriteIndex];
 
-		// generate sound
-		int soundIndex = UnityEngine.Random.Range(0, possibleSounds.Length);
-		actualSound = possibleSounds[soundIndex];
+		if (possibleSounds.Length > 0)
+		{
+			// generate sound
+			int soundIndex = UnityEngine.Random.Range(0, possibleSounds.Length);
+			actualSound = possibleSounds[soundIndex];
+		}
 	}
 
     protected override float CalculateFireStopTime()
     {
-        return Time.time + Random.Range(minBurstTime, maxBurstTime);
+        return Random.Range(minBurstTime, maxBurstTime);
     }
 }

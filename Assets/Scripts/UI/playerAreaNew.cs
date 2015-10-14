@@ -27,31 +27,32 @@ public class playerAreaNew : MonoBehaviour
 	
 	void Awake()
 	{
-		// NOTE: Position of guns is hard-coded currently - want to make it depend later on their starting position
-		weapon1 = GameObject.Find ("Weapon1").GetComponent<RectTransform> ();
-		weapon2 = GameObject.Find("Weapon2").GetComponent<RectTransform> ();
-		playerArea = GameObject.Find ("PlayerArea").GetComponent<RectTransform> ();
+		weapon1 = GameObject.Find ("Weapon1").GetComponent<RectTransform>();
+		weapon2 = GameObject.Find("Weapon2").GetComponent<RectTransform>();
+		playerArea = GameObject.Find ("PlayerArea").GetComponent<RectTransform>();
 		_InventoryWindowHeight = playerArea.rect.height;
-		_InventoryWindowDown = 0 - 2 * _Offset;
-		_InventoryWindowUp = -_InventoryWindowHeight - _Offset;
-		_Weapon1Down = (_InventoryWindowHeight) + _Offset;
-		_Weapon1Up = 200f;
-		_Weapon2Down = (_InventoryWindowHeight) + _Offset + 70f;
-		_Weapon2Up = 270f;
+		_InventoryWindowDown = 0 - _InventoryWindowHeight;
+		_InventoryWindowUp = playerArea.anchoredPosition.y;
+		_Weapon1Down = weapon1.anchoredPosition.y;
+		_Weapon1Up = weapon1.anchoredPosition.y + _InventoryWindowHeight/2f + _InventoryWindowHeight/20f;
+		_Weapon2Down = weapon2.anchoredPosition.y;
+		_Weapon2Up = weapon2.anchoredPosition.y + _InventoryWindowHeight/2f + _InventoryWindowHeight/20f;
 
 	}
 	
 	private void Start()
 	{
-		transform.position = Camera.main.ViewportToWorldPoint(new Vector3(0,1,0));
+		temp3 = playerArea.anchoredPosition;
+		temp3.y = _InventoryWindowDown;
+		playerArea.anchoredPosition = temp3;
 	}
 	
 	private void Update()
 	{
 		if (Input.GetKey(KeyCode.Q))
-			_IsShown = false;
-		else
 			_IsShown = true;
+		else
+			_IsShown = false;
 		
 		if (_IsShown)
 		{

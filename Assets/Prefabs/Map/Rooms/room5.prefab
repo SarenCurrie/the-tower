@@ -11,7 +11,7 @@ GameObject:
   - 50: {fileID: 5017414}
   - 61: {fileID: 6199844}
   - 212: {fileID: 21262312}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: VertWall (5)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ GameObject:
   - 50: {fileID: 5062786}
   - 61: {fileID: 6189798}
   - 212: {fileID: 21237198}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: VertWall (11)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ GameObject:
   - 212: {fileID: 21249352}
   - 50: {fileID: 5033244}
   - 61: {fileID: 6146636}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (2)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ GameObject:
   - 50: {fileID: 5089486}
   - 61: {fileID: 6110082}
   - 212: {fileID: 21291638}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: VertWall (1)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   - 50: {fileID: 5024726}
   - 61: {fileID: 6155830}
   - 212: {fileID: 21253972}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: VertWall (7)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ GameObject:
   - 50: {fileID: 5008472}
   - 61: {fileID: 6144312}
   - 212: {fileID: 21239490}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: VertWall (2)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -187,7 +187,7 @@ GameObject:
   - 50: {fileID: 5074312}
   - 61: {fileID: 6133048}
   - 212: {fileID: 21288862}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: VertWall
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -220,7 +220,7 @@ GameObject:
   - 50: {fileID: 5012448}
   - 61: {fileID: 6194098}
   - 212: {fileID: 21236650}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: VertWall (3)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -238,7 +238,7 @@ GameObject:
   - 50: {fileID: 5029306}
   - 61: {fileID: 6165706}
   - 212: {fileID: 21267592}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: VertWall (4)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ GameObject:
   - 50: {fileID: 5021298}
   - 61: {fileID: 6133072}
   - 212: {fileID: 21278062}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: VertWall (10)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -289,7 +289,7 @@ GameObject:
   - 212: {fileID: 21230476}
   - 50: {fileID: 5002338}
   - 61: {fileID: 6117818}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -322,7 +322,7 @@ GameObject:
   - 50: {fileID: 5093732}
   - 61: {fileID: 6105440}
   - 212: {fileID: 21215260}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: VertWall (8)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -340,7 +340,7 @@ GameObject:
   - 50: {fileID: 5099210}
   - 61: {fileID: 6125718}
   - 212: {fileID: 21223684}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: VertWall (9)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -1643,6 +1643,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalRotation.w
       value: .707106709
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 31
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

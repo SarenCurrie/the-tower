@@ -34,12 +34,14 @@ public abstract class Item : MonoBehaviour {
         int type = Random.Range(0, 101);
         if (type < WEAPON_CHANCE)
         {
-            return item = (Instantiate(Resources.Load("GroundGun"), v, Quaternion.identity)) as GameObject; 
+            item = (Instantiate(Resources.Load("GroundGun"), v, Quaternion.identity)) as GameObject; 
         }
         else
         {
-            return item = (Instantiate(Resources.Load("GroundArmour"), v, Quaternion.identity)) as GameObject; 
+            item = (Instantiate(Resources.Load("GroundArmour"), v, Quaternion.identity)) as GameObject; 
         }
+		item.transform.parent = GameManager.currentFloor.currentRoom.transform;
+		return item;
 	}
 
 	/**
@@ -80,7 +82,7 @@ public abstract class Item : MonoBehaviour {
 		gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Item_Dropped";
 
 		//Stop following the player
-		transform.parent = null;
+		transform.parent = GameManager.currentFloor.currentRoom.transform;
 
 		// Set the onFloor flag
 		onFloor = true;

@@ -211,7 +211,7 @@ public class Floor : MonoBehaviour {
 		if(dialogLength != 0)
 		{
 			int index = UnityEngine.Random.Range(0, dialogLength);
-			SpeechScreen.ShowDialog(floorDialog[index], DIALOGTIME);
+			UIController.GetUI().ShowDialog(floorDialog[index], DIALOGTIME);
 			floorDialog.RemoveAt(index);
 		}
 	}
@@ -222,6 +222,6 @@ public class Floor : MonoBehaviour {
 		currentRoom.DisableOrEnableEnemies(true);
 		Camera.main.transform.position = currentRoom.GetCameraPosition();
 		// Show the entry dialog
-		SpeechScreen.ShowDialog(enterDialog, DIALOGTIME);
+		UIController.GetUI().ShowDialog(enterDialog, DIALOGTIME);
 	}
 }
