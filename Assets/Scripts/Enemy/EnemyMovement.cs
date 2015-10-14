@@ -70,10 +70,7 @@ public class EnemyMovement : Enemy
 
 	private void MoveToLastKnownPlayerPosition()
 	{
-		if ((transform.position - lastKnownPlayerPosition).magnitude > DISTANCE_FROM_LAST_KNOWN_PLAYER_POSITION)
-			hasSeenPlayer = false;
-		else
-			rigidBody.AddForce(ChooseMovementDirection() * movementSpeed * Time.deltaTime);
+		rigidBody.AddForce(ChooseMovementDirection() * movementSpeed * Time.deltaTime);
 	}
 
 	private Vector3 ChooseMovementDirection()
