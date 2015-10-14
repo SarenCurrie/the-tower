@@ -21,9 +21,8 @@ public class WeaponIconScript : MonoBehaviour {
 	private bool showWindow = false;
 	private RectTransform rect;
 	private float startX;
-	private float startY;
-	private float popupHeight = 90f;
-	private float popupWidth = 170f;
+
+	private GameObject myPopUp;
 
     public GUISkin mySkin;
 
@@ -31,13 +30,13 @@ public class WeaponIconScript : MonoBehaviour {
     {
 		this.weaponIcon = this.GetComponent<Image>();
 		weaponIcon.enabled = false;
+		myPopUp = GameObject.Find("WeaponPopup"+weaponNumber.ToString());
     }
 
     void Start()
     {
 		rect = this.GetComponent<RectTransform> ();
-		startX = rect.anchoredPosition.x + rect.rect.width;
-		startY = rect.anchoredPosition.y + popupHeight/2;
+		startX = rect.anchoredPosition.x + rect.rect.width/2;
     }
 
     public void reloadWeaponSprites()
@@ -92,6 +91,20 @@ public class WeaponIconScript : MonoBehaviour {
 
     }
 
+	// Moves the popup into, or out of, position
+	private void togglePopup(bool show, string text)
+	{
+		Vector2 pos = myPopUp.GetComponent<RectTransform>().anchoredPosition;
+		if (show) {
+			pos.x = startX;
+
+		} else {
+			pos.x = Screen.width * 2;
+		}
+		myPopUp.GetComponent<RectTransform>().anchoredPosition = pos;
+		myPopUp.GetComponentInChildren<Text>().text = text;
+	}
+
     //Called every frame to check if the on hover will open a comparison popup for the weaopn
     void OnGUI()
     {
@@ -106,8 +119,11 @@ public class WeaponIconScript : MonoBehaviour {
 				float forceCurrent = weapon.fireForce;
 				string currentMajor = weapon.weaponMajor.ToString();
 				string currentMinor = weapon.weaponMinor.ToString();
-				GUI.TextField(new Rect (Input.mousePosition.x, Screen.height - Event.current.mousePosition.y - popupHeight * (popupHeight/Screen.height), popupWidth, popupHeight),"Damage:   " + System.Math.Round(damageCurrent, 2) + "\nSpread:       " + spreadCurrent + "\nForce:          " + forceCurrent + "\nMaj/Min:    " + currentMajor + "-" + currentMinor,"OutlineText");
+				togglePopup(true,"GENERIC NAME\nDamage:   " + System.Math.Round(damageCurrent, 2) + "\nSpread:       " + spreadCurrent + "\nForce:          " + forceCurrent + "\nMaj/Min:    " + currentMajor + "-" + currentMinor);
+				//GUI.TextField(new Rect (Input.mousePosition.x, Screen.height - Event.current.mousePosition.y - popupHeight * (popupHeight/Screen.height), popupWidth, popupHeight),"Damage:   " + System.Math.Round(damageCurrent, 2) + "\nSpread:       " + spreadCurrent + "\nForce:          " + forceCurrent + "\nMaj/Min:    " + currentMajor + "-" + currentMinor,"OutlineText");
 			}
+		} else {
+			togglePopup(false,"");
 		}
     }
 
