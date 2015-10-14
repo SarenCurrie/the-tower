@@ -129,6 +129,11 @@ public class UIController : MonoBehaviour {
 		SpeechScreen.ShowDialog(text, time);
 	}
 
+	public void ShowAchievement(string name, string text, float time)
+	{
+		AchievementPopup.ShowAchievement(name, text, time);
+	}
+
 	public void UpdateHealth()
 	{
 		healthManager.UpdateHealth();
