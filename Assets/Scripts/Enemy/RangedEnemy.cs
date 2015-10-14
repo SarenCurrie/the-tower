@@ -140,6 +140,8 @@ public class RangedEnemy : Enemy
 
 	protected bool CanSeePlayer()
 	{
+		if (GameManager.GetPlayer() == null)
+			return false;
 		Vector3 playerPosition = GameManager.GetPlayer().transform.position;
 		Vector3 relativePlayerPosition = playerPosition - transform.position;
 		RaycastHit2D hit = Physics2D.Raycast(transform.position, relativePlayerPosition, Mathf.Infinity, GameManager.staticEnemySightLayerMask.value);
