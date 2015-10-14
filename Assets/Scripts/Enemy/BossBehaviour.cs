@@ -6,7 +6,7 @@ public class BossBehaviour : Enemy {
     private float LastChecked=0;
     public float MaxHealth;
     public float ChangePercentage;
-    private bool isCharging = false;
+    public bool isCharging = false;
     public float chargeDamage;
 
     private float attackTick = 0;
@@ -31,29 +31,17 @@ public class BossBehaviour : Enemy {
         if (GetPlayer() == null)
             return;
         
+        if (isCharging)
+        {
+            gameObject.GetComponent<SpreadShotEnemy>().Fire();
+            MoveToPlayer();
+            RotateToFacePlayer();
+        }
+        //else RotateToFacePlayer();
+
         if (Time.time > attackTick + attackTime)
         {
             isCharging = true;
-        }
-
-        if (isCharging)
-        {
-            MoveToPlayer();
-            gameObject.GetComponent<SpreadShotEnemy>().Fire();
-        }
-        else RotateToFacePlayer();
-    }
-
-    private void AdjustDistanceFromPlayer()
-    {
-        Vector3 relativePlayerPosition = GetRelativePlayerPosition();
-        if (relativePlayerPosition.magnitude - preferedDistanceRange > preferedDistance)
-        {
-            MoveToPlayer();
-        }
-        else if (relativePlayerPosition.magnitude + preferedDistance < preferedDistanceRange)
-        {
-            MoveAwayFromPlayer();
         }
     }
 
@@ -77,11 +65,6 @@ public class BossBehaviour : Enemy {
 
     }
 
-    private void MoveAwayFromPlayer()
-    {
-        rigidBody.AddForce(transform.up * -1 * movementSpeed);
-    }
-
     private void RotateToFacePlayer()
     {
         Vector3 relativePlayerPos = GetRelativePlayerPosition();
@@ -95,7 +78,7 @@ public class BossBehaviour : Enemy {
         {
             attackTick = Time.time;
             isCharging = false;
-            gameObject.GetComponent<SpreadShotEnemy>().Fire();
+            //gameObject.GetComponent<SpreadShotEnemy>().Fire();
             Rigidbody2D body = GetComponent<Rigidbody2D>();
             CircleCollider2D player = GameObject.FindWithTag("Player").GetComponent<CircleCollider2D>();
             if (body.IsTouching(player))
