@@ -12,7 +12,7 @@ public class SpeechScreen {
 	private Rect dialogRectangle;
 	private const float dialogWidth = 300f;
 	private const float dialogHeight = 600f;
-	private float dialogOut = Screen.width + dialogWidth - 30f;
+	private float dialogOut = Screen.width - dialogWidth - 30f;
 	private float dialogIn = 2 * Screen.width;
 
 	// Static method to show dialog
@@ -67,6 +67,7 @@ public class SpeechScreen {
 	
 	public void UI()
 	{
+		GUI.matrix = UIController.GetGUIMatrix();
 		GUI.skin = UIController.GetUI().GetGui();
 		GUI.skin.textArea.wordWrap = true;
 		dialogRectangle = GUI.Window(100, dialogRect, DialogArea, "");

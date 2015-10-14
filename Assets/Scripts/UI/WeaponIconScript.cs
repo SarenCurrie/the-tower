@@ -22,8 +22,8 @@ public class WeaponIconScript : MonoBehaviour {
 	private RectTransform rect;
 	private float startX;
 	private float startY;
-	private float popupHeight = 85;
-	private float popupWidth = 160;
+	private float popupHeight = 90f;
+	private float popupWidth = 170f;
 
     public GUISkin mySkin;
 
@@ -95,7 +95,10 @@ public class WeaponIconScript : MonoBehaviour {
     //Called every frame to check if the on hover will open a comparison popup for the weaopn
     void OnGUI()
     {
+		GUI.matrix = UIController.GetGUIMatrix();
         GUI.skin = mySkin;
+		print ("Height " + Screen.height.ToString());
+		print ("Width " + Screen.width.ToString());
 		if (showWindow) {
 			Player player = GameManager.GetPlayer().GetComponent<Player>();
 			if (player.weapons[weaponNumber] != null){
@@ -103,9 +106,7 @@ public class WeaponIconScript : MonoBehaviour {
 				float damageCurrent = weapon.damageMod;
 				int spreadCurrent = weapon.spread;
 				float forceCurrent = weapon.fireForce;
-				string currentMajor = weapon.weaponMajor.ToString();
-				string currentMinor = weapon.weaponMinor.ToString();
-				GUI.TextField(new Rect (Input.mousePosition.x, Screen.height - Input.mousePosition.y - popupHeight, popupWidth, popupHeight),"Damage:   " + System.Math.Round(damageCurrent, 2) + "\nSpread:       " + spreadCurrent + "\nForce:          " + forceCurrent + "\nMaj/Min:    " + currentMajor + "-" + currentMinor,"OutlineText");
+				GUI.TextField(new Rect (Input.mousePosition.x, Screen.height - Input.mousePosition.y - popupHeight*(768/Screen.height), popupWidth, popupHeight),"Damage:   " + System.Math.Round(damageCurrent, 2) + "\nSpread:       " + spreadCurrent + "\nForce:          " + forceCurrent + "\nMaj/Min:    " + currentMajor + "-" + currentMinor,"OutlineText");
 			}
 		}
     }

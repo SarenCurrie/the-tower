@@ -16,6 +16,12 @@ public class UIController : MonoBehaviour {
 
 	public Texture speechImage;
 
+	//Variables used for resizing
+	public static float targetHeight = 768f;
+	public static float targetWidth = 1024f;
+	//private static float screenHeight = Screen.height;
+	//private static float screenWidth = Screen.width;
+
 	//The names of the scenes in the game
 	public string firstLevelName;
 	public string startScreenName;
@@ -135,5 +141,13 @@ public class UIController : MonoBehaviour {
 	public ScoreManager GetScoreManager()
 	{
 		return scoreManager;
+	}
+
+
+	public static Matrix4x4 GetGUIMatrix()
+	{
+		float rx = Screen.width / targetWidth;
+		float ry = Screen.height / targetHeight;
+		return Matrix4x4.TRS(new Vector3(0, 0, 0), Quaternion.identity, new Vector3 (rx, ry, 1)); 
 	}
 }

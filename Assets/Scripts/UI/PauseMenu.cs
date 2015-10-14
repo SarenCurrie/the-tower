@@ -90,6 +90,7 @@ public class PauseMenu : MonoBehaviour {
 	}
 
 	void OnGUI () {
+		GUI.matrix = UIController.GetGUIMatrix();
 		// Check pausing is enabled
 		if (canPause) {
 			GUI.skin = mySkin;
