@@ -157,12 +157,10 @@ public class UnitHealth : MonoBehaviour {
 			// Add the enemies health to the players score
 			UIController.GetUI().GetScoreManager().IncrementScore((int)gameObject.GetComponent<UnitHealth>().maxHealth);
 
-			foreach (Enemy e in gameObject.GetComponents<Enemy>())
-			{
-				e.enabled = false;
-				//Make the enemy disappear
-				gameObject.GetComponent<SpriteRenderer>().enabled = false;
-			}
+			//Make the current floor play the death sound
+			AudioSource audioSource = AudioManager.GetAudioSource();
+			audioSource.clip = deathSound;
+			audioSource.Play();
 
 			if (shouldDrop)
 			{
@@ -181,18 +179,7 @@ public class UnitHealth : MonoBehaviour {
 			UIController.GetUI().ShowDeathMenu();
 		}
 
-		AudioSource audioSource = GetComponent<AudioSource>();
-		if (audioSource != null)
-		{
-			Renderer renderer = GetComponent<Renderer>();
-			audioSource.clip = deathSound;
-			audioSource.Play();
-			renderer.enabled = false;
-			Destroy(gameObject, deathSound.length);
-		}
-		else
-		{
-			Destroy(gameObject);
-		}
+		//Destroy the game object
+		Destroy(gameObject);
 	}
 }
