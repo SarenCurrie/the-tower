@@ -154,9 +154,6 @@ public class UnitHealth : MonoBehaviour {
 		//Increment the player score upon killing an enemy;
 		if (tag.Equals("Enemy"))
 		{
-			//Destroy the game object
-			Destroy(gameObject);
-
 			// Add the enemies health to the players score
 			UIController.GetUI().GetScoreManager().IncrementScore((int)gameObject.GetComponent<UnitHealth>().maxHealth);
 
@@ -181,5 +178,8 @@ public class UnitHealth : MonoBehaviour {
 		{
 			UIController.GetUI().ShowDeathMenu();
 		}
+
+		//Destroy the game object
+		Destroy(gameObject);
 	}
 }
