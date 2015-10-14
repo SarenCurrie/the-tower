@@ -80,8 +80,8 @@ public class EnemyMovement : Enemy
 	{
 		Vector3 playerPosition = lastKnownPlayerPosition;
 		//Shoot raycast from both left and right sides of collider
-		Vector3 extentRight = GetComponent<CircleCollider2D>().bounds.extents.x * transform.right;
-		Vector3[] viewPositions = new Vector3[] { transform.position - (2 + WALL_CLEARANCE) * extentRight, transform.position + (2 + WALL_CLEARANCE) * extentRight };
+		Vector3 extentRight = (GetComponent<CircleCollider2D>().bounds.extents.x + WALL_CLEARANCE) * transform.right;
+		Vector3[] viewPositions = new Vector3[] { transform.position - extentRight, transform.position + extentRight };
 		List<RaycastHit2D> hits = new List<RaycastHit2D>();
 
 		//Can the destination be reached by going straight forward?
@@ -114,7 +114,7 @@ public class EnemyMovement : Enemy
 
 	private void RotateToFaceLastKnownPlayerPosition()
 	{
-		if (lastKnownPlayerPosition != null)
+		if (lastKnownPlayerPosition != null && (transform.position - lastKnownPlayerPosition).magnitude > DISTANCE_FROM_LAST_KNOWN_PLAYER_POSITION)
 		{
 			Vector3 relativeLastKnownPlayerPosition = lastKnownPlayerPosition - transform.position;
 			float angle = Mathf.Atan2(relativeLastKnownPlayerPosition.y, relativeLastKnownPlayerPosition.x) * Mathf.Rad2Deg + 270;
