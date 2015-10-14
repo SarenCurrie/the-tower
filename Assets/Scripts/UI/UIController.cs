@@ -30,7 +30,6 @@ public class UIController : MonoBehaviour {
 	private DeathMenu deathMenu;
 	private ScoreManager scoreManager;
 	private HealthManager healthManager;
-	private SpeechScreen speechScreen;
 	private DamageFlash damageFlash;
 
 	//Singleton Pattern
@@ -79,20 +78,17 @@ public class UIController : MonoBehaviour {
 		deathMenu = new DeathMenu();
 		scoreManager = new ScoreManager();
 		healthManager = new HealthManager();
-		speechScreen = new SpeechScreen();
 		damageFlash = new DamageFlash();
 	}
 
 	void OnGUI()
 	{
 		deathMenu.UI();
-		speechScreen.UI();
 	}
 
 	void Update()
 	{
 		healthManager.Process();
-		speechScreen.Process();
 		damageFlash.Process();
 	}
 
@@ -130,7 +126,7 @@ public class UIController : MonoBehaviour {
 
 	public void ShowDialog(string text, float time)
 	{
-		speechScreen.Show(text, time);
+		SpeechScreen.ShowDialog(text, time);
 	}
 
 	public void UpdateHealth()

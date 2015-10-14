@@ -106,7 +106,7 @@ public class WeaponIconScript : MonoBehaviour {
 				float forceCurrent = weapon.fireForce;
 				string currentMajor = weapon.weaponMajor.ToString();
 				string currentMinor = weapon.weaponMinor.ToString();
-				GUI.TextField(new Rect (Input.mousePosition.x, Screen.height - Input.mousePosition.y - popupHeight*(popupHeight/Screen.height), popupWidth, popupHeight),"Damage:   " + System.Math.Round(damageCurrent, 2) + "\nSpread:       " + spreadCurrent + "\nForce:          " + forceCurrent + "\nMaj/Min:    " + currentMajor + "-" + currentMinor,"OutlineText");
+				GUI.TextField(new Rect (Input.mousePosition.x, Screen.height - Event.current.mousePosition.y - popupHeight * (popupHeight/Screen.height), popupWidth, popupHeight),"Damage:   " + System.Math.Round(damageCurrent, 2) + "\nSpread:       " + spreadCurrent + "\nForce:          " + forceCurrent + "\nMaj/Min:    " + currentMajor + "-" + currentMinor,"OutlineText");
 			}
 		}
     }
