@@ -28,7 +28,7 @@ public class AchievementPopup : MonoBehaviour {
 		}
 		dialogArea = this.GetComponent<RectTransform>();
 		dialogWidth = dialogArea.rect.width;
-		dialogOut = Screen.width + 2 * dialogWidth;
+		dialogOut = 2 * Screen.width;
 		dialogIn = dialogArea.anchoredPosition.x;
 	}
 	
