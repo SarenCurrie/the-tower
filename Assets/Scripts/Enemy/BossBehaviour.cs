@@ -6,14 +6,12 @@ public class BossBehaviour : Enemy {
     private float LastChecked=0;
     public float MaxHealth;
     public float ChangePercentage;
-    public bool isCharging = false;
+    private bool isCharging = false;
     public float chargeDamage;
 
     private float attackTick = 0;
     public float attackTime;
-
-    public float preferedDistance;
-    public float preferedDistanceRange;
+    
     public float movementSpeed;
     public int baseScore;
 

@@ -47,7 +47,7 @@ MonoBehaviour:
   enterDialog: 
   exitDialog: 
   floorDialog: []
-  firstRoom: {fileID: 116784, guid: 9ddf3740b50bdba4996507a0b99ac0c2, type: 2}
+  firstRoom: {fileID: 187704, guid: 171aee03a2b739743ac7b967868fa4aa, type: 2}
   bossRoom: {fileID: 176178, guid: ff620cb5777ad014296d8ee676d39bad, type: 2}
   screenBlackerPrefab: {fileID: 129008, guid: 02525fa4ad0ec374290310ece9f6b2c4, type: 2}
 --- !u!1001 &100100000
@@ -68,7 +68,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: firstRoom
       value: 
-      objectReference: {fileID: 116784, guid: 9ddf3740b50bdba4996507a0b99ac0c2, type: 2}
+      objectReference: {fileID: 187704, guid: 171aee03a2b739743ac7b967868fa4aa, type: 2}
     - target: {fileID: 0}
       propertyPath: bossRoom
       value: 
