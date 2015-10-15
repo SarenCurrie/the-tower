@@ -256,7 +256,7 @@ GameObject:
   - 61: {fileID: 6132406}
   - 114: {fileID: 11405368}
   - 212: {fileID: 21293740}
-  m_Layer: 31
+  m_Layer: 9
   m_Name: DoorTop
   m_TagString: Door
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -292,7 +292,7 @@ GameObject:
   - 61: {fileID: 6118544}
   - 114: {fileID: 11470056}
   - 212: {fileID: 21246892}
-  m_Layer: 31
+  m_Layer: 9
   m_Name: DoorLeft
   m_TagString: Door
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -310,7 +310,7 @@ GameObject:
   - 61: {fileID: 6115872}
   - 114: {fileID: 11483124}
   - 212: {fileID: 21254812}
-  m_Layer: 31
+  m_Layer: 9
   m_Name: DoorBottom
   m_TagString: Door
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -361,7 +361,7 @@ GameObject:
   - 61: {fileID: 6102476}
   - 114: {fileID: 11413446}
   - 212: {fileID: 21212720}
-  m_Layer: 31
+  m_Layer: 9
   m_Name: DoorRight
   m_TagString: Door
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -1990,7 +1990,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Layer
-      value: 31
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
