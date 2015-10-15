@@ -39,19 +39,36 @@ public class GunCreationScreen : MonoBehaviour {
         weaponIndex--;
         if (weaponIndex < 0)
         {
-            weaponIndex = topDownLooks.Length;
+            weaponIndex = topDownLooks.Length-1;
         }
-        topDownObject.GetComponent<Image>().sprite = sideLooks[weaponIndex];
-        
+        updateSprites();
+
     }
 
     public void nextGun()
     {
-        print("CLICKED");
         weaponIndex++;
         weaponIndex = weaponIndex % (topDownLooks.Length);
-        weaponObject.GetComponent<Image>().sprite = sideLooks[weaponIndex];
-        topDownObject.GetComponent<Image>().sprite = topDownLooks[weaponIndex];
+        updateSprites();
+
+    }
+
+    public void nextProjectile()
+    {
+        projectileIndex--;
+        if (projectileIndex < 0)
+        {
+            projectileIndex = possibleProjectileSprites.Length - 1;
+        }
+        updateSprites();
+
+    }
+
+    public void previousProjectile()
+    {
+        projectileIndex++;
+        projectileIndex = projectileIndex % (possibleProjectileSprites.Length);
+        updateSprites();
 
     }
 
@@ -59,5 +76,7 @@ public class GunCreationScreen : MonoBehaviour {
     {
         weaponObject.GetComponent<Image>().sprite = sideLooks[weaponIndex];
         topDownObject.GetComponent<Image>().sprite = topDownLooks[weaponIndex];
+        projectileObject.GetComponent<Image>().sprite = possibleProjectileSprites[projectileIndex];
+
     }
 }
