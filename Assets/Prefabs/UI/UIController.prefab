@@ -79,6 +79,7 @@ GameObject:
   - 224: {fileID: 22425468}
   - 222: {fileID: 22255860}
   - 114: {fileID: 11492174}
+  - 114: {fileID: 11403114}
   m_Layer: 5
   m_Name: WeaponPopup1
   m_TagString: Untagged
@@ -128,6 +129,7 @@ GameObject:
   - 224: {fileID: 22466994}
   - 222: {fileID: 22244158}
   - 114: {fileID: 11458568}
+  - 114: {fileID: 11401948}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -552,6 +554,7 @@ GameObject:
   - 224: {fileID: 22473056}
   - 222: {fileID: 22235026}
   - 114: {fileID: 11488264}
+  - 114: {fileID: 11419226}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -606,7 +609,7 @@ GameObject:
   - 222: {fileID: 22264580}
   - 114: {fileID: 11437294}
   m_Layer: 5
-  m_Name: TransSlider
+  m_Name: TransPercent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -848,7 +851,6 @@ GameObject:
   - 224: {fileID: 22499600}
   - 222: {fileID: 22229464}
   - 114: {fileID: 11495308}
-  - 114: {fileID: 11461206}
   - 114: {fileID: 11470512}
   - 114: {fileID: 11489960}
   m_Layer: 5
@@ -1081,6 +1083,7 @@ GameObject:
   - 224: {fileID: 22440218}
   - 222: {fileID: 22262026}
   - 114: {fileID: 11420466}
+  - 114: {fileID: 11468392}
   m_Layer: 5
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -1098,6 +1101,7 @@ GameObject:
   - 224: {fileID: 22441122}
   - 222: {fileID: 22216702}
   - 114: {fileID: 11494772}
+  - 114: {fileID: 11404180}
   m_Layer: 5
   m_Name: WeaponPopup0
   m_TagString: Untagged
@@ -1173,6 +1177,39 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11401948
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb7ac65bbe0382646b9ea5e64465c9f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11403114
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 104982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb7ac65bbe0382646b9ea5e64465c9f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11404180
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 198676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb7ac65bbe0382646b9ea5e64465c9f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11407080
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1481,6 +1518,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11419226
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 143370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb7ac65bbe0382646b9ea5e64465c9f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11420020
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1795,13 +1843,24 @@ MonoBehaviour:
   m_FillRect: {fileID: 22420110}
   m_HandleRect: {fileID: 22418014}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
-  m_Value: 0
+  m_MinValue: 25
+  m_MaxValue: 100
+  m_WholeNumbers: 1
+  m_Value: 75
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11468392}
+        m_MethodName: UpdateTransparency
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &11437294
@@ -1835,7 +1894,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100%
+  m_Text: 75%
 --- !u!114 &11439738
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2283,58 +2342,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Sample dialog
---- !u!114 &11461206
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 176146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: .960784316, g: .960784316, b: .960784316, a: 1}
-    m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
-    m_DisabledColor: {r: .784313738, g: .784313738, b: .784313738, a: .501960814}
-    m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 11495308}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &11462226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2491,6 +2498,20 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11468392
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 196936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d97c42809cbe24bf4834f5b23c7c65ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mySkin: {fileID: 0}
+  startScreenName: world-manager-test
+  firstLevelName: 
 --- !u!114 &11468730
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2661,7 +2682,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: GUI TRANSPARENCY
+  m_Text: GUI OPACITY
 --- !u!114 &11473906
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2865,8 +2886,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11455450}
-        m_MethodName: Hide
+      - m_Target: {fileID: 11475632}
+        m_MethodName: TogglePause
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3210,8 +3231,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11455450}
-        m_MethodName: Hide
+      - m_Target: {fileID: 11475632}
+        m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3339,8 +3360,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11455450}
-        m_MethodName: Hide
+      - m_Target: {fileID: 11475632}
+        m_MethodName: Quit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3419,12 +3440,23 @@ MonoBehaviour:
   m_HandleRect: {fileID: 22468688}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
-  m_Value: 0
+  m_MaxValue: 100
+  m_WholeNumbers: 1
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11468392}
+        m_MethodName: UpdateVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &11495974

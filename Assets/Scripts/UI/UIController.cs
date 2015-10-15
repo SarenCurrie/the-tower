@@ -144,6 +144,35 @@ public class UIController : MonoBehaviour {
 		return scoreManager;
 	}
 
+	public void TogglePause()
+	{
+		if (PauseMenu.canPause && PauseMenu.paused == false) {
+			PauseMenu.paused = true;
+		} else {
+			PauseMenu.paused = false;
+		}
+	}
+
+	public void forceUnpause()
+	{
+		PauseMenu.paused = false;
+		PauseMenu.canPause = true;
+	}
+
+	public void Restart()
+	{
+		forceUnpause();
+		GameManager.Restart();
+		Application.LoadLevel (firstLevelName);
+	}
+
+	public void Quit()
+	{
+		forceUnpause();
+		GameManager.Restart();
+		Application.LoadLevel (startScreenName);
+	}
+
 
 	public static Matrix4x4 GetGUIMatrix()
 	{
