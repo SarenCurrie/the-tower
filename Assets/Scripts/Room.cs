@@ -7,9 +7,18 @@ public class Room : MonoBehaviour {
 	public const float ROOM_WIDTH = 9.0f;
 	public const float ROOM_HEIGHT = 5.4f;
 
+	public float SMALL_ROOM_CAMERA_SIZE = 3.3222f;
+	public float BIG_ROOM_CAMERA_SIZE = 8f;
+	public bool bigRoom = false; 
+
 	public const float CAMERA_HEIGHT = -10f;
 
 	private GameObject screenBlacker;
+
+	public float GetCameraSize()
+	{
+		return bigRoom ? BIG_ROOM_CAMERA_SIZE : SMALL_ROOM_CAMERA_SIZE;
+	}
 
 	public Vector3 GetCameraPosition()
 	{
