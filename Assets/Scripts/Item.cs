@@ -12,7 +12,7 @@ using System.Collections;
 public abstract class Item : MonoBehaviour {
 
     //Weapons are dropped 95% of the time
-	private const int WEAPON_CHANCE = 10;
+	private const int WEAPON_CHANCE = 98;
 	private bool onFloor = true;
 
 	public abstract void PickUp();
