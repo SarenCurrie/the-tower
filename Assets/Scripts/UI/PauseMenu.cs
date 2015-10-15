@@ -3,12 +3,9 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour {
-
-	public GUISkin mySkin;
+	
 	public static bool paused = false;
 	public static bool canPause = true;
-	public string startScreenName;
-	public string firstLevelName;
 
 	private float pauseHeight;
 	private RectTransform pauseArea;
@@ -40,7 +37,7 @@ public class PauseMenu : MonoBehaviour {
 
 	public void UpdateVolume() {
 		int value = (int)(GameObject.Find ("VolumeSlider").GetComponent<Slider> ().value);
-		//transparency.UpdateTransparency(value);
+		//Do the actual update
 		GameObject.Find ("VolumePercent").GetComponent<Text>().text = value.ToString()+"%";
 	}
 	
