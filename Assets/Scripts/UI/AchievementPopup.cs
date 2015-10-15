@@ -34,9 +34,9 @@ public class AchievementPopup : MonoBehaviour {
 	
 	private void Start()
 	{
-		temp = dialogArea.anchoredPosition;
-		temp.x = dialogOut;
-		dialogArea.anchoredPosition = temp;
+		Vector2 outvect = dialogArea.anchoredPosition;
+		outvect.x = dialogOut;
+		dialogArea.anchoredPosition = outvect;
 	}
 
 	// Static method to show dialog

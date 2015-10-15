@@ -3,106 +3,59 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour {
-
-	public GUISkin mySkin;
+	
 	public static bool paused = false;
 	public static bool canPause = true;
-	public string startScreenName;
 
-	private static float pauseHeight = 300f;
-	private static float pauseWidth = 280f;
-	private static float pauseTop = 0 - Screen.height;
-	private static float pauseBottom = (Screen.height-pauseHeight)/2;
-	private Rect pauseRect = new Rect((Screen.width - pauseWidth)/2, pauseTop, pauseWidth, pauseHeight);
+	private float pauseHeight;
+	private RectTransform pauseArea;
+	private float pauseUp;
+	private float pauseDown;
+	private Vector2 temp;
+	private float _MoveSpeed = 20f;
 
-	void PauseArea(int windowID) 
+	void Awake()
 	{
-		GUILayout.BeginHorizontal();
-		GUILayout.Space(10);
-		GUILayout.BeginVertical();
-		
-		GUILayout.BeginHorizontal ();
-		GUILayout.FlexibleSpace();
-		GUILayout.Label("PAUSED", "ShortLabel");
-		GUILayout.FlexibleSpace();
-		GUILayout.EndHorizontal ();
-
-		GUILayout.BeginHorizontal ();
-		GUILayout.Label("", "Divider");
-		GUILayout.EndHorizontal ();
-		
-		GUILayout.BeginHorizontal ();
-		GUILayout.FlexibleSpace();
-		if (GUILayout.Button("Resume", "ShortButton")) {
-			// Resume the time
-			paused = false;
-		}
-		GUILayout.FlexibleSpace();
-		GUILayout.EndHorizontal ();
-		
-		GUILayout.BeginHorizontal ();
-		GUILayout.FlexibleSpace();
-		GUI.enabled = false;
-		GUILayout.Button("Video Options", "ShortButton");
-		GUI.enabled = true;
-		GUILayout.FlexibleSpace();
-		GUILayout.EndHorizontal ();
-
-		GUILayout.BeginHorizontal ();
-		GUILayout.FlexibleSpace();
-		GUI.enabled = false;
-		GUILayout.Button("Game Options", "ShortButton");
-		GUI.enabled = true;
-		GUILayout.FlexibleSpace();
-		GUILayout.EndHorizontal ();
-		
-		GUILayout.BeginHorizontal ();
-		GUILayout.FlexibleSpace();
-		if (GUILayout.Button("Quit", "ShortButton")) {
-			paused = false;
-			// Restart and Exit the game
-			GameManager.Restart();
-			Application.LoadLevel(startScreenName);
-		}
-		GUILayout.FlexibleSpace();
-		GUILayout.EndHorizontal ();
-		
-		GUILayout.EndVertical();
-		GUILayout.Space(10);
-		GUILayout.EndHorizontal();
+		pauseArea = this.GetComponent<RectTransform>();
+		pauseHeight = pauseArea.rect.width;
+		pauseUp = 2 * Screen.height;
+		pauseDown = pauseArea.anchoredPosition.y;
 	}
-	
+
 	void Start () {
+		Vector2 outvect = pauseArea.anchoredPosition;
+		outvect.y = pauseUp;
+		pauseArea.anchoredPosition = outvect;
+		UpdateTransparency();
+	}
+
+	public void UpdateTransparency() {
+		int value = (int)(GameObject.Find ("TransSlider").GetComponent<Slider> ().value);
+		transparency.UpdateTransparency(value);
+		GameObject.Find ("TransPercent").GetComponent<Text>().text = value.ToString()+"%";
+	}
+
+	public void UpdateVolume() {
+		int value = (int)(GameObject.Find ("VolumeSlider").GetComponent<Slider> ().value);
+		//Do the actual update
+		GameObject.Find ("VolumePercent").GetComponent<Text>().text = value.ToString()+"%";
 	}
 	
 	void Update() {;
 		// On ESCAPE, if allowed, pause the game
-		if (Input.GetKey(KeyCode.Escape) && canPause) {
-			paused = true;
+		if (Input.GetKeyDown(KeyCode.Escape)) {
+			UIController.GetUI().TogglePause();
 		}
 		if (paused) {
-			// Pause time
 			Time.timeScale = 0.0f;
+			temp = pauseArea.anchoredPosition;
+			temp.y = Mathf.MoveTowards(pauseArea.anchoredPosition.y, pauseDown, _MoveSpeed);
+			pauseArea.anchoredPosition = temp;
 		} else {
-			// Unpause the game.
 			Time.timeScale = 1.0f;
-		}
-	}
-
-	void OnGUI () {
-		GUI.matrix = UIController.GetGUIMatrix();
-		// Check pausing is enabled
-		if (canPause) {
-			GUI.skin = mySkin;
-			// Create pause window
-			pauseRect = GUI.Window (5, pauseRect, PauseArea, "");
-			if (paused) {
-				// Drop box from top
-				pauseRect.y = Mathf.MoveTowards (pauseRect.y, pauseBottom, 10);
-			} else {
-				// Move back to top
-				pauseRect.y = Mathf.MoveTowards (pauseRect.y, pauseTop, 10);
-			}
+			temp = pauseArea.anchoredPosition;
+			temp.y = Mathf.MoveTowards(pauseArea.anchoredPosition.y, pauseUp, _MoveSpeed);
+			pauseArea.anchoredPosition = temp;
 		}
 	}
 }
