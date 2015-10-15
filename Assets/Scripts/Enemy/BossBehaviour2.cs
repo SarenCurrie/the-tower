@@ -29,8 +29,8 @@ public class BossBehaviour2 : Enemy
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
-        enemyLocation2 = transform.position - new Vector3(24, -5, 0);
-        enemyLocation1 = transform.position - new Vector3(24, 5, 0);
+        enemyLocation2 = transform.position - new Vector3(21, -5, 0);
+        enemyLocation1 = transform.position - new Vector3(21, 5, 0);
     }
 
     // Update is called once per frame
