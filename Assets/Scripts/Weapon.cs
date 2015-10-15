@@ -276,8 +276,8 @@ public class Weapon : Item
             //Creates ground weapon textfield for popup comparison
             if (Input.mousePosition.y <= (Screen.height / 3))
             {
-                GUI.TextField(new Rect(Input.mousePosition.x - 170, Screen.height - Input.mousePosition.y - 100, 150, 90), "Damage:   " + Math.Round(damageMod, 2) + "\nProjectiles:  " + spread + "\nFire Rate:    " + Math.Round(fireFrequency, 2) + "\nMaj/Min:   " + weaponMajor + "-" + weaponMinor, "OutlineText");
-                GUI.TextField(new Rect(Input.mousePosition.x, Screen.height - Input.mousePosition.y - 100, 150, 90), "Damage:   " + Math.Round(damageCurrent, 2) + "\nProjectiles:  " + spreadCurrent + "\nFire Rate:    " + Math.Round(fireRateCurrent, 2) + "\nMaj/Min:   " + currentMajor + "-" + currentMinor, "OutlineText");
+                GUI.TextField(new Rect(Input.mousePosition.x - 170, Screen.height - Input.mousePosition.y - 160, 150, 90), "Damage:   " + Math.Round(damageMod, 2) + "\nProjectiles:  " + spread + "\nFire Rate:    " + Math.Round(fireFrequency, 2) + "\nMaj/Min:   " + weaponMajor + "-" + weaponMinor, "OutlineText");
+                GUI.TextField(new Rect(Input.mousePosition.x, Screen.height - Input.mousePosition.y - 160, 150, 90), "Damage:   " + Math.Round(damageCurrent, 2) + "\nProjectiles:  " + spreadCurrent + "\nFire Rate:    " + Math.Round(fireRateCurrent, 2) + "\nMaj/Min:   " + currentMajor + "-" + currentMinor, "OutlineText");
             }
             else
             {
