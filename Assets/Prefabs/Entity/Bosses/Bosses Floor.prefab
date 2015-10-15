@@ -39,10 +39,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea2bd5a944b9b0544bde7362fb6a255d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberOfRooms: 14
   enemies:
-  - {fileID: 183588, guid: b126b24fc20d24349b94dd2f08bb2297, type: 2}
+  - {fileID: 0}
   rooms:
-  - {fileID: 128328, guid: 9d24bbc637492394eaac4bcb2a12210e, type: 2}
+  - {fileID: 176178, guid: ff620cb5777ad014296d8ee676d39bad, type: 2}
+  enterDialog: 
+  exitDialog: 
+  floorDialog: []
+  firstRoom: {fileID: 187704, guid: 171aee03a2b739743ac7b967868fa4aa, type: 2}
+  bossRoom: {fileID: 176178, guid: ff620cb5777ad014296d8ee676d39bad, type: 2}
+  screenBlackerPrefab: {fileID: 129008, guid: 02525fa4ad0ec374290310ece9f6b2c4, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -53,11 +60,23 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: rooms.Array.data[0]
       value: 
-      objectReference: {fileID: 128328, guid: 9d24bbc637492394eaac4bcb2a12210e, type: 2}
+      objectReference: {fileID: 176178, guid: ff620cb5777ad014296d8ee676d39bad, type: 2}
     - target: {fileID: 0}
       propertyPath: enemies.Array.data[0]
       value: 
       objectReference: {fileID: 183588, guid: b126b24fc20d24349b94dd2f08bb2297, type: 2}
+    - target: {fileID: 0}
+      propertyPath: firstRoom
+      value: 
+      objectReference: {fileID: 187704, guid: 171aee03a2b739743ac7b967868fa4aa, type: 2}
+    - target: {fileID: 0}
+      propertyPath: bossRoom
+      value: 
+      objectReference: {fileID: 176178, guid: ff620cb5777ad014296d8ee676d39bad, type: 2}
+    - target: {fileID: 0}
+      propertyPath: screenBlackerPrefab
+      value: 
+      objectReference: {fileID: 129008, guid: 02525fa4ad0ec374290310ece9f6b2c4, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 148626}

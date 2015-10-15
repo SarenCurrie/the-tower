@@ -149,14 +149,10 @@ MonoBehaviour:
   shouldDrop: 1
   isDead: 0
   bloodPrefabs:
-  - {fileID: 143992, guid: cb8413ee05b11407f9e8b689c12b6ca3, type: 2}
-  - {fileID: 198288, guid: 4d23b9abbec7704438d032e22cdbcdc0, type: 2}
-  - {fileID: 103594, guid: 4e3ad30932138a24288254a65b8e2d52, type: 2}
-  - {fileID: 153918, guid: 65df8e80c6cda05458b57289eb521680, type: 2}
-  - {fileID: 193986, guid: 02974fd00f929054ebaa400b9825d0de, type: 2}
-  - {fileID: 171710, guid: 86e544c40a678c145bd3949d0ff99e69, type: 2}
-  - {fileID: 196840, guid: 490416a499f6e424faed7fcd7bccb7db, type: 2}
-  - {fileID: 159418, guid: ad4db083d533462488f69479d030daf4, type: 2}
+  - {fileID: 174394, guid: 8c630a3f00abe1a49b13637c25736e78, type: 2}
+  - {fileID: 150992, guid: 38967d0e9904d514bbf502047cb01ae7, type: 2}
+  - {fileID: 137116, guid: e336ac26f6c9e1d499f2642f0107b061, type: 2}
+  - {fileID: 166386, guid: 18cae03bd3a07e5468853baf39d0d1dd, type: 2}
   deathSound: {fileID: 8300000, guid: 7fa820df58a8a49d58de70cb13e39e8d, type: 3}
   damagedBy:
   - PlayerProjectile
@@ -179,6 +175,7 @@ MonoBehaviour:
   minFireWait: .5
   maxFireWait: 1
   damage: 3
+  reloadFactor: 1
   possibleProjectileSprites:
   - {fileID: 21300000, guid: 5d41bfa3f684f0848a7918244531e89e, type: 3}
   possibleSounds:
@@ -232,10 +229,46 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: bloodPrefabs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: cca4b02b6a4cde246a580fcc8016fa63,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: bloodPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 193986, guid: 02974fd00f929054ebaa400b9825d0de, type: 2}
+    - target: {fileID: 0}
+      propertyPath: bloodPrefabs.Array.data[5]
+      value: 
+      objectReference: {fileID: 171710, guid: 86e544c40a678c145bd3949d0ff99e69, type: 2}
+    - target: {fileID: 0}
+      propertyPath: bloodPrefabs.Array.data[6]
+      value: 
+      objectReference: {fileID: 196840, guid: 490416a499f6e424faed7fcd7bccb7db, type: 2}
+    - target: {fileID: 0}
+      propertyPath: bloodPrefabs.Array.data[7]
+      value: 
+      objectReference: {fileID: 159418, guid: ad4db083d533462488f69479d030daf4, type: 2}
+    - target: {fileID: 0}
+      propertyPath: bloodPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 174394, guid: 8c630a3f00abe1a49b13637c25736e78, type: 2}
+    - target: {fileID: 0}
+      propertyPath: bloodPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 150992, guid: 38967d0e9904d514bbf502047cb01ae7, type: 2}
+    - target: {fileID: 0}
+      propertyPath: bloodPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 137116, guid: e336ac26f6c9e1d499f2642f0107b061, type: 2}
+    - target: {fileID: 0}
+      propertyPath: bloodPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 166386, guid: 18cae03bd3a07e5468853baf39d0d1dd, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 106002}
