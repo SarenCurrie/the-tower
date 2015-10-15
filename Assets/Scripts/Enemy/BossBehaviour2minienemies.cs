@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BossBehaviour2 : Enemy
+public class BossBehaviour2minienemies : Enemy
 {
 
     private float LastChecked = 0;
@@ -12,10 +12,9 @@ public class BossBehaviour2 : Enemy
     private int bossLaserCount = 0;
     private float currentHealth;
     private int fireboundary = 95;
-    private int fireboundaryreduction = 10;
+    private int fireboundaryreduction = 20;
     private int spawnBoundary = 80;
-    private int spawnboundaryreduction = 20;
-    private int laserBurst = 30;
+    private int laserBurst = 15;
     private int warningShotTimer = 100;
     public GameObject enemyToSpawn;
     public Vector3 enemyLocation1;
@@ -40,24 +39,13 @@ public class BossBehaviour2 : Enemy
     {
         if (GetPlayer() == null)
             return;
-        
+
         currentHealth = gameObject.GetComponent<UnitHealth>().GetHealth();
         //every 5% health the boss will do the laser thing
 
         RotateToFacePlayer();
         ShooterBlast();
-        EnemySpawn();
-        
-    }
 
-    private void EnemySpawn()
-    {
-        if (((currentHealth / GetComponent<UnitHealth>().maxHealth) * 100) < spawnBoundary)
-        {
-            spawnBoundary -= spawnboundaryreduction;
-            Instantiate(enemyToSpawn, enemyLocation1, new Quaternion());
-            Instantiate(enemyToSpawn, enemyLocation2, new Quaternion());
-        }
     }
 
     private void ShooterBlast()
@@ -76,7 +64,7 @@ public class BossBehaviour2 : Enemy
             gameObject.GetComponent<Boss3Weapon>().Fire();
             count--;
         }
-        else if (bossLaserCount == warningShotTimer-1)
+        else if (bossLaserCount == warningShotTimer - 1)
         {
             gameObject.GetComponent<Boss3Weapon2>().Fire();
         }
@@ -104,5 +92,6 @@ public class BossBehaviour2 : Enemy
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
-   
+
 }
+
