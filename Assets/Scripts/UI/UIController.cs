@@ -14,8 +14,6 @@ public class UIController : MonoBehaviour {
 	//The Gui
 	public GUISkin gui;
 
-	public Texture speechImage;
-
 	//Variables used for resizing
 	public static float targetHeight = 768f;
 	public static float targetWidth = 1024f;
@@ -26,8 +24,7 @@ public class UIController : MonoBehaviour {
 	public string firstLevelName;
 	public string startScreenName;
 
-	//Objects for the various game menus
-	private DeathMenu deathMenu;
+	//Objects for the various game items
 	private ScoreManager scoreManager;
 	private HealthManager healthManager;
 	private DamageFlash damageFlash;
@@ -75,15 +72,9 @@ public class UIController : MonoBehaviour {
 
 	void Awake()
 	{
-		deathMenu = new DeathMenu();
 		scoreManager = new ScoreManager();
 		healthManager = new HealthManager();
 		damageFlash = new DamageFlash();
-	}
-
-	void OnGUI()
-	{
-		deathMenu.UI();
 	}
 
 	void Update()
@@ -95,11 +86,6 @@ public class UIController : MonoBehaviour {
 	public GUISkin GetGui()
 	{
 		return gui;
-	}
-
-	public Texture GetSpeechImage()
-	{
-		return speechImage;
 	}
 
 	public Image GetDamageImage()
@@ -116,7 +102,8 @@ public class UIController : MonoBehaviour {
 
 	public void ShowDeathMenu()
 	{
-		deathMenu.Show();
+		PauseMenu.canPause = false;
+		DeathMenu.visible = true;
 	}
 
 	public void FlashDamage()
@@ -142,6 +129,35 @@ public class UIController : MonoBehaviour {
 	public ScoreManager GetScoreManager()
 	{
 		return scoreManager;
+	}
+
+	public void TogglePause()
+	{
+		if (PauseMenu.canPause && PauseMenu.paused == false) {
+			PauseMenu.paused = true;
+		} else {
+			PauseMenu.paused = false;
+		}
+	}
+
+	public void forceUnpause()
+	{
+		PauseMenu.paused = false;
+		PauseMenu.canPause = true;
+	}
+
+	public void Restart()
+	{
+		forceUnpause();
+		GameManager.Restart();
+		Application.LoadLevel (firstLevelName);
+	}
+
+	public void Quit()
+	{
+		forceUnpause();
+		GameManager.Restart();
+		Application.LoadLevel (startScreenName);
 	}
 
 

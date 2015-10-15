@@ -55,9 +55,9 @@ public class WeaponIconScript : MonoBehaviour {
             {
 				this.gameObject.GetComponent<Image>().enabled = true;
                 sprites[1] = weapon1.unSelectedSprite;
-            }
+			}
+			toggleWeapon();
         }
-		toggleWeapon();
     }
 
     // Update is called once per frame
@@ -85,10 +85,11 @@ public class WeaponIconScript : MonoBehaviour {
             }
             else
             {
-                if (sprites[1]!=null)
+                if (sprites[1]!=null) {
 					weaponIcon.sprite = sprites[1];
+				}
             }
-        }
+       }
 
     }
 
