@@ -214,7 +214,9 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         CheckForMovement();
-        CheckForRotation();
+	if (!PauseMenu.paused) {
+		CheckForRotation();
+	}
         CheckForFire();
         CheckForSwap();
 	}

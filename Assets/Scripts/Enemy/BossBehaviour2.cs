@@ -13,6 +13,8 @@ public class BossBehaviour2 : Enemy
     private float currentHealth;
     private int boundary = 95;
     private int spawnBoundary = 80;
+    private int laserBurst = 30;
+    private int warningShotTimer = 100;
     public GameObject enemyToSpawn;
     public Vector3 enemyLocation1;
     public Vector3 enemyLocation2;
@@ -40,6 +42,7 @@ public class BossBehaviour2 : Enemy
         currentHealth = gameObject.GetComponent<UnitHealth>().GetHealth();
         //every 5% health the boss will do the laser thing
 
+        RotateToFacePlayer();
         ShooterBlast();
         EnemySpawn();
         
@@ -59,13 +62,10 @@ public class BossBehaviour2 : Enemy
     {
         if (count == 0 && bossLaserCount == 0)
         {
-            RotateToFacePlayer();
             if (((currentHealth / GetComponent<UnitHealth>().maxHealth) * 100) < boundary)
             {
-                
-                LaserBlast();
-                count = 50;
-                bossLaserCount = 60;
+                count = laserBurst;
+                bossLaserCount = warningShotTimer;
                 boundary -= 10;
             }
         }
@@ -74,7 +74,7 @@ public class BossBehaviour2 : Enemy
             gameObject.GetComponent<Boss3Weapon>().Fire();
             count--;
         }
-        else if (bossLaserCount == 59)
+        else if (bossLaserCount == warningShotTimer-1)
         {
             gameObject.GetComponent<Boss3Weapon2>().Fire();
         }
@@ -84,9 +84,6 @@ public class BossBehaviour2 : Enemy
         }
     }
 
-    private void LaserBlast()
-    {
-    }
 
     private Player GetPlayer()
     {

@@ -1,81 +1,42 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
-public class DeathMenu {
-
-	private bool visible = false;
-
-	private const float deathHeight = 200f;
-	private const float deathWidth = 350f;
-	private float deathTop = 0 - Screen.height;
-	private float deathBottom = (Screen.height-deathHeight)/2;
-
-	private Rect deathRect;
-
-	public DeathMenu()
+public class DeathMenu : MonoBehaviour {
+	
+	public static bool visible = false;
+	
+	private float deathHeight;
+	private RectTransform deathArea;
+	private float deathUp;
+	private float deathDown;
+	private Vector2 temp;
+	private float _MoveSpeed = 20f;
+	
+	void Awake()
 	{
-		deathRect = new Rect((Screen.width - deathWidth) / 2, deathTop, deathWidth, deathHeight);
+		deathArea = this.GetComponent<RectTransform>();
+		deathHeight = deathArea.rect.width;
+		deathUp = 2 * Screen.height;
+		deathDown = deathArea.anchoredPosition.y;
 	}
-
-	public void UI()
-	{
-		if (visible)
-		{
-			GUI.skin = UIController.GetUI().GetGui();
-			// Stop pausing from happening
-			PauseMenu.canPause = false;
-
-			// Create death window
-			deathRect = GUI.Window(3, deathRect, DeathArea, "");
-			deathRect.y = Mathf.MoveTowards(deathRect.y, deathBottom, 10);
-		}
+	
+	void Start () {
+		Vector2 outvect = deathArea.anchoredPosition;
+		outvect.y = deathUp;
+		deathArea.anchoredPosition = outvect;
+		visible = false;
 	}
-
-	public void Show()
-	{
-		visible = true;
-	}
-
-	void DeathArea(int windowID) 
-	{
-		GUILayout.BeginHorizontal();
-		GUILayout.Space(10);
-		GUILayout.BeginVertical();
-		
-		GUILayout.BeginHorizontal ();
-		GUILayout.FlexibleSpace();
-		GUILayout.Label("YOU HAVE DIED","Shortlabel");
-		GUILayout.FlexibleSpace();
-		GUILayout.EndHorizontal ();
-		
-		GUILayout.BeginHorizontal ();
-		GUILayout.Label("", "Divider");
-		GUILayout.EndHorizontal ();
-		
-		GUILayout.BeginHorizontal ();
-		GUILayout.FlexibleSpace();
-
-		//Pressed Restart
-		if (GUILayout.Button("Restart", "ShortButton")) {
-			visible = false;
-			PauseMenu.canPause = true;
-			// Restart the game
-			GameManager.Restart();
-			Application.LoadLevel(UIController.GetUI().firstLevelName);
+	
+	void Update() {;
+		if (visible) {
+			temp = deathArea.anchoredPosition;
+			temp.y = Mathf.MoveTowards(deathArea.anchoredPosition.y, deathDown, _MoveSpeed);
+			deathArea.anchoredPosition = temp;
+		} else {
+			temp = deathArea.anchoredPosition;
+			temp.y = Mathf.MoveTowards(deathArea.anchoredPosition.y, deathUp, _MoveSpeed);
+			deathArea.anchoredPosition = temp;
 		}
-		GUILayout.FlexibleSpace();
-		if (GUILayout.Button ("Quit", "ShortButton")) {
-			visible = false;
-			PauseMenu.canPause = true;
-			// Quit the game
-			GameManager.Restart();
-			Application.LoadLevel(UIController.GetUI().startScreenName);
-		}
-		GUILayout.FlexibleSpace();
-		GUILayout.EndHorizontal ();
-		
-		GUILayout.EndVertical();
-		GUILayout.Space(10);
-		GUILayout.EndHorizontal();
 	}
 }

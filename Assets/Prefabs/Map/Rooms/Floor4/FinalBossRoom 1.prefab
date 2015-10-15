@@ -560,7 +560,7 @@ MonoBehaviour:
   damage: 2
   reloadFactor: 0
   possibleProjectileSprites:
-  - {fileID: 21300000, guid: 3fad207b7d455fe459bc25fd1ec22374, type: 3}
+  - {fileID: 21300000, guid: c97b2857c5ffc1a4eba0f796199781a4, type: 3}
   possibleSounds: []
   spread: 30
   spreadRange: 360
@@ -594,20 +594,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 434480, guid: 819132afeea94824d8e399f5382bb34a, type: 2}
-  fireForce: 48
-  fireFrequency: 100
+  fireForce: 45
+  fireFrequency: 150
   DAMAGEMULTIPLIER: 250
   burstTime: 0
   minFireWait: 0
   maxFireWait: 0
-  damage: 250
+  damage: 400
   reloadFactor: 99999998000
   possibleProjectileSprites:
-  - {fileID: 21300000, guid: 5964bd75ed142ad4e83f08fb3ff280a5, type: 3}
+  - {fileID: 21300000, guid: 39c7ae5dad5a9e2499e909d397eb7122, type: 3}
   possibleSounds:
   - {fileID: 8300000, guid: 1cfa6d69443784c178b10795854bf504, type: 3}
-  spread: 30
-  spreadRange: 50
+  spread: 40
+  spreadRange: 23
   minBurstTime: 0
   maxBurstTime: 0
 --- !u!212 &21203072
@@ -686,7 +686,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 27da29d981b793f449c3c73513fd3093, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 119a78469faa1444f9e07169036291a2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21285420
 SpriteRenderer:
@@ -783,16 +783,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: damage
-      value: 250
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b97f0adb4e99f90449e5d40e6445c29a,
+      objectReference: {fileID: 21300000, guid: 119a78469faa1444f9e07169036291a2,
         type: 3}
     - target: {fileID: 0}
       propertyPath: fireFrequency
-      value: .5
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: minBurstTime
@@ -804,20 +804,20 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: fireForce
-      value: 30
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: spreadRange
-      value: 360
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: spread
-      value: 30
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: possibleProjectileSprites.Array.data[0]
       value: 
-      objectReference: {fileID: 21300000, guid: 3fad207b7d455fe459bc25fd1ec22374,
+      objectReference: {fileID: 21300000, guid: c97b2857c5ffc1a4eba0f796199781a4,
         type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

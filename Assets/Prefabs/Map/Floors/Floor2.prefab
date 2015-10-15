@@ -51,9 +51,15 @@ MonoBehaviour:
   - {fileID: 128598, guid: 6ae953c5836d78144921856cd8e082e3, type: 2}
   - {fileID: 144904, guid: 99db250844aa40d42a59ef741c4c4f96, type: 2}
   - {fileID: 185492, guid: 1b32568a364617a4ca677f5296b866ff, type: 2}
-  enterDialog: 
-  exitDialog: 
-  floorDialog: []
+  enterDialog: Surely you aren't surprised it's so much nicer up here. It gets better,
+    too.
+  exitDialog: A second sentinel fallen to a single man. Is our security really that
+    lacking?
+  floorDialog:
+  - I guess they expected you and evacuated the citizens to protect them from your
+    rampage.
+  - I am actually shocked you made it this far, much better than the others.
+  - Security isn't normally so concentrated here. You must be scaring someone.
   firstRoom: {fileID: 137086, guid: 156bc63b191ed2e4fbe3e2141f83e7bc, type: 2}
   bossRoom: {fileID: 131790, guid: 86599ba2cf1bf46449c59393649c3272, type: 2}
   screenBlackerPrefab: {fileID: 129008, guid: 02525fa4ad0ec374290310ece9f6b2c4, type: 2}
@@ -64,6 +70,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: floorDialog.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: enemies.Array.data[0]
       value: 
@@ -112,6 +122,29 @@ Prefab:
       propertyPath: screenBlackerPrefab
       value: 
       objectReference: {fileID: 129008, guid: 02525fa4ad0ec374290310ece9f6b2c4, type: 2}
+    - target: {fileID: 0}
+      propertyPath: enterDialog
+      value: Surely you aren't surprised it's so much nicer up here. It gets better,
+        too.
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: exitDialog
+      value: A second sentinel fallen to a single man. Is our security really that
+        lacking?
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: floorDialog.Array.data[0]
+      value: I guess they expected you and evacuated the citizens to protect them
+        from your rampage.
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: floorDialog.Array.data[1]
+      value: I am actually shocked you made it this far, much better than the others.
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: floorDialog.Array.data[2]
+      value: Security isn't normally so concentrated here. You must be scaring someone.
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 101010}

@@ -1,82 +1,86 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
-public class SpeechScreen {
+public class SpeechScreen : MonoBehaviour {
 
-	private string dialogText;
+	private string text;
 	private float waitTime;
 
 	private bool shown = false;
+	private float _MoveSpeed = 20f;
+
+	private float dialogWidth;
+	private float dialogOut;
+	private float dialogIn;
 	
-	private Rect dialogRect;
-	private Rect dialogRectangle;
-	private const float dialogWidth = 300f;
-	private const float dialogHeight = 600f;
-	private float dialogOut = Screen.width + dialogWidth - 30f;
-	private float dialogIn = 2 * Screen.width;
+	private RectTransform dialogArea;
+	private Vector2 temp;
+
+	// Singleton speech screen instance - assumed only assigned to one place
+	private static SpeechScreen singleton;
+
+	void Awake()
+	{
+		if (singleton == null) {
+			singleton = this;
+		}
+		dialogArea = this.GetComponent<RectTransform>();
+		dialogWidth = dialogArea.rect.width;
+		dialogOut = Screen.width + 2 * dialogWidth;
+		dialogIn = dialogArea.anchoredPosition.x;
+	}
+	
+	private void Start()
+	{
+		temp = dialogArea.anchoredPosition;
+		temp.x = dialogOut;
+		dialogArea.anchoredPosition = temp;
+	}
 
 	// Static method to show dialog
+	public static void ShowDialog(string text, float time)
+	{
+		// Ask singleton to show dialog
+		singleton.Show(text, time);
+	}
+	
 	public void Show(string text, float time)
 	{
-		dialogText = text;
+		GameObject.Find ("SpeechText").GetComponent<Text>().text = text;
 		waitTime = time;
 		shown = true;
 	}
 
-	public void Process()
+	public void Hide()
+	{
+		shown = false;
+	}
+
+	public void Update()
 	{
 		if(waitTime > 0)
 			waitTime -= Time.deltaTime;
-
+		
 		if (!shown && waitTime > 0)
 			waitTime = 0f;
-
+		
 		if(waitTime <= 0)
 			shown = false;
-	}
-
-	void DialogArea(int windowID) 
-	{
-		GUILayout.BeginHorizontal();
-		GUILayout.BeginVertical();
-
-		GUILayout.BeginHorizontal ();
-		GUILayout.Box(UIController.GetUI().GetSpeechImage());
-		GUILayout.EndHorizontal ();
-
-		GUILayout.BeginHorizontal ();
-		GUILayout.Box(dialogText,"OutlineText");
-		GUILayout.EndHorizontal ();
-		GUILayout.FlexibleSpace();
-
-		GUILayout.BeginHorizontal ();
-		GUILayout.FlexibleSpace();
-		if (GUILayout.Button("Done", "ShortButton")) {
-			shown = false;
-		}
-		GUILayout.FlexibleSpace();
-		GUILayout.EndHorizontal ();
-		GUILayout.EndVertical();
-		GUILayout.EndHorizontal();
-	}
-
-	public SpeechScreen()
-	{
-		dialogRect = new Rect(Screen.width, (Screen.height - dialogHeight)/2, dialogWidth, dialogHeight);
-	}
-	
-	public void UI()
-	{
-		GUI.skin = UIController.GetUI().GetGui();
-		GUI.skin.textArea.wordWrap = true;
-		dialogRectangle = GUI.Window(100, dialogRect, DialogArea, "");
+		GUI.matrix = UIController.GetGUIMatrix();
 		if (shown)
 		{
-			dialogRectangle.x = Mathf.MoveTowards(dialogRectangle.x, dialogOut, 10);
+			// Move speech area
+			temp = dialogArea.anchoredPosition;
+			temp.x = Mathf.MoveTowards(dialogArea.anchoredPosition.x, dialogIn, _MoveSpeed);
+			dialogArea.anchoredPosition = temp;
 		}
 		else
 		{
-			dialogRectangle.x = Mathf.MoveTowards(dialogRectangle.x, dialogIn, 10);
+			// Move speech area
+			temp = dialogArea.anchoredPosition;
+			temp.x = Mathf.MoveTowards(dialogArea.anchoredPosition.x, dialogOut, _MoveSpeed);
+			dialogArea.anchoredPosition = temp;
 		}
 	}
 
