@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System;
 
 
 /// <summary>
@@ -114,12 +115,13 @@ public class WeaponIconScript : MonoBehaviour {
 			Player player = GameManager.GetPlayer().GetComponent<Player>();
 			if (player.weapons[weaponNumber] != null){
 				Weapon weapon = player.weapons[weaponNumber].GetComponent<Weapon>();
-				float damageCurrent = weapon.damageMod;
-				int spreadCurrent = weapon.spread;
-				float forceCurrent = weapon.fireForce;
+                float damageCurrent = weapon.damageMod;
+                float currentArc = weapon.spreadRange;
+                int spreadCurrent = weapon.spread;
+                float fireRateCurrent = weapon.fireFrequency;
 				string currentMajor = weapon.weaponMajor.ToString();
 				string currentMinor = weapon.weaponMinor.ToString();
-				togglePopup(true,"GENERIC NAME\nDamage:   " + System.Math.Round(damageCurrent, 2) + "\nSpread:       " + spreadCurrent + "\nForce:          " + forceCurrent + "\nMaj/Min:    " + currentMajor + "-" + currentMinor);
+                togglePopup(true, "Damage:   " + Math.Round(damageCurrent, 2) + "\nProjectiles:  " + spreadCurrent + "\nFire Rate:    " + Math.Round(fireRateCurrent, 2) + "\nMaj/Min:    " + currentMajor + "-" + currentMinor);
 				//GUI.TextField(new Rect (Input.mousePosition.x, Screen.height - Event.current.mousePosition.y - popupHeight * (popupHeight/Screen.height), popupWidth, popupHeight),"Damage:   " + System.Math.Round(damageCurrent, 2) + "\nSpread:       " + spreadCurrent + "\nForce:          " + forceCurrent + "\nMaj/Min:    " + currentMajor + "-" + currentMinor,"OutlineText");
 			}
 		} else {
