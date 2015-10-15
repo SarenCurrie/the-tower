@@ -241,30 +241,6 @@ public class Weapon : Item
     }
 
 
-    //Creates current weapon textfield for popup comparison
-    private void DoWindow0(int windowID)
-    {
-        Player player = GetPlayer().GetComponent<Player>();
-        Weapon weapon = player.weapons[player.currentWeapon].GetComponent<Weapon>();
-        float damageCurrent = weapon.damageMod;
-        float currentArc = weapon.spreadRange;
-        int spreadCurrent = weapon.spread;
-        float fireRateCurrent = weapon.fireFrequency;
-        WeaponStat currentMajor = weapon.weaponMajor;
-        WeaponStat currentMinor = weapon.weaponMinor;
-
-
-
-
-        GUILayout.TextField("Damage:   " + Math.Round(damageCurrent, 2) + "\nProjectiles:  " + spreadCurrent + "\nFire Rate:    " + Math.Round(fireRateCurrent, 2) + "\nMaj/Min:    " + currentMajor + "-" + currentMinor, "OutlineText");
-    }
-
-    //Creates ground weapon textfield for popup comparison
-    private void DoWindow1(int windowID)
-    {
-        GUILayout.TextField("Damage:   " + Math.Round(damageMod, 2) + "\nProjectiles:  " + spread + "\nFire Rate:    " + Math.Round(fireFrequency, 2) + "\nMaj/Min:    " + weaponMajor + "-" + weaponMinor, "OutlineText");
-    }
-
     //Called every frame to check if the on hover will open a comparison popup for the weaopn
     void OnGUI()
     {
@@ -289,15 +265,24 @@ public class Weapon : Item
             GUI.DrawTexture(new Rect(Input.mousePosition.x + 20, Screen.height - Input.mousePosition.y - 45, 70, 40), weapon2);
             //Generates new Window for the current weapon and floor weapon stats 
 
+            float damageCurrent = weapon.damageMod;
+            float currentArc = weapon.spreadRange;
+            int spreadCurrent = weapon.spread;
+            float fireRateCurrent = weapon.fireFrequency;
+            WeaponStat currentMajor = weapon.weaponMajor;
+            WeaponStat currentMinor = weapon.weaponMinor;
+
+            //Creates current weapon textfield for popup comparison
+            //Creates ground weapon textfield for popup comparison
             if (Input.mousePosition.y <= (Screen.height / 3))
             {
-                GUI.Window(0, new Rect(Input.mousePosition.x - 250, Screen.height - Input.mousePosition.y - 160 - offset, 250, 200), DoWindow0, "Current weapon:");
-                GUI.Window(1, new Rect(Input.mousePosition.x - 25, Screen.height - Input.mousePosition.y - 160 - offset, 250, 200), DoWindow1, "Floor weapon:");
+                GUI.TextField(new Rect(Input.mousePosition.x - 170, Screen.height - Input.mousePosition.y - 100, 150, 90), "Damage:   " + Math.Round(damageMod, 2) + "\nProjectiles:  " + spread + "\nFire Rate:    " + Math.Round(fireFrequency, 2) + "\nMaj/Min:   " + weaponMajor + "-" + weaponMinor, "OutlineText");
+                GUI.TextField(new Rect(Input.mousePosition.x, Screen.height - Input.mousePosition.y - 100, 150, 90), "Damage:   " + Math.Round(damageCurrent, 2) + "\nProjectiles:  " + spreadCurrent + "\nFire Rate:    " + Math.Round(fireRateCurrent, 2) + "\nMaj/Min:   " + currentMajor + "-" + currentMinor, "OutlineText");
             }
             else
             {
-                GUI.Window(0, new Rect(Input.mousePosition.x - 250, Screen.height - Input.mousePosition.y + 120 - offset, 250, 200), DoWindow0, "Current weapon:");
-                GUI.Window(1, new Rect(Input.mousePosition.x - 25, Screen.height - Input.mousePosition.y + 120 - offset, 250, 200), DoWindow1, "Floor weapon:");
+                GUI.TextField(new Rect(Input.mousePosition.x - 170, Screen.height - Input.mousePosition.y + 120 - offset, 150, 90),"Damage:   " + Math.Round(damageMod, 2) + "\nProjectiles:  " + spread + "\nFire Rate:    " + Math.Round(fireFrequency, 2) + "\nMaj/Min:   " + weaponMajor + "-" + weaponMinor, "OutlineText");
+                GUI.TextField(new Rect(Input.mousePosition.x, Screen.height - Input.mousePosition.y + 120 - offset, 150, 90), "Damage:   " + Math.Round(damageCurrent, 2) + "\nProjectiles:  " + spreadCurrent + "\nFire Rate:    " + Math.Round(fireRateCurrent, 2) + "\nMaj/Min:   " + currentMajor + "-" + currentMinor, "OutlineText");
             }
             
             }
