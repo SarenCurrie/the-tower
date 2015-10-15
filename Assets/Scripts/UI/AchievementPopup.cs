@@ -2,8 +2,9 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class SpeechScreen : MonoBehaviour {
+public class AchievementPopup : MonoBehaviour {
 
+	public Sprite sprite;
 	private string text;
 	private float waitTime;
 
@@ -18,7 +19,7 @@ public class SpeechScreen : MonoBehaviour {
 	private Vector2 temp;
 
 	// Singleton speech screen instance - assumed only assigned to one place
-	private static SpeechScreen singleton;
+	private static AchievementPopup singleton;
 
 	void Awake()
 	{
@@ -27,34 +28,30 @@ public class SpeechScreen : MonoBehaviour {
 		}
 		dialogArea = this.GetComponent<RectTransform>();
 		dialogWidth = dialogArea.rect.width;
-		dialogOut = Screen.width + 2 * dialogWidth;
+		dialogOut = 2 * Screen.width;
 		dialogIn = dialogArea.anchoredPosition.x;
 	}
 	
 	private void Start()
 	{
-		temp = dialogArea.anchoredPosition;
-		temp.x = dialogOut;
-		dialogArea.anchoredPosition = temp;
+		Vector2 outvect = dialogArea.anchoredPosition;
+		outvect.x = dialogOut;
+		dialogArea.anchoredPosition = outvect;
 	}
 
 	// Static method to show dialog
-	public static void ShowDialog(string text, float time)
+	public static void ShowAchievement(string name,string text, float time)
 	{
 		// Ask singleton to show dialog
-		singleton.Show(text, time);
+		singleton.Show(name, text, time);
 	}
 	
-	public void Show(string text, float time)
+	public void Show(string name, string text, float time)
 	{
-		GameObject.Find ("SpeechText").GetComponent<Text>().text = text;
+		GameObject.Find ("AchievementName").GetComponent<Text>().text = name;
+		GameObject.Find ("AchievementText").GetComponent<Text>().text = text;
 		waitTime = time;
 		shown = true;
-	}
-
-	public void Hide()
-	{
-		shown = false;
 	}
 
 	public void Update()
@@ -70,14 +67,14 @@ public class SpeechScreen : MonoBehaviour {
 		GUI.matrix = UIController.GetGUIMatrix();
 		if (shown)
 		{
-			// Move speech area
+			// Move achievement area
 			temp = dialogArea.anchoredPosition;
 			temp.x = Mathf.MoveTowards(dialogArea.anchoredPosition.x, dialogIn, _MoveSpeed);
 			dialogArea.anchoredPosition = temp;
 		}
 		else
 		{
-			// Move speech area
+			// Move achievement area
 			temp = dialogArea.anchoredPosition;
 			temp.x = Mathf.MoveTowards(dialogArea.anchoredPosition.x, dialogOut, _MoveSpeed);
 			dialogArea.anchoredPosition = temp;

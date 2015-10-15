@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System;
 
 
 /// <summary>
@@ -21,9 +22,8 @@ public class WeaponIconScript : MonoBehaviour {
 	private bool showWindow = false;
 	private RectTransform rect;
 	private float startX;
-	private float startY;
-	private float popupHeight = 85;
-	private float popupWidth = 160;
+
+	private GameObject myPopUp;
 
     public GUISkin mySkin;
 
@@ -31,13 +31,13 @@ public class WeaponIconScript : MonoBehaviour {
     {
 		this.weaponIcon = this.GetComponent<Image>();
 		weaponIcon.enabled = false;
+		myPopUp = GameObject.Find("WeaponPopup"+weaponNumber.ToString());
     }
 
     void Start()
     {
 		rect = this.GetComponent<RectTransform> ();
-		startX = rect.anchoredPosition.x + rect.rect.width;
-		startY = rect.anchoredPosition.y + popupHeight/2;
+		startX = rect.anchoredPosition.x + rect.rect.width/2;
     }
 
     public void reloadWeaponSprites()
@@ -55,9 +55,9 @@ public class WeaponIconScript : MonoBehaviour {
             {
 				this.gameObject.GetComponent<Image>().enabled = true;
                 sprites[1] = weapon1.unSelectedSprite;
-            }
+			}
+			toggleWeapon();
         }
-		toggleWeapon();
     }
 
     // Update is called once per frame
@@ -85,28 +85,48 @@ public class WeaponIconScript : MonoBehaviour {
             }
             else
             {
-                if (sprites[1]!=null)
+                if (sprites[1]!=null) {
 					weaponIcon.sprite = sprites[1];
+				}
             }
-        }
+       }
 
     }
+
+	// Moves the popup into, or out of, position
+	private void togglePopup(bool show, string text)
+	{
+		Vector2 pos = myPopUp.GetComponent<RectTransform>().anchoredPosition;
+		if (show) {
+			pos.x = startX;
+
+		} else {
+			pos.x = Screen.width * 2;
+		}
+		myPopUp.GetComponent<RectTransform>().anchoredPosition = pos;
+		myPopUp.GetComponentInChildren<Text>().text = text;
+	}
 
     //Called every frame to check if the on hover will open a comparison popup for the weaopn
     void OnGUI()
     {
+		GUI.matrix = UIController.GetGUIMatrix();
         GUI.skin = mySkin;
 		if (showWindow) {
 			Player player = GameManager.GetPlayer().GetComponent<Player>();
 			if (player.weapons[weaponNumber] != null){
 				Weapon weapon = player.weapons[weaponNumber].GetComponent<Weapon>();
-				float damageCurrent = weapon.damageMod;
-				int spreadCurrent = weapon.spread;
-				float forceCurrent = weapon.fireForce;
+                float damageCurrent = weapon.damageMod;
+                float currentArc = weapon.spreadRange;
+                int spreadCurrent = weapon.spread;
+                float fireRateCurrent = weapon.fireFrequency;
 				string currentMajor = weapon.weaponMajor.ToString();
 				string currentMinor = weapon.weaponMinor.ToString();
-				GUI.TextField(new Rect (Input.mousePosition.x, Screen.height - Input.mousePosition.y - popupHeight, popupWidth, popupHeight),"Damage:   " + System.Math.Round(damageCurrent, 2) + "\nSpread:       " + spreadCurrent + "\nForce:          " + forceCurrent + "\nMaj/Min:    " + currentMajor + "-" + currentMinor,"OutlineText");
+                togglePopup(true, "Damage:   " + Math.Round(damageCurrent, 2) + "\nProjectiles:  " + spreadCurrent + "\nFire Rate:    " + Math.Round(fireRateCurrent, 2) + "\nMaj/Min:    " + currentMajor + "-" + currentMinor);
+				//GUI.TextField(new Rect (Input.mousePosition.x, Screen.height - Event.current.mousePosition.y - popupHeight * (popupHeight/Screen.height), popupWidth, popupHeight),"Damage:   " + System.Math.Round(damageCurrent, 2) + "\nSpread:       " + spreadCurrent + "\nForce:          " + forceCurrent + "\nMaj/Min:    " + currentMajor + "-" + currentMinor,"OutlineText");
 			}
+		} else {
+			togglePopup(false,"");
 		}
     }
 
