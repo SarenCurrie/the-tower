@@ -10,9 +10,9 @@ GameObject:
   - 4: {fileID: 420742}
   - 212: {fileID: 21207874}
   - 95: {fileID: 9509696}
-  - 114: {fileID: 11478560}
   - 50: {fileID: 5018720}
   - 61: {fileID: 6153424}
+  - 114: {fileID: 11491332}
   m_Layer: 0
   m_Name: Explosion
   m_TagString: EnemyProjectile
@@ -78,7 +78,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11478560
+--- !u!114 &11491332
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -86,11 +86,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 136066}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6585a68107b8bf648b71f878fcbd2763, type: 3}
+  m_Script: {fileID: 11500000, guid: 4efd17fa9a0634c469d5341ad19ae8cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  killTime: .5
+  explosionForce: -1
+  explosionRadius: -1
+  damage: -1
 --- !u!212 &21207874
 SpriteRenderer:
   m_ObjectHideFlags: 1

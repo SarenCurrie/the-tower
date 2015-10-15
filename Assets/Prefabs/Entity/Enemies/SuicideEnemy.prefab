@@ -160,6 +160,7 @@ MonoBehaviour:
   maxHealth: 50
   health: 0
   shouldDrop: 0
+  isDead: 0
   bloodPrefabs: []
   deathSound: {fileID: 8300000, guid: 7fa820df58a8a49d58de70cb13e39e8d, type: 3}
   damagedBy:
@@ -178,7 +179,7 @@ MonoBehaviour:
   explosionForce: 10000
   explosionRadius: 1
   damage: 50
-  explosion: {fileID: 420742, guid: 7e377ed23b45bae498af618f0454a883, type: 2}
+  explosionPrefab: {fileID: 136066, guid: 7e377ed23b45bae498af618f0454a883, type: 2}
 --- !u!114 &11491884
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -316,6 +317,10 @@ Prefab:
       propertyPath: explosion
       value: 
       objectReference: {fileID: 420742, guid: 7e377ed23b45bae498af618f0454a883, type: 2}
+    - target: {fileID: 0}
+      propertyPath: explosionPrefab
+      value: 
+      objectReference: {fileID: 136066, guid: 7e377ed23b45bae498af618f0454a883, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 102632}
