@@ -26,13 +26,9 @@ public class ScoreManager {
 	 */
 	public void FloorClear()
 	{
-
 		int health = (int)GameManager.GetPlayer().GetComponent<UnitHealth>().health;
 
 		SetScore(this.score * health * floorMultiplier);
-
-		//Resets the player's health.
-		GameManager.GetPlayer().GetComponent<UnitHealth>().ResetHealth();
 
 		//Increment the floor multiplier
 		floorMultiplier++;

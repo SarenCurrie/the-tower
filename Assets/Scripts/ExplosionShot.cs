@@ -3,8 +3,12 @@ using System.Collections;
 
 public class ExplosionShot : Projectile {
 
+	public float explosionForce;
+	public float explosionRadius;
+	public float damage;
 
-    public Transform explosion;
+    public GameObject explosion;
+	
     // Use this for initialization
     void Start () {
 	
@@ -16,8 +20,8 @@ public class ExplosionShot : Projectile {
 	}
 
     void OnCollisionEnter2D(Collision2D collision)
-    {   
+    {
+		Explosion.CreateExplosion(explosion, explosionForce, explosionRadius, damage, gameObject.transform.position);
         Destroy(gameObject);
-        Transform projectile = Instantiate(explosion, transform.position, transform.rotation) as Transform;
     }
 }

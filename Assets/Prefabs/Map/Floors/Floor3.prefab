@@ -51,9 +51,13 @@ MonoBehaviour:
   - {fileID: 170756, guid: 3de92de81efd4074ab841fbeed14036f, type: 2}
   - {fileID: 180828, guid: 4a51bc24ec371024aa6d53ddabbc56ba, type: 2}
   - {fileID: 164160, guid: 1952147c13a9c1048aa3772167110a4d, type: 2}
-  enterDialog: 
+  enterDialog: You really are causing some chaos on your journey. I approve.
   exitDialog: 
-  floorDialog: []
+  floorDialog:
+  - The end is near. I can feel it.
+  - What happens when you've finished wiping out the security of the last bastion
+    of humanity?
+  - Are you proud of the destruction you've brought? You should be.
   firstRoom: {fileID: 147792, guid: e39c08f10a6ff6f4c9ea443a39d7234e, type: 2}
   bossRoom: {fileID: 193178, guid: 6c96b564d349f884abbd28cface94821, type: 2}
   screenBlackerPrefab: {fileID: 129008, guid: 02525fa4ad0ec374290310ece9f6b2c4, type: 2}
@@ -64,6 +68,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: floorDialog.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: rooms.Array.data[0]
       value: 
@@ -112,6 +120,23 @@ Prefab:
       propertyPath: screenBlackerPrefab
       value: 
       objectReference: {fileID: 129008, guid: 02525fa4ad0ec374290310ece9f6b2c4, type: 2}
+    - target: {fileID: 0}
+      propertyPath: enterDialog
+      value: You really are causing some chaos on your journey. I approve.
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: floorDialog.Array.data[0]
+      value: The end is near. I can feel it.
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: floorDialog.Array.data[1]
+      value: What happens when you've finished wiping out the security of the last
+        bastion of humanity?
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: floorDialog.Array.data[2]
+      value: Are you proud of the destruction you've brought? You should be.
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 145084}

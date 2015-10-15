@@ -8,8 +8,9 @@ public static class Tags {
 	public const string ENEMY_SPAWN = "Respawn";
 	public const string PLAYER_SPAWN = "Player_Spawn";
 	public const string ELEVATOR = "Elevator";
-	public const string HeartCircle = "HeartCircle";
-	public const string HealthElement = "HealthElement";
-	public const string Score = "Score";
-	public const string DamageFlash = "DamageFlash";
+	public const string WALL = "Wall";
+	public const string HEART_CIRCLE = "HeartCircle";
+	public const string HEALTH_ELEMENT = "HealthElement";
+	public const string SCORE = "Score";
+	public const string DAMAGE_FLASH = "DamageFlash";
 }

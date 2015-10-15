@@ -14,10 +14,10 @@ TagManager:
   - DroppedItem
   - Player_Spawn
   - Elevator
-  - HeartCircle
-  - HealthElement
   - Score
+  - HeartCircle
   - DamageFlash
+  - HealthElement
   layers:
   - Default
   - TransparentFX
@@ -28,7 +28,7 @@ TagManager:
   - 
   - 
   - Floor
-  - 
+  - Door
   - LowObject
   - DroppedItem
   - 

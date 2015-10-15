@@ -21,8 +21,14 @@ public class RangedEnemy : Enemy
 
     public float damage;
 
+	//How much of a burst needs to be completed before the enemy will reload if it cannot see the player
+	public float reloadFactor = 1;
+	//Used for burst fire and reload times
+	private float weaponTime;
+
     protected float nextFireTime = 0;
     protected float fireStopTime = 0;
+
     protected bool waitingToFire = false;
 
     public Sprite[] possibleProjectileSprites;
@@ -90,27 +96,60 @@ public class RangedEnemy : Enemy
 
     protected void MaybeFireAtPlayer()
     {
-        if (!waitingToFire)
-        {
-            if (Time.time > fireStopTime)
-            {
-                nextFireTime = Time.time + Random.Range(minFireWait, maxFireWait);
-                waitingToFire = true;
-            }
-            else
-            {
-                Fire();
-            }
-        }
-        else if (Time.time > nextFireTime)
-        {
-            fireStopTime = CalculateFireStopTime();
-            waitingToFire = false;
-        }
+		if (CanSeePlayer())
+		{
+			if (!waitingToFire)
+			{
+				if (weaponTime > fireStopTime)
+				{
+					Reload();
+				}
+				else
+				{
+					Fire();
+				}
+			}
+			else if (weaponTime > nextFireTime)
+			{
+				fireStopTime = CalculateFireStopTime();
+				weaponTime = 0;
+				waitingToFire = false;
+			}
+			weaponTime += Time.deltaTime;
+		}
+		else
+		{
+			if (waitingToFire)
+				weaponTime += Time.deltaTime;
+			else if (weaponTime > reloadFactor*((minFireWait + maxFireWait) / 2))
+				Reload();
+		}
     }
+
+	protected void Reload()
+	{
+		nextFireTime = Random.Range(minFireWait, maxFireWait);
+		weaponTime = 0;
+		waitingToFire = true;
+	}
 
     protected virtual float CalculateFireStopTime()
     {
-        return Time.time + burstTime;
+        return burstTime;
     }
+
+	protected bool CanSeePlayer()
+	{
+		if (GameManager.GetPlayer() == null)
+			return false;
+		Vector3 playerPosition = GameManager.GetPlayer().transform.position;
+		Vector3 relativePlayerPosition = playerPosition - transform.position;
+		RaycastHit2D hit = Physics2D.Raycast(transform.position, relativePlayerPosition, Mathf.Infinity, GameManager.staticEnemySightLayerMask.value);
+		if (hit.collider != null && hit.collider.gameObject.tag == Tags.PLAYER)
+		{
+			return true;
+		}
+		return false;
+	}
 }
+

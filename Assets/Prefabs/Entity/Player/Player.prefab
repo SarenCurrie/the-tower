@@ -178,15 +178,12 @@ MonoBehaviour:
   maxHealth: 250
   health: 250
   shouldDrop: 0
+  isDead: 0
   bloodPrefabs:
-  - {fileID: 143992, guid: cb8413ee05b11407f9e8b689c12b6ca3, type: 2}
-  - {fileID: 198288, guid: 4d23b9abbec7704438d032e22cdbcdc0, type: 2}
-  - {fileID: 103594, guid: 4e3ad30932138a24288254a65b8e2d52, type: 2}
-  - {fileID: 153918, guid: 65df8e80c6cda05458b57289eb521680, type: 2}
-  - {fileID: 193986, guid: 02974fd00f929054ebaa400b9825d0de, type: 2}
-  - {fileID: 171710, guid: 86e544c40a678c145bd3949d0ff99e69, type: 2}
-  - {fileID: 196840, guid: 490416a499f6e424faed7fcd7bccb7db, type: 2}
-  - {fileID: 159418, guid: ad4db083d533462488f69479d030daf4, type: 2}
+  - {fileID: 138962, guid: 0ff3b5878aa09be4d948b660b533fd0f, type: 2}
+  - {fileID: 180040, guid: 3c4b0251b94c34e4ca2f614c43b16ec5, type: 2}
+  - {fileID: 169730, guid: 45c7d358995f18e4db42ee9e23020ae4, type: 2}
+  - {fileID: 117262, guid: 88a28d0173ea29847b46178147060594, type: 2}
   deathSound: {fileID: 8300000, guid: f0c98d0d5c7ecd54391e3bd2fa4f9be2, type: 3}
   damagedBy:
   - EnemyProjectile
@@ -233,7 +230,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: bloodPrefabs.Array.size
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: possibleProjectileSprites.Array.size
@@ -377,19 +374,19 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: bloodPrefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 143992, guid: cb8413ee05b11407f9e8b689c12b6ca3, type: 2}
+      objectReference: {fileID: 138962, guid: 0ff3b5878aa09be4d948b660b533fd0f, type: 2}
     - target: {fileID: 0}
       propertyPath: bloodPrefabs.Array.data[1]
       value: 
-      objectReference: {fileID: 198288, guid: 4d23b9abbec7704438d032e22cdbcdc0, type: 2}
+      objectReference: {fileID: 180040, guid: 3c4b0251b94c34e4ca2f614c43b16ec5, type: 2}
     - target: {fileID: 0}
       propertyPath: bloodPrefabs.Array.data[2]
       value: 
-      objectReference: {fileID: 103594, guid: 4e3ad30932138a24288254a65b8e2d52, type: 2}
+      objectReference: {fileID: 169730, guid: 45c7d358995f18e4db42ee9e23020ae4, type: 2}
     - target: {fileID: 0}
       propertyPath: bloodPrefabs.Array.data[3]
       value: 
-      objectReference: {fileID: 153918, guid: 65df8e80c6cda05458b57289eb521680, type: 2}
+      objectReference: {fileID: 117262, guid: 88a28d0173ea29847b46178147060594, type: 2}
     - target: {fileID: 0}
       propertyPath: bloodPrefabs.Array.data[4]
       value: 

@@ -11,7 +11,7 @@ GameObject:
   - 212: {fileID: 21233910}
   - 50: {fileID: 5039266}
   - 61: {fileID: 6178014}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (19)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ GameObject:
   - 212: {fileID: 21285766}
   - 50: {fileID: 5059734}
   - 61: {fileID: 6104710}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (12)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ GameObject:
   - 61: {fileID: 6171790}
   - 114: {fileID: 11429014}
   - 212: {fileID: 21285930}
-  m_Layer: 31
+  m_Layer: 9
   m_Name: DoorRight
   m_TagString: Door
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -65,7 +65,7 @@ GameObject:
   - 212: {fileID: 21219880}
   - 50: {fileID: 5018650}
   - 61: {fileID: 6102774}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (17)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ GameObject:
   - 50: {fileID: 5007886}
   - 61: {fileID: 6135658}
   - 212: {fileID: 21229928}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: VertWall
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   - 212: {fileID: 21256352}
   - 50: {fileID: 5090500}
   - 61: {fileID: 6184724}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (16)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ GameObject:
   - 212: {fileID: 21299176}
   - 50: {fileID: 5070758}
   - 61: {fileID: 6187466}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (11)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ GameObject:
   - 61: {fileID: 6183058}
   - 114: {fileID: 11479702}
   - 212: {fileID: 21250536}
-  m_Layer: 31
+  m_Layer: 9
   m_Name: DoorTop
   m_TagString: Door
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -232,7 +232,7 @@ GameObject:
   - 212: {fileID: 21245896}
   - 50: {fileID: 5001546}
   - 61: {fileID: 6127212}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (20)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -250,7 +250,7 @@ GameObject:
   - 212: {fileID: 21207008}
   - 50: {fileID: 5046848}
   - 61: {fileID: 6118690}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -268,7 +268,7 @@ GameObject:
   - 61: {fileID: 6128388}
   - 114: {fileID: 11405844}
   - 212: {fileID: 21223368}
-  m_Layer: 31
+  m_Layer: 9
   m_Name: DoorBottom
   m_TagString: Door
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -286,7 +286,7 @@ GameObject:
   - 212: {fileID: 21200148}
   - 50: {fileID: 5079574}
   - 61: {fileID: 6110582}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (18)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -304,7 +304,7 @@ GameObject:
   - 212: {fileID: 21236370}
   - 50: {fileID: 5085254}
   - 61: {fileID: 6120790}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (15)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -337,7 +337,7 @@ GameObject:
   - 50: {fileID: 5058234}
   - 61: {fileID: 6197152}
   - 212: {fileID: 21254774}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: VertWall (1)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -355,7 +355,7 @@ GameObject:
   - 212: {fileID: 21216624}
   - 50: {fileID: 5085116}
   - 61: {fileID: 6134968}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (2)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -373,7 +373,7 @@ GameObject:
   - 61: {fileID: 6198732}
   - 114: {fileID: 11473018}
   - 212: {fileID: 21289654}
-  m_Layer: 31
+  m_Layer: 9
   m_Name: DoorLeft
   m_TagString: Door
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -391,7 +391,7 @@ GameObject:
   - 212: {fileID: 21202842}
   - 50: {fileID: 5053666}
   - 61: {fileID: 6152660}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (14)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -1671,6 +1671,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalRotation.w
       value: .707106709
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

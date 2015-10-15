@@ -11,7 +11,7 @@ GameObject:
   - 61: {fileID: 6139840}
   - 114: {fileID: 11483258}
   - 212: {fileID: 21228898}
-  m_Layer: 31
+  m_Layer: 9
   m_Name: DoorTop
   m_TagString: Door
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -29,7 +29,7 @@ GameObject:
   - 212: {fileID: 21278434}
   - 50: {fileID: 5020710}
   - 61: {fileID: 6176498}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (16)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ GameObject:
   - 212: {fileID: 21264824}
   - 50: {fileID: 5039230}
   - 61: {fileID: 6118374}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (27)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -65,7 +65,7 @@ GameObject:
   - 212: {fileID: 21215314}
   - 50: {fileID: 5093134}
   - 61: {fileID: 6162960}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (20)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - 212: {fileID: 21264238}
   - 50: {fileID: 5011320}
   - 61: {fileID: 6136076}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (31)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   - 212: {fileID: 21294210}
   - 50: {fileID: 5073176}
   - 61: {fileID: 6107414}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (34)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ GameObject:
   - 50: {fileID: 5019324}
   - 61: {fileID: 6155802}
   - 212: {fileID: 21226118}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: VertWall
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ GameObject:
   - 212: {fileID: 21210596}
   - 50: {fileID: 5001176}
   - 61: {fileID: 6116564}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (26)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ GameObject:
   - 212: {fileID: 21266688}
   - 50: {fileID: 5058458}
   - 61: {fileID: 6179570}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (22)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -188,7 +188,7 @@ GameObject:
   - 212: {fileID: 21222494}
   - 50: {fileID: 5052564}
   - 61: {fileID: 6170964}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (29)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   - 212: {fileID: 21208484}
   - 50: {fileID: 5054766}
   - 61: {fileID: 6181368}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (2)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ GameObject:
   - 212: {fileID: 21220410}
   - 50: {fileID: 5048758}
   - 61: {fileID: 6188962}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (11)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -257,7 +257,7 @@ GameObject:
   - 212: {fileID: 21231778}
   - 50: {fileID: 5007472}
   - 61: {fileID: 6142662}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (23)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -275,7 +275,7 @@ GameObject:
   - 61: {fileID: 6108878}
   - 114: {fileID: 11413146}
   - 212: {fileID: 21281232}
-  m_Layer: 31
+  m_Layer: 9
   m_Name: DoorRight
   m_TagString: Door
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -293,7 +293,7 @@ GameObject:
   - 61: {fileID: 6126254}
   - 114: {fileID: 11405912}
   - 212: {fileID: 21268744}
-  m_Layer: 31
+  m_Layer: 9
   m_Name: DoorBottom
   m_TagString: Door
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -311,7 +311,7 @@ GameObject:
   - 212: {fileID: 21275292}
   - 50: {fileID: 5058338}
   - 61: {fileID: 6175536}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (28)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -329,7 +329,7 @@ GameObject:
   - 212: {fileID: 21258912}
   - 50: {fileID: 5050120}
   - 61: {fileID: 6182688}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (25)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -347,7 +347,7 @@ GameObject:
   - 212: {fileID: 21273528}
   - 50: {fileID: 5080592}
   - 61: {fileID: 6152390}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (35)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -365,7 +365,7 @@ GameObject:
   - 212: {fileID: 21268048}
   - 50: {fileID: 5093158}
   - 61: {fileID: 6136764}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (24)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -383,7 +383,7 @@ GameObject:
   - 50: {fileID: 5010266}
   - 61: {fileID: 6110118}
   - 212: {fileID: 21208310}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: VertWall (1)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -401,7 +401,7 @@ GameObject:
   - 212: {fileID: 21285182}
   - 50: {fileID: 5035098}
   - 61: {fileID: 6183190}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -419,7 +419,7 @@ GameObject:
   - 212: {fileID: 21295304}
   - 50: {fileID: 5021664}
   - 61: {fileID: 6163914}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (21)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -469,7 +469,7 @@ GameObject:
   - 212: {fileID: 21246416}
   - 50: {fileID: 5003374}
   - 61: {fileID: 6180692}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (33)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -487,7 +487,7 @@ GameObject:
   - 212: {fileID: 21237750}
   - 50: {fileID: 5012448}
   - 61: {fileID: 6155794}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (13)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -505,7 +505,7 @@ GameObject:
   - 212: {fileID: 21232782}
   - 50: {fileID: 5084762}
   - 61: {fileID: 6122200}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (12)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -523,7 +523,7 @@ GameObject:
   - 212: {fileID: 21270052}
   - 50: {fileID: 5090164}
   - 61: {fileID: 6136310}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (17)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -541,7 +541,7 @@ GameObject:
   - 61: {fileID: 6184364}
   - 114: {fileID: 11496012}
   - 212: {fileID: 21247782}
-  m_Layer: 31
+  m_Layer: 9
   m_Name: DoorLeft
   m_TagString: Door
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -574,7 +574,7 @@ GameObject:
   - 212: {fileID: 21286614}
   - 50: {fileID: 5080672}
   - 61: {fileID: 6183162}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (30)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -592,7 +592,7 @@ GameObject:
   - 212: {fileID: 21205322}
   - 50: {fileID: 5099830}
   - 61: {fileID: 6145686}
-  m_Layer: 15
+  m_Layer: 31
   m_Name: HorizWall (32)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -2675,6 +2675,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalRotation.w
       value: -1.62920685e-07
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
