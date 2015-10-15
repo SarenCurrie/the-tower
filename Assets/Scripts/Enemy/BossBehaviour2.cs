@@ -66,7 +66,7 @@ public class BossBehaviour2 : Enemy
                 LaserBlast();
                 count = 50;
                 bossLaserCount = 60;
-                boundary -= 5;
+                boundary -= 10;
             }
         }
         else if (bossLaserCount == 0)

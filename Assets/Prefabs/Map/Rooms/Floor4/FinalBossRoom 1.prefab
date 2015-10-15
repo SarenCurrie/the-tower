@@ -551,8 +551,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 434480, guid: 819132afeea94824d8e399f5382bb34a, type: 2}
-  fireForce: 50
-  fireFrequency: 1
+  fireForce: 30
+  fireFrequency: .5
   DAMAGEMULTIPLIER: 1
   burstTime: 0
   minFireWait: .99000001
@@ -560,12 +560,12 @@ MonoBehaviour:
   damage: 2
   reloadFactor: 0
   possibleProjectileSprites:
-  - {fileID: 21300000, guid: 5d41bfa3f684f0848a7918244531e89e, type: 3}
+  - {fileID: 21300000, guid: 3fad207b7d455fe459bc25fd1ec22374, type: 3}
   possibleSounds: []
-  spread: 20
-  spreadRange: 180
-  minBurstTime: 1
-  maxBurstTime: 1
+  spread: 30
+  spreadRange: 360
+  minBurstTime: 2
+  maxBurstTime: 2
 --- !u!114 &11485536
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -578,7 +578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackTime: 1
-  enemyToSpawn: {fileID: 134550, guid: 4f59bcfcd02d8ce4e9ea7155596dff99, type: 2}
+  enemyToSpawn: {fileID: 186098, guid: 0db657009252c104d84944c7c9c30bc1, type: 2}
   enemyLocation1: {x: 0, y: 0, z: 0}
   enemyLocation2: {x: 0, y: 0, z: 0}
   baseScore: 1000
@@ -776,7 +776,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: enemyToSpawn
       value: 
-      objectReference: {fileID: 134550, guid: 4f59bcfcd02d8ce4e9ea7155596dff99, type: 2}
+      objectReference: {fileID: 186098, guid: 0db657009252c104d84944c7c9c30bc1, type: 2}
     - target: {fileID: 0}
       propertyPath: DAMAGEMULTIPLIER
       value: 250
@@ -789,6 +789,35 @@ Prefab:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: b97f0adb4e99f90449e5d40e6445c29a,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: fireFrequency
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: minBurstTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxBurstTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: fireForce
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: spreadRange
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: spread
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleProjectileSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 3fad207b7d455fe459bc25fd1ec22374,
         type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
