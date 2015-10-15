@@ -10,13 +10,14 @@ public class EnemyMovement : Enemy
 	public float movementSpeed;
 	public int baseScore;
 
+	//Try to get rid of this
 	private Vector3 lastKnownPlayerPosition;
-	private bool hasSeenPlayer = false;
+	private Vector3 goToPosition;
+	private Vector3 otherPatrolPosition;
+
 	private bool canSeePlayer = false;
 
-	private const float DISTANCE_FROM_LAST_KNOWN_PLAYER_POSITION = 0.05f;
-
-	private const float WALL_CLEARANCE = 0.05f;
+	private const float PROXIMITY = 0.4f;
 
 	private Rigidbody2D rigidBody;
 
@@ -24,29 +25,76 @@ public class EnemyMovement : Enemy
 	void Start()
 	{
 		rigidBody = GetComponent<Rigidbody2D>();
+		FindNewPatrol();
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		if (GetPlayer() == null)
+		if (GameManager.GetPlayer() == null)
 			return;
 
 		UpdateKnownPlayerPosition();
-		RotateToFaceLastKnownPlayerPosition();
 
-		//If player has ever been seen
-		if (hasSeenPlayer)
+		if (canSeePlayer)
 		{
-			if (canSeePlayer)
-				AdjustDistanceFromPlayer();
-			else
-				MoveToLastKnownPlayerPosition();
+			AdjustDistanceFromPlayer();
+		}
+		else if ((transform.position - goToPosition).magnitude < PROXIMITY)
+		{
+			FindNewPatrol();
+		}
+		else
+		{
+			Patrol();
+		}
+	}
+
+	private void FindNewPatrol()
+	{
+		Vector2 winningPosition = new Vector2();
+		float winningDistance = 0;
+
+		for (int angle=0; angle<360; angle+=10)
+		{
+			Vector3 extentRight = Quaternion.Euler(0, 0, angle) * ((GetComponent<CircleCollider2D>().bounds.extents.x) * transform.right);
+			Vector2 direction = Quaternion.Euler(0,0,angle) * transform.up;
+
+			RaycastHit2D hitLeft = Physics2D.Raycast(transform.position - extentRight, direction, Mathf.Infinity, GameManager.staticEnemySightLayerMask.value);
+			RaycastHit2D hitRight = Physics2D.Raycast(transform.position + extentRight, direction, Mathf.Infinity, GameManager.staticEnemySightLayerMask.value);
+
+			if ((hitLeft.point - hitRight.point).magnitude < GetComponent<CircleCollider2D>().bounds.extents.x + 0.4)
+			{
+				if (hitLeft.distance > winningDistance)
+				{
+					print("WINNER!");
+					winningPosition = (hitLeft.point + hitRight.point)/2;
+					winningDistance = hitLeft.distance;
+				}
+			}
+		}
+
+		otherPatrolPosition = transform.position;
+		goToPosition = winningPosition;
+	}
+
+	private void Patrol()
+	{
+		if ((transform.position - goToPosition).magnitude < PROXIMITY)
+		{
+			goToPosition = otherPatrolPosition;
+			otherPatrolPosition = transform.position;
+		}
+		else
+		{
+			RotateToFacePosition(goToPosition);
+			rigidBody.AddForce(transform.up * movementSpeed * Time.deltaTime);
 		}
 	}
 
 	private void AdjustDistanceFromPlayer()
 	{
+		RotateToFaceLastKnownPlayerPosition();
 		Vector3 relativePlayerPosition = GetRelativePlayerPosition();
 		if (relativePlayerPosition.magnitude - preferedDistanceRange > preferedDistance)
 		{
@@ -58,77 +106,36 @@ public class EnemyMovement : Enemy
 		}
 	}
 
-	private Player GetPlayer()
-	{
-		return GameObject.FindObjectOfType<Player>();
-	}
-
 	private Vector3 GetRelativePlayerPosition()
 	{
-		return GetPlayer().GetComponent<Transform>().position - transform.position;
+		return GameManager.GetPlayer().GetComponent<Transform>().position - transform.position;
 	}
-
-	private void MoveToLastKnownPlayerPosition()
-	{
-		rigidBody.AddForce(ChooseMovementDirection() * movementSpeed * Time.deltaTime);
-	}
-
-	private Vector3 ChooseMovementDirection()
-	{
-		Vector3 playerPosition = lastKnownPlayerPosition;
-		//Shoot raycast from both left and right sides of collider
-		Vector3 extentRight = (GetComponent<CircleCollider2D>().bounds.extents.x + WALL_CLEARANCE) * transform.right;
-		Vector3[] viewPositions = new Vector3[] { transform.position - extentRight, transform.position + extentRight };
-		List<RaycastHit2D> hits = new List<RaycastHit2D>();
-
-		//Can the destination be reached by going straight forward?
-		bool canReach = true;
-
-		foreach (Vector3 raycastPosition in viewPositions)
-		{
-			Vector3 relativePlayerPosition = playerPosition - raycastPosition;
-			RaycastHit2D hit = Physics2D.Raycast(transform.position, relativePlayerPosition, relativePlayerPosition.magnitude, GameManager.staticEnemySightLayerMask.value);
-			hits.Add(hit);
-			if (hit && hit.collider.tag != Tags.PLAYER)
-			{
-				canReach = false;
-			}
-        }
-
-		if (canReach == false)
-		{
-			for (int i=0; i<viewPositions.Length; i++)
-			{
-				//If the point can be reached from here, move to here
-				if (!hits[i] || hits[i].collider.tag == Tags.PLAYER)
-				{
-					return (playerPosition - viewPositions[i]).normalized;
-				}
-            }
-		}
-		return transform.up;
-    }
 
 	private void RotateToFaceLastKnownPlayerPosition()
 	{
-		if (lastKnownPlayerPosition != null && (transform.position - lastKnownPlayerPosition).magnitude > DISTANCE_FROM_LAST_KNOWN_PLAYER_POSITION)
+		if (lastKnownPlayerPosition != null)
 		{
-			Vector3 relativeLastKnownPlayerPosition = lastKnownPlayerPosition - transform.position;
-			float angle = Mathf.Atan2(relativeLastKnownPlayerPosition.y, relativeLastKnownPlayerPosition.x) * Mathf.Rad2Deg + 270;
-			transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+			RotateToFacePosition(lastKnownPlayerPosition);
 		}
+	}
+
+	private void RotateToFacePosition(Vector3 position)
+	{
+		Vector3 relativePosition = position - transform.position;
+		float angle = Mathf.Atan2(relativePosition.y, relativePosition.x) * Mathf.Rad2Deg + 270;
+		transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 	}
 
 	private void UpdateKnownPlayerPosition()
 	{
-		Vector3 playerPosition = GetPlayer().transform.position;
+		Vector3 playerPosition = GameManager.GetPlayer().transform.position;
 		Vector3 relativePlayerPosition = GetRelativePlayerPosition();
 		RaycastHit2D hit = Physics2D.Raycast(transform.position, relativePlayerPosition, Mathf.Infinity, GameManager.staticEnemySightLayerMask.value);
 		if (hit.collider != null && hit.collider.gameObject.tag == Tags.PLAYER)
 		{
-			hasSeenPlayer = true;
 			canSeePlayer = true;
 			lastKnownPlayerPosition = playerPosition;
+			goToPosition = playerPosition;
 		}
 		else
 		{
