@@ -1,13 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BossBehaviour_2 : Enemy {
+public class BossBehaviour2 : Enemy
+{
+
     private float LastChecked = 0;
     public float MaxHealth;
-
+    public float ChangePercentage;
     private float attackTick = 0;
     public float attackTime;
-    
+    public int count = 0;
+    public float currentHealth;
+    public int boundary = 100;
+
+    private bool hasSeenPlayer = false;
+
     public int baseScore;
 
     private Rigidbody2D rigidBody;
@@ -23,7 +30,16 @@ public class BossBehaviour_2 : Enemy {
     {
         if (GetPlayer() == null)
             return;
-
+        RotateToFacePlayer();
+        Debug.Log(GameManager.currentFloor.currentRoom);
+        currentHealth = gameObject.GetComponent<UnitHealth>().GetHealth();
+        if (((int)(currentHealth*100)/MaxHealth)< boundary)
+        {
+            
+            gameObject.GetComponent<SpreadShotEnemy>().Fire();
+            boundary = boundary - 5;
+        }
+        count++;
     }
 
     private Player GetPlayer()
@@ -42,5 +58,6 @@ public class BossBehaviour_2 : Enemy {
         float angle = Mathf.Atan2(relativePlayerPos.y, relativePlayerPos.x) * Mathf.Rad2Deg + 270;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
-    
+
+   
 }

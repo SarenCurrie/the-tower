@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BossBehaviour : Enemy {
+public class BossBehaviour : MonoBehaviour {
 
     private float LastChecked=0;
     public float MaxHealth;

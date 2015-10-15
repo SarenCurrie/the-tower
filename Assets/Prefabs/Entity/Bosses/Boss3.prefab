@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 475210, guid: c154e1ab5c984f441b1114dfe548458e, type: 2}
-  fireForce: 25
+  fireForce: 40
   fireFrequency: 40
   DAMAGEMULTIPLIER: 1
   burstTime: 0
@@ -161,8 +161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c305ad83a87afe428430747324a1650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 459930, guid: bb391dbe434ba0744a56898ffdaccdda, type: 2}
-  fireForce: 20
+  projectilePrefab: {fileID: 475210, guid: c154e1ab5c984f441b1114dfe548458e, type: 2}
+  fireForce: 40
   fireFrequency: 10
   DAMAGEMULTIPLIER: 0
   burstTime: 0
@@ -171,7 +171,7 @@ MonoBehaviour:
   damage: 0
   reloadFactor: 10
   possibleProjectileSprites:
-  - {fileID: 21300000, guid: 03c2806085a3130458af27c16d51fda3, type: 3}
+  - {fileID: 21300000, guid: 5d41bfa3f684f0848a7918244531e89e, type: 3}
   possibleSounds: []
 --- !u!212 &21246674
 SpriteRenderer:
@@ -208,7 +208,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: fireForce
-      value: 20
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: fireFrequency
@@ -242,6 +242,15 @@ Prefab:
       propertyPath: spread
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleProjectileSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 5d41bfa3f684f0848a7918244531e89e,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 475210, guid: c154e1ab5c984f441b1114dfe548458e, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 127202}
