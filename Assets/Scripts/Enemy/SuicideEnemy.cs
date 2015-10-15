@@ -7,12 +7,15 @@ public class SuicideEnemy : Enemy
 	public float explosionForce;
 	public float explosionRadius;
 	public float damage;
-	public Transform explosion;
+
+	public GameObject explosionPrefab;
+
+	private Rigidbody2D body;
 
 	// Use this for initialization
 	void Start()
 	{
-
+		body = GetComponent<Rigidbody2D>();
 	}
 
 	// Update is called once per frame
@@ -23,25 +26,13 @@ public class SuicideEnemy : Enemy
 
 	void MaybeExplode()
 	{
-
-		Rigidbody2D body = GetComponent<Rigidbody2D>();
-		GameObject player = GameObject.FindWithTag("Player");
-		if (body.IsTouching(player.GetComponent<CircleCollider2D>()))
+		if (body.IsTouching(GameManager.GetPlayer().GetComponent<CircleCollider2D>()))
 		{
+			//Create an explosion at this point
+			Explosion.CreateExplosion(explosionPrefab, explosionForce, explosionRadius, damage, transform.position);
 
+			//Kill this suicide enemy
 			GetComponent<UnitHealth>().Die();
-			Instantiate(explosion, transform.position, transform.rotation);
-			Vector3 explosionPosition = body.transform.position;
-			foreach (GameObject enemy in GameManager.currentFloor.currentRoom.GetEnemiesInRoom())
-			{
-				RigidBodyExpansion enemyBodyExp = enemy.GetComponent<RigidBodyExpansion>();
-				enemyBodyExp.Explosion(
-					enemy.GetComponent<Rigidbody2D>(),
-					explosionForce, explosionPosition, explosionRadius);
-			}
-			player.GetComponent<RigidBodyExpansion>().Explosion(player.GetComponent<Rigidbody2D>(),
-			   explosionForce, explosionPosition, explosionRadius);
-			player.GetComponent<UnitHealth>().LoseHealth(damage);
 		}
 
 	}
