@@ -19,7 +19,7 @@ public class UnitHealth : MonoBehaviour {
 	public bool shouldDrop;
 
 	/**
-	 * This is is used as a "hack" to prevent the enemy from dying twice.
+	 * This is is used to prevent the enemy from dying twice.
 	 *
 	 * This needed to be resolved in this manner as it seems the Destroy(GameObject, Float)
 	 * method is broken within the current version of Unity. The first enemy that is killed
@@ -83,18 +83,18 @@ public class UnitHealth : MonoBehaviour {
 	}
 
 	/**
-	* Returns the current health value.
-	*/
+	 * Returns the current health value.
+	 */
 	public float GetHealth()
 	{
 		return health;
 	}
 
 	/**
-	* Called when something collides with the attached gameObject.
-	* This will check what type of projectile has hit the gameObject
-	* and then perform the required action.
-	*/
+	 * Called when something collides with the attached gameObject.
+	 * This will check what type of projectile has hit the gameObject
+	 * and then perform the required action.
+	 */
 	void OnCollisionEnter2D(Collision2D collision)
 	{
 		if (collision.gameObject.GetComponent<Projectile>() == null)
@@ -129,6 +129,7 @@ public class UnitHealth : MonoBehaviour {
 	public void ResetHealth()
 	{
 		health = maxHealth;
+		UIController.GetUI().UpdateHealth();
 	}
 
 	/**
@@ -157,12 +158,10 @@ public class UnitHealth : MonoBehaviour {
 			// Add the enemies health to the players score
 			UIController.GetUI().GetScoreManager().IncrementScore((int)gameObject.GetComponent<UnitHealth>().maxHealth);
 
-			foreach (Enemy e in gameObject.GetComponents<Enemy>())
-			{
-				e.enabled = false;
-				//Make the enemy disappear
-				gameObject.GetComponent<SpriteRenderer>().enabled = false;
-			}
+			//Make the current floor play the death sound
+			AudioSource audioSource = AudioManager.GetAudioSource();
+			audioSource.clip = deathSound;
+			audioSource.Play();
 
 			if (shouldDrop)
 			{
@@ -181,18 +180,7 @@ public class UnitHealth : MonoBehaviour {
 			UIController.GetUI().ShowDeathMenu();
 		}
 
-		AudioSource audioSource = GetComponent<AudioSource>();
-		if (audioSource != null)
-		{
-			Renderer renderer = GetComponent<Renderer>();
-			audioSource.clip = deathSound;
-			audioSource.Play();
-			renderer.enabled = false;
-			Destroy(gameObject, deathSound.length);
-		}
-		else
-		{
-			Destroy(gameObject);
-		}
+		//Destroy the game object
+		Destroy(gameObject);
 	}
 }

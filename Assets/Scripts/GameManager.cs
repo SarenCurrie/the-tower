@@ -20,8 +20,13 @@ public class GameManager : MonoBehaviour {
 
     public static AchievementHandler achievementHandler;
 
-    void Start () {
+	//What can enemies see through?
+	public LayerMask enemySightLayerMask;
+	public static LayerMask staticEnemySightLayerMask;
+
+	void Start () {
 		staticFloorPrefabs = floorPrefabs;
+		staticEnemySightLayerMask = enemySightLayerMask;
 
 		player = Instantiate(playerPrefab) as GameObject;
 		MovePlayerToNextFloor();
@@ -50,17 +55,20 @@ public class GameManager : MonoBehaviour {
 
 		currentFloorNumber++;
 
-        if (currentFloorNumber < staticFloorPrefabs.Length)
-        {
+		//Resets the player's health.
+		GameManager.GetPlayer().GetComponent<UnitHealth>().ResetHealth();
+
+		if (currentFloorNumber < staticFloorPrefabs.Length)
+		{
 			//Spawn the floor, generate it, and move the player to it
 			currentFloor = Instantiate(staticFloorPrefabs[currentFloorNumber]).GetComponent<Floor>();
 			currentFloor.GenerateFloor();
 			currentFloor.MovePlayerToFloor(player);
 			achievementHandler = new AchievementHandler();
-        }
-        else
-        {
-            print("You are already at the top floor!");
-        }
+		}
+		else
+		{
+			print("You are already at the top floor!");
+		}
 	}
 }

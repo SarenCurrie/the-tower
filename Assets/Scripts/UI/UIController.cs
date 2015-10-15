@@ -52,7 +52,7 @@ public class UIController : MonoBehaviour {
 	{
 		foreach (RectTransform r in gameObject.GetComponentInChildren<RectTransform>())
 		{
-			if (r.gameObject.tag == Tags.HealthElement)
+			if (r.gameObject.tag == Tags.HEALTH_ELEMENT)
 			{
 				r.gameObject.GetComponentInChildren<Image>().sprite = sprite;
 			}
@@ -66,7 +66,7 @@ public class UIController : MonoBehaviour {
 	{
 		foreach (RectTransform r in gameObject.GetComponentInChildren<RectTransform>())
 		{
-			if (r.gameObject.tag == Tags.Score)
+			if (r.gameObject.tag == Tags.SCORE)
 			{
 				r.gameObject.GetComponent<Text>().text = score.ToString();
 			}
@@ -106,7 +106,7 @@ public class UIController : MonoBehaviour {
 	{
 		foreach (RectTransform r in gameObject.GetComponentInChildren<RectTransform>())
 		{
-			if (r.gameObject.tag == Tags.DamageFlash)
+			if (r.gameObject.tag == Tags.DAMAGE_FLASH)
 			{
 				return r.GetComponent<Image>();
 			}

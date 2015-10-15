@@ -106,7 +106,10 @@ public class Weapon : Item
     public override void Generate()
     {
         look = UnityEngine.Random.Range(0, looks.Length);
+
+
         if (selectedSideLooks.Length == unselectedSideLooks.Length && selectedSideLooks.Length == looks.Length)
+
         {
             selectedSprite = selectedSideLooks[look];
             unSelectedSprite = unselectedSideLooks[look];

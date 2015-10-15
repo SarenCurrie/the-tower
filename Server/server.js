@@ -1,8 +1,7 @@
 var http = require('http');
 var express = require('express');
+var bodyParser = require('body-parser');
 var mysql = require('mysql');
-var underscore = require('underscore');
-var logger = require('morgan');
 
 var connection = mysql.createConnection({
   host: 'localhost',
