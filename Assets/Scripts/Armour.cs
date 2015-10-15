@@ -73,11 +73,11 @@ public class Armour : Item
                 break;
             case SLOTS.gloves:
                 gameObject.GetComponent<SpriteRenderer>().sprite = gloves;
-                sideSprite = sideLooks[2];
+                sideSprite = sideLooks[3];
                 break;
             case SLOTS.boots:
                 gameObject.GetComponent<SpriteRenderer>().sprite = boots;
-                sideSprite = sideLooks[3];
+                sideSprite = sideLooks[2];
                 break;
         }
 
@@ -163,7 +163,6 @@ public class Armour : Item
         Texture2D texture = Resources.Load("Holographic/output/main/bg/bg") as Texture2D;
         Texture2D window = Resources.Load("Holographic/controls/windowBorderless") as Texture2D;
 
-        Texture2D armourPiece=null;
         Armour armourForStat = null;
         int intelligenceFromArmour = 0;
         int strengthFromArmour =  0;
@@ -181,7 +180,6 @@ public class Armour : Item
                     if (player.helm != null)
                     {
                         armourForStat = player.helm.GetComponent<Armour>();
-                        armourPiece = player.helm.GetComponent<Armour>().sideSprite.texture as Texture2D;
                     }
                     break;
                 case SLOTS.chest:
@@ -189,28 +187,23 @@ public class Armour : Item
 
                     if (player.chest != null)
                     {
-                        armourForStat = player.helm.GetComponent<Armour>();
-                        armourPiece = player.chest.GetComponent<Armour>().sideSprite.texture as Texture2D;
+                        armourForStat = player.chest.GetComponent<Armour>();
                     }
                     break;
                 case SLOTS.boots:
-                    type = "Gloves";
+                    type = "Boots";
 
                     if (player.boots != null)
-
                     {
-                        armourForStat = player.helm.GetComponent<Armour>();
-                        armourPiece = player.boots.GetComponent<Armour>().sideSprite.texture as Texture2D;
+                        armourForStat = player.boots.GetComponent<Armour>();
                     }
                     break;
                 case SLOTS.gloves:
-                    type = "Boots";
+                    type = "Gloves";
 
                     if (player.gloves != null)
-
                     {
-                        armourForStat = player.helm.GetComponent<Armour>();
-                        armourPiece = player.gloves.GetComponent<Armour>().sideSprite.texture as Texture2D;
+                        armourForStat = player.gloves.GetComponent<Armour>();
                     }
                     break;
             }
@@ -219,10 +212,9 @@ public class Armour : Item
             int offset = 100;
             //Draws the textures being used for popup
             GUI.DrawTexture(new Rect(Input.mousePosition.x - 20, Screen.height - Input.mousePosition.y - offset, 150, 150), texture);
-            GUI.DrawTexture(new Rect(Input.mousePosition.x - 120, Screen.height - Input.mousePosition.y - 45, 70, 40), armourPiece);
             GUI.DrawTexture(new Rect(Input.mousePosition.x + 20, Screen.height - Input.mousePosition.y - 45, 70, 40), groundArmourPiece);
 
-            if (armourPiece != null)
+            if (armourForStat != null)
             {
                 intelligenceFromArmour = armourForStat.intelligence;
                 strengthFromArmour = armourForStat.strength;
@@ -233,10 +225,11 @@ public class Armour : Item
             if (Input.mousePosition.y <= (Screen.height / 3))
             {
                 GUI.DrawTexture(new Rect(Input.mousePosition.x, Screen.height - Input.mousePosition.y - 160, 150, 90), window);
-                if (armourPiece != null)
+                if (armourForStat != null)
                 {
                     GUI.DrawTexture(new Rect(Input.mousePosition.x - 170, Screen.height - Input.mousePosition.y - 160, 150, 90), window);
                     GUI.DrawTexture(new Rect(Input.mousePosition.x - 160, Screen.height - Input.mousePosition.y - offset, 150, 150), texture);
+                    GUI.DrawTexture(new Rect(Input.mousePosition.x - 120, Screen.height - Input.mousePosition.y - 45, 70, 40), groundArmourPiece);
                     GUI.TextField(new Rect(Input.mousePosition.x - 170, Screen.height - Input.mousePosition.y - 160, 150, 90), type + ":\nStrength: " + strengthFromArmour + "\nDexterity:  " + dexterityFromArmour + "\nIntelligence " + intelligenceFromArmour + "\n", "OutlineText");
                 }
                     GUI.TextField(new Rect(Input.mousePosition.x, Screen.height - Input.mousePosition.y - 160, 150, 90), type + ":\nStrength: " + strength + "\nDexterity: " + dexterity + "\nIntelligence: " + intelligence + "\n", "OutlineText");
@@ -244,10 +237,12 @@ public class Armour : Item
             else
             {
                 GUI.DrawTexture(new Rect(Input.mousePosition.x, Screen.height - Input.mousePosition.y + 120 - offset, 150, 90), window);
-                if (armourPiece != null)
+                if (armourForStat != null)
                 {
                     GUI.DrawTexture(new Rect(Input.mousePosition.x - 170, Screen.height - Input.mousePosition.y + 120 - offset, 150, 90), window);
                     GUI.DrawTexture(new Rect(Input.mousePosition.x - 160, Screen.height - Input.mousePosition.y - offset, 150, 150), texture);
+                    GUI.DrawTexture(new Rect(Input.mousePosition.x - 120, Screen.height - Input.mousePosition.y - 45, 70, 40), groundArmourPiece);
+
                     GUI.TextField(new Rect(Input.mousePosition.x - 170, Screen.height - Input.mousePosition.y + 120 - offset, 150, 90), type + ":\nStrength: " + strengthFromArmour + "\nDexterity:  " + dexterityFromArmour + "\nIntelligence " + intelligenceFromArmour + "\n", "OutlineText");
                 }
                     GUI.TextField(new Rect(Input.mousePosition.x, Screen.height - Input.mousePosition.y + 120 - offset, 150, 90),type + ":\nStrength: " + strength + "\nDexterity: " + dexterity + "\nIntelligence: " + intelligence + "\n", "OutlineText");
