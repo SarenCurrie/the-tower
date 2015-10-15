@@ -102,6 +102,7 @@ public class UIController : MonoBehaviour {
 
 	public void ShowDeathMenu()
 	{
+		PauseMenu.canPause = false;
 		DeathMenu.visible = true;
 	}
 

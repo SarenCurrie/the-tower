@@ -47,10 +47,12 @@ public class PauseMenu : MonoBehaviour {
 			UIController.GetUI().TogglePause();
 		}
 		if (paused) {
+			Time.timeScale = 0.0f;
 			temp = pauseArea.anchoredPosition;
 			temp.y = Mathf.MoveTowards(pauseArea.anchoredPosition.y, pauseDown, _MoveSpeed);
 			pauseArea.anchoredPosition = temp;
 		} else {
+			Time.timeScale = 1.0f;
 			temp = pauseArea.anchoredPosition;
 			temp.y = Mathf.MoveTowards(pauseArea.anchoredPosition.y, pauseUp, _MoveSpeed);
 			pauseArea.anchoredPosition = temp;
