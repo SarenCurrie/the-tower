@@ -5,13 +5,17 @@ public class BossBehaviour2 : Enemy
 {
 
     private float LastChecked = 0;
-    public float MaxHealth;
-    public float ChangePercentage;
+    private float ChangePercentage;
     private float attackTick = 0;
     public float attackTime;
-    public int count = 0;
-    public float currentHealth;
-    public int boundary = 100;
+    private int count = 0;
+    private int bossLaserCount = 0;
+    private float currentHealth;
+    private int boundary = 95;
+    private int spawnBoundary = 80;
+    public GameObject enemyToSpawn;
+    public Vector3 enemyLocation1;
+    public Vector3 enemyLocation2;
 
     private bool hasSeenPlayer = false;
 
@@ -23,6 +27,8 @@ public class BossBehaviour2 : Enemy
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+        enemyLocation2 = transform.position - new Vector3(24, -5, 0);
+        enemyLocation1 = transform.position - new Vector3(24, 5, 0);
     }
 
     // Update is called once per frame
@@ -30,33 +36,56 @@ public class BossBehaviour2 : Enemy
     {
         if (GetPlayer() == null)
             return;
-        RotateToFacePlayer();
-        Debug.Log(GameManager.currentFloor.currentRoom);
+        
         currentHealth = gameObject.GetComponent<UnitHealth>().GetHealth();
         //every 5% health the boss will do the laser thing
-        if (((int)(currentHealth*100)/MaxHealth)< boundary)
-        {
 
-            LaserBlast();
-            boundary = boundary - 5;
+        ShooterBlast();
+        EnemySpawn();
+        
+    }
+
+    private void EnemySpawn()
+    {
+        if (((currentHealth / GetComponent<UnitHealth>().maxHealth) * 100) < spawnBoundary)
+        {
+            spawnBoundary -= 20;
+            Instantiate(enemyToSpawn, enemyLocation1, new Quaternion());
+            Instantiate(enemyToSpawn, enemyLocation2, new Quaternion());
         }
-        count++;
+    }
+
+    private void ShooterBlast()
+    {
+        if (count == 0 && bossLaserCount == 0)
+        {
+            RotateToFacePlayer();
+            if (((currentHealth / GetComponent<UnitHealth>().maxHealth) * 100) < boundary)
+            {
+                
+                LaserBlast();
+                count = 50;
+                bossLaserCount = 60;
+                boundary -= 5;
+            }
+        }
+        else if (bossLaserCount == 0)
+        {
+            gameObject.GetComponent<Boss3Weapon>().Fire();
+            count--;
+        }
+        else if (bossLaserCount == 59)
+        {
+            gameObject.GetComponent<Boss3Weapon2>().Fire();
+        }
+        if (bossLaserCount != 0)
+        {
+            bossLaserCount--;
+        }
     }
 
     private void LaserBlast()
     {
-        gameObject.GetComponent<SpreadShotEnemy>().Fire();
-        gameObject.GetComponent<SpreadShotEnemy>().Fire();
-        gameObject.GetComponent<SpreadShotEnemy>().Fire();
-        gameObject.GetComponent<SpreadShotEnemy>().Fire();
-        gameObject.GetComponent<SpreadShotEnemy>().Fire();
-        gameObject.GetComponent<SpreadShotEnemy>().Fire();
-        gameObject.GetComponent<SpreadShotEnemy>().Fire();
-        gameObject.GetComponent<SpreadShotEnemy>().Fire();
-        gameObject.GetComponent<SpreadShotEnemy>().Fire();
-        gameObject.GetComponent<SpreadShotEnemy>().Fire();
-        gameObject.GetComponent<SpreadShotEnemy>().Fire();
-        gameObject.GetComponent<SpreadShotEnemy>().Fire();
     }
 
     private Player GetPlayer()

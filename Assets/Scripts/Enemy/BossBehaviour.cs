@@ -4,7 +4,6 @@ using System.Collections;
 public class BossBehaviour : MonoBehaviour {
 
     private float LastChecked=0;
-    public float MaxHealth;
     public float ChangePercentage;
     private bool isCharging = false;
     public float chargeDamage;
