@@ -212,7 +212,7 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 110016}
-  m_Mass: 1
+  m_Mass: 10000
   m_LinearDrag: 1.5
   m_AngularDrag: .0500000007
   m_GravityScale: 0
@@ -446,6 +446,8 @@ MonoBehaviour:
   ChangePercentage: 10
   attackTime: 1
   count: 0
+  currentHealth: 0
+  boundary: 100
   baseScore: 1000
 --- !u!114 &11483268
 MonoBehaviour:
@@ -485,9 +487,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 475210, guid: c154e1ab5c984f441b1114dfe548458e, type: 2}
-  fireForce: 30
-  fireFrequency: 1000
-  DAMAGEMULTIPLIER: 1.5
+  fireForce: 48
+  fireFrequency: 9.99999987e+14
+  DAMAGEMULTIPLIER: 50
   burstTime: 0
   minFireWait: 0
   maxFireWait: 0
@@ -498,7 +500,7 @@ MonoBehaviour:
   possibleSounds:
   - {fileID: 0}
   spread: 30
-  spreadRange: 300
+  spreadRange: 20
   minBurstTime: 0
   maxBurstTime: 0
 --- !u!212 &21217986
@@ -678,7 +680,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: fireFrequency
-      value: 1000
+      value: 9.99999987e+14
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: reloadFactor
@@ -707,6 +709,26 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: baseScore
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: fireForce
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: DAMAGEMULTIPLIER
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: burstTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: spreadRange
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Mass
+      value: 10000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

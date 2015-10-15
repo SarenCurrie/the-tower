@@ -33,13 +33,30 @@ public class BossBehaviour2 : Enemy
         RotateToFacePlayer();
         Debug.Log(GameManager.currentFloor.currentRoom);
         currentHealth = gameObject.GetComponent<UnitHealth>().GetHealth();
+        //every 5% health the boss will do the laser thing
         if (((int)(currentHealth*100)/MaxHealth)< boundary)
         {
-            
-            gameObject.GetComponent<SpreadShotEnemy>().Fire();
+
+            LaserBlast();
             boundary = boundary - 5;
         }
         count++;
+    }
+
+    private void LaserBlast()
+    {
+        gameObject.GetComponent<SpreadShotEnemy>().Fire();
+        gameObject.GetComponent<SpreadShotEnemy>().Fire();
+        gameObject.GetComponent<SpreadShotEnemy>().Fire();
+        gameObject.GetComponent<SpreadShotEnemy>().Fire();
+        gameObject.GetComponent<SpreadShotEnemy>().Fire();
+        gameObject.GetComponent<SpreadShotEnemy>().Fire();
+        gameObject.GetComponent<SpreadShotEnemy>().Fire();
+        gameObject.GetComponent<SpreadShotEnemy>().Fire();
+        gameObject.GetComponent<SpreadShotEnemy>().Fire();
+        gameObject.GetComponent<SpreadShotEnemy>().Fire();
+        gameObject.GetComponent<SpreadShotEnemy>().Fire();
+        gameObject.GetComponent<SpreadShotEnemy>().Fire();
     }
 
     private Player GetPlayer()
