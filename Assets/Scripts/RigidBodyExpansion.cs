@@ -6,13 +6,14 @@ public class RigidBodyExpansion : MonoBehaviour
 
 	public float explosionForceModifier;
 
-	public void Explosion(Rigidbody2D body, float explosionForce, Vector3 explosionPosition, float explosionRadius)
+	public void Explosion(float explosionForce, Vector3 explosionPosition, float explosionRadius, float damage)
 	{
-		Vector3 dir = (body.transform.position - explosionPosition);
+		Vector3 dir = (gameObject.GetComponent<Rigidbody2D>().transform.position - explosionPosition);
 		float wearoff = 1 - (dir.magnitude / explosionRadius);
 		if (wearoff > 0)
 		{
-			body.AddForce(dir.normalized * explosionForce * wearoff * explosionForceModifier);
+			gameObject.GetComponent<Rigidbody2D>().AddForce(dir.normalized * explosionForce * wearoff * explosionForceModifier);
+			gameObject.GetComponent<UnitHealth>().LoseHealth(damage * wearoff);
 		}
 	}
 
