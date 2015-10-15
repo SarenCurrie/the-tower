@@ -1,21 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &101432
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 485890}
-  - 114: {fileID: 11442424}
-  m_Layer: 22
-  m_Name: EnemyGun
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &101942
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,7 +147,6 @@ GameObject:
   - 4: {fileID: 427584}
   - 212: {fileID: 21204320}
   - 50: {fileID: 5083006}
-  - 58: {fileID: 5858496}
   - 114: {fileID: 11480038}
   m_Layer: 14
   m_Name: BossGun
@@ -532,8 +515,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: .649999976, y: .200000003, z: 0}
   m_LocalScale: {x: .699999988, y: .699999988, z: 1}
-  m_Children:
-  - {fileID: 485890}
+  m_Children: []
   m_Father: {fileID: 468958}
   m_RootOrder: 0
 --- !u!4 &428450
@@ -701,18 +683,6 @@ Transform:
   - {fileID: 422496}
   - {fileID: 426506}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
---- !u!4 &485890
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 101432}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.699999988, y: -.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 427584}
   m_RootOrder: 0
 --- !u!4 &487248
 Transform:
@@ -975,19 +945,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.29999995
---- !u!58 &5858496
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136346}
-  m_Enabled: 0
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: .256000012
 --- !u!61 &6102990
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -1286,51 +1243,6 @@ MonoBehaviour:
   spreadRange: 110
   minBurstTime: 3
   maxBurstTime: 3
---- !u!114 &11442424
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 101432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea53886dc75008348adf646b5596d5f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 475210, guid: c154e1ab5c984f441b1114dfe548458e, type: 2}
-  spread: 1
-  spreadRange: 0
-  fireForce: 0
-  fireFrequency: 0
-  strengthModifier: 0
-  dexterityModifier: 0
-  intelligenceModifier: 0
-  damageMod: 0
-  weaponMajor: 0
-  weaponMinor: 0
-  looks:
-  - {fileID: 21300000, guid: ec5f076a1ef21004ba51f127e330342f, type: 3}
-  - {fileID: 0}
-  selectedSideLooks: []
-  unselectedSideLooks: []
-  possibleProjectileSprites:
-  - {fileID: 21300000, guid: ebe4c5176d748c342aacdc63f75e1bbd, type: 3}
-  - {fileID: 21300000, guid: 7f406c7ad6388cb4baa394fc149579e0, type: 3}
-  - {fileID: 21300000, guid: 87c83908edaa08447a800eeb1739daca, type: 3}
-  - {fileID: 21300000, guid: 5964bd75ed142ad4e83f08fb3ff280a5, type: 3}
-  - {fileID: 21300000, guid: bf293a24ca0d32a4caf15a9d381d357d, type: 3}
-  - {fileID: 21300000, guid: d9ddcb20e312f4643b294aaa2c440c6b, type: 3}
-  - {fileID: 21300000, guid: 2cae16e5aa237c2458d66b133364d03b, type: 3}
-  - {fileID: 21300000, guid: aec686b92f475ac40b5037d8dfcbfc10, type: 3}
-  - {fileID: 21300000, guid: aedfb0871cf61d044ba3fc459485d6fb, type: 3}
-  - {fileID: 21300000, guid: 5d41bfa3f684f0848a7918244531e89e, type: 3}
-  possibleRifleSounds: []
-  possibleShotgunSounds: []
-  possibleSmgSounds: []
-  mySkin: {fileID: 0}
-  selectedSprite: {fileID: 0}
-  unSelectedSprite: {fileID: 0}
-  showWindow: 0
 --- !u!114 &11444230
 MonoBehaviour:
   m_ObjectHideFlags: 1
