@@ -429,7 +429,7 @@ GameObject:
   - 222: {fileID: 22224348}
   - 114: {fileID: 11467956}
   m_Layer: 5
-  m_Name: statTitle
+  m_Name: statTitleMin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1808,7 +1808,18 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11466618}
+        m_MethodName: UpdateMajorModifier
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Dropdown+DropdownEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &11419926
@@ -3420,15 +3431,26 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Strength
-      m_Image: {fileID: 0}
     - m_Text: Dexterity
+      m_Image: {fileID: 0}
+    - m_Text: Strength
       m_Image: {fileID: 0}
     - m_Text: Intelligence
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11466618}
+        m_MethodName: UpdateMinorModifier
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Dropdown+DropdownEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &11480496
@@ -3673,7 +3695,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Strength
+  m_Text: Dexterity
 --- !u!114 &11487596
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5217,8 +5239,8 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 131, y: -.200000003}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: 134, y: 7.03337719e-06}
+  m_SizeDelta: {x: 73, y: 46}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22461960
 RectTransform:

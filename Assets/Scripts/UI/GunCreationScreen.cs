@@ -27,8 +27,8 @@ public class GunCreationScreen : MonoBehaviour {
     private int spreadAngle = 0;
     private int fireForce = 15;
 
-    private string majorModifier;
-    private string minorModifier;
+    private string majorModifier="Strength";
+    private string minorModifier="Dexterity";
 
 
 
@@ -111,11 +111,17 @@ public class GunCreationScreen : MonoBehaviour {
         GameObject.Find("spreadPoints").GetComponent<Text>().text = value.ToString()+"°";
     }
 
-    public void UpdateFireForce()
+    public void UpdateMajorModifier()
     {
-        int value = (int)(GameObject.Find("FireForce").GetComponent<Slider>().value);
-        fireForce = value;
-        GameObject.Find("forcePoints").GetComponent<Text>().text = value.ToString();
+        string value = (string)(GameObject.Find("MajorAttribute").GetComponent<Dropdown>().ToString());
+        majorModifier = value;
     }
+
+    public void UpdateMinorModifier()
+    {
+        string value = (string)(GameObject.Find("MinorAttribute").GetComponent<Dropdown>().ToString());
+        minorModifier = value;
+    }
+
 
 }
