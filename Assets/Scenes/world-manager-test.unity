@@ -548,42 +548,6 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 11423130, guid: 8712fb94c019cf246a9b3d98791cd27a, type: 2}
-      propertyPath: m_HideMobileInput
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11423130, guid: 8712fb94c019cf246a9b3d98791cd27a, type: 2}
-      propertyPath: m_ContentType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11423130, guid: 8712fb94c019cf246a9b3d98791cd27a, type: 2}
-      propertyPath: m_CharacterValidation
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11423130, guid: 8712fb94c019cf246a9b3d98791cd27a, type: 2}
-      propertyPath: m_Transition
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11423130, guid: 8712fb94c019cf246a9b3d98791cd27a, type: 2}
-      propertyPath: m_CaretBlinkRate
-      value: .850000024
-      objectReference: {fileID: 0}
-    - target: {fileID: 11423130, guid: 8712fb94c019cf246a9b3d98791cd27a, type: 2}
-      propertyPath: m_SelectionColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11423130, guid: 8712fb94c019cf246a9b3d98791cd27a, type: 2}
-      propertyPath: m_SelectionColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11423130, guid: 8712fb94c019cf246a9b3d98791cd27a, type: 2}
-      propertyPath: m_SelectionColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11470906, guid: 8712fb94c019cf246a9b3d98791cd27a, type: 2}
-      propertyPath: m_FontData.m_RichText
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8712fb94c019cf246a9b3d98791cd27a, type: 2}
   m_IsPrefabParent: 0
