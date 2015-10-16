@@ -17,6 +17,7 @@ public class UnitHealth : MonoBehaviour {
 	public float maxHealth;
 	public float health;
 	public bool shouldDrop;
+    public bool shouldTakeDamage = true;
 
 	/**
 	 * This is is used to prevent the enemy from dying twice.

@@ -3,23 +3,26 @@ using System.Collections;
 
 public class BossBehaviour2 : Enemy
 {
-
+    private bool turretsDestroyed = false;
     private float LastChecked = 0;
     private float ChangePercentage;
     private float attackTick = 0;
     public float attackTime;
-    private int count = 0;
-    private int bossLaserCount = 0;
+    private float count = 0;
+    private float bossLaserCount = 0;
     private float currentHealth;
-    private int fireboundary = 95;
+    private int fireboundary = 85;
     private int fireboundaryreduction = 10;
     private int spawnBoundary = 80;
     private int spawnboundaryreduction = 20;
-    private int laserBurst = 30;
-    private int warningShotTimer = 100;
+    private float laserBurst = 0.4f;
+    private float warningShotTimer = 1;
     public GameObject enemyToSpawn;
+    public GameObject forceField;
     public Vector3 enemyLocation1;
     public Vector3 enemyLocation2;
+    public Vector3 enemyLocation4;
+    public Vector3 enemyLocation3;
 
     private bool hasSeenPlayer = false;
 
@@ -33,6 +36,8 @@ public class BossBehaviour2 : Enemy
         rigidBody = GetComponent<Rigidbody2D>();
         enemyLocation2 = transform.position - new Vector3(21, -5, 0);
         enemyLocation1 = transform.position - new Vector3(21, 5, 0);
+        enemyLocation2 = transform.position - new Vector3(19, -5, 0);
+        enemyLocation1 = transform.position - new Vector3(19, 5, 0);
     }
 
     // Update is called once per frame
@@ -47,7 +52,14 @@ public class BossBehaviour2 : Enemy
         RotateToFacePlayer();
         ShooterBlast();
         EnemySpawn();
-        
+        if(GameManager.currentFloor.currentRoom.EnemiesLeft() > 1 && !turretsDestroyed)
+        {
+            gameObject.GetComponent<UnitHealth>().ResetHealth();
+        }else if (GameManager.currentFloor.currentRoom.EnemiesLeft() == 1 && !turretsDestroyed)
+        {
+            turretsDestroyed = true;
+            forceField.SetActive(false);
+        }
     }
 
     private void EnemySpawn()
@@ -55,6 +67,8 @@ public class BossBehaviour2 : Enemy
         if (((currentHealth / GetComponent<UnitHealth>().maxHealth) * 100) < spawnBoundary)
         {
             spawnBoundary -= spawnboundaryreduction;
+            Instantiate(enemyToSpawn, enemyLocation1, new Quaternion());
+            Instantiate(enemyToSpawn, enemyLocation2, new Quaternion());
             Instantiate(enemyToSpawn, enemyLocation1, new Quaternion());
             Instantiate(enemyToSpawn, enemyLocation2, new Quaternion());
         }
@@ -74,15 +88,23 @@ public class BossBehaviour2 : Enemy
         else if (bossLaserCount == 0)
         {
             gameObject.GetComponent<Boss3Weapon>().Fire();
-            count--;
+            count -= Time.deltaTime;
         }
         else if (bossLaserCount == warningShotTimer-1)
         {
             gameObject.GetComponent<Boss3Weapon2>().Fire();
         }
-        if (bossLaserCount != 0)
+        if (bossLaserCount > 0)
         {
-            bossLaserCount--;
+            bossLaserCount -= Time.deltaTime;
+        }
+        else
+        {
+            bossLaserCount = 0;
+        }
+        if(count < 0)
+        {
+            count = 0;
         }
     }
 
