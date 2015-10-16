@@ -30,6 +30,7 @@ public class DeathMenu : MonoBehaviour {
 		deathArea.anchoredPosition = outvect;
 		visible = false;
 		setScore = false;
+		GameObject.Find ("SubmitText").GetComponent<Text>().text = "SUBMIT";
 	}
 
 	public void postHighScore()
