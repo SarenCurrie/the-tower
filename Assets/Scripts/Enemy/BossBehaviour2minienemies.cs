@@ -8,14 +8,15 @@ public class BossBehaviour2minienemies : Enemy
     private float ChangePercentage;
     private float attackTick = 0;
     public float attackTime;
-    private int count = 0;
-    private int bossLaserCount = 0;
+    private float count = 0;
+    private float bossLaserCount = 0;
     private float currentHealth;
-    private int fireboundary = 95;
+    private int fireboundary = 85;
     private int fireboundaryreduction = 20;
     private int spawnBoundary = 80;
-    private int laserBurst = 15;
-    private int warningShotTimer = 100;
+    private int spawnboundaryreduction = 20;
+    private float laserBurst = 0.2f;
+    private float warningShotTimer = 2f;
     public GameObject enemyToSpawn;
     public Vector3 enemyLocation1;
     public Vector3 enemyLocation2;
@@ -62,15 +63,23 @@ public class BossBehaviour2minienemies : Enemy
         else if (bossLaserCount == 0)
         {
             gameObject.GetComponent<Boss3Weapon>().Fire();
-            count--;
+            count -= Time.deltaTime;
         }
-        else if (bossLaserCount == warningShotTimer - 1)
+        if (bossLaserCount == warningShotTimer)
         {
             gameObject.GetComponent<Boss3Weapon2>().Fire();
         }
-        if (bossLaserCount != 0)
+        if (bossLaserCount > 0)
         {
-            bossLaserCount--;
+            bossLaserCount -= Time.deltaTime;
+        }
+        else
+        {
+            bossLaserCount = 0;
+        }
+        if (count < 0)
+        {
+            count = 0;
         }
     }
 

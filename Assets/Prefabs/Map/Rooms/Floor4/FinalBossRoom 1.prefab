@@ -907,8 +907,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1000
   health: 1000
-  shouldDrop: 1
-  shouldTakeDamage: 1
+  shouldDrop: 0
   isDead: 0
   bloodPrefabs: []
   deathSound: {fileID: 8300000, guid: 7fa820df58a8a49d58de70cb13e39e8d, type: 3}
@@ -951,7 +950,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 434480, guid: 819132afeea94824d8e399f5382bb34a, type: 2}
   fireForce: 30
-  fireFrequency: .140000001
+  fireFrequency: .280000001
   DAMAGEMULTIPLIER: .100000001
   burstTime: 0
   minFireWait: .99000001
@@ -1019,8 +1018,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1000
   health: 1000
-  shouldDrop: 1
-  shouldTakeDamage: 1
+  shouldDrop: 0
   isDead: 0
   bloodPrefabs: []
   deathSound: {fileID: 8300000, guid: 7fa820df58a8a49d58de70cb13e39e8d, type: 3}
@@ -1104,7 +1102,6 @@ MonoBehaviour:
   maxHealth: 2000
   health: 2000
   shouldDrop: 1
-  shouldTakeDamage: 1
   isDead: 0
   bloodPrefabs: []
   deathSound: {fileID: 8300000, guid: 7fa820df58a8a49d58de70cb13e39e8d, type: 3}
@@ -1183,7 +1180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 434480, guid: 819132afeea94824d8e399f5382bb34a, type: 2}
   fireForce: 30
-  fireFrequency: .100000001
+  fireFrequency: .200000003
   DAMAGEMULTIPLIER: .100000001
   burstTime: 0
   minFireWait: .99000001
@@ -1530,11 +1527,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: fireFrequency
-      value: 10
+      value: .280000001
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: DAMAGEMULTIPLIER
       value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: shouldDrop
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
