@@ -56,7 +56,7 @@ public class Room : MonoBehaviour {
 	{
 		foreach (Transform child in trans)
 		{
-			if (child.tag == Tags.ENEMY)
+			if (child.tag == Tags.ENEMY || child.tag == Tags.BOSS)
 			{
 				foreach (Enemy e in child.GetComponents<Enemy>())
 				{
@@ -80,7 +80,7 @@ public class Room : MonoBehaviour {
 	{
 		foreach (Transform child in transform)
 		{
-			if (child.tag == Tags.ENEMY)
+			if (child.tag == Tags.ENEMY || child.tag == Tags.BOSS)
 			{
 				child.GetComponent<SpriteRenderer>().enabled = show;
 			}
@@ -95,7 +95,7 @@ public class Room : MonoBehaviour {
 		int enemyCount = 0;
 		foreach (Transform t in transform)
 		{
-			if (t.gameObject.tag == Tags.ENEMY)
+			if (t.gameObject.tag == Tags.ENEMY || t.gameObject.tag == Tags.BOSS)
 			{
 				enemyCount++;
 			}
@@ -113,7 +113,7 @@ public class Room : MonoBehaviour {
 
 		foreach (Transform t in transform)
 		{
-			if (t.gameObject.tag == Tags.ENEMY)
+			if (t.gameObject.tag == Tags.ENEMY || t.gameObject.tag == Tags.BOSS)
 			{
 				enemies.Add(t.gameObject);
 			}
