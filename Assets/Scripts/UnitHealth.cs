@@ -172,8 +172,15 @@ public class UnitHealth : MonoBehaviour {
 			}
 
 			// log kill and score for achievemnts
-			GameManager.achievementHandler.AddKill();
-			GameManager.achievementHandler.AddScore();
+			if (GameObject.Find("AchievementHandler") != null)
+			{
+				GameObject.Find("AchievementHandler").GetComponent<AchievementHandler>().AddKill();
+				GameObject.Find("AchievementHandler").GetComponent<AchievementHandler>().AddScore();
+			}
+			else
+			{
+				Debug.LogWarning("AchievementHandler Missing!");
+			}
 		}
 		else if (tag.Equals("Player"))
 		{
