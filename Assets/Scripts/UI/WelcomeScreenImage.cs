@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class WelcomeScreenImage : MonoBehaviour {
 		
 	public string firstLevelName;
+	public string weaponCreationName;
 	//The screen we are on
 	public static SCREEN currentScreen;
 	private float _MoveSpeed = 20f;
@@ -44,9 +45,19 @@ public class WelcomeScreenImage : MonoBehaviour {
 		currentScreen = SCREEN.credits;
 	}
 
+	public void backToStart()
+	{
+		currentScreen = SCREEN.startmenu;
+	}
+
 	public void doHighScores()
 	{
 		currentScreen = SCREEN.highscores;
+	}
+
+	public void doWeaponCreation()
+	{
+		Application.LoadLevel(weaponCreationName);
 	}
 	
 	private void Start()
