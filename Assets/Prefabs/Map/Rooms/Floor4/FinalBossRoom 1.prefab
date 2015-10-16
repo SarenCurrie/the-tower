@@ -961,7 +961,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5964bd75ed142ad4e83f08fb3ff280a5, type: 3}
   possibleSounds:
   - {fileID: 8300000, guid: 54bb42ea892434340bbe7377482df35b, type: 3}
-  spread: 24
+  spread: 27
   spreadRange: 360
   minBurstTime: 2
   maxBurstTime: 2
@@ -1191,7 +1191,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5964bd75ed142ad4e83f08fb3ff280a5, type: 3}
   possibleSounds:
   - {fileID: 8300000, guid: 54bb42ea892434340bbe7377482df35b, type: 3}
-  spread: 24
+  spread: 28
   spreadRange: 360
   minBurstTime: 2
   maxBurstTime: 2
@@ -1523,7 +1523,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: spread
-      value: 24
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: fireFrequency
