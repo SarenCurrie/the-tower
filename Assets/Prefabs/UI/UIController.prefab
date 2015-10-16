@@ -1860,13 +1860,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 11417382}
   m_TextComponent: {fileID: 11470906}
   m_Placeholder: {fileID: 11430160}
-  m_ContentType: 5
+  m_ContentType: 0
   m_InputType: 0
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
-  m_HideMobileInput: 0
-  m_CharacterValidation: 4
+  m_HideMobileInput: 1
+  m_CharacterValidation: 0
   m_CharacterLimit: 20
   m_EndEdit:
     m_PersistentCalls:
@@ -1878,7 +1878,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.InputField+OnChangeEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  m_SelectionColor: {r: .65882355, g: .807843149, b: 1, a: .752941191}
+  m_SelectionColor: {r: 0, g: 0, b: 0, a: .752941191}
   m_Text: 
   m_CaretBlinkRate: .850000024
 --- !u!114 &11423732
