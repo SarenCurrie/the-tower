@@ -20,9 +20,11 @@ connection.connect(function(err) {
 
   // Set up application.
   var app = express();
-  var port = process.env.PORT || 3000;
+  var port = process.env.PORT || 80;
 
   app.use(bodyParser.json());
+
+  app.use(express.static('public'));
 
   app.get('/v1/scores', function (req, res) {
     var total = req.query.total || 10;
