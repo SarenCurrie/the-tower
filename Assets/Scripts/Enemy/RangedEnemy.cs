@@ -94,7 +94,7 @@ public class RangedEnemy : Enemy
 		}
 	}
 
-    protected void MaybeFireAtPlayer()
+    protected virtual void MaybeFireAtPlayer()
     {
 		if (CanSeePlayer())
 		{

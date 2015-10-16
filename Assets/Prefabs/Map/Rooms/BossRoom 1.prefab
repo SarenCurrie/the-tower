@@ -168,8 +168,7 @@ GameObject:
   - 58: {fileID: 5857824}
   - 114: {fileID: 11438564}
   - 114: {fileID: 11475548}
-  - 114: {fileID: 11441940}
-  - 114: {fileID: 11487796}
+  - 114: {fileID: 11410714}
   m_Layer: 14
   m_Name: Boss1
   m_TagString: Enemy
@@ -1177,6 +1176,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d5b2514f0eff24a8b727ed251d6e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11410714
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 137998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7a60cc0580e32b499ca26175a0ad2a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 475210, guid: c154e1ab5c984f441b1114dfe548458e, type: 2}
+  explodingProjectilePrefab: {fileID: 459930, guid: bb391dbe434ba0744a56898ffdaccdda,
+    type: 2}
+  fireForceCannon: 13
+  fireForceSpread: 15
+  fireFrequencyCannon: 3
+  fireFrequencySpread: 2.5
+  DAMAGEMULTIPLIER: 1
+  burstTimeCannon: 2
+  burstTimeSpread: 2.5
+  fireWaitCannon: 5
+  fireWaitSpread: 3
+  spreadDamage: 5
+  mainGunDamage: 2
+  spread: 6
+  spreadRange: 90
+  spreadProjectileSprite: {fileID: 21300000, guid: bf293a24ca0d32a4caf15a9d381d357d,
+    type: 3}
+  mainCannonProjectileSprite: {fileID: 21300000, guid: 5d41bfa3f684f0848a7918244531e89e,
+    type: 3}
+  cannonSound: {fileID: 8300000, guid: ca7f213e4b90c4250aba7ad96784bc87, type: 3}
+  spreadSound: {fileID: 8300000, guid: d9efb9bb3536a4e9c8ca5fa56786c0fb, type: 3}
 --- !u!114 &11411926
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1213,36 +1245,9 @@ MonoBehaviour:
   - {fileID: 137116, guid: e336ac26f6c9e1d499f2642f0107b061, type: 2}
   - {fileID: 117262, guid: 88a28d0173ea29847b46178147060594, type: 2}
   - {fileID: 166386, guid: 18cae03bd3a07e5468853baf39d0d1dd, type: 2}
-  deathSound: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: 7eda02acc7af1ff41a60d180366b6d8f, type: 3}
   damagedBy:
   - PlayerProjectile
---- !u!114 &11441940
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 137998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7844d65c65bcc34aa330a6dd05fe4a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 475210, guid: c154e1ab5c984f441b1114dfe548458e, type: 2}
-  fireForce: 13
-  fireFrequency: 2.5
-  DAMAGEMULTIPLIER: 1
-  burstTime: 4
-  minFireWait: 2
-  maxFireWait: 2
-  damage: 5
-  reloadFactor: 2
-  possibleProjectileSprites:
-  - {fileID: 21300000, guid: bf293a24ca0d32a4caf15a9d381d357d, type: 3}
-  possibleSounds: []
-  spread: 13
-  spreadRange: 110
-  minBurstTime: 3
-  maxBurstTime: 3
 --- !u!114 &11444230
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1313,44 +1318,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 136346}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c305ad83a87afe428430747324a1650, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e5da9a14e9fbd145beb4982c43652d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 499094, guid: 036580eaeecdc704f8aeb158b3c3eceb, type: 2}
-  fireForce: 15
+  fireForce: 14
   fireFrequency: 1
-  DAMAGEMULTIPLIER: 1
+  DAMAGEMULTIPLIER: 0
   burstTime: 1
-  minFireWait: 10
-  maxFireWait: 10
+  fireWait: 10
   damage: 0
-  reloadFactor: 10
-  possibleProjectileSprites:
-  - {fileID: 21300000, guid: c1a47d2ea6ae245eb9059ed10d3c9290, type: 3}
-  possibleSounds: []
---- !u!114 &11487796
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 137998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c305ad83a87afe428430747324a1650, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 459930, guid: bb391dbe434ba0744a56898ffdaccdda, type: 2}
-  fireForce: 7
-  fireFrequency: 4
-  DAMAGEMULTIPLIER: 1
-  burstTime: 2
-  minFireWait: 5
-  maxFireWait: 5
-  damage: 5
-  reloadFactor: 1
-  possibleProjectileSprites:
-  - {fileID: 21300000, guid: 5d41bfa3f684f0848a7918244531e89e, type: 3}
-  possibleSounds: []
+  projectileSprite: {fileID: 21300000, guid: c1a47d2ea6ae245eb9059ed10d3c9290, type: 3}
 --- !u!212 &21201578
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1931,6 +1909,14 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: possibleSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleProjectileSprites.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
@@ -1940,11 +1926,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: maxFireWait
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: minFireWait
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: bloodPrefabs.Array.data[0]
@@ -1978,6 +1964,134 @@ Prefab:
       propertyPath: bloodPrefabs.Array.data[7]
       value: 
       objectReference: {fileID: 166386, guid: 18cae03bd3a07e5468853baf39d0d1dd, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: fireForce
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: fireFrequency
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: DAMAGEMULTIPLIER
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: burstTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damage
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: spread
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: spreadRange
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: minBurstTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxBurstTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleProjectileSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: aec686b92f475ac40b5037d8dfcbfc10,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 1cfa6d69443784c178b10795854bf504, type: 3}
+    - target: {fileID: 0}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 475210, guid: c154e1ab5c984f441b1114dfe548458e, type: 2}
+    - target: {fileID: 0}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7eda02acc7af1ff41a60d180366b6d8f, type: 3}
+    - target: {fileID: 0}
+      propertyPath: projectileSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2cae16e5aa237c2458d66b133364d03b,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: actualSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 666ad2ffbd450487e8c2a8ed74bf20cf, type: 3}
+    - target: {fileID: 0}
+      propertyPath: spreadProjectileSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bf293a24ca0d32a4caf15a9d381d357d,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: mainCannonProjectileSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5d41bfa3f684f0848a7918244531e89e,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: mainGunDamage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: spreadDamage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: explodingProjectilePrefab
+      value: 
+      objectReference: {fileID: 459930, guid: bb391dbe434ba0744a56898ffdaccdda, type: 2}
+    - target: {fileID: 0}
+      propertyPath: fireForceCannon
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: fireForceSpread
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: fireFrequencyCannon
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: fireFrequencySpread
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: burstTimeCannon
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: burstTimeSpread
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: fireWaitCannon
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: fireWaitSpread
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cannonSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ca7f213e4b90c4250aba7ad96784bc87, type: 3}
+    - target: {fileID: 0}
+      propertyPath: spreadSound
+      value: 
+      objectReference: {fileID: 8300000, guid: d9efb9bb3536a4e9c8ca5fa56786c0fb, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 193178}
