@@ -81,4 +81,11 @@ public class GunCreationScreen : MonoBehaviour {
         projectileObject.GetComponent<Image>().sprite = possibleProjectileSprites[projectileIndex];
 
     }
+
+    public void UpdateFireRate()
+    {
+        int value = (int)(GameObject.Find("FireRate").GetComponent<Slider>().value);
+        transparency.UpdateTransparency(value);
+        GameObject.Find("fireRatePoints").GetComponent<Text>().text = value.ToString();
+    }
 }
