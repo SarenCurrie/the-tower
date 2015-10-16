@@ -22,6 +22,16 @@ public class GunCreationScreen : MonoBehaviour {
     GameObject topDownObject;
     GameObject projectileObject;
 
+    private int fireRate = 1;
+    private int projectiles =1;
+    private int spreadAngle = 0;
+    private int fireForce = 15;
+
+    private string majorModifier;
+    private string minorModifier;
+
+
+
     void Start () {
         topDownObject = GameObject.Find("topView");
         weaponObject = GameObject.Find("sideView");
@@ -79,4 +89,33 @@ public class GunCreationScreen : MonoBehaviour {
         projectileObject.GetComponent<Image>().sprite = possibleProjectileSprites[projectileIndex];
 
     }
+
+    public void UpdateFireRate()
+    {
+        int value = (int)(GameObject.Find("FireRate").GetComponent<Slider>().value);
+        fireRate = value;
+        GameObject.Find("fireRatePoints").GetComponent<Text>().text = value.ToString();
+    }
+
+    public void UpdateProjectiles()
+    {
+        int value = (int)(GameObject.Find("Projectiles").GetComponent<Slider>().value);
+        projectiles = value;
+        GameObject.Find("projectilePoints").GetComponent<Text>().text = value.ToString();
+    }
+
+    public void UpdateSpreadAngle()
+    {
+        int value = (int)(GameObject.Find("SpreadAngle").GetComponent<Slider>().value);
+        spreadAngle = value;
+        GameObject.Find("spreadPoints").GetComponent<Text>().text = value.ToString()+"°";
+    }
+
+    public void UpdateFireForce()
+    {
+        int value = (int)(GameObject.Find("FireForce").GetComponent<Slider>().value);
+        fireForce = value;
+        GameObject.Find("forcePoints").GetComponent<Text>().text = value.ToString();
+    }
+
 }
