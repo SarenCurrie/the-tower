@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class WelcomeScreenImage : MonoBehaviour {
 		
 	public string firstLevelName;
+	public string weaponCreationName;
 	//The screen we are on
 	public static SCREEN currentScreen;
 	private float _MoveSpeed = 20f;
@@ -20,6 +21,7 @@ public class WelcomeScreenImage : MonoBehaviour {
 		startmenu = 0,
 		credits = 1,
 		highscores = 2,
+		achievements = 3
 	}
 
 	void Awake()
@@ -44,9 +46,24 @@ public class WelcomeScreenImage : MonoBehaviour {
 		currentScreen = SCREEN.credits;
 	}
 
+	public void backToStart()
+	{
+		currentScreen = SCREEN.startmenu;
+	}
+
 	public void doHighScores()
 	{
 		currentScreen = SCREEN.highscores;
+	}
+
+	public void doAchievementScreen()
+	{
+		currentScreen = SCREEN.achievements;
+	}
+
+	public void doWeaponCreation()
+	{
+		Application.LoadLevel(weaponCreationName);
 	}
 	
 	private void Start()

@@ -30,6 +30,7 @@ public class DeathMenu : MonoBehaviour {
 		deathArea.anchoredPosition = outvect;
 		visible = false;
 		setScore = false;
+		GameObject.Find ("SubmitText").GetComponent<Text>().text = "SUBMIT";
 	}
 
 	public void postHighScore()
@@ -45,8 +46,13 @@ public class DeathMenu : MonoBehaviour {
 	public void donePosting()
 	{
 		foreach (Button b in this.GetComponentsInChildren<Button>()){
-			b.interactable = true;
+			if (b.gameObject.name != "Submit"){
+				b.interactable = true;
+			} else {
+				GameObject.Find ("SubmitText").GetComponent<Text>().text = "✓";
+			}
 		}
+
 	}
 	
 	void Update() {;
