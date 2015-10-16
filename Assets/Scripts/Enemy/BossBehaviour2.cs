@@ -16,7 +16,7 @@ public class BossBehaviour2 : Enemy
     private int spawnBoundary = 80;
     private int spawnboundaryreduction = 20;
     private float laserBurst = 0.4f;
-    private float warningShotTimer = 1;
+    private float warningShotTimer = 1.4f;
     public GameObject enemyToSpawn;
     public GameObject forceField;
     public Vector3 enemyLocation1;
@@ -59,6 +59,8 @@ public class BossBehaviour2 : Enemy
         {
             turretsDestroyed = true;
             forceField.SetActive(false);
+            gameObject.GetComponent<SpreadShotEnemy>().fireFrequency = 1;
+            gameObject.GetComponent<SpreadShotEnemy>().spread = 39;
         }
     }
 
@@ -69,8 +71,8 @@ public class BossBehaviour2 : Enemy
             spawnBoundary -= spawnboundaryreduction;
             Instantiate(enemyToSpawn, enemyLocation1, new Quaternion());
             Instantiate(enemyToSpawn, enemyLocation2, new Quaternion());
-            Instantiate(enemyToSpawn, enemyLocation1, new Quaternion());
-            Instantiate(enemyToSpawn, enemyLocation2, new Quaternion());
+            Instantiate(enemyToSpawn, enemyLocation3, new Quaternion());
+            Instantiate(enemyToSpawn, enemyLocation4, new Quaternion());
         }
     }
 
@@ -90,7 +92,7 @@ public class BossBehaviour2 : Enemy
             gameObject.GetComponent<Boss3Weapon>().Fire();
             count -= Time.deltaTime;
         }
-        else if (bossLaserCount == warningShotTimer-1)
+        if (bossLaserCount == warningShotTimer)
         {
             gameObject.GetComponent<Boss3Weapon2>().Fire();
         }
