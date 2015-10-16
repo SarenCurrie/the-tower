@@ -22,6 +22,8 @@ public class GunCreationScreen : MonoBehaviour {
     GameObject topDownObject;
     GameObject projectileObject;
 
+
+
     void Start () {
         topDownObject = GameObject.Find("topView");
         weaponObject = GameObject.Find("sideView");
