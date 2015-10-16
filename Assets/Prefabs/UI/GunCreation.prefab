@@ -412,7 +412,7 @@ GameObject:
   - 224: {fileID: 22416674}
   - 114: {fileID: 11475048}
   m_Layer: 5
-  m_Name: Fire force
+  m_Name: FireForce
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -637,7 +637,7 @@ GameObject:
   - 222: {fileID: 22250100}
   - 114: {fileID: 11485250}
   m_Layer: 5
-  m_Name: points
+  m_Name: forcePoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -809,7 +809,7 @@ GameObject:
   - 222: {fileID: 22234142}
   - 114: {fileID: 11468890}
   m_Layer: 5
-  m_Name: points
+  m_Name: spreadPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -969,7 +969,7 @@ GameObject:
   - 224: {fileID: 22482064}
   - 114: {fileID: 11451698}
   m_Layer: 5
-  m_Name: Fire rate
+  m_Name: FireRate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -985,7 +985,7 @@ GameObject:
   - 224: {fileID: 22490950}
   - 114: {fileID: 11457760}
   m_Layer: 5
-  m_Name: Spread angle
+  m_Name: SpreadAngle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1519,8 +1519,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: UpdateVolume
+      - m_Target: {fileID: 11466618}
+        m_MethodName: UpdateProjectiles
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1590,7 +1590,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 3
+  m_Text: 1
 --- !u!114 &11410478
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2639,12 +2639,12 @@ MonoBehaviour:
   m_MinValue: 1
   m_MaxValue: 30
   m_WholeNumbers: 1
-  m_Value: 3
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: UpdateVolume
+      - m_Target: {fileID: 11466618}
+        m_MethodName: UpdateFireRate
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2756,12 +2756,12 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 60
   m_WholeNumbers: 1
-  m_Value: 6
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: UpdateVolume
+      - m_Target: {fileID: 11466618}
+        m_MethodName: UpdateSpreadAngle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2831,7 +2831,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 3
+  m_Text: 1
 --- !u!114 &11461344
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3095,7 +3095,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 3
+  m_Text: "0\xB0"
 --- !u!114 &11468950
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3282,8 +3282,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: UpdateVolume
+      - m_Target: {fileID: 11466618}
+        m_MethodName: UpdateFireForce
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3641,7 +3641,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 3
+  m_Text: 15
 --- !u!114 &11486234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4581,8 +4581,8 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -39, y: -68}
-  m_SizeDelta: {x: 194.899994, y: 20}
+  m_AnchoredPosition: {x: -39, y: -67}
+  m_SizeDelta: {x: 195, y: 18}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22416876
 RectTransform:
@@ -4775,8 +4775,8 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -50, y: 21}
-  m_SizeDelta: {x: 150, y: 80}
+  m_AnchoredPosition: {x: -49, y: 17.470005}
+  m_SizeDelta: {x: 152, y: 44.9399986}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22431494
 RectTransform:

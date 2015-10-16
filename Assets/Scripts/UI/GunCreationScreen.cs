@@ -88,4 +88,26 @@ public class GunCreationScreen : MonoBehaviour {
         transparency.UpdateTransparency(value);
         GameObject.Find("fireRatePoints").GetComponent<Text>().text = value.ToString();
     }
+
+    public void UpdateProjectiles()
+    {
+        int value = (int)(GameObject.Find("Projectiles").GetComponent<Slider>().value);
+        transparency.UpdateTransparency(value);
+        GameObject.Find("projectilePoints").GetComponent<Text>().text = value.ToString();
+    }
+
+    public void UpdateSpreadAngle()
+    {
+        int value = (int)(GameObject.Find("SpreadAngle").GetComponent<Slider>().value);
+        transparency.UpdateTransparency(value);
+        GameObject.Find("spreadPoints").GetComponent<Text>().text = value.ToString()+"°";
+    }
+
+    public void UpdateFireForce()
+    {
+        int value = (int)(GameObject.Find("FireForce").GetComponent<Slider>().value);
+        transparency.UpdateTransparency(value);
+        GameObject.Find("forcePoints").GetComponent<Text>().text = value.ToString();
+    }
+
 }
