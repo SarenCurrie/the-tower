@@ -8,6 +8,23 @@ namespace HighScores
 	/// </summary>
 	public class HighScore
 	{
-		//private string name{ get{}; set{}; }
+		private string name;
+		private int score;
+
+		public HighScore(string n, int s)
+		{
+			name = n;
+			score = s;
+		}
+
+		public string GetName()
+		{
+			return name;
+		}
+
+		public int GetScore()
+		{
+			return score;
+		}
 	}
 }
