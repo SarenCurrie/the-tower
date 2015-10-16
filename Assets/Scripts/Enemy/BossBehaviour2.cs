@@ -47,12 +47,21 @@ public class BossBehaviour2 : Enemy
             return;
         
         currentHealth = gameObject.GetComponent<UnitHealth>().GetHealth();
-        //every 5% health the boss will do the laser thing
-
+        
+		//Constantly rotates to face the player
         RotateToFacePlayer();
+		//Calls to shoot, which handles whether it should shoot the laser/warning shot
         ShooterBlast();
+		//Calls enemyspawn which will spawn enemies if below a threshold, resetting it as needed
         EnemySpawn();
-        if(GameManager.currentFloor.currentRoom.EnemiesLeft() > 1 && !turretsDestroyed)
+		//Calls managehealth which decided whether the main boss should take damage based on enemy count
+		ManageHealth();
+    }
+	
+	//Enemy count is 1 at the time the boss turrets die, meaning it can then destroy the "forcefield" and
+	//take damage. Also changes the shotgun bullets as the boss turrets die
+	private void ManageHealth(){
+		if(GameManager.currentFloor.currentRoom.EnemiesLeft() > 1 && !turretsDestroyed)
         {
             gameObject.GetComponent<UnitHealth>().ResetHealth();
         }else if (GameManager.currentFloor.currentRoom.EnemiesLeft() == 1 && !turretsDestroyed)
@@ -62,8 +71,9 @@ public class BossBehaviour2 : Enemy
             gameObject.GetComponent<SpreadShotEnemy>().fireFrequency = 1;
             gameObject.GetComponent<SpreadShotEnemy>().spread = 39;
         }
-    }
-
+	}
+	
+	//Spawns enemies if below 80%, stuttering down 20% each spawn
     private void EnemySpawn()
     {
         if (((currentHealth / GetComponent<UnitHealth>().maxHealth) * 100) < spawnBoundary)
@@ -75,9 +85,11 @@ public class BossBehaviour2 : Enemy
             Instantiate(enemyToSpawn, enemyLocation4, new Quaternion());
         }
     }
-
+	
+	//Shoots the laser and warning shot as needed
     private void ShooterBlast()
     {
+		//If the laser isnt to be shot and warning shot not counting down, and the health is below threshold, do this
         if (count == 0 && bossLaserCount == 0)
         {
             if (((currentHealth / GetComponent<UnitHealth>().maxHealth) * 100) < fireboundary)
@@ -87,15 +99,19 @@ public class BossBehaviour2 : Enemy
                 fireboundary -= fireboundaryreduction;
             }
         }
+		//If laserCount is 0, which means if the laser has started shooting. Counts down for a set burst
+		//equals to laserBurst variable
         else if (bossLaserCount == 0)
         {
             gameObject.GetComponent<Boss3Weapon>().Fire();
             count -= Time.deltaTime;
         }
+		//If just set laserCounter, fire the warning shot
         if (bossLaserCount == warningShotTimer)
         {
             gameObject.GetComponent<Boss3Weapon2>().Fire();
         }
+		//Manage the variables to handle the non-int changes
         if (bossLaserCount > 0)
         {
             bossLaserCount -= Time.deltaTime;

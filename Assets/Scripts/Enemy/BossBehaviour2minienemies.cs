@@ -42,15 +42,17 @@ public class BossBehaviour2minienemies : Enemy
             return;
 
         currentHealth = gameObject.GetComponent<UnitHealth>().GetHealth();
-        //every 5% health the boss will do the laser thing
-
+        //every 20% health the boss will do the laser thing
+		//rotate to player
         RotateToFacePlayer();
         ShooterBlast();
 
     }
-
+	
+	//Shoots the laser and warning shot as needed
     private void ShooterBlast()
     {
+		//If the laser isnt to be shot and warning shot not counting down, and the health is below threshold, do this
         if (count == 0 && bossLaserCount == 0)
         {
             if (((currentHealth / GetComponent<UnitHealth>().maxHealth) * 100) < fireboundary)
@@ -60,15 +62,19 @@ public class BossBehaviour2minienemies : Enemy
                 fireboundary -= fireboundaryreduction;
             }
         }
+		//If laserCount is 0, which means if the laser has started shooting. Counts down for a set burst
+		//equals to laserBurst variable
         else if (bossLaserCount == 0)
         {
             gameObject.GetComponent<Boss3Weapon>().Fire();
             count -= Time.deltaTime;
         }
+		//If just set laserCounter, fire the warning shot
         if (bossLaserCount == warningShotTimer)
         {
             gameObject.GetComponent<Boss3Weapon2>().Fire();
         }
+		//Manage the variables to handle the non-int changes
         if (bossLaserCount > 0)
         {
             bossLaserCount -= Time.deltaTime;

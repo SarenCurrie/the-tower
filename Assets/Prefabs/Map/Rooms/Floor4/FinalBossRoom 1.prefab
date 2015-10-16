@@ -995,7 +995,7 @@ MonoBehaviour:
   burstTime: 0
   minFireWait: 0
   maxFireWait: 0
-  damage: 80
+  damage: 120
   reloadFactor: 5
   possibleProjectileSprites:
   - {fileID: 21300000, guid: 39c7ae5dad5a9e2499e909d397eb7122, type: 3}
@@ -1078,7 +1078,7 @@ MonoBehaviour:
   burstTime: 0
   minFireWait: 0
   maxFireWait: 0
-  damage: 80
+  damage: 120
   reloadFactor: 5
   possibleProjectileSprites:
   - {fileID: 21300000, guid: 39c7ae5dad5a9e2499e909d397eb7122, type: 3}
@@ -1125,7 +1125,7 @@ MonoBehaviour:
   burstTime: 0
   minFireWait: 0
   maxFireWait: 0
-  damage: 600
+  damage: 800
   reloadFactor: 1e+07
   possibleProjectileSprites:
   - {fileID: 21300000, guid: 39c7ae5dad5a9e2499e909d397eb7122, type: 3}
@@ -1519,7 +1519,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: damage
-      value: 600
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: spread
