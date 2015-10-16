@@ -13,4 +13,5 @@ public static class Tags {
 	public const string HEALTH_ELEMENT = "HealthElement";
 	public const string SCORE = "Score";
 	public const string DAMAGE_FLASH = "DamageFlash";
+	public const string BOSS = "Boss";
 }

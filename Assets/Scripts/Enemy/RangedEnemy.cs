@@ -98,6 +98,7 @@ public class RangedEnemy : Enemy
     {
 		if (CanSeePlayer())
 		{
+            weaponTime += Time.deltaTime;
 			if (!waitingToFire)
 			{
 				if (weaponTime > fireStopTime)
@@ -115,7 +116,6 @@ public class RangedEnemy : Enemy
 				weaponTime = 0;
 				waitingToFire = false;
 			}
-			weaponTime += Time.deltaTime;
 		}
 		else
 		{
