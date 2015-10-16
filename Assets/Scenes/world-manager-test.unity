@@ -287,7 +287,7 @@ Prefab:
     - target: {fileID: 11489868, guid: e60bd62d4232d4d1bb21b58ebaa3fc95, type: 2}
       propertyPath: floorPrefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 151502, guid: 0dd8386a7faf311498b64578b1f52372, type: 2}
+      objectReference: {fileID: 148626, guid: 2c55cf8062416064382e22de70de37c8, type: 2}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: e60bd62d4232d4d1bb21b58ebaa3fc95, type: 2}
