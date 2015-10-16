@@ -4,7 +4,7 @@ using System.Collections;
 /**
 *The behaviour script for the second boss
 */
-public class BossBehaviour : Enemy {
+public class BossBehaviour2 : Enemy {
 
     private bool isCharging = false;
     public float chargeDamage;
@@ -57,16 +57,18 @@ public class BossBehaviour : Enemy {
         rigidBody.AddForce(transform.up * movementSpeed * Time.deltaTime);
     }
 
-    private void FleePlayer()
-    {
-
-    }
-
     private void RotateToFacePlayer()
     {
         Vector3 relativePlayerPos = GetRelativePlayerPosition();
         float angle = Mathf.Atan2(relativePlayerPos.y, relativePlayerPos.x) * Mathf.Rad2Deg + 270;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+    }
+
+    //Change the attackTick to the current time when boss is enabled so it doesn't attack 
+    //on player entering the room
+    void OnEnable()
+    {
+        attackTick = Time.time;
     }
 
     //On collision the boss should stop adding force and set charging state to false.
