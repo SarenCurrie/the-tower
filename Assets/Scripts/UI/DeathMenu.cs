@@ -45,8 +45,13 @@ public class DeathMenu : MonoBehaviour {
 	public void donePosting()
 	{
 		foreach (Button b in this.GetComponentsInChildren<Button>()){
-			b.interactable = true;
+			if (b.gameObject.name != "Submit"){
+				b.interactable = true;
+			} else {
+				GameObject.Find ("SubmitText").GetComponent<Text>().text = "✓";
+			}
 		}
+
 	}
 	
 	void Update() {;

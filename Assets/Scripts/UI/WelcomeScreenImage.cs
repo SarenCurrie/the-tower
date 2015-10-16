@@ -21,6 +21,7 @@ public class WelcomeScreenImage : MonoBehaviour {
 		startmenu = 0,
 		credits = 1,
 		highscores = 2,
+		achievements = 3
 	}
 
 	void Awake()
@@ -53,6 +54,11 @@ public class WelcomeScreenImage : MonoBehaviour {
 	public void doHighScores()
 	{
 		currentScreen = SCREEN.highscores;
+	}
+
+	public void doAchievementScreen()
+	{
+		currentScreen = SCREEN.achievements;
 	}
 
 	public void doWeaponCreation()
