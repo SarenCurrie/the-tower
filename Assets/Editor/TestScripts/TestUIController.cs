@@ -4,16 +4,16 @@ using NUnit.Framework;
 using NSubstitute;
 
 [TestFixture]
-public class TestGameManager
+public class TestUIController
 {
     ScriptInstantiator instantiator = new ScriptInstantiator();
 
     [Test]
-    public void TestCreateGameManager()
+    public void TestCreateUIController()
     {
 
-        GameManager gameManager = instantiator.InstantiateScript<GameManager>();
-        Assert.IsNotNull(gameManager);
+        UIController uiController = instantiator.InstantiateScript<UIController>();
+        Assert.IsNotNull(uiController);
 
     }
 

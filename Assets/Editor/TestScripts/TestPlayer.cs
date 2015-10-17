@@ -11,32 +11,8 @@ public class TestPlayer
     [Test]
     public void TestCreatePlayer()
     {
-
         Player player = instantiator.InstantiateScript<Player>();
-
         Assert.IsNotNull(player);
-
-    }
-
-    //[Test]
-    public void TestPlayerHealth()
-    {
-        //TODO
-        instantiator.InstantiateScript<GameManager>();
-        GameObject player = GameManager.player;
-
-        float health = player.GetComponent<UnitHealth>().health;
-
-    }
-
-    //[Test]
-    public void TestMaxHealth()
-    {
-        //TODO
-        instantiator.InstantiateScript<GameManager>();
-        GameObject player = GameManager.player;
-
-        Health health = player.gameObject.GetComponent<Health>();
 
     }
 
@@ -54,18 +30,7 @@ public class TestPlayer
 
     }
 
-    //TODO
-    [Test]
-    public void TestPlayerStartsWithWeapon()
-    {
-        //TODO
-        Player player = instantiator.InstantiateScript<Player>();
-       // GameObject weapon1Object = player.weapon ;
-        //Weapon weapon1 = weapon1Object.GetComponent<Weapon>();
-        //Assert.IsNotNull(weapon1Object);
-
-    }
-
+  
     [Test]
     public void TestPlayerStartingMovementSpeed()
     {
