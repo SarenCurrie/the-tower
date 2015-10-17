@@ -7,9 +7,18 @@ public class Room : MonoBehaviour {
 	public const float ROOM_WIDTH = 9.0f;
 	public const float ROOM_HEIGHT = 5.4f;
 
+	public float SMALL_ROOM_CAMERA_SIZE = 3.3222f;
+	public float BIG_ROOM_CAMERA_SIZE = 8f;
+	public bool bigRoom = false;
+
 	public const float CAMERA_HEIGHT = -10f;
 
 	private GameObject screenBlacker;
+
+	public float GetCameraSize()
+	{
+		return bigRoom ? BIG_ROOM_CAMERA_SIZE : SMALL_ROOM_CAMERA_SIZE;
+	}
 
 	public Vector3 GetCameraPosition()
 	{
@@ -56,7 +65,7 @@ public class Room : MonoBehaviour {
 	{
 		foreach (Transform child in trans)
 		{
-			if (child.tag == Tags.ENEMY)
+			if (child.tag == Tags.ENEMY || child.tag == Tags.BOSS)
 			{
 				foreach (Enemy e in child.GetComponents<Enemy>())
 				{
@@ -80,7 +89,7 @@ public class Room : MonoBehaviour {
 	{
 		foreach (Transform child in transform)
 		{
-			if (child.tag == Tags.ENEMY)
+			if (child.tag == Tags.ENEMY || child.tag == Tags.BOSS)
 			{
 				child.GetComponent<SpriteRenderer>().enabled = show;
 			}
@@ -95,7 +104,7 @@ public class Room : MonoBehaviour {
 		int enemyCount = 0;
 		foreach (Transform t in transform)
 		{
-			if (t.gameObject.tag == Tags.ENEMY)
+			if (t.gameObject.tag == Tags.ENEMY || t.gameObject.tag == Tags.BOSS)
 			{
 				enemyCount++;
 			}
@@ -113,7 +122,7 @@ public class Room : MonoBehaviour {
 
 		foreach (Transform t in transform)
 		{
-			if (t.gameObject.tag == Tags.ENEMY)
+			if (t.gameObject.tag == Tags.ENEMY || t.gameObject.tag == Tags.BOSS)
 			{
 				enemies.Add(t.gameObject);
 			}

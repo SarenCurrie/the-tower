@@ -43,7 +43,9 @@ MonoBehaviour:
   enemies:
   - {fileID: 0}
   rooms:
+
   - {fileID: 193178, guid: 6c96b564d349f884abbd28cface94821, type: 2}
+
   enterDialog: 
   exitDialog: 
   floorDialog: []
