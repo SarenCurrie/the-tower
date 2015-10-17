@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
 
 public class GunCreationScreen : MonoBehaviour {
@@ -30,6 +31,8 @@ public class GunCreationScreen : MonoBehaviour {
     private int majorModifier=0;
     private int minorModifier=1;
 
+    private float damageMod = 0;
+
 
 
     void Start () {
@@ -41,7 +44,7 @@ public class GunCreationScreen : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+
 	}
 
     public void previousGun()
@@ -95,6 +98,15 @@ public class GunCreationScreen : MonoBehaviour {
         int value = (int)(GameObject.Find("FireRate").GetComponent<Slider>().value);
         fireRate = value;
         GameObject.Find("fireRatePoints").GetComponent<Text>().text = value.ToString();
+        RecalculateDamage();
+    }
+
+    public void UpdateFireForce()
+    {
+        int value = (int)(GameObject.Find("FireForce").GetComponent<Slider>().value);
+        fireRate = value;
+        GameObject.Find("forcePoints").GetComponent<Text>().text = value.ToString();
+        RecalculateDamage();
     }
 
     public void UpdateProjectiles()
@@ -102,6 +114,7 @@ public class GunCreationScreen : MonoBehaviour {
         int value = (int)(GameObject.Find("Projectiles").GetComponent<Slider>().value);
         projectiles = value;
         GameObject.Find("projectilePoints").GetComponent<Text>().text = value.ToString();
+        RecalculateDamage();
     }
 
     public void UpdateSpreadAngle()
@@ -109,6 +122,7 @@ public class GunCreationScreen : MonoBehaviour {
         int value = (int)(GameObject.Find("SpreadAngle").GetComponent<Slider>().value);
         spreadAngle = value;
         GameObject.Find("spreadPoints").GetComponent<Text>().text = value.ToString()+"°";
+        RecalculateDamage();
     }
 
     public void UpdateMajorModifier()
@@ -134,6 +148,15 @@ public class GunCreationScreen : MonoBehaviour {
     public void CreateWeapon()
     {
         
+    }
+
+    public void RecalculateDamage()
+    {
+        damageMod = (float) Math.Round(5f*(float)(System.Math.Pow(spreadAngle, 0.7f)+1) / (float)(System.Math.Pow(fireRate, 1.1f) * System.Math.Pow(projectiles, 1.1f) * System.Math.Pow(fireForce, 0.2)),2);
+        GameObject.Find("Damage").GetComponent<Text>().text = damageMod.ToString();
+
+       
+
     }
 
 
