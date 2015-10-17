@@ -31,6 +31,10 @@ public class SuicideEnemy : Enemy
 
 	void MaybeExplode()
 	{
+		if(GameManager.GetPlayer() == null)
+		{
+			return;
+		}
 		if (body.IsTouching(GameManager.GetPlayer().GetComponent<CircleCollider2D>()))
 		{
 			//Kill this suicide enemy
