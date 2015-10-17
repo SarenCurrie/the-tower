@@ -13,10 +13,13 @@ public class DeathMenu : MonoBehaviour {
 	private Vector2 temp;
 	private float _MoveSpeed = 20f;
 	private Text text;
+	private Text title;
 	public bool setScore = false;
+	public bool beatGame = false;
 	
 	void Awake()
 	{
+		title = GameObject.Find ("DeathTitle").GetComponent<Text>();
 		text = GameObject.Find ("HighScoreText").GetComponent<Text>();
 		deathArea = this.GetComponent<RectTransform>();
 		deathHeight = deathArea.rect.width;
@@ -30,7 +33,9 @@ public class DeathMenu : MonoBehaviour {
 		deathArea.anchoredPosition = outvect;
 		visible = false;
 		setScore = false;
+		beatGame = false;
 		GameObject.Find ("SubmitText").GetComponent<Text>().text = "SUBMIT";
+		GameObject.Find ("DeathTitle").GetComponent<Text>().text = "YOU HAVE DIED";
 	}
 
 	public void postHighScore()
@@ -59,6 +64,9 @@ public class DeathMenu : MonoBehaviour {
 		if (visible) {
 			// Set score text if we haven't already
 			if (!setScore){
+				if (beatGame){
+					title.text = "YOU HAVE WON";
+				}
 				text.text = "Your final score was " + UIController.GetUI().GetScoreManager().score.ToString();
 				setScore = true;
 			}
