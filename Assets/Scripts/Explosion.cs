@@ -18,6 +18,7 @@ public class Explosion : MonoBehaviour {
 	public static void CreateExplosion(GameObject explosionPrefab, float explosionForce, float explosionRadius, float damage, Vector3 position)
 	{
 		GameObject explosion = Instantiate(explosionPrefab, position, Quaternion.identity) as GameObject;
+		explosion.transform.parent = GameManager.currentFloor.currentRoom.transform;
         explosion.GetComponent<Explosion>().SetupExplosion(explosionForce, explosionRadius, damage);
 	}
 
