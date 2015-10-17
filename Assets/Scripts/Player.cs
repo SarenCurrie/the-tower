@@ -56,12 +56,18 @@ public class Player : MonoBehaviour {
 	private int _currentWeapon = -1;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
 		rigidBody = GetComponent<Rigidbody2D>();
-
+        GameObject w=null;
 		// Instantiate and pick up a starting weapon
-		GameObject w = Item.GenerateWeapon(gameObject.GetComponent<Transform>().position);
+        w = GameObject.Find("PersistentGroundGun(Clone)");
+        if (w==null)
+        {
+              w = Item.GenerateWeapon(gameObject.GetComponent<Transform>().position);
 
+        }
+      
 		w.GetComponent<Weapon>().PickUp();
     }
 
@@ -112,7 +118,7 @@ public class Player : MonoBehaviour {
     void CheckForFire()
     {
 		if (Input.GetMouseButton (0) && weapons[currentWeapon] != null) {
-			weapons[currentWeapon].GetComponent<Weapon>().Fire(this);
+            weapons[currentWeapon].GetComponent<Weapon>().Fire(this);
 		}
     }
 

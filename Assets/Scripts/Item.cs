@@ -20,7 +20,7 @@ public abstract class Item : MonoBehaviour {
 
 
 
-	void Start()
+	void Awake()
 	{
 		Generate();
 	}
@@ -44,12 +44,26 @@ public abstract class Item : MonoBehaviour {
 		return item;
 	}
 
+    public static GameObject GenerateWeapon(Vector3 v)
+    {
+        return GenerateWeapon(v, false);
+    }
+
 	/**
 	* Static method that will definitely generate a weapon.
 	*/
-	public static GameObject GenerateWeapon(Vector3 v)
+	public static GameObject GenerateWeapon(Vector3 v, bool persistent)
 	{
-		GameObject weapon = (Instantiate(Resources.Load("GroundGun"), v, Quaternion.identity)) as GameObject;
+        GameObject weapon;
+
+        if (persistent)
+        {
+            weapon = (Instantiate(Resources.Load("PersistentGroundGun"), v, Quaternion.identity)) as GameObject;
+        }
+        else
+        {
+            weapon = (Instantiate(Resources.Load("GroundGun"), v, Quaternion.identity)) as GameObject;
+        }
 
 		return weapon;
 	}
