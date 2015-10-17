@@ -9,3 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/StartScreen.unity
   - enabled: 1
     path: Assets/Scenes/world-manager-test.unity
+  - enabled: 1
+    path: Assets/Scenes/IntroScreen.unity
+  - enabled: 1
+    path: Assets/Scenes/GunCreationScreen.unity
