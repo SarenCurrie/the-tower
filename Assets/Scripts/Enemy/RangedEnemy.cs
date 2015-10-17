@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 /// <summary>
@@ -8,115 +8,115 @@ using System.Collections;
 ///</summary>
 public class RangedEnemy : Enemy
 {
-    private const float BASE_HIT_DAMAGE = 0.01f;
+	private const float BASE_HIT_DAMAGE = 0.01f;
 
-    //Variables that change the weapon of the enemy
-    public Transform projectilePrefab;
+	//Variables that change the weapon of the enemy
+	public Transform projectilePrefab;
 
-    public float fireForce;
-    public float fireFrequency;
-    protected float damageMod;
-    public float DAMAGEMULTIPLIER;
+	public float fireForce;
+	public float fireFrequency;
+	protected float damageMod;
+	public float DAMAGEMULTIPLIER;
 
-    protected float lastFired = 0;
+	protected float lastFired = 0;
 
-    public float burstTime;
+	public float burstTime;
 
-    public float minFireWait;
-    public float maxFireWait;
+	public float minFireWait;
+	public float maxFireWait;
 
-    public float damage;
+	public float damage;
 
 	//How much of a burst needs to be completed before the enemy will reload if it cannot see the player
 	public float reloadFactor = 1;
 	//Used for burst fire and reload times
 	private float weaponTime;
 
-    protected float nextFireTime = 0;
-    protected float fireStopTime = 0;
+	protected float nextFireTime = 0;
+	protected float fireStopTime = 0;
 
-    protected bool waitingToFire = false;
+	protected bool waitingToFire = false;
 
-    public Sprite[] possibleProjectileSprites;
-    protected Sprite projectileSprite;
+	public Sprite[] possibleProjectileSprites;
+	protected Sprite projectileSprite;
 
-    public AudioClip[] possibleSounds;
-    protected AudioClip actualSound;
+	public AudioClip[] possibleSounds;
+	protected AudioClip actualSound;
 
-    void Start()
-    {
-        Generate();
-    }
+	void Start()
+	{
+		Generate();
+	}
 
-    void Update()
-    {
-        MaybeFireAtPlayer();
-    }
+	void Update()
+	{
+		MaybeFireAtPlayer();
+	}
 
-    /**
-    * Fire at the player
-    */
-    public void Fire()
-    {
-        Fire(CalculateDamage());
-    }
+	/**
+	* Fire at the player
+	*/
+	public void Fire()
+	{
+		Fire(CalculateDamage());
+	}
 
-    public virtual void Fire(float damage)
-    {
-        if (Time.time > lastFired + 1 / fireFrequency)
-        {
-            Transform projectile = Instantiate(projectilePrefab, transform.position, transform.rotation) as Transform;
-            projectile.GetComponent<SpriteRenderer>().sprite = projectileSprite;
-            Transform projectileTransform = projectile.GetComponent<Transform>();
-            projectile.GetComponent<Rigidbody2D>().AddForce((projectileTransform.up) * fireForce);
-            projectile.GetComponent<Projectile>().SetDamage(damage);
+	public virtual void Fire(float damage)
+	{
+		if (Time.time > lastFired + 1 / fireFrequency)
+		{
+			Transform projectile = Instantiate(projectilePrefab, transform.position, transform.rotation) as Transform;
+			projectile.GetComponent<SpriteRenderer>().sprite = projectileSprite;
+			Transform projectileTransform = projectile.GetComponent<Transform>();
+			projectile.GetComponent<Rigidbody2D>().AddForce((projectileTransform.up) * fireForce);
+			projectile.GetComponent<Projectile>().SetDamage(damage);
 
 			//Should be added as part of the current room
 			projectile.parent = GameManager.currentFloor.currentRoom.transform;
 
-            lastFired = Time.time;
+			lastFired = Time.time;
 
-            // Play Sound
-            AudioSource source = GetComponent<AudioSource>();
-            source.clip = actualSound;
-            source.Play();
-        }
-    }
+			// Play Sound
+			AudioSource source = GetComponent<AudioSource>();
+			source.clip = actualSound;
+			source.Play();
+		}
+	}
 
-    /**
-    * Calculate the amount of damage the player should take
-    */
-    private float CalculateDamage()
-    {
-        return (DAMAGEMULTIPLIER * damageMod);
-    }
+	/**
+	* Calculate the amount of damage the player should take
+	*/
+	private float CalculateDamage()
+	{
+		return (DAMAGEMULTIPLIER * damageMod);
+	}
 
-    /**
-    * Generate all the random aspects of the enemy
-    */
-    public virtual void Generate()
-    {
-        damageMod = (float)((50 * 25) /
-            (20 * (System.Math.Pow(fireForce, 0.2)) + 15 * (System.Math.Pow(fireFrequency, 1.2))));
-        int projectileSpriteIndex = UnityEngine.Random.Range(0, possibleProjectileSprites.Length);
-        projectileSprite = possibleProjectileSprites[projectileSpriteIndex];
+	/**
+	* Generate all the random aspects of the enemy
+	*/
+	public virtual void Generate()
+	{
+		damageMod = (float)((50 * 25) /
+			(20 * (System.Math.Pow(fireForce, 0.2)) + 15 * (System.Math.Pow(fireFrequency, 1.2))));
+		int projectileSpriteIndex = UnityEngine.Random.Range(0, possibleProjectileSprites.Length);
+		projectileSprite = possibleProjectileSprites[projectileSpriteIndex];
 
-        // generate sound
+		// generate sound
 		if(possibleSounds.Length > 0)
-        {
+		{
 			int soundIndex = UnityEngine.Random.Range(0, possibleSounds.Length);
 			actualSound = possibleSounds[soundIndex];
 		}
 	}
 
-    /**
-    * Determine if the enemy should currently be firing at the player
-    */
-    protected void MaybeFireAtPlayer()
-    {
+	/**
+	* Determine if the enemy should currently be firing at the player
+	*/
+	protected void MaybeFireAtPlayer()
+	{
 		if (CanSeePlayer())
 		{
-            weaponTime += Time.deltaTime;
+			weaponTime += Time.deltaTime;
 			if (!waitingToFire)
 			{
 				if (weaponTime > fireStopTime)
@@ -142,11 +142,11 @@ public class RangedEnemy : Enemy
 			else if (weaponTime > reloadFactor*((minFireWait + maxFireWait) / 2))
 				Reload();
 		}
-    }
+	}
 
-    /**
-    * Stops the enemy from firing for a period and let them start their burst again afterwards
-    */
+	/**
+	* Stops the enemy from firing for a period and let them start their burst again afterwards
+	*/
 	protected void Reload()
 	{
 		nextFireTime = Random.Range(minFireWait, maxFireWait);
@@ -154,15 +154,15 @@ public class RangedEnemy : Enemy
 		waitingToFire = true;
 	}
 
-    protected virtual float CalculateFireStopTime()
-    {
-        return burstTime;
-    }
+	protected virtual float CalculateFireStopTime()
+	{
+		return burstTime;
+	}
 
-    /**
-    * Returns true if there is a straight line between the enemy and player with
-    * no obstacles
-    */
+	/**
+	* Returns true if there is a straight line between the enemy and player with
+	* no obstacles
+	*/
 	protected bool CanSeePlayer()
 	{
 		if (GameManager.GetPlayer() == null)
