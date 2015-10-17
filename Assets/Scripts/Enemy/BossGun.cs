@@ -71,11 +71,6 @@ public class BossGun : BossBehaviour
 			projectile.parent = GameManager.currentFloor.currentRoom.transform;
 
 			lastFired = Time.time;
-
-			// Play Sound
-			AudioSource source = GetComponent<AudioSource>();
-			source.clip = actualSound;
-			source.Play();
 		}
 	}
 
