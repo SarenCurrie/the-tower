@@ -45,6 +45,8 @@ public class GunCreationScreen : MonoBehaviour {
         selectedSideLook = selectedSideLooks[0];
         unselectedSideLook = unselectedSideLooks[0];
         projectileSprite = possibleProjectileSprites[0];
+        majorModifier = 0;
+        minorModifier = 1;
 
 	}
 	
@@ -147,19 +149,22 @@ public class GunCreationScreen : MonoBehaviour {
     {
         
         int value = (int)(GameObject.Find("MinorAttribute").GetComponent<Dropdown>().value);
-        if (value != majorModifier)
-        {
-            minorModifier = value;
-
-        }
-        else
-        {
-        }
+        minorModifier = value;
     }
 
     public void CreateWeapon()
     {
-        GameObject weapon = Item.GenerateWeapon(new Vector3(0,0,0), true);
+        if (majorModifier == minorModifier)
+        {
+            GameObject.Find("MessageWarning").GetComponent<Text>().text = "Minor and Major stats cannot be the same.";
+            return;
+
+        }
+        else
+        {
+            GameObject.Find("MessageWarning").GetComponent<Text>().text = "";
+        }
+        GameObject weapon = Item.GenerateWeapon(new Vector3(10000,10000,10000), true);
         weapon.GetComponent<Weapon>().GenerateCustom(projectileSprite, selectedSideLook, unselectedSideLook, selectedTopDownLook, fireRate, projectiles, spreadAngle,
         fireForce, damageMod, majorModifier, minorModifier);
         Application.LoadLevel("StartScreen");
