@@ -154,7 +154,7 @@ public class GunCreationScreen : MonoBehaviour {
 
     public void CreateWeapon()
     {
-        GameObject weapon = Item.GenerateWeapon(new Vector3(0,0,0));
+        GameObject weapon = Item.GenerateWeapon(new Vector3(0,0,0), true);
         weapon.GetComponent<Weapon>().GenerateCustom(projectileSprite, selectedSideLook, unselectedSideLook, selectedTopDownLook, fireRate, projectiles, spreadAngle,
         fireForce, damageMod, majorModifier, minorModifier);
     }

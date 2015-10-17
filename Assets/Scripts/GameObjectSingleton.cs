@@ -6,9 +6,9 @@ using System.Collections;
 /// Singleton that plays the music
 ///
 /// </summary>
-public class MusicSingleton : MonoBehaviour {
-	private static MusicSingleton instance = null;
-	public static MusicSingleton Instance {
+public class GameObjectSingleton : MonoBehaviour {
+	private static GameObjectSingleton instance = null;
+	public static GameObjectSingleton Instance {
 		get { return instance; }
 	}
 	void Awake() {
