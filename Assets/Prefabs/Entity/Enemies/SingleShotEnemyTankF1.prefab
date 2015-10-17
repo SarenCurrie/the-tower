@@ -206,12 +206,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16d1272992c1344f5931d1eb2dadb1f6, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   preferedDistance: 3
   preferedDistanceRange: .5
   movementSpeed: 180000
-  baseScore: 250
+  baseScore: 100
 --- !u!212 &21270066
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -293,12 +293,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: explosionForceModifier
       value: 10
-      propertyPath: possibleSounds.Array.data[0]
-      value:
       objectReference: {fileID: 8300000, guid: d9efb9bb3536a4e9c8ca5fa56786c0fb, type: 3}
     - target: {fileID: 0}
       propertyPath: m_audioClip
-      value:
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: baseScore
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

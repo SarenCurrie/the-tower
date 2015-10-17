@@ -28,7 +28,7 @@ public class ScoreManager {
 	{
 		int health = (int)GameManager.GetPlayer().GetComponent<UnitHealth>().health;
 
-		SetScore(this.score * health * floorMultiplier);
+		IncrementScore(health * floorMultiplier * 50);
 
 		//Increment the floor multiplier
 		floorMultiplier++;

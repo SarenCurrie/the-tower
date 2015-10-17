@@ -187,7 +187,7 @@ MonoBehaviour:
   preferedDistance: 0
   preferedDistanceRange: 0
   movementSpeed: 75
-  baseScore: 250
+  baseScore: 100
 --- !u!114 &11481736
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -286,6 +286,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: explosionForceModifier
       value: .0500000007
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: baseScore
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

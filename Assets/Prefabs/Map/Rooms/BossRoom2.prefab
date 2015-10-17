@@ -843,7 +843,7 @@ MonoBehaviour:
   chargeDamage: 30
   attackTime: 2.5
   movementSpeed: 1500000
-  baseScore: 500
+  baseScore: 1500
 --- !u!114 &11459636
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1238,6 +1238,10 @@ Prefab:
       propertyPath: possibleSounds.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 8928fac6adbe74ab0ac97bfc34efba13, type: 3}
+    - target: {fileID: 0}
+      propertyPath: baseScore
+      value: 1500
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 131790}

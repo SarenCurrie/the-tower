@@ -160,7 +160,7 @@ MonoBehaviour:
   preferedDistance: 1
   preferedDistanceRange: .5
   movementSpeed: 45000
-  baseScore: 250
+  baseScore: 150
 --- !u!114 &11463816
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -295,6 +295,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: damage
       value: 1.39999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: baseScore
+      value: 150
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

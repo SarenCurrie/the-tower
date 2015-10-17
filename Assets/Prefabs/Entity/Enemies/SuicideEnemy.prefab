@@ -198,7 +198,7 @@ MonoBehaviour:
   preferedDistance: 0
   preferedDistanceRange: 0
   movementSpeed: 45000
-  baseScore: 0
+  baseScore: 150
 --- !u!212 &21259426
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -349,6 +349,10 @@ Prefab:
       propertyPath: bloodPrefabs.Array.data[3]
       value: 
       objectReference: {fileID: 166386, guid: 18cae03bd3a07e5468853baf39d0d1dd, type: 2}
+    - target: {fileID: 0}
+      propertyPath: baseScore
+      value: 150
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 102632}
