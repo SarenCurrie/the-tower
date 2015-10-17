@@ -34,8 +34,8 @@ public class GameManager : MonoBehaviour {
 	public Vector2 hotSpot = new Vector2(381f, 383.5f);
 
 	void Start () {
-
-		Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+		if(cursorTexture != null)
+			Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
 
 		staticFloorPrefabs = floorPrefabs;
 		staticEnemySightLayerMask = enemySightLayerMask;
