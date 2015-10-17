@@ -16,7 +16,8 @@ public class SpawningShot : Projectile
     //On collision the rotator will be instantiated and the projectile destroyed
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Instantiate(rotator, transform.position, transform.rotation);
-        Destroy(gameObject);
+        GameObject r = Instantiate(rotator, transform.position, transform.rotation) as GameObject;
+		r.transform.SetParent(GameManager.currentFloor.bossRoom.transform);
+		Destroy(gameObject);
     }
 }

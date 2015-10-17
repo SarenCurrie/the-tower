@@ -131,7 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   preferedDistance: 0
   preferedDistanceRange: 0
-  movementSpeed: 75
+  movementSpeed: 40
   baseScore: 250
 --- !u!114 &11491484
 MonoBehaviour:
@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d077cd82f98bf4742a90bc080b3c1078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 75
+  maxHealth: 25
   health: 0
   shouldDrop: 0
   isDead: 0
@@ -304,6 +304,14 @@ Prefab:
       propertyPath: bloodPrefabs.Array.data[3]
       value: 
       objectReference: {fileID: 150992, guid: 38967d0e9904d514bbf502047cb01ae7, type: 2}
+    - target: {fileID: 0}
+      propertyPath: maxHealth
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: movementSpeed
+      value: 40
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 196182}
