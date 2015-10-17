@@ -20,23 +20,24 @@ public class ArmourIconScript : MonoBehaviour {
 	private Image armourIcon;
 	private bool showWindow = false;
 	private RectTransform rect;
+	private RectTransform parentRect;
 	private float startX;
-	private float startY;
-	private float popupHeight = 80;
-	private float popupWidth = 150;
+	
+	private GameObject myPopUp;
 	
 	public GUISkin mySkin;
 	
 	void Awake()
 	{
 		this.armourIcon = this.GetComponent<Image>();
+		myPopUp = GameObject.Find("StatPopup" + this.name);
 	}
 	
 	void Start()
 	{
-		rect = this.GetComponent<RectTransform> ();
-		startX = rect.anchoredPosition.x + rect.rect.width;
-		startY = rect.anchoredPosition.y + popupHeight/2;
+		rect = this.GetComponent<RectTransform>();
+		parentRect = this.transform.parent.GetComponent<RectTransform>();
+		startX = myPopUp.GetComponent<RectTransform>().anchoredPosition.x;
 	}
 	
 	public void toggleArmour()
@@ -59,20 +60,36 @@ public class ArmourIconScript : MonoBehaviour {
 		}
 	}
 
+	// Moves the popup into, or out of, position
+	private void togglePopup(bool show, string text)
+	{
+		Vector2 pos = myPopUp.GetComponent<RectTransform>().anchoredPosition;
+		if (show) {
+			pos.x = startX;
+		} else {
+			pos.x = Screen.width * 2;
+		}
+		myPopUp.GetComponent<RectTransform>().anchoredPosition = pos;
+		myPopUp.GetComponentInChildren<Text>().text = text;
+	}
+
+
 	//Called every frame to check if the on hover will open a comparison popup for the armour
 	void OnGUI()
 	{
 		GUI.skin = mySkin;
 		if (showWindow) {
-			if (GameManager.GetPlayer ().GetComponent<Player> ().GetGearDictionary ().ContainsKey(slot)) {
+			if (GameManager.GetPlayer ().GetComponent<Player> ().GetGearDictionary ().ContainsKey (slot)) {
 				Armour item = GameManager.GetPlayer ().GetComponent<Player> ().GetGearDictionary () [slot].GetComponent<Armour> ();
 				if (item != null) {
 					float strength = item.GetStrength ();
-					float intelligence = item.GetIntelligence();
+					float intelligence = item.GetIntelligence ();
 					float dexterity = item.GetDexterity ();
-					GUI.TextField (new Rect (Input.mousePosition.x, Screen.height - Input.mousePosition.y - popupHeight, popupWidth, popupHeight), slot + ":\nStrength: " + strength + "\nDexterity: " + dexterity + "\nIntelligence: " + intelligence + "\n", "OutlineText");
+					togglePopup (true, slot + ":\nStrength: " + strength + "\nDexterity: " + dexterity + "\nIntelligence: " + intelligence + "\n");
 				}
 			}
+		} else {
+			togglePopup (false,"");
 		}
 	}
 	

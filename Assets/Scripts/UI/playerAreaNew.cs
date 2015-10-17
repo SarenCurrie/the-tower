@@ -31,12 +31,12 @@ public class playerAreaNew : MonoBehaviour
 		weapon2 = GameObject.Find("Weapon2").GetComponent<RectTransform>();
 		playerArea = GameObject.Find ("PlayerArea").GetComponent<RectTransform>();
 		_InventoryWindowHeight = playerArea.rect.height;
-		_InventoryWindowDown = 0 - _InventoryWindowHeight;
+		_InventoryWindowDown = 0 - 2*_InventoryWindowHeight;
 		_InventoryWindowUp = playerArea.anchoredPosition.y;
 		_Weapon1Down = weapon1.anchoredPosition.y;
-		_Weapon1Up = weapon1.anchoredPosition.y + _InventoryWindowHeight/2f + _InventoryWindowHeight/20f;
+		_Weapon1Up = weapon1.anchoredPosition.y + _InventoryWindowHeight/2f + _InventoryWindowHeight/10f;
 		_Weapon2Down = weapon2.anchoredPosition.y;
-		_Weapon2Up = weapon2.anchoredPosition.y + _InventoryWindowHeight/2f + _InventoryWindowHeight/20f;
+		_Weapon2Up = weapon2.anchoredPosition.y + _InventoryWindowHeight/2f + _InventoryWindowHeight/10f;
 
 	}
 	

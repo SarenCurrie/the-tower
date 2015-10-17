@@ -153,12 +153,12 @@ public class UnitHealth : MonoBehaviour {
 
 		string tag = gameObject.tag;
 		//Increment the player score upon killing an enemy;
-		if (tag.Equals("Enemy"))
+		if (tag.Equals(Tags.ENEMY) || tag.Equals(Tags.BOSS))
 		{
 			// Add the enemies health to the players score
 			UIController.GetUI().GetScoreManager().IncrementScore((int)gameObject.GetComponent<UnitHealth>().maxHealth);
 
-			//Make the current floor play the death sound
+			//Make the audio manager play the death sound
 			AudioSource audioSource = AudioManager.GetAudioSource();
 			audioSource.clip = deathSound;
 			audioSource.Play();
@@ -171,11 +171,24 @@ public class UnitHealth : MonoBehaviour {
 				shouldDrop = false;
 			}
 
+			// If the enemy is a boss, display the boss dialog
+			if(tag.Equals(Tags.BOSS))
+			{
+				UIController.GetUI().ShowDialog(GameManager.currentFloor.exitDialog, 5);
+			}
+
 			// log kill and score for achievemnts
-			GameManager.achievementHandler.AddKill();
-			GameManager.achievementHandler.AddScore();
+			if (GameObject.Find("AchievementHandler") != null)
+			{
+				GameObject.Find("AchievementHandler").GetComponent<AchievementHandler>().AddKill();
+				GameObject.Find("AchievementHandler").GetComponent<AchievementHandler>().AddScore();
+			}
+			else
+			{
+				Debug.LogWarning("AchievementHandler Missing!");
+			}
 		}
-		else if (tag.Equals("Player"))
+		else if (tag.Equals(Tags.PLAYER))
 		{
 			UIController.GetUI().ShowDeathMenu();
 		}

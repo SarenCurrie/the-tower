@@ -73,11 +73,11 @@ public class Armour : Item
                 break;
             case SLOTS.gloves:
                 gameObject.GetComponent<SpriteRenderer>().sprite = gloves;
-                sideSprite = sideLooks[2];
+                sideSprite = sideLooks[3];
                 break;
             case SLOTS.boots:
                 gameObject.GetComponent<SpriteRenderer>().sprite = boots;
-                sideSprite = sideLooks[3];
+                sideSprite = sideLooks[2];
                 break;
         }
 
@@ -155,85 +155,18 @@ public class Armour : Item
             showWindow = false;
     }
 
-
-    //Creates current armour textfield for popup comparison
-    private void DoWindow0(int windowID)
-    {
-        Player player = GetPlayer().GetComponent<Player>();
-
-        Armour armourPiece = null;
-        switch (slot)
-        {
-            case SLOTS.helm:
-                if (player.helm != null)
-                {
-                    armourPiece = player.helm.GetComponent<Armour>();
-                }
-                type = "Helmet";
-                break;
-            case SLOTS.chest:
-                if (player.chest != null)
-                {
-                    armourPiece = player.chest.GetComponent<Armour>();
-                }
-                type = "Chest";
-                break;
-            case SLOTS.gloves:
-                if (player.gloves != null)
-                {
-                    armourPiece = player.gloves.GetComponent<Armour>();
-                }
-                type = "Gloves";
-                break;
-            case SLOTS.boots:
-                if (player.boots != null)
-                {
-                    armourPiece = player.boots.GetComponent<Armour>();
-                }
-                type = "Boots";
-                break;
-        }
-
-        if (armourPiece != null)
-        {
-            int intelligenceFromArmour = armourPiece.intelligence;
-            int strengthFromArmour = armourPiece.strength;
-            int dexterityFromArmour = armourPiece.dexterity;
-
-            GUILayout.TextField(type + ":\nStrength: " + strengthFromArmour + "\nDexterity:  " + dexterityFromArmour + "\nIntelligence " + intelligenceFromArmour + "\n", "OutlineText");
-        }
-    }
-
-    //Creates ground armour textfield for popup comparison
-    private void DoWindow1(int windowID)
-    {
-        switch (slot)
-        {
-            case SLOTS.helm:
-                type = "Helmet";
-                break;
-            case SLOTS.chest:
-                type = "Chest";
-                break;
-            case SLOTS.gloves:
-                type = "Gloves";
-                break;
-            case SLOTS.boots:
-                type = "Boots";
-                break;
-        }
-
-        GUILayout.TextField(type + ":\nStrength: " + strength + "\nDexterity: " + dexterity + "\nIntelligence: " + intelligence + "\n", "OutlineText");
-
-
-    }
     //Called every frame to check if the on hover will open a comparison popup for the weaopn
     void OnGUI()
     {
         GUI.skin = mySkin;
         //Loads the textures being used for popup
         Texture2D texture = Resources.Load("Holographic/output/main/bg/bg") as Texture2D;
-        Texture2D armourPiece=null;
+        Texture2D window = Resources.Load("Holographic/controls/windowBorderless") as Texture2D;
+
+        Armour armourForStat = null;
+        int intelligenceFromArmour = 0;
+        int strengthFromArmour =  0;
+        int dexterityFromArmour = 0;
         
 
         if (showWindow)
@@ -243,40 +176,77 @@ public class Armour : Item
             switch (slot)
             {
                 case SLOTS.helm:
-                    if(player.helm!=null)
-                    armourPiece = player.helm.GetComponent<Armour>().sideSprite.texture as Texture2D;
+                    type = "Helmet";
+                    if (player.helm != null)
+                    {
+                        armourForStat = player.helm.GetComponent<Armour>();
+                    }
                     break;
                 case SLOTS.chest:
+                    type = "Chest";
+
                     if (player.chest != null)
-                    armourPiece = player.chest.GetComponent<Armour>().sideSprite.texture as Texture2D;
+                    {
+                        armourForStat = player.chest.GetComponent<Armour>();
+                    }
                     break;
                 case SLOTS.boots:
+                    type = "Boots";
+
                     if (player.boots != null)
-                    armourPiece = player.boots.GetComponent<Armour>().sideSprite.texture as Texture2D;
+                    {
+                        armourForStat = player.boots.GetComponent<Armour>();
+                    }
                     break;
                 case SLOTS.gloves:
+                    type = "Gloves";
+
                     if (player.gloves != null)
-                    armourPiece = player.gloves.GetComponent<Armour>().sideSprite.texture as Texture2D;
+                    {
+                        armourForStat = player.gloves.GetComponent<Armour>();
+                    }
                     break;
             }
             Texture2D groundArmourPiece = sideSprite.texture as Texture2D;
 
             int offset = 100;
             //Draws the textures being used for popup
-            GUI.DrawTexture(new Rect(Input.mousePosition.x - 160, Screen.height - Input.mousePosition.y - offset, 150, 150), texture);
             GUI.DrawTexture(new Rect(Input.mousePosition.x - 20, Screen.height - Input.mousePosition.y - offset, 150, 150), texture);
-            GUI.DrawTexture(new Rect(Input.mousePosition.x - 120, Screen.height - Input.mousePosition.y - 60, 70, 70), armourPiece);
-            GUI.DrawTexture(new Rect(Input.mousePosition.x + 20, Screen.height - Input.mousePosition.y - 60, 70, 70), groundArmourPiece);
+            GUI.DrawTexture(new Rect(Input.mousePosition.x + 20, Screen.height - Input.mousePosition.y - 45, 70, 40), groundArmourPiece);
+
+            if (armourForStat != null)
+            {
+                intelligenceFromArmour = armourForStat.intelligence;
+                strengthFromArmour = armourForStat.strength;
+                dexterityFromArmour = armourForStat.dexterity;
+
+            }
             //Generates new Window for the current weapon and floor weapon stats 
             if (Input.mousePosition.y <= (Screen.height / 3))
             {
-                GUI.Window(0, new Rect(Input.mousePosition.x - 250, Screen.height - Input.mousePosition.y -160 - offset, 250, 200), DoWindow0, "Current armour:");
-                GUI.Window(1, new Rect(Input.mousePosition.x - 25, Screen.height - Input.mousePosition.y - 160 - offset, 250, 200), DoWindow1, "Floor armour:");
+                GUI.DrawTexture(new Rect(Input.mousePosition.x, Screen.height - Input.mousePosition.y - 160, 150, 90), window);
+                if (armourForStat != null)
+                {
+                    GUI.DrawTexture(new Rect(Input.mousePosition.x - 170, Screen.height - Input.mousePosition.y - 160, 150, 90), window);
+                    GUI.DrawTexture(new Rect(Input.mousePosition.x - 160, Screen.height - Input.mousePosition.y - offset, 150, 150), texture);
+                    GUI.DrawTexture(new Rect(Input.mousePosition.x - 120, Screen.height - Input.mousePosition.y - 45, 70, 40), groundArmourPiece);
+                    GUI.TextField(new Rect(Input.mousePosition.x - 170, Screen.height - Input.mousePosition.y - 160, 150, 90), type + ":\nStrength: " + strengthFromArmour + "\nDexterity:  " + dexterityFromArmour + "\nIntelligence " + intelligenceFromArmour + "\n", "OutlineText");
+                }
+                    GUI.TextField(new Rect(Input.mousePosition.x, Screen.height - Input.mousePosition.y - 160, 150, 90), type + ":\nStrength: " + strength + "\nDexterity: " + dexterity + "\nIntelligence: " + intelligence + "\n", "OutlineText");
             }
             else
             {
-                GUI.Window(0, new Rect(Input.mousePosition.x - 250, Screen.height - Input.mousePosition.y + 120 - offset, 250, 200), DoWindow0, "Current armour:");
-                GUI.Window(1, new Rect(Input.mousePosition.x - 25, Screen.height - Input.mousePosition.y + 120 - offset, 250, 200), DoWindow1, "Floor armour:");
+                GUI.DrawTexture(new Rect(Input.mousePosition.x, Screen.height - Input.mousePosition.y + 120 - offset, 150, 90), window);
+                if (armourForStat != null)
+                {
+                    GUI.DrawTexture(new Rect(Input.mousePosition.x - 170, Screen.height - Input.mousePosition.y + 120 - offset, 150, 90), window);
+                    GUI.DrawTexture(new Rect(Input.mousePosition.x - 160, Screen.height - Input.mousePosition.y - offset, 150, 150), texture);
+                    GUI.DrawTexture(new Rect(Input.mousePosition.x - 120, Screen.height - Input.mousePosition.y - 45, 70, 40), groundArmourPiece);
+
+                    GUI.TextField(new Rect(Input.mousePosition.x - 170, Screen.height - Input.mousePosition.y + 120 - offset, 150, 90), type + ":\nStrength: " + strengthFromArmour + "\nDexterity:  " + dexterityFromArmour + "\nIntelligence " + intelligenceFromArmour + "\n", "OutlineText");
+                }
+                    GUI.TextField(new Rect(Input.mousePosition.x, Screen.height - Input.mousePosition.y + 120 - offset, 150, 90),type + ":\nStrength: " + strength + "\nDexterity: " + dexterity + "\nIntelligence: " + intelligence + "\n", "OutlineText");
+
             }
             
         }

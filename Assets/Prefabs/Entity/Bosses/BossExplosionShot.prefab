@@ -72,10 +72,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  killTime: 2
-  explosionForce: 10
-  explosionRadius: 10
-  damage: 10
+  killTime: 5
+  explosionForce: 900
+  explosionRadius: .899999976
+  damage: 20
   explosion: {fileID: 136066, guid: 7e377ed23b45bae498af618f0454a883, type: 2}
 --- !u!212 &21222794
 SpriteRenderer:
@@ -112,20 +112,24 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: explosionForce
-      value: 10
+      value: 900
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: explosionRadius
-      value: 10
+      value: .899999976
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: damage
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: explosion
       value: 
       objectReference: {fileID: 136066, guid: 7e377ed23b45bae498af618f0454a883, type: 2}
+    - target: {fileID: 0}
+      propertyPath: killTime
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 134214}

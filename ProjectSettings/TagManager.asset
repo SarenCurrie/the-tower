@@ -18,6 +18,7 @@ TagManager:
   - HeartCircle
   - DamageFlash
   - HealthElement
+  - Boss
   layers:
   - Default
   - TransparentFX

@@ -13,7 +13,7 @@ public class Door : MonoBehaviour
 	//How long player must stand in door before the camera fully moves and player is teleported
 	public const float DOOR_CONTACT_TIME = 1f;
 
-	private Vector3 cameraDestination = Camera.main.transform.position;
+	private Vector3 cameraDestination;
 
 	//Current pan time. Will be between 0 and DOOR_CONTACT_TIME
 	private float transitionTime = 0f;
@@ -28,6 +28,11 @@ public class Door : MonoBehaviour
 
 	private const float MAX_FLICKER_VALUE = 0.5f;
 	private const float FLICKER_CHANCE = 0.025f;
+
+	void Start()
+	{
+		cameraDestination = Camera.main.transform.position;
+	}
 
 	public void Update()
 	{
@@ -52,6 +57,10 @@ public class Door : MonoBehaviour
 
 				//Fade camera
 				Camera.main.transform.position = Vector3.Lerp(currentRoom.GetCameraPosition(), nextRoomPos.GetCameraPosition(), (transitionTime / DOOR_CONTACT_TIME));
+
+				//Zoom camera
+				Camera.main.orthographicSize = Mathf.Lerp(currentRoom.GetCameraSize(), nextRoomPos.GetCameraSize(), (transitionTime / DOOR_CONTACT_TIME));
+
 
 				//Fade lights
 				float flicker = 0;
