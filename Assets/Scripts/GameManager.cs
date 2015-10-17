@@ -53,7 +53,8 @@ public class GameManager : MonoBehaviour {
     public static void Restart()
     {
         currentFloorNumber = -1;
-        GameObject.Find("mars-small").GetComponent<Music>().StartMainMusic();
+		if(GameObject.Find("mars-small") != null)
+			GameObject.Find("mars-small").GetComponent<Music>().StartMainMusic();
     }
 
 	public static int GetCurrentFloorNumber()
