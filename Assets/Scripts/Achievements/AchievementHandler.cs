@@ -35,10 +35,10 @@ namespace Achievements {
 			kills++;
 
 			if (kills >= 50) {
-				achievementFactory.KILL_FIFTY_ENEMIES.Achieve();
+				achievementFactory.GetAchievements()["KILL_FIFTY"].Achieve();
 			}
 			else if (kills >= 1) {
-				achievementFactory.KILL_ONE_ENEMY.Achieve();
+				achievementFactory.GetAchievements()["KILL_ONE"].Achieve();
 			}
 		}
 
@@ -46,7 +46,7 @@ namespace Achievements {
 			int score = UIController.GetUI().GetScoreManager().score;
 
 			if (score > 10000) {
-				achievementFactory.SCORE_TEN_THOUSAND.Achieve();
+				achievementFactory.GetAchievements()["SCORE_TEN_THOUSAND"].Achieve();
 			}
 		}
 	}
