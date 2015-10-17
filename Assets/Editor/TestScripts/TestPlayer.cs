@@ -70,7 +70,6 @@ public class TestPlayer
     public void TestPlayerStartingMovementSpeed()
     {
         float desiredMovementSpeed = 20.0f;
-        //TODO
         Player player = instantiator.InstantiateScript<Player>();
         float movementSpeed = player.movementSpeed;
         Assert.AreEqual(desiredMovementSpeed,movementSpeed);
@@ -80,7 +79,6 @@ public class TestPlayer
     [Test]
     public void TestPlayerNoStartingArmourSet()
     {
-        //TODO
         Player player = instantiator.InstantiateScript<Player>();
         GameObject helm = player.helm;
         GameObject chest = player.chest;
