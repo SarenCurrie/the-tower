@@ -1314,7 +1314,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Weapon appearance:'
+  m_Text: 'WEAPON APPEARANCE:'
 --- !u!222 &457939112
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1808,9 +1808,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Top down
-
-    view:'
+  m_Text: 'TOP DOWN VIEW:'
 --- !u!222 &707016883
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3060,7 +3058,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Projectile:'
+  m_Text: PROJECTILE
 --- !u!222 &1005869367
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3891,7 +3889,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Allocate points
+  m_Text: ALLOCATE POINTS
 --- !u!222 &1239195817
 CanvasRenderer:
   m_ObjectHideFlags: 0
