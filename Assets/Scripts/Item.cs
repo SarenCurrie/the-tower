@@ -20,7 +20,7 @@ public abstract class Item : MonoBehaviour {
 
 
 
-	void Start()
+	void Awake()
 	{
 		Generate();
 	}
