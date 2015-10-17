@@ -166,7 +166,7 @@ MonoBehaviour:
   - {fileID: 150992, guid: 38967d0e9904d514bbf502047cb01ae7, type: 2}
   - {fileID: 137116, guid: e336ac26f6c9e1d499f2642f0107b061, type: 2}
   - {fileID: 166386, guid: 18cae03bd3a07e5468853baf39d0d1dd, type: 2}
-  deathSound: {fileID: 8300000, guid: 7fa820df58a8a49d58de70cb13e39e8d, type: 3}
+  deathSound: {fileID: 8300000, guid: 28d3947910f76489a839ae531d30ec79, type: 3}
   damagedBy:
   - PlayerProjectile
 --- !u!114 &11482392
@@ -296,7 +296,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: deathSound
       value: 
-      objectReference: {fileID: 8300000, guid: 7fa820df58a8a49d58de70cb13e39e8d, type: 3}
+      objectReference: {fileID: 8300000, guid: 28d3947910f76489a839ae531d30ec79, type: 3}
     - target: {fileID: 0}
       propertyPath: damagedBy.Array.data[0]
       value: PlayerProjectile
