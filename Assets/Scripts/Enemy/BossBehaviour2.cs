@@ -34,6 +34,7 @@ public class BossBehaviour2 : Enemy {
         if (isCharging)
         {   //Call the SpreadShotEnemy script to fire, 
             //rotate to face the player and move towards the player
+            
             gameObject.GetComponent<SpreadShotEnemy>().Fire();
             MoveToPlayer();
             RotateToFacePlayer();

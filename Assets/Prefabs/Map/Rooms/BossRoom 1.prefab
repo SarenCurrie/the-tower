@@ -169,6 +169,7 @@ GameObject:
   - 114: {fileID: 11438564}
   - 114: {fileID: 11475548}
   - 114: {fileID: 11410714}
+  - 82: {fileID: 8237348}
   m_Layer: 14
   m_Name: Boss1
   m_TagString: Boss
@@ -1165,6 +1166,76 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: .899999976, y: .300000012}
+--- !u!82 &8237348
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 137998}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!114 &11403138
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1207,8 +1278,8 @@ MonoBehaviour:
     type: 3}
   mainCannonProjectileSprite: {fileID: 21300000, guid: 5d41bfa3f684f0848a7918244531e89e,
     type: 3}
-  cannonSound: {fileID: 8300000, guid: ca7f213e4b90c4250aba7ad96784bc87, type: 3}
-  spreadSound: {fileID: 8300000, guid: d9efb9bb3536a4e9c8ca5fa56786c0fb, type: 3}
+  cannonSound: {fileID: 8300000, guid: 28d3947910f76489a839ae531d30ec79, type: 3}
+  spreadSound: {fileID: 8300000, guid: 3ea592fd5e4bb44259bd84fc4c15e586, type: 3}
 --- !u!114 &11411926
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1259,6 +1330,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fef10ccd2b8ac86429de2e306c715fe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SMALL_ROOM_CAMERA_SIZE: 3.32220006
+  BIG_ROOM_CAMERA_SIZE: 8
+  bigRoom: 0
 --- !u!114 &11448592
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1965,7 +2039,6 @@ Prefab:
       value: 
       objectReference: {fileID: 166386, guid: 18cae03bd3a07e5468853baf39d0d1dd, type: 2}
     - target: {fileID: 0}
-
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
@@ -2088,12 +2161,11 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: cannonSound
       value: 
-      objectReference: {fileID: 8300000, guid: ca7f213e4b90c4250aba7ad96784bc87, type: 3}
+      objectReference: {fileID: 8300000, guid: 28d3947910f76489a839ae531d30ec79, type: 3}
     - target: {fileID: 0}
       propertyPath: spreadSound
       value: 
-      objectReference: {fileID: 8300000, guid: d9efb9bb3536a4e9c8ca5fa56786c0fb, type: 3}
-
+      objectReference: {fileID: 8300000, guid: 3ea592fd5e4bb44259bd84fc4c15e586, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 193178}
