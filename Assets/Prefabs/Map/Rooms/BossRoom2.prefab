@@ -175,6 +175,7 @@ GameObject:
   - 114: {fileID: 11423574}
   - 114: {fileID: 11464912}
   - 95: {fileID: 9501160}
+  - 82: {fileID: 8206654}
   m_Layer: 14
   m_Name: Boss2 (3)
   m_TagString: Enemy
@@ -583,6 +584,76 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: .0299999993, y: 4}
+--- !u!82 &8206654
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 166066}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!82 &8232186
 AudioSource:
   m_ObjectHideFlags: 1
@@ -808,7 +879,7 @@ MonoBehaviour:
   possibleProjectileSprites:
   - {fileID: 21300000, guid: 2cae16e5aa237c2458d66b133364d03b, type: 3}
   possibleSounds:
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 8928fac6adbe74ab0ac97bfc34efba13, type: 3}
   spread: 18
   spreadRange: 360
   minBurstTime: 0
@@ -1163,6 +1234,10 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 2cd066ae2f8fd7643b284dfa69970e42, type: 2}
+    - target: {fileID: 0}
+      propertyPath: possibleSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 8928fac6adbe74ab0ac97bfc34efba13, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 131790}
