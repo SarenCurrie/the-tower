@@ -179,7 +179,7 @@ MonoBehaviour:
   possibleProjectileSprites:
   - {fileID: 21300000, guid: 5d41bfa3f684f0848a7918244531e89e, type: 3}
   possibleSounds:
-  - {fileID: 8300000, guid: c7b8685e162577f41b72736b13f8be7a, type: 3}
+  - {fileID: 8300000, guid: d9efb9bb3536a4e9c8ca5fa56786c0fb, type: 3}
 --- !u!114 &11467372
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -269,6 +269,10 @@ Prefab:
       propertyPath: bloodPrefabs.Array.data[3]
       value: 
       objectReference: {fileID: 166386, guid: 18cae03bd3a07e5468853baf39d0d1dd, type: 2}
+    - target: {fileID: 0}
+      propertyPath: possibleSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: d9efb9bb3536a4e9c8ca5fa56786c0fb, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 106002}
