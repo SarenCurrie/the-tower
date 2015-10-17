@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BossBehaviour : Enemy {
+public class BossBehaviour : Enemy
+{
 
 	public void RotateToFacePlayer()
 	{
