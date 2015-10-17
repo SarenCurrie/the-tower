@@ -202,6 +202,28 @@ public class Weapon : Item
         intelligenceModifier = modifiers[2];
     }
 
+    public Weapon GenerateCustom(Sprite projectile, Sprite selectedSideLook, Sprite unselectedSideLook, Sprite selectedTopDownLook, int fireRate, int projectiles, int spreadAngle,
+        int force, int majorModifier, int minorModifier)
+    {
+        projectileSprite = projectile;
+        selectedSprite = selectedSideLook;
+        unSelectedSprite = unselectedSideLook;
+        gameObject.GetComponent<SpriteRenderer>().sprite = selectedTopDownLook;
+
+
+        fireFrequency = fireRate;
+        spread = projectiles;
+        if (projectiles != 1)
+            spreadRange = spreadAngle;
+
+        fireForce = force;
+
+        weaponMajor = (WeaponStat) majorModifier;
+        weaponMinor = (WeaponStat) minorModifier;
+
+        return this;
+    }
+
     /*
     *  Picks a weapon up off the ground and puts it in the correct weapon slot
     */
