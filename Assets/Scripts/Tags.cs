@@ -1,6 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+///
+/// A class holding constants representing all possible tags
+/// of the GameObjects
+///
+/// </summary>
 public static class Tags {
 	public const string PLAYER = "Player";
 	public const string ENEMY = "Enemy";
@@ -13,4 +19,5 @@ public static class Tags {
 	public const string HEALTH_ELEMENT = "HealthElement";
 	public const string SCORE = "Score";
 	public const string DAMAGE_FLASH = "DamageFlash";
+	public const string BOSS = "Boss";
 }

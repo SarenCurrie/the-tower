@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+///
+/// An enemy that will slowly chase the player and explode upon touching them
+///
+/// </summary>
 public class SuicideEnemy : Enemy
 {
 
@@ -28,12 +33,14 @@ public class SuicideEnemy : Enemy
 	{
 		if (body.IsTouching(GameManager.GetPlayer().GetComponent<CircleCollider2D>()))
 		{
-			//Create an explosion at this point
-			Explosion.CreateExplosion(explosionPrefab, explosionForce, explosionRadius, damage, transform.position);
-
 			//Kill this suicide enemy
 			GetComponent<UnitHealth>().Die();
 		}
+	}
 
+	void OnDestroy()
+	{
+		//Create an explosion at this point
+		Explosion.CreateExplosion(explosionPrefab, explosionForce, explosionRadius, damage, transform.position);
 	}
 }

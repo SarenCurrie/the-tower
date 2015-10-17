@@ -1,10 +1,13 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
+
 
 /**
 *The behaviour script for the second boss
 */
+
 public class BossBehaviour2 : Enemy {
+
 
     private bool isCharging = false;
     public float chargeDamage;
