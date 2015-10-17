@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+///
+/// Script associated with the elevator that spawns in every boss room
+///
+/// </summary>
 public class Elevator : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other)
 	{

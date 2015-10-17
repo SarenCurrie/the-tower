@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+///
+/// Deals with explosions in the game
+///
+/// </summary>
 public class Explosion : MonoBehaviour {
 
 	public float explosionForce = -1;

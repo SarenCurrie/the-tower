@@ -2,6 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/// <summary>
+///
+/// Enemy that will chase the player, dealing damage as soon as it makes contact with them
+///
+/// </summary>
 public class ContactEnemy : Enemy
 {
 	private float attackTick = 0;
@@ -13,6 +18,9 @@ public class ContactEnemy : Enemy
 		ContactDamage();
 	}
 
+	/**
+	* Deals damage to the player if the the enemy is in contact with it
+	*/
 	void ContactDamage()
 	{
 		if (Time.time > attackTick + attackTime)

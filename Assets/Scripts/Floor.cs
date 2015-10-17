@@ -2,6 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/// <summary>
+///
+/// This script handles all requirements of a single floor
+///
+/// </summary>
 public class Floor : MonoBehaviour {
 
 	public const int NO_ROOMS_X = 7;
@@ -49,6 +54,7 @@ public class Floor : MonoBehaviour {
 	private int currentRoomX = STARTING_ROOM_X;
 	private int currentRoomY = STARTING_ROOM_Y;
 
+	// The room that the player is currently in
 	public Room currentRoom
 	{
 		get
@@ -81,6 +87,9 @@ public class Floor : MonoBehaviour {
 		}
 	}
 
+	/**
+	* Creates the floor
+	*/
 	public void GenerateFloor()
 	{
 		for (int i = 0; i < NO_ROOMS_X; i++)
@@ -160,11 +169,17 @@ public class Floor : MonoBehaviour {
 		}
 	}
 
+	/**
+	* Returns the position of the floor in the world
+	*/
 	private Vector3 GetWorldPosition(int x, int y)
 	{
 		return new Vector2(x * Room.ROOM_WIDTH, -y * Room.ROOM_HEIGHT);
 	}
 
+	/**
+	* Returns the total number of enemies left in the floor
+	*/
 	public int EnemiesLeft()
 	{
 		int enemyCount = 0;
@@ -174,6 +189,9 @@ public class Floor : MonoBehaviour {
 		return enemyCount;
 	}
 
+	/**
+	* Returns the room that a door will move the player to
+	*/
 	public Room GetDoorDestination(Door.DOOR_ORIENTATION orientation)
 	{
 		return GetDoorDestination(currentRoomX, currentRoomY, orientation);
@@ -216,6 +234,9 @@ public class Floor : MonoBehaviour {
 		}
 	}
 
+	/**
+	* Places the player in the starting room of the floor
+	*/
 	public void MovePlayerToFloor(GameObject player)
 	{
 		currentRoom.MovePlayerToRoom(player);

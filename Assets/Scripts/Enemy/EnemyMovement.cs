@@ -2,6 +2,11 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+/// <summary>
+///
+/// Defines how the enemy moves around the room
+///
+/// </summary>
 public class EnemyMovement : Enemy
 {
 

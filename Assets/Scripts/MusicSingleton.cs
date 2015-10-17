@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+///
+/// Singleton that plays the music
+///
+/// </summary>
 public class MusicSingleton : MonoBehaviour {
 	private static MusicSingleton instance = null;
 	public static MusicSingleton Instance {

@@ -1,10 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+///
+/// Enemies that track the player and fire at them with automatic weapons
+///
+///</summary>
 public class RangedEnemy : Enemy
 {
     private const float BASE_HIT_DAMAGE = 0.01f;
 
+    //Variables that change the weapon of the enemy
     public Transform projectilePrefab;
 
     public float fireForce;
@@ -47,6 +53,9 @@ public class RangedEnemy : Enemy
         MaybeFireAtPlayer();
     }
 
+    /**
+    * Fire at the player
+    */
     public void Fire()
     {
         Fire(CalculateDamage());
@@ -74,11 +83,17 @@ public class RangedEnemy : Enemy
         }
     }
 
+    /**
+    * Calculate the amount of damage the player should take
+    */
     private float CalculateDamage()
     {
         return (DAMAGEMULTIPLIER * damageMod);
     }
 
+    /**
+    * Generate all the random aspects of the enemy
+    */
     public virtual void Generate()
     {
         damageMod = (float)((50 * 25) /
@@ -94,6 +109,9 @@ public class RangedEnemy : Enemy
 		}
 	}
 
+    /**
+    * Determine if the enemy should currently be firing at the player
+    */
     protected void MaybeFireAtPlayer()
     {
 		if (CanSeePlayer())
@@ -126,6 +144,9 @@ public class RangedEnemy : Enemy
 		}
     }
 
+    /**
+    * Stops the enemy from firing for a period and let them start their burst again afterwards
+    */
 	protected void Reload()
 	{
 		nextFireTime = Random.Range(minFireWait, maxFireWait);
@@ -138,6 +159,10 @@ public class RangedEnemy : Enemy
         return burstTime;
     }
 
+    /**
+    * Returns true if there is a straight line between the enemy and player with
+    * no obstacles
+    */
 	protected bool CanSeePlayer()
 	{
 		if (GameManager.GetPlayer() == null)

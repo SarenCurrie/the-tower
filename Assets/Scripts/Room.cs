@@ -2,6 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/// <summary>
+///
+/// This script handles all required actions of a single room
+///
+/// </summary>
 public class Room : MonoBehaviour {
 
 	public const float ROOM_WIDTH = 9.0f;
@@ -9,14 +14,21 @@ public class Room : MonoBehaviour {
 
 	public const float CAMERA_HEIGHT = -10f;
 
+	// A black box placed over the top of the room to create the lighting effect
 	private GameObject screenBlacker;
 
+	/**
+	* Gets the current position of the camera
+	*/
 	public Vector3 GetCameraPosition()
 	{
 		Vector2 pos = transform.position;
 		return new Vector3(pos.x, pos.y, CAMERA_HEIGHT);
 	}
 
+	/**
+	* Spawns the enemies in the room upon room creation
+	*/
 	public void SpawnEnemies(GameObject[] enemies)
 	{
 		foreach (Transform t in transform)
@@ -30,6 +42,9 @@ public class Room : MonoBehaviour {
 		}
 	}
 
+	/**
+	* Spawns the black box over the room upon room creation
+	*/
 	public void SpawnScreenBlacker(GameObject screenBlackerPrefab)
 	{
 		screenBlacker = Instantiate(screenBlackerPrefab, transform.position, Quaternion.identity) as GameObject;
@@ -37,6 +52,10 @@ public class Room : MonoBehaviour {
 		SetBlackerAlpha(Door.BLACK_ALPHA);
 	}
 
+	/**
+	* Destroys the specified door, used in map generation to remove doors
+	* that don't lead to another room.
+	*/
 	public void DisableDoor(Door.DOOR_ORIENTATION disableOrientation)
 	{
 		foreach (Transform t in transform)
@@ -52,6 +71,10 @@ public class Room : MonoBehaviour {
 		}
 	}
 
+	/**
+	* Disables or enables all enemies in the room. Stops enemies from
+	* moving and using resources when the player isn't in the room.
+	*/
 	private void DisableOrEnableEnemies(Transform trans, bool enable)
 	{
 		foreach (Transform child in trans)
@@ -134,6 +157,9 @@ public class Room : MonoBehaviour {
 		}
 	}
 
+	/**
+	* Sets the transparency of the black box over the room
+	*/
 	public void SetBlackerAlpha(float alpha)
 	{
 		if (screenBlacker != null)
