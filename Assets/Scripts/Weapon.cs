@@ -10,7 +10,8 @@ using System;
 ///
 /// It declares the unique properties of each Weapon, the main attributes include:
 ///
-/// -spread - How much the weapon spreads
+/// -spread - Number of projectiles the weapon fires
+/// -spreadRange - Angle that the projectiles leave the gun at
 /// -fireForce - The force of the weapon projectiles
 /// -fireFrequency - How often the weapon can fire a projectile
 /// -damage - based on the Entity's statistics and the damageMod (damage modifier)
