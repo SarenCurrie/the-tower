@@ -10,12 +10,22 @@ using System.Collections.Generic;
 public class Room : MonoBehaviour {
 
 	public const float ROOM_WIDTH = 9.0f;
+
 	public const float ROOM_HEIGHT = 5.4f;
 
 	public const float CAMERA_HEIGHT = -10f;
 
 	// A black box placed over the top of the room to create the lighting effect
 	private GameObject screenBlacker;
+
+	public float SMALL_ROOM_CAMERA_SIZE = 3.3222f;
+	public float BIG_ROOM_CAMERA_SIZE = 8f;
+	public bool bigRoom = false;
+
+	public float GetCameraSize()
+	{
+		return bigRoom ? BIG_ROOM_CAMERA_SIZE : SMALL_ROOM_CAMERA_SIZE;
+	}
 
 	/**
 	* Gets the current position of the camera

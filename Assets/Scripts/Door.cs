@@ -65,6 +65,10 @@ public class Door : MonoBehaviour
 				//Fade camera
 				Camera.main.transform.position = Vector3.Lerp(currentRoom.GetCameraPosition(), nextRoomPos.GetCameraPosition(), (transitionTime / DOOR_CONTACT_TIME));
 
+				//Zoom camera
+				Camera.main.orthographicSize = Mathf.Lerp(currentRoom.GetCameraSize(), nextRoomPos.GetCameraSize(), (transitionTime / DOOR_CONTACT_TIME));
+
+
 				//Fade lights
 				float flicker = 0;
 				if (Random.Range(0f, 1f) > 1 - FLICKER_CHANCE)
