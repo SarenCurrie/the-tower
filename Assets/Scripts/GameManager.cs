@@ -28,7 +28,15 @@ public class GameManager : MonoBehaviour {
 	public LayerMask enemySightLayerMask;
 	public static LayerMask staticEnemySightLayerMask;
 
+	//cursor stuff
+	public Texture2D cursorTexture;
+	public CursorMode cursorMode = CursorMode.Auto;
+	public Vector2 hotSpot = new Vector2(381f, 383.5f);
+
 	void Start () {
+		if(cursorTexture != null)
+			Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+
 		staticFloorPrefabs = floorPrefabs;
 		staticEnemySightLayerMask = enemySightLayerMask;
 
