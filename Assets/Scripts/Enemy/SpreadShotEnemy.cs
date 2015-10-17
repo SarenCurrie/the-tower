@@ -36,21 +36,24 @@ public class SpreadShotEnemy : RangedEnemy
 			{
 				Transform projectile = Instantiate(projectilePrefab, transform.position, transform.rotation) as Transform;
 				projectile.GetComponent<SpriteRenderer>().sprite = projectileSprite;
-                Transform projectileTransform = projectile.GetComponent<Transform>();
-                if (spread > 1)
-                {
-                    projectileTransform.Rotate(new Vector3(0, 0, -(spreadRange / 2) + i * (spreadRange / (spread - 1))));
-                }
-                projectile.GetComponent<Rigidbody2D>().AddForce((projectileTransform.up) * fireForce);
-                projectile.GetComponent<Projectile>().SetDamage(damage);
+				Transform projectileTransform = projectile.GetComponent<Transform>();
+				if (spread > 1)
+				{
+					projectileTransform.Rotate(new Vector3(0, 0, -(spreadRange / 2) + i * (spreadRange / (spread - 1))));
+				}
+				projectile.GetComponent<Rigidbody2D>().AddForce((projectileTransform.up) * fireForce);
+				projectile.GetComponent<Projectile>().SetDamage(damage);
 
 				//Should be added as part of the current room
 				projectile.parent = GameManager.currentFloor.currentRoom.transform;
 			}
 			lastFired = Time.time;
-			AudioSource source = GetComponent<AudioSource>();
-			source.clip = actualSound;
-			source.Play();
+			if (GetComponent<AudioSource>() != null)
+			{
+				AudioSource source = GetComponent<AudioSource>();
+				source.clip = actualSound;
+				source.Play();
+			}
 		}
 	}
 
