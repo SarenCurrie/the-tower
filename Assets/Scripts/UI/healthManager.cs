@@ -18,6 +18,7 @@ public class HealthManager
 	private int t=85;
 	private Object[] objects;
 	private Sprite[] sprites;
+	private Sprite flatline;
 	private float health = 100f;
 
 	public HealthManager()
@@ -34,6 +35,9 @@ public class HealthManager
 			sprites[i] = (Sprite)objects[i];
 		}
 
+		//Get flatline sprite
+		Object obj = Resources.Load("Holographic/output/flatline", typeof(Sprite));
+		flatline = (Sprite)obj;
 	}
 
 	public void UpdateHealth()
@@ -53,12 +57,17 @@ public class HealthManager
 
         if (delay <= 0)
 		{
-			//Advance one frame
-			frameCounter = (++frameCounter) % sprites.Length;
+			if (health > 0){
+				//Advance one frame
+				frameCounter = (++frameCounter) % sprites.Length;
 
-			UIController.GetUI().SetHealthSprite(sprites[frameCounter]);
-			// Delay depends on health - speeds up as player loses health
-			delay = 0.5f * health / 4000f;
+				UIController.GetUI().SetHealthSprite(sprites[frameCounter]);
+				// Delay depends on health - speeds up as player loses health
+				delay = 0.5f * health / 4000f;
+			} else {
+				// Flatline health
+				UIController.GetUI().SetHealthSprite(flatline);
+			}
 		}
     }
 
