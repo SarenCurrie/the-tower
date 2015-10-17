@@ -14,7 +14,7 @@ namespace Achievements {
 		private float totalDamage;
 		private int totalBlood;
 		private int roomsVisited;
-		private AchievementFactory achievementFactory;
+		public AchievementFactory achievementFactory;
 
 		void Awake() {
 			kills = 0;
