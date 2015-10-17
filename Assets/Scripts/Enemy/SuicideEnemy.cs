@@ -38,7 +38,7 @@ public class SuicideEnemy : Enemy
 		}
 	}
 
-	void OnDestroy()
+	public override void Die()
 	{
 		//Create an explosion at this point
 		Explosion.CreateExplosion(explosionPrefab, explosionForce, explosionRadius, damage, transform.position);

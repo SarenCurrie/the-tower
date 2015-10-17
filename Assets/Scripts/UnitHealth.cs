@@ -178,6 +178,14 @@ public class UnitHealth : MonoBehaviour {
 				Item.GenerateArmour(gameObject.transform.position);
 			}
 
+			/**
+			 * Call the die method on all enemy components
+			 */ 
+			foreach (Enemy e in GetComponents<Enemy>())
+			{
+				e.Die();
+			}
+
 			// log kill and score for achievemnts
 			if (GameObject.Find("AchievementHandler") != null)
 			{
