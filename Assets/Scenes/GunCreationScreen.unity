@@ -122,7 +122,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22414044, guid: 622ed83b320e3db41a5a7b4d42785d45, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 22414044, guid: 622ed83b320e3db41a5a7b4d42785d45, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -166,41 +166,36 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22498724, guid: 622ed83b320e3db41a5a7b4d42785d45, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22431494, guid: 622ed83b320e3db41a5a7b4d42785d45, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22461148, guid: 622ed83b320e3db41a5a7b4d42785d45, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22455428, guid: 622ed83b320e3db41a5a7b4d42785d45, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22473770, guid: 622ed83b320e3db41a5a7b4d42785d45, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22414034, guid: 622ed83b320e3db41a5a7b4d42785d45, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22405788, guid: 622ed83b320e3db41a5a7b4d42785d45, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22428430, guid: 622ed83b320e3db41a5a7b4d42785d45, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11442352, guid: 622ed83b320e3db41a5a7b4d42785d45, type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 9f45901503345484595866fa192fd213,
-        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 622ed83b320e3db41a5a7b4d42785d45, type: 2}
   m_IsPrefabParent: 0
@@ -363,4 +358,4 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1

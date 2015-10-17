@@ -205,7 +205,6 @@ public class Weapon : Item
     public void GenerateCustom(Sprite projectile, Sprite selectedSideLook, Sprite unselectedSideLook, Sprite selectedTopDownLook, int fireRate, int projectiles, int spreadAngle,
         int force, float damage, int majorModifier, int minorModifier)
     {
-        print("BEING CALLED");
         projectileSprite = projectile;
         selectedSprite = selectedSideLook;
         unSelectedSprite = unselectedSideLook;

@@ -1415,7 +1415,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 2cae16e5aa237c2458d66b133364d03b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ebe4c5176d748c342aacdc63f75e1bbd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2204,9 +2204,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'CREATE WEAPON
-
-'
+  m_Text: CREATE WEAPON AND RETURN
 --- !u!114 &11429196
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2519,7 +2517,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 0a503f03f1cd174458157c5b520c7e21, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9f45901503345484595866fa192fd213, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -3245,6 +3243,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c35c06aa0c82e6f48a44ccdc7107914d, type: 3}
   - {fileID: 21300000, guid: 4c8ec4abfc442ff4b9b2cb269f33c616, type: 3}
   - {fileID: 21300000, guid: 7024ce434a4212245897a3ab4bff88d5, type: 3}
+  - {fileID: 21300000, guid: 4b262aeb31180c64f94a52336b9c01c4, type: 3}
+  - {fileID: 21300000, guid: e915ba66eeee81d4f8306795506ddabc, type: 3}
+  - {fileID: 21300000, guid: 490714376d8f1d1429126c6a73f33baa, type: 3}
+  - {fileID: 21300000, guid: 8874d4fad0cf5eb46a5e0966a8616c30, type: 3}
   - {fileID: 21300000, guid: 7ee71cb80c3094d4483bb80ec3f217aa, type: 3}
   selectedSideLooks:
   - {fileID: 21300000, guid: 9f45901503345484595866fa192fd213, type: 3}
@@ -3257,6 +3259,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: aa11f3414fcd9ed4cb9eaf0ae7a9e599, type: 3}
   - {fileID: 21300000, guid: 675e16dbca343fa45bc392d9a4f8eadd, type: 3}
   - {fileID: 21300000, guid: 5c0490f0cac069f4a902dfb81f2a0036, type: 3}
+  - {fileID: 21300000, guid: a83ad51c54f8d1d469a77048b518c954, type: 3}
+  - {fileID: 21300000, guid: 2100b83db4a17ad458b06f5f166d4e97, type: 3}
+  - {fileID: 21300000, guid: d754e4528e872bf44963218bf934d27f, type: 3}
+  - {fileID: 21300000, guid: 7e362a83817dce44a8805dd25f9c4a1d, type: 3}
   - {fileID: 21300000, guid: 7c5cfebac754b284d80001cf8676e7b9, type: 3}
   unselectedSideLooks:
   - {fileID: 21300000, guid: cb5c5884a13969243a3199bb16a862b3, type: 3}
@@ -3269,6 +3275,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 6e4a617c95fcbb44e9802134a3a7da70, type: 3}
   - {fileID: 21300000, guid: 8e8083eca8e3b3f4aa2f30e6aa24d641, type: 3}
   - {fileID: 21300000, guid: bd0f806d30ebadf478ba606c2f88e6f6, type: 3}
+  - {fileID: 21300000, guid: 4b9708eaffff8b24fb2ccb1dae12de24, type: 3}
+  - {fileID: 21300000, guid: 137be9328de40f347a78205cb37f1d10, type: 3}
+  - {fileID: 21300000, guid: 09c917078627e5744bacc8149ef44046, type: 3}
+  - {fileID: 21300000, guid: 87d44b58c14b7054f9a0f2b8290f648a, type: 3}
   - {fileID: 21300000, guid: 8a670e225765df64391a8227f0d7b3f1, type: 3}
   possibleProjectileSprites:
   - {fileID: 21300000, guid: ebe4c5176d748c342aacdc63f75e1bbd, type: 3}
@@ -5581,8 +5591,8 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -457, y: -261}
-  m_SizeDelta: {x: 250, y: 70}
+  m_AnchoredPosition: {x: -448, y: -275}
+  m_SizeDelta: {x: 272, y: 134}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22461608
 RectTransform:
@@ -5989,7 +5999,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2, y: -3}
+  m_AnchoredPosition: {x: -5.96049995e-06, y: 19}
   m_SizeDelta: {x: 0, y: -7.30000019}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22487466

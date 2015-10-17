@@ -13,8 +13,9 @@ GameObject:
   - 61: {fileID: 6119930}
   - 50: {fileID: 5020852}
   - 82: {fileID: 8265330}
+  - 114: {fileID: 11424222}
   m_Layer: 11
-  m_Name: GroundGun
+  m_Name: PersistentGroundGun
   m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -231,6 +232,17 @@ MonoBehaviour:
   selectedSprite: {fileID: 21300000, guid: 7aa41bbf9af5a094991d9dcc3f11b097, type: 3}
   unSelectedSprite: {fileID: 21300000, guid: a1d6649b41af85746841e7913e9a35ec, type: 3}
   showWindow: 0
+--- !u!114 &11424222
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8315dbffbe784a359a89276a58b3fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21231088
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -41,6 +41,10 @@ public class GunCreationScreen : MonoBehaviour {
         topDownObject = GameObject.Find("topView");
         weaponObject = GameObject.Find("sideView");
         projectileObject = GameObject.Find("projectile");
+        selectedTopDownLook = topDownLooks[0];
+        selectedSideLook = selectedSideLooks[0];
+        unselectedSideLook = unselectedSideLooks[0];
+        projectileSprite = possibleProjectileSprites[0];
 
 	}
 	
@@ -97,6 +101,7 @@ public class GunCreationScreen : MonoBehaviour {
 
         topDownObject.GetComponent<Image>().sprite = topDownLooks[weaponIndex];
         projectileObject.GetComponent<Image>().sprite = possibleProjectileSprites[projectileIndex];
+        projectileSprite = possibleProjectileSprites[projectileIndex]; 
 
     }
 
@@ -157,6 +162,7 @@ public class GunCreationScreen : MonoBehaviour {
         GameObject weapon = Item.GenerateWeapon(new Vector3(0,0,0), true);
         weapon.GetComponent<Weapon>().GenerateCustom(projectileSprite, selectedSideLook, unselectedSideLook, selectedTopDownLook, fireRate, projectiles, spreadAngle,
         fireForce, damageMod, majorModifier, minorModifier);
+        Application.LoadLevel("StartScreen");
     }
 
     public void RecalculateDamage()
@@ -171,7 +177,6 @@ public class GunCreationScreen : MonoBehaviour {
 
     public void BackToMainScreen()
     {
-        GameManager.Restart();
 		Application.LoadLevel ("StartScreen");
     }
 
