@@ -15,6 +15,7 @@ GameObject:
   - 114: {fileID: 11496154}
   - 114: {fileID: 11400982}
   - 82: {fileID: 8236558}
+  - 114: {fileID: 11459650}
   m_Layer: 14
   m_Name: ContactEnemyRotatorF3
   m_TagString: Enemy
@@ -169,6 +170,18 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: 7fa820df58a8a49d58de70cb13e39e8d, type: 3}
   damagedBy:
   - PlayerProjectile
+--- !u!114 &11459650
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21e91d8b5437e0e43892465c42d3e437, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionForceModifier: 0
 --- !u!114 &11496154
 MonoBehaviour:
   m_ObjectHideFlags: 1

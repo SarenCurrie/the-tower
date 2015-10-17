@@ -15,6 +15,7 @@ GameObject:
   - 114: {fileID: 11498050}
   - 114: {fileID: 11434576}
   - 82: {fileID: 8252588}
+  - 114: {fileID: 11429930}
   m_Layer: 14
   m_Name: SingleShotEnemyTankF1
   m_TagString: Enemy
@@ -160,6 +161,18 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: 7fa820df58a8a49d58de70cb13e39e8d, type: 3}
   damagedBy:
   - PlayerProjectile
+--- !u!114 &11429930
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21e91d8b5437e0e43892465c42d3e437, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionForceModifier: 10
 --- !u!114 &11434576
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -276,6 +289,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: reloadFactor
       value: .800000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: explosionForceModifier
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
