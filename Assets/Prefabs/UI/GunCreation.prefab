@@ -3749,7 +3749,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'TOP DOWN VIEW:'
+  m_Text: TOP DOWN VIEW
 --- !u!114 &11484180
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4200,7 +4200,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'WEAPON APPEARANCE:'
+  m_Text: WEAPON APPEARANCE
 --- !u!114 &11494082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5788,7 +5788,7 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -2.38419998e-05, y: -271}
+  m_AnchoredPosition: {x: 8, y: -293}
   m_SizeDelta: {x: 512, y: 103}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22469256
