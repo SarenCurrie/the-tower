@@ -68,7 +68,6 @@ public class Weapon : Item
 
 
 
-
     public void Fire(Player p)
     {
         Fire(CalculateDamage(p));
@@ -197,6 +196,40 @@ public class Weapon : Item
         }
         weaponMinor = (WeaponStat)minor;
         modifiers[attributes[minor]] = 1 - majorMod;
+
+        strengthModifier = modifiers[0];
+        dexterityModifier = modifiers[1];
+        intelligenceModifier = modifiers[2];
+    }
+
+    public void GenerateCustom(Sprite projectile, Sprite selectedSideLook, Sprite unselectedSideLook, Sprite selectedTopDownLook, int fireRate, int projectiles, int spreadAngle,
+        int force, float damage, int majorModifier, int minorModifier)
+    {
+        projectileSprite = projectile;
+        selectedSprite = selectedSideLook;
+        unSelectedSprite = unselectedSideLook;
+        gameObject.GetComponent<SpriteRenderer>().sprite = selectedTopDownLook;
+
+
+        fireFrequency = fireRate;
+        spread = projectiles;
+
+        spreadRange = spreadAngle;
+
+        fireForce = force;
+        damageMod = damage;
+
+        weaponMajor = (WeaponStat) majorModifier;
+        weaponMinor = (WeaponStat) minorModifier;
+
+        List<int> attributes = new List<int>(new int[] { 0, 1, 2 });
+        float[] modifiers = new float[3] { 0, 0, 0 };
+
+        float majorMod = UnityEngine.Random.Range(0.5f, 0.85f);
+
+        modifiers[attributes[majorModifier]] = majorMod;
+
+        modifiers[attributes[minorModifier]] = 1 - majorMod;
 
         strengthModifier = modifiers[0];
         dexterityModifier = modifiers[1];
