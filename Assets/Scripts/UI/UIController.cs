@@ -28,6 +28,7 @@ public class UIController : MonoBehaviour {
 	private ScoreManager scoreManager;
 	private HealthManager healthManager;
 	private DamageFlash damageFlash;
+	private HighScorePoster poster;
 
 	//Singleton Pattern
 	public static UIController ui;
@@ -75,6 +76,7 @@ public class UIController : MonoBehaviour {
 		scoreManager = new ScoreManager();
 		healthManager = new HealthManager();
 		damageFlash = new DamageFlash();
+		poster = this.GetComponent<HighScorePoster>();
 	}
 
 	void Update()
@@ -158,6 +160,16 @@ public class UIController : MonoBehaviour {
 		forceUnpause();
 		GameManager.Restart();
 		Application.LoadLevel (startScreenName);
+	}
+
+	public void postHighScore(string name,int score)
+	{
+		poster.NewHighScore(name, score);
+	}
+
+	public void donePosting()
+	{
+		GameObject.Find("DeathMenu").GetComponent<DeathMenu>().donePosting();
 	}
 
 

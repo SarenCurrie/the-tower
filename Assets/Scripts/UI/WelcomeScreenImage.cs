@@ -4,80 +4,91 @@ using UnityEngine.UI;
 
 public class WelcomeScreenImage : MonoBehaviour {
 		
-	public GUISkin mySkin;
 	public string firstLevelName;
-	public static bool continueEnabled = false;
+	public string weaponCreationName;
+	//The screen we are on
+	public static SCREEN currentScreen;
+	private float _MoveSpeed = 20f;
 
-	// Start rect above the screen
-	private Rect buttonRect = new Rect(Screen.width/20, 0 - Screen.height, 280, 230);
-	private bool onStartScreen = true;
-	private Image image;
+	private float startMenuUp;
+	private float startMenuDown;
+	
+	private RectTransform startArea;
+	private Vector2 temp;
 
-	void ButtonArea(int windowID){
-		GUILayout.BeginHorizontal();
-		GUILayout.Space(10);
-		GUILayout.BeginVertical();
-		
-		GUILayout.BeginHorizontal ();
-		GUILayout.FlexibleSpace();
-		GUILayout.Label("THE TOWER", "ShortLabel");
-		GUILayout.FlexibleSpace();
-		GUILayout.EndHorizontal ();
-
-		GUILayout.BeginHorizontal ();
-		GUILayout.FlexibleSpace();
-		if (GUILayout.Button("Begin", "ShortButton")) {
-			// Start game here
-			Application.LoadLevel(firstLevelName);
-		}
-		GUILayout.FlexibleSpace();
-		GUILayout.EndHorizontal ();
-
-		GUILayout.BeginHorizontal ();
-		GUILayout.FlexibleSpace();
-		GUI.enabled = continueEnabled;
-		GUILayout.Button("Continue", "ShortButton");
-		GUI.enabled = true;
-		GUILayout.FlexibleSpace();
-		GUILayout.EndHorizontal ();
-
-		GUILayout.BeginHorizontal ();
-		GUILayout.FlexibleSpace();
-		if (GUILayout.Button("Quit", "ShortButton")) {
-			// Exit the game
-			Application.Quit();
-		}
-		GUILayout.FlexibleSpace();
-		GUILayout.EndHorizontal ();
-
-		GUILayout.EndVertical();
-		GUILayout.Space(10);
-		GUILayout.EndHorizontal();
+	public enum SCREEN
+	{
+		startmenu = 0,
+		credits = 1,
+		highscores = 2,
+		achievements = 3
 	}
 
-	void Start() {
-		image = this.GetComponent<Image> ();
-		InvokeRepeating("Flicker", 0, 5f);
+	void Awake()
+	{
+		startArea = this.GetComponent<RectTransform> ();
+		startMenuUp = 2*Screen.height;
+		startMenuDown = startArea.anchoredPosition.y;
+	}
+
+	public void StartGame(bool godmode)
+	{
+		if (godmode) {
+
+		} else {
+
+		}
+		Application.LoadLevel(firstLevelName);
+	}
+
+	public void doCredits()
+	{
+		currentScreen = SCREEN.credits;
+	}
+
+	public void backToStart()
+	{
+		currentScreen = SCREEN.startmenu;
+	}
+
+	public void doHighScores()
+	{
+		currentScreen = SCREEN.highscores;
+	}
+
+	public void doAchievementScreen()
+	{
+		currentScreen = SCREEN.achievements;
+	}
+
+	public void doWeaponCreation()
+	{
+		Application.LoadLevel(weaponCreationName);
+	}
+	
+	private void Start()
+	{
+		temp = startArea.anchoredPosition;
+		temp.y = startMenuUp;
+		startArea.anchoredPosition = temp;
+		currentScreen = SCREEN.startmenu;
 	}
 	
 	void Update() {
-	}
-
-	IEnumerator Flicker()
-	{
-		// Want to flicker image here.
-		float alpha = Random.Range(0.2f, 0.8f);
-		float wait = Random.Range(1.0f, 2.0f);
-		image.CrossFadeAlpha(alpha, 0.5f, false);
-
-		yield return new WaitForSeconds(wait);
-	}
-
-	void OnGUI() {
-		GUI.skin = mySkin;
-		buttonRect = GUI.Window (1, buttonRect, ButtonArea, "");
-		// Drop start box from top
-		buttonRect.y = Mathf.MoveTowards(buttonRect.y,Screen.height/16,5);
+		if (currentScreen == SCREEN.startmenu)
+		{
+			// Move player area down
+			temp = startArea.anchoredPosition;
+			temp.y = Mathf.MoveTowards(startArea.anchoredPosition.y, startMenuDown,_MoveSpeed);
+			startArea.anchoredPosition = temp;
+		}
+		else
+		{
+			// Move player area up
+			temp = startArea.anchoredPosition;
+			temp.y = Mathf.MoveTowards(startArea.anchoredPosition.y, startMenuUp,_MoveSpeed);
+			startArea.anchoredPosition = temp;
+		}
 	}
 
 }
