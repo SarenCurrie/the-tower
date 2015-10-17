@@ -2065,7 +2065,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03fd4d23324c74dcc809c782badd5131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstLevelName: world-manager-test
+  firstLevelName: IntroScreen
   weaponCreationName: GunCreation
 --- !u!1 &740148297
 GameObject:
