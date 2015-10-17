@@ -123,5 +123,10 @@ public class GunCreationScreen : MonoBehaviour {
         minorModifier = value;
     }
 
+    public void CreateWeapon()
+    {
+        
+    }
+
 
 }
