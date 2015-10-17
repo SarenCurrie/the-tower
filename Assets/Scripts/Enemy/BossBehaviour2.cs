@@ -6,7 +6,7 @@ using System.Collections;
 *The behaviour script for the second boss
 */
 
-public class BossBehaviour2 : Enemy {
+public class BossBehaviour2 : BossBehaviour {
 
 
     private bool isCharging = false;
@@ -18,16 +18,9 @@ public class BossBehaviour2 : Enemy {
     public float movementSpeed;
     public int baseScore;
 
-    private Rigidbody2D rigidBody;
-
-    void Start()
-    {
-        rigidBody = GetComponent<Rigidbody2D>();
-    }
-
     void Update()
     {   
-        if (GetPlayer() == null)
+        if (GameManager.GetPlayer() == null)
             return;
 
         //Check if the boss is charging
@@ -46,26 +39,9 @@ public class BossBehaviour2 : Enemy {
         }
     }
 
-    private Player GetPlayer()
-    {
-        return GameObject.FindObjectOfType<Player>();
-    }
-
-    private Vector3 GetRelativePlayerPosition()
-    {
-        return GetPlayer().GetComponent<Transform>().position - transform.position;
-    }
-
     private void MoveToPlayer()
     {
-        rigidBody.AddForce(transform.up * movementSpeed * Time.deltaTime);
-    }
-
-    private void RotateToFacePlayer()
-    {
-        Vector3 relativePlayerPos = GetRelativePlayerPosition();
-        float angle = Mathf.Atan2(relativePlayerPos.y, relativePlayerPos.x) * Mathf.Rad2Deg + 270;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+		GetComponent<Rigidbody2D>().AddForce(transform.up * movementSpeed * Time.deltaTime);
     }
 
     //Change the attackTick to the current time when boss is enabled so it doesn't attack 

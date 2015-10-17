@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Boss3Weapon2 : Enemy
+public class Boss3Weapon2 : BossBehaviour
 {
     private const float BASE_HIT_DAMAGE = 0.01f;
 

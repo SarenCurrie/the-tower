@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class BossBehaviour3 : Enemy
+public class BossBehaviour3 : BossBehaviour
 {
     private bool turretsDestroyed = false;
     private float LastChecked = 0;
@@ -10,7 +10,6 @@ public class BossBehaviour3 : Enemy
     public float attackTime;
     private float count = 0;
     private float bossLaserCount = 0;
-    private float currentHealth;
     private int fireboundary = 85;
     private int fireboundaryreduction = 10;
     private int spawnBoundary = 80;
@@ -43,10 +42,8 @@ public class BossBehaviour3 : Enemy
     // Update is called once per frame
     void Update()
     {
-        if (GetPlayer() == null)
+        if (GameManager.GetPlayer() == null)
             return;
-
-        currentHealth = gameObject.GetComponent<UnitHealth>().GetHealth();
 
 		//Constantly rotates to face the player
         RotateToFacePlayer();
@@ -64,7 +61,8 @@ public class BossBehaviour3 : Enemy
 		if(GameManager.currentFloor.currentRoom.EnemiesLeft() > 1 && !turretsDestroyed)
         {
             gameObject.GetComponent<UnitHealth>().ResetHealth();
-        }else if (GameManager.currentFloor.currentRoom.EnemiesLeft() == 1 && !turretsDestroyed)
+        }
+		else if (GameManager.currentFloor.currentRoom.EnemiesLeft() == 1 && !turretsDestroyed)
         {
             turretsDestroyed = true;
             forceField.SetActive(false);
@@ -76,7 +74,7 @@ public class BossBehaviour3 : Enemy
 	//Spawns enemies if below 80%, stuttering down 20% each spawn
     private void EnemySpawn()
     {
-        if (((currentHealth / GetComponent<UnitHealth>().maxHealth) * 100) < spawnBoundary)
+        if (((gameObject.GetComponent<UnitHealth>().GetHealth() / GetComponent<UnitHealth>().maxHealth) * 100) < spawnBoundary)
         {
             spawnBoundary -= spawnboundaryreduction;
             Instantiate(enemyToSpawn, enemyLocation1, new Quaternion());
@@ -92,7 +90,7 @@ public class BossBehaviour3 : Enemy
 		//If the laser isnt to be shot and warning shot not counting down, and the health is below threshold, do this
         if (count == 0 && bossLaserCount == 0)
         {
-            if (((currentHealth / GetComponent<UnitHealth>().maxHealth) * 100) < fireboundary)
+            if (((gameObject.GetComponent<UnitHealth>().GetHealth() / GetComponent<UnitHealth>().maxHealth) * 100) < fireboundary)
             {
                 count = laserBurst;
                 bossLaserCount = warningShotTimer;
@@ -126,21 +124,4 @@ public class BossBehaviour3 : Enemy
         }
     }
 
-
-    private Player GetPlayer()
-    {
-        return GameObject.FindObjectOfType<Player>();
-    }
-
-    private Vector3 GetRelativePlayerPosition()
-    {
-        return GetPlayer().GetComponent<Transform>().position - transform.position;
-    }
-
-    private void RotateToFacePlayer()
-    {
-        Vector3 relativePlayerPos = GetRelativePlayerPosition();
-        float angle = Mathf.Atan2(relativePlayerPos.y, relativePlayerPos.x) * Mathf.Rad2Deg + 270;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-    }
 }

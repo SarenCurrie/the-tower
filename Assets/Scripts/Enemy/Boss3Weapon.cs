@@ -15,11 +15,6 @@ public class Boss3Weapon : RangedEnemy
         Generate();
     }
 
-    void Update()
-    {
-        //MaybeFireAtPlayer();
-    }
-
     public override void Fire(float damage)
     {
         if (Time.time > lastFired + 1 / fireFrequency)

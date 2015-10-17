@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BossGun : Enemy {
+public class BossGun : BossBehaviour {
     private const float BASE_HIT_DAMAGE = 0.01f;
 
     public Transform projectilePrefab;
