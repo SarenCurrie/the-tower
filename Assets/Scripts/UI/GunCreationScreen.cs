@@ -169,5 +169,11 @@ public class GunCreationScreen : MonoBehaviour {
 
     }
 
+    public void BackToMainScreen()
+    {
+        GameManager.Restart();
+		Application.LoadLevel ("StartScreen");
+    }
+
 
 }
