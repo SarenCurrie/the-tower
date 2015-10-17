@@ -67,7 +67,7 @@ public class AchievementScreen : MonoBehaviour {
 				if (achievements[keyList[i]].hasAchieved){
 					doneText.text = "✓";
 				} else {
-					doneText.text = "?";
+					doneText.text = "-";
 				}
 				nameText.text = achievements[keyList[i]].name;
 			} else {
@@ -75,7 +75,7 @@ public class AchievementScreen : MonoBehaviour {
 				if (achievements[keyList[i]].hasAchieved){
 					doneText.text = doneText.text + "\n✓";
 				} else {
-					doneText.text = doneText.text + "\n?";
+					doneText.text = doneText.text + "\n-";
 				}
 				nameText.text = nameText.text + "\n" + achievements[keyList[i]].name;
 			}
