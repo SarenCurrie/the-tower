@@ -174,6 +174,7 @@ GameObject:
   - 82: {fileID: 8232186}
   - 114: {fileID: 11423574}
   - 114: {fileID: 11464912}
+  - 95: {fileID: 9501160}
   m_Layer: 14
   m_Name: Boss2 (3)
   m_TagString: Enemy
@@ -273,7 +274,7 @@ Transform:
   m_GameObject: {fileID: 166066}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.14077163, y: 1.96953583, z: .808190882}
+  m_LocalScale: {x: .367224663, y: .338761598, z: .148751929}
   m_Children: []
   m_Father: {fileID: 459486}
   m_RootOrder: 9
@@ -429,7 +430,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 166066}
   m_Mass: 1000
   m_LinearDrag: 1.5
-  m_AngularDrag: 0
+  m_AngularDrag: 100000
   m_GravityScale: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -464,7 +465,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: .256000012
+  m_Radius: 1.69095588
 --- !u!61 &6104196
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -652,6 +653,23 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!95 &9501160
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 166066}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2cd066ae2f8fd7643b284dfa69970e42, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11401450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -690,6 +708,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fef10ccd2b8ac86429de2e306c715fe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SMALL_ROOM_CAMERA_SIZE: 3.32220006
+  BIG_ROOM_CAMERA_SIZE: 8
+  bigRoom: 0
 --- !u!114 &11421550
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -748,7 +769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eea1aa351a684974481ae2f5ab193de8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chargeDamage: 40
+  chargeDamage: 30
   attackTime: 2.5
   movementSpeed: 1500000
   baseScore: 500
@@ -958,7 +979,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -726603125
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c1a47d2ea6ae245eb9059ed10d3c9290, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 775700a64519c62479697dd7c5a59854, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21280000
 SpriteRenderer:
@@ -1133,6 +1154,15 @@ Prefab:
       propertyPath: bloodPrefabs.Array.data[7]
       value: 
       objectReference: {fileID: 166386, guid: 18cae03bd3a07e5468853baf39d0d1dd, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 775700a64519c62479697dd7c5a59854,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 2cd066ae2f8fd7643b284dfa69970e42, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 131790}

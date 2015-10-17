@@ -39,13 +39,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea2bd5a944b9b0544bde7362fb6a255d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogChance: 20
   numberOfRooms: 14
   enemies:
   - {fileID: 0}
   rooms:
-
-  - {fileID: 193178, guid: 6c96b564d349f884abbd28cface94821, type: 2}
-
+  - {fileID: 131790, guid: 86599ba2cf1bf46449c59393649c3272, type: 2}
   enterDialog: 
   exitDialog: 
   floorDialog: []
@@ -62,7 +61,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: rooms.Array.data[0]
       value: 
-      objectReference: {fileID: 193178, guid: 6c96b564d349f884abbd28cface94821, type: 2}
+      objectReference: {fileID: 131790, guid: 86599ba2cf1bf46449c59393649c3272, type: 2}
     - target: {fileID: 0}
       propertyPath: enemies.Array.data[0]
       value: 
