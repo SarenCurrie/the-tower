@@ -3,6 +3,12 @@ using System.Collections;
 using NUnit.Framework;
 using NSubstitute;
 
+/// <summary>
+/// 
+/// Tests the UIController class.
+///
+/// 
+/// </summary>
 [TestFixture]
 public class TestUIController
 {

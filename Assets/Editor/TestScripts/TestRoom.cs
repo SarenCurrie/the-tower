@@ -3,6 +3,13 @@ using System.Collections;
 using NUnit.Framework;
 using NSubstitute;
 
+
+/// <summary>
+/// 
+/// Tests the Room class.
+///
+/// 
+/// </summary>
 [TestFixture]
 public class TestRoom
 {
