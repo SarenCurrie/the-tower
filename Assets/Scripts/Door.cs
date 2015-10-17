@@ -1,6 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+///
+/// Script associated with the doors in each room that moves the player
+/// to the next room
+///
+/// </summary>
 public class Door : MonoBehaviour
 {
 
@@ -22,6 +28,7 @@ public class Door : MonoBehaviour
 	private enum CAMERA_STATE { NONE, MOVING_ROOM, MOVING_BACK };
 	private CAMERA_STATE cameraState = CAMERA_STATE.NONE;
 
+	//Constants the control the lighting change as the player transitions between rooms
 	private const float UNBLACKINGING_TIME = DOOR_CONTACT_TIME;
 	public const float BLACK_ALPHA = 0.8f;
 	public const float UNBLACK_ALPHA = 0f;
@@ -58,6 +65,10 @@ public class Door : MonoBehaviour
 				//Fade camera
 				Camera.main.transform.position = Vector3.Lerp(currentRoom.GetCameraPosition(), nextRoomPos.GetCameraPosition(), (transitionTime / DOOR_CONTACT_TIME));
 
+				//Zoom camera
+				Camera.main.orthographicSize = Mathf.Lerp(currentRoom.GetCameraSize(), nextRoomPos.GetCameraSize(), (transitionTime / DOOR_CONTACT_TIME));
+
+
 				//Fade lights
 				float flicker = 0;
 				if (Random.Range(0f, 1f) > 1 - FLICKER_CHANCE)
@@ -74,6 +85,9 @@ public class Door : MonoBehaviour
 		}
 	}
 
+	/**
+	* Moves the player to the next room
+	*/
 	private void MovePlayer()
 	{
 		Floor currentFloor = GameManager.currentFloor;
@@ -83,6 +97,7 @@ public class Door : MonoBehaviour
 		Camera.main.transform.position = GameManager.currentFloor.currentRoom.GetCameraPosition();
 		currentFloor.currentRoom.SetBlackerAlpha(UNBLACK_ALPHA);
 
+		//Moves the player in the correct direction
 		Vector3 playerOffset = new Vector3();
 		switch (orientation)
 		{
@@ -103,6 +118,9 @@ public class Door : MonoBehaviour
 		GameManager.player.transform.position += playerOffset * DOOR_MOVEMENT_VALUE;
 	}
 
+	/**
+	* Stops the transition if the player moves off of the door
+	*/
 	void OnTriggerExit2D(Collider2D other)
 	{
 		if (other.gameObject.transform.tag == Tags.PLAYER && orientation != DOOR_ORIENTATION.DISABLED)
@@ -114,6 +132,9 @@ public class Door : MonoBehaviour
 		}
 	}
 
+	/**
+	* Starts the transition if the player moves onto the door
+	*/
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.gameObject.transform.tag == Tags.PLAYER && orientation != DOOR_ORIENTATION.DISABLED

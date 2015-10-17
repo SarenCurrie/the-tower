@@ -15,6 +15,7 @@ GameObject:
   - 114: {fileID: 11467372}
   - 114: {fileID: 11459976}
   - 82: {fileID: 8229694}
+  - 114: {fileID: 11410666}
   m_Layer: 14
   m_Name: SingleShotEnemyTankF3
   m_TagString: Enemy
@@ -133,6 +134,18 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!114 &11410666
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 106002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21e91d8b5437e0e43892465c42d3e437, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionForceModifier: 0
 --- !u!114 &11451526
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -179,7 +192,7 @@ MonoBehaviour:
   possibleProjectileSprites:
   - {fileID: 21300000, guid: 5d41bfa3f684f0848a7918244531e89e, type: 3}
   possibleSounds:
-  - {fileID: 8300000, guid: c7b8685e162577f41b72736b13f8be7a, type: 3}
+  - {fileID: 8300000, guid: d9efb9bb3536a4e9c8ca5fa56786c0fb, type: 3}
 --- !u!114 &11467372
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -269,6 +282,10 @@ Prefab:
       propertyPath: bloodPrefabs.Array.data[3]
       value: 
       objectReference: {fileID: 166386, guid: 18cae03bd3a07e5468853baf39d0d1dd, type: 2}
+    - target: {fileID: 0}
+      propertyPath: possibleSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: d9efb9bb3536a4e9c8ca5fa56786c0fb, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 106002}

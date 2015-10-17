@@ -2,6 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/// <summary>
+///
+/// Enemies that chase the player and fire at them with spread weapons
+///
+/// </summary>
 public class SpreadShotEnemy : RangedEnemy
 {
 	public int spread;
@@ -20,6 +25,9 @@ public class SpreadShotEnemy : RangedEnemy
 		MaybeFireAtPlayer();
 	}
 
+	/**
+	* Fires projectiles at the enemy
+	*/
 	public override void Fire(float damage)
 	{
 		if (Time.time > lastFired + 1 / fireFrequency)
@@ -46,6 +54,9 @@ public class SpreadShotEnemy : RangedEnemy
 		}
 	}
 
+	/**
+	* Generates the random aspects of the enemy
+	*/
 	public override void Generate()
 	{
 		damageMod = (float)(

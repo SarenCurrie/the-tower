@@ -171,7 +171,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: aec686b92f475ac40b5037d8dfcbfc10, type: 3}
   - {fileID: 21300000, guid: ebe4c5176d748c342aacdc63f75e1bbd, type: 3}
   possibleSounds:
-  - {fileID: 8300000, guid: 28d3947910f76489a839ae531d30ec79, type: 3}
+  - {fileID: 8300000, guid: 54bb42ea892434340bbe7377482df35b, type: 3}
   spread: 5
   spreadRange: 45
   minBurstTime: 3
@@ -291,6 +291,10 @@ Prefab:
       propertyPath: bloodPrefabs.Array.data[7]
       value: 
       objectReference: {fileID: 166386, guid: 18cae03bd3a07e5468853baf39d0d1dd, type: 2}
+    - target: {fileID: 0}
+      propertyPath: possibleSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 54bb42ea892434340bbe7377482df35b, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 146412}

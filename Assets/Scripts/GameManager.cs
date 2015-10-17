@@ -2,6 +2,12 @@
 using System.Collections;
 using Achievements;
 
+/// <summary>
+///
+/// The GameManager class persists data over each game
+/// This class is reset each time the player starts a new game
+///
+/// </summary>
 public class GameManager : MonoBehaviour {
 
 	//Non static fields can be edited with the Unity editor.
@@ -18,13 +24,19 @@ public class GameManager : MonoBehaviour {
 	private static int currentFloorNumber = -1;
 	public static Floor currentFloor;
 
-    public static AchievementHandler achievementHandler;
-
 	//What can enemies see through?
 	public LayerMask enemySightLayerMask;
 	public static LayerMask staticEnemySightLayerMask;
 
+	//cursor stuff
+	public Texture2D cursorTexture;
+	public CursorMode cursorMode = CursorMode.Auto;
+	public Vector2 hotSpot = new Vector2(381f, 383.5f);
+
 	void Start () {
+		if(cursorTexture != null)
+			Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+
 		staticFloorPrefabs = floorPrefabs;
 		staticEnemySightLayerMask = enemySightLayerMask;
 
@@ -64,7 +76,6 @@ public class GameManager : MonoBehaviour {
 			currentFloor = Instantiate(staticFloorPrefabs[currentFloorNumber]).GetComponent<Floor>();
 			currentFloor.GenerateFloor();
 			currentFloor.MovePlayerToFloor(player);
-			achievementHandler = new AchievementHandler();
 		}
 		else
 		{
