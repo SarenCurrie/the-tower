@@ -177,6 +177,11 @@ public class Player : MonoBehaviour {
                 {
                     helm.GetComponent<Armour>().ReturnToFloor();
                 }
+				else
+				{
+					GetComponent<UnitHealth>().maxHealth += 25;
+					GetComponent<UnitHealth>().health += 25;
+				}
                 helm = armour.gameObject;
                 break;
             case Armour.SLOTS.chest:
@@ -185,8 +190,12 @@ public class Player : MonoBehaviour {
                 {
                     chest.GetComponent<Armour>().ReturnToFloor();
                 }
-
-                chest = armour.gameObject;
+				else
+				{
+					GetComponent<UnitHealth>().maxHealth += 25;
+					GetComponent<UnitHealth>().health += 25;
+				}
+				chest = armour.gameObject;
                 break;
             case Armour.SLOTS.gloves:
                 // gloves
@@ -194,8 +203,12 @@ public class Player : MonoBehaviour {
                 {
                     gloves.GetComponent<Armour>().ReturnToFloor();
                 }
-
-                gloves = armour.gameObject;
+				else
+				{
+					GetComponent<UnitHealth>().maxHealth += 25;
+					GetComponent<UnitHealth>().health += 25;
+				}
+				gloves = armour.gameObject;
                 break;
             case Armour.SLOTS.boots:
                 // boots
@@ -203,8 +216,12 @@ public class Player : MonoBehaviour {
                 {
                     boots.GetComponent<Armour>().ReturnToFloor();
                 }
-
-                boots = armour.gameObject;
+				else
+				{
+					GetComponent<UnitHealth>().maxHealth += 25;
+					GetComponent<UnitHealth>().health += 25;
+				}
+				boots = armour.gameObject;
                 break;
         }
 
