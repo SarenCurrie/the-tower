@@ -105,7 +105,7 @@ GameObject:
   - 114: {fileID: 11440218}
   m_Layer: 14
   m_Name: Boss2 (3)
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -659,8 +659,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eea1aa351a684974481ae2f5ab193de8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 0
-  ChangePercentage: 0
   chargeDamage: 40
   attackTime: 2.5
   movementSpeed: 1500000
@@ -1098,6 +1096,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: health
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Boss
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

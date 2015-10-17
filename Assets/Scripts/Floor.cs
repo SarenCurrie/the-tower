@@ -2,6 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/// <summary>
+///
+/// This script handles all requirements of a single floor
+///
+/// </summary>
 public class Floor : MonoBehaviour {
 
 	public const int NO_ROOMS_X = 7;
@@ -11,9 +16,9 @@ public class Floor : MonoBehaviour {
 	public const int STARTING_ROOM_Y = NO_ROOMS_Y/2;
 
 	//Percentage chance flavour text will be displayed upon entering room
-	public const int DIALOGCHANCE = 20;
+	public int dialogChance = 20;
 	//Amount of time that DIALOG is displayed
-	public const int DIALOGTIME = 10;
+	public const int DIALOGTIME = 5;
 
 	//How many rooms there will be. Guaranteed to be reachable.
 	//Excludes first room and boss room
@@ -49,6 +54,7 @@ public class Floor : MonoBehaviour {
 	private int currentRoomX = STARTING_ROOM_X;
 	private int currentRoomY = STARTING_ROOM_Y;
 
+	// The room that the player is currently in
 	public Room currentRoom
 	{
 		get
@@ -74,13 +80,16 @@ public class Floor : MonoBehaviour {
 
 			// Have a chance to display some of the flavour text
 			int r = Random.Range(0, 101);
-			if(r <= DIALOGCHANCE)
+			if(r <= dialogChance)
 			{
 				DisplayFloorDialog();
 			}
 		}
 	}
 
+	/**
+	* Creates the floor
+	*/
 	public void GenerateFloor()
 	{
 		for (int i = 0; i < NO_ROOMS_X; i++)
@@ -160,11 +169,17 @@ public class Floor : MonoBehaviour {
 		}
 	}
 
+	/**
+	* Returns the position of the floor in the world
+	*/
 	private Vector3 GetWorldPosition(int x, int y)
 	{
 		return new Vector2(x * Room.ROOM_WIDTH, -y * Room.ROOM_HEIGHT);
 	}
 
+	/**
+	* Returns the total number of enemies left in the floor
+	*/
 	public int EnemiesLeft()
 	{
 		int enemyCount = 0;
@@ -174,6 +189,9 @@ public class Floor : MonoBehaviour {
 		return enemyCount;
 	}
 
+	/**
+	* Returns the room that a door will move the player to
+	*/
 	public Room GetDoorDestination(Door.DOOR_ORIENTATION orientation)
 	{
 		return GetDoorDestination(currentRoomX, currentRoomY, orientation);
@@ -216,6 +234,9 @@ public class Floor : MonoBehaviour {
 		}
 	}
 
+	/**
+	* Places the player in the starting room of the floor
+	*/
 	public void MovePlayerToFloor(GameObject player)
 	{
 		currentRoom.MovePlayerToRoom(player);

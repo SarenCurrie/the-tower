@@ -2,21 +2,43 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/// <summary>
+///
+/// This script handles all required actions of a single room
+///
+/// </summary>
 public class Room : MonoBehaviour {
 
 	public const float ROOM_WIDTH = 9.0f;
+
 	public const float ROOM_HEIGHT = 5.4f;
 
 	public const float CAMERA_HEIGHT = -10f;
 
+	// A black box placed over the top of the room to create the lighting effect
 	private GameObject screenBlacker;
 
+	public float SMALL_ROOM_CAMERA_SIZE = 3.3222f;
+	public float BIG_ROOM_CAMERA_SIZE = 8f;
+	public bool bigRoom = false;
+
+	public float GetCameraSize()
+	{
+		return bigRoom ? BIG_ROOM_CAMERA_SIZE : SMALL_ROOM_CAMERA_SIZE;
+	}
+
+	/**
+	* Gets the current position of the camera
+	*/
 	public Vector3 GetCameraPosition()
 	{
 		Vector2 pos = transform.position;
 		return new Vector3(pos.x, pos.y, CAMERA_HEIGHT);
 	}
 
+	/**
+	* Spawns the enemies in the room upon room creation
+	*/
 	public void SpawnEnemies(GameObject[] enemies)
 	{
 		foreach (Transform t in transform)
@@ -30,6 +52,9 @@ public class Room : MonoBehaviour {
 		}
 	}
 
+	/**
+	* Spawns the black box over the room upon room creation
+	*/
 	public void SpawnScreenBlacker(GameObject screenBlackerPrefab)
 	{
 		screenBlacker = Instantiate(screenBlackerPrefab, transform.position, Quaternion.identity) as GameObject;
@@ -37,6 +62,10 @@ public class Room : MonoBehaviour {
 		SetBlackerAlpha(Door.BLACK_ALPHA);
 	}
 
+	/**
+	* Destroys the specified door, used in map generation to remove doors
+	* that don't lead to another room.
+	*/
 	public void DisableDoor(Door.DOOR_ORIENTATION disableOrientation)
 	{
 		foreach (Transform t in transform)
@@ -52,11 +81,15 @@ public class Room : MonoBehaviour {
 		}
 	}
 
+	/**
+	* Disables or enables all enemies in the room. Stops enemies from
+	* moving and using resources when the player isn't in the room.
+	*/
 	private void DisableOrEnableEnemies(Transform trans, bool enable)
 	{
 		foreach (Transform child in trans)
 		{
-			if (child.tag == Tags.ENEMY)
+			if (child.tag == Tags.ENEMY || child.tag == Tags.BOSS)
 			{
 				foreach (Enemy e in child.GetComponents<Enemy>())
 				{
@@ -80,7 +113,7 @@ public class Room : MonoBehaviour {
 	{
 		foreach (Transform child in transform)
 		{
-			if (child.tag == Tags.ENEMY)
+			if (child.tag == Tags.ENEMY || child.tag == Tags.BOSS)
 			{
 				child.GetComponent<SpriteRenderer>().enabled = show;
 			}
@@ -95,7 +128,7 @@ public class Room : MonoBehaviour {
 		int enemyCount = 0;
 		foreach (Transform t in transform)
 		{
-			if (t.gameObject.tag == Tags.ENEMY)
+			if (t.gameObject.tag == Tags.ENEMY || t.gameObject.tag == Tags.BOSS)
 			{
 				enemyCount++;
 			}
@@ -113,7 +146,7 @@ public class Room : MonoBehaviour {
 
 		foreach (Transform t in transform)
 		{
-			if (t.gameObject.tag == Tags.ENEMY)
+			if (t.gameObject.tag == Tags.ENEMY || t.gameObject.tag == Tags.BOSS)
 			{
 				enemies.Add(t.gameObject);
 			}
@@ -134,6 +167,9 @@ public class Room : MonoBehaviour {
 		}
 	}
 
+	/**
+	* Sets the transparency of the black box over the room
+	*/
 	public void SetBlackerAlpha(float alpha)
 	{
 		if (screenBlacker != null)

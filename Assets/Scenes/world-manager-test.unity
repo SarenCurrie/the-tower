@@ -3,7 +3,7 @@
 --- !u!29 &1
 SceneSettings:
   m_ObjectHideFlags: 0
-  m_PVSData: 
+  m_PVSData:
   m_PVSObjectsArray: []
   m_PVSPortalsArray: []
   m_OcclusionBakeSettings:
@@ -112,8 +112,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1997211142, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_ForceModuleActive: 0
 --- !u!114 &582509004
 MonoBehaviour:
@@ -124,8 +124,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1077351063, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -142,8 +142,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -619905303, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
@@ -252,6 +252,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11489868, guid: e60bd62d4232d4d1bb21b58ebaa3fc95, type: 2}
+      propertyPath: floorPrefabs.Array.size
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 428052, guid: e60bd62d4232d4d1bb21b58ebaa3fc95, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -286,8 +290,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11489868, guid: e60bd62d4232d4d1bb21b58ebaa3fc95, type: 2}
       propertyPath: floorPrefabs.Array.data[0]
-      value: 
+      value:
       objectReference: {fileID: 151502, guid: 0dd8386a7faf311498b64578b1f52372, type: 2}
+    - target: {fileID: 11489868, guid: e60bd62d4232d4d1bb21b58ebaa3fc95, type: 2}
+      propertyPath: floorPrefabs.Array.data[4]
+      value:
+      objectReference: {fileID: 151502, guid: c87d288df9a08774aaf80cedf1e7a086, type: 2}
+    - target: {fileID: 11489868, guid: e60bd62d4232d4d1bb21b58ebaa3fc95, type: 2}
+      propertyPath: enemySightLayerMask.m_Bits
+      value: 2147631104
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: e60bd62d4232d4d1bb21b58ebaa3fc95, type: 2}
@@ -379,8 +391,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_IgnoreReversedGraphics: 1
   m_BlockingObjects: 0
   m_BlockingMask:
@@ -395,8 +407,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1980459831, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
@@ -548,6 +560,15 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 149214, guid: 8712fb94c019cf246a9b3d98791cd27a, type: 2}
+      propertyPath: m_Name
+      value: DeathTitle
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401900, guid: 8712fb94c019cf246a9b3d98791cd27a, type: 2}
+      propertyPath: m_Sprite
+      value:
+      objectReference: {fileID: 21300000, guid: a3ee78140ba12b449b38ae830747d84c,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8712fb94c019cf246a9b3d98791cd27a, type: 2}
   m_IsPrefabParent: 0

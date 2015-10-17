@@ -39,14 +39,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea2bd5a944b9b0544bde7362fb6a255d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogChance: 100
   numberOfRooms: 0
   enemies: []
   rooms: []
   enterDialog: It's time to fulfil your end of the bargain. I've left you a little
     gift to help you on your way. It should be outside your room.
-  exitDialog: Head to the elevator, I've gotten you clearance to the floors higher
-    than your status would normally allow.
-  floorDialog: []
+  exitDialog: 
+  floorDialog:
+  - Head to the elevator, I've gotten you clearance to the floors higher than your
+    status would normally allow.
   firstRoom: {fileID: 105838, guid: 4eb9fc05dd38bc945912fc98f158384a, type: 2}
   bossRoom: {fileID: 104312, guid: 9ddf3740b50bdba4996507a0b99ac0c2, type: 2}
   screenBlackerPrefab: {fileID: 129008, guid: 02525fa4ad0ec374290310ece9f6b2c4, type: 2}
@@ -64,6 +66,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: enemies.Array.size
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: floorDialog.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: rooms.Array.data[0]
@@ -120,13 +126,21 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: exitDialog
-      value: Head to the elevator, I've gotten you clearance to the floors higher
-        than your status would normally allow.
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: screenBlackerPrefab
       value: 
       objectReference: {fileID: 129008, guid: 02525fa4ad0ec374290310ece9f6b2c4, type: 2}
+    - target: {fileID: 0}
+      propertyPath: floorDialog.Array.data[0]
+      value: Head to the elevator, I've gotten you clearance to the floors higher
+        than your status would normally allow.
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: dialogChance
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 151502}
