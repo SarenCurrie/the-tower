@@ -175,6 +175,7 @@ public class UnitHealth : MonoBehaviour {
 			if(tag.Equals(Tags.BOSS))
 			{
 				UIController.GetUI().ShowDialog(GameManager.currentFloor.exitDialog, 5);
+				Item.GenerateArmour(gameObject.transform.position);
 			}
 
 			// log kill and score for achievemnts
