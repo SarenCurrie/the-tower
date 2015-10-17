@@ -85,12 +85,6 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &180087830 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11466618, guid: 622ed83b320e3db41a5a7b4d42785d45,
-    type: 2}
-  m_PrefabInternal: {fileID: 671773425}
-  m_Script: {fileID: 11500000, guid: ab3fc26c5028810408bc2dbf23ca3507, type: 3}
 --- !u!1001 &671773425
 Prefab:
   m_ObjectHideFlags: 0
@@ -172,43 +166,41 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22498724, guid: 622ed83b320e3db41a5a7b4d42785d45, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22431494, guid: 622ed83b320e3db41a5a7b4d42785d45, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22461148, guid: 622ed83b320e3db41a5a7b4d42785d45, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22455428, guid: 622ed83b320e3db41a5a7b4d42785d45, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22473770, guid: 622ed83b320e3db41a5a7b4d42785d45, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22414034, guid: 622ed83b320e3db41a5a7b4d42785d45, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22405788, guid: 622ed83b320e3db41a5a7b4d42785d45, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22428430, guid: 622ed83b320e3db41a5a7b4d42785d45, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11443882, guid: 622ed83b320e3db41a5a7b4d42785d45, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 180087830}
-    - target: {fileID: 11443882, guid: 622ed83b320e3db41a5a7b4d42785d45, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CreateWeapon
+    - target: {fileID: 11423908, guid: 622ed83b320e3db41a5a7b4d42785d45, type: 2}
+      propertyPath: m_Text
+      value: '55.17
+
+'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 622ed83b320e3db41a5a7b4d42785d45, type: 2}
