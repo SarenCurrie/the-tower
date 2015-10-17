@@ -14,7 +14,7 @@ GameObject:
   - 50: {fileID: 5020852}
   - 82: {fileID: 8265330}
   m_Layer: 11
-  m_Name: GroundGun
+  m_Name: PersistentGroundGun
   m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
