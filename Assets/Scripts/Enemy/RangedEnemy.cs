@@ -109,7 +109,6 @@ public class RangedEnemy : Enemy
 		}
 	}
 
-
 	/**
 	* Determine if the enemy should currently be firing at the player
 	*/
