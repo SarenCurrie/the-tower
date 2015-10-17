@@ -67,7 +67,6 @@ public class Weapon : Item
 
 
 
-
     public void Fire(Player p)
     {
         Fire(CalculateDamage(p));
@@ -202,9 +201,10 @@ public class Weapon : Item
         intelligenceModifier = modifiers[2];
     }
 
-    public Weapon GenerateCustom(Sprite projectile, Sprite selectedSideLook, Sprite unselectedSideLook, Sprite selectedTopDownLook, int fireRate, int projectiles, int spreadAngle,
-        int force, int damage, int majorModifier, int minorModifier)
+    public void GenerateCustom(Sprite projectile, Sprite selectedSideLook, Sprite unselectedSideLook, Sprite selectedTopDownLook, int fireRate, int projectiles, int spreadAngle,
+        int force, float damage, int majorModifier, int minorModifier)
     {
+        print("BEING CALLED");
         projectileSprite = projectile;
         selectedSprite = selectedSideLook;
         unSelectedSprite = unselectedSideLook;
@@ -234,8 +234,6 @@ public class Weapon : Item
         strengthModifier = modifiers[0];
         dexterityModifier = modifiers[1];
         intelligenceModifier = modifiers[2];
-
-        return this;
     }
 
     /*

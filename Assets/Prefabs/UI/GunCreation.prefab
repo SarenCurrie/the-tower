@@ -890,7 +890,7 @@ GameObject:
   - 114: {fileID: 11401690}
   - 114: {fileID: 11443882}
   m_Layer: 5
-  m_Name: Quit
+  m_Name: CreateWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2520,7 +2520,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 21300000, guid: b7c923e5b4cad0545b03fe60c74503f3,
       type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: b7c923e5b4cad0545b03fe60c74503f3, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: a904c2db9e5006643b010d5377aa07f5, type: 3}
     m_DisabledSprite: {fileID: 21300000, guid: a904c2db9e5006643b010d5377aa07f5, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -2532,8 +2532,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 192006}
-        m_MethodName: 
+      - m_Target: {fileID: 11466618}
+        m_MethodName: CreateWeapon
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3150,7 +3150,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4c8ec4abfc442ff4b9b2cb269f33c616, type: 3}
   - {fileID: 21300000, guid: 7024ce434a4212245897a3ab4bff88d5, type: 3}
   - {fileID: 21300000, guid: 7ee71cb80c3094d4483bb80ec3f217aa, type: 3}
-  sideLooks:
+  selectedSideLooks:
   - {fileID: 21300000, guid: 0a503f03f1cd174458157c5b520c7e21, type: 3}
   - {fileID: 21300000, guid: 0d14c56033a68ff43afe1f4cbf4341fb, type: 3}
   - {fileID: 21300000, guid: a3a9e67f5b479ab4d9547447dcb4e804, type: 3}
@@ -3162,6 +3162,18 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 675e16dbca343fa45bc392d9a4f8eadd, type: 3}
   - {fileID: 21300000, guid: 5c0490f0cac069f4a902dfb81f2a0036, type: 3}
   - {fileID: 21300000, guid: 7c5cfebac754b284d80001cf8676e7b9, type: 3}
+  unselectedSideLooks:
+  - {fileID: 21300000, guid: 88d0533a0fcd2fc46a4bf6264d13c1c6, type: 3}
+  - {fileID: 21300000, guid: 6a02fce02bb2641478201cb163dfd18e, type: 3}
+  - {fileID: 21300000, guid: 3cca53d84b7569e47813441fe14e8ec3, type: 3}
+  - {fileID: 21300000, guid: 237e0b03e28105143bc96f0717162648, type: 3}
+  - {fileID: 21300000, guid: c6bbb9054fd5e57458795d0b90868b6b, type: 3}
+  - {fileID: 21300000, guid: 32a7706b426ad7e48abc748e9431e726, type: 3}
+  - {fileID: 21300000, guid: 6a58e07e46c266f4e836323285b54ec4, type: 3}
+  - {fileID: 21300000, guid: 6e4a617c95fcbb44e9802134a3a7da70, type: 3}
+  - {fileID: 21300000, guid: 8e8083eca8e3b3f4aa2f30e6aa24d641, type: 3}
+  - {fileID: 21300000, guid: bd0f806d30ebadf478ba606c2f88e6f6, type: 3}
+  - {fileID: 21300000, guid: 8a670e225765df64391a8227f0d7b3f1, type: 3}
   possibleProjectileSprites:
   - {fileID: 21300000, guid: ebe4c5176d748c342aacdc63f75e1bbd, type: 3}
   - {fileID: 21300000, guid: 7f406c7ad6388cb4baa394fc149579e0, type: 3}
