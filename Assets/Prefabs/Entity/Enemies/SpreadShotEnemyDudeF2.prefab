@@ -15,6 +15,7 @@ GameObject:
   - 114: {fileID: 11439890}
   - 114: {fileID: 11425210}
   - 82: {fileID: 8248546}
+  - 114: {fileID: 11422884}
   m_Layer: 14
   m_Name: SpreadShotEnemyDudeF2
   m_TagString: Enemy
@@ -133,6 +134,18 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!114 &11422884
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21e91d8b5437e0e43892465c42d3e437, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionForceModifier: 0
 --- !u!114 &11425210
 MonoBehaviour:
   m_ObjectHideFlags: 1
