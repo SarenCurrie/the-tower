@@ -187,7 +187,7 @@ MonoBehaviour:
   burstTime: 3
   minFireWait: .5
   maxFireWait: 1
-  damage: 4
+  damage: 3
   reloadFactor: 1
   possibleProjectileSprites:
   - {fileID: 21300000, guid: 5d41bfa3f684f0848a7918244531e89e, type: 3}
@@ -286,10 +286,6 @@ Prefab:
       propertyPath: possibleSounds.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: d9efb9bb3536a4e9c8ca5fa56786c0fb, type: 3}
-    - target: {fileID: 0}
-      propertyPath: damage
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 106002}

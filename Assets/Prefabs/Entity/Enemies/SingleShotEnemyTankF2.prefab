@@ -191,7 +191,7 @@ MonoBehaviour:
   burstTime: 3
   minFireWait: .5
   maxFireWait: 1
-  damage: 3.5
+  damage: 3
   reloadFactor: 1
   possibleProjectileSprites:
   - {fileID: 21300000, guid: 5d41bfa3f684f0848a7918244531e89e, type: 3}
@@ -294,10 +294,6 @@ Prefab:
       propertyPath: bloodPrefabs.Array.data[7]
       value: 
       objectReference: {fileID: 166386, guid: 18cae03bd3a07e5468853baf39d0d1dd, type: 2}
-    - target: {fileID: 0}
-      propertyPath: damage
-      value: 3.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 106964}

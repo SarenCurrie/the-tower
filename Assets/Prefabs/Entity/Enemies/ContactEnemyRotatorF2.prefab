@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackTime: .25
-  damage: 30
+  damage: 25
 --- !u!114 &11472422
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -274,10 +274,6 @@ Prefab:
       propertyPath: bloodPrefabs.Array.data[7]
       value: 
       objectReference: {fileID: 166386, guid: 18cae03bd3a07e5468853baf39d0d1dd, type: 2}
-    - target: {fileID: 0}
-      propertyPath: damage
-      value: 30
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 186402}
