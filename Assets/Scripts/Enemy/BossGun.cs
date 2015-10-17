@@ -28,7 +28,6 @@ public class BossGun : BossBehaviour
 
 	private bool waitingToFire = false;
 	public Sprite projectileSprite;
-	private AudioClip actualSound;
 
 	void Update()
 	{

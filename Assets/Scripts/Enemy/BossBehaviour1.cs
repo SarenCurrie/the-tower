@@ -49,9 +49,6 @@ public class BossBehaviour1 : BossBehaviour
 	public Sprite spreadProjectileSprite;
 	public Sprite mainCannonProjectileSprite;
 
-	public AudioClip cannonSound;
-	public AudioClip spreadSound;
-
 	void Update()
 	{
 		MaybeSpreadAtPlayer();
@@ -73,11 +70,6 @@ public class BossBehaviour1 : BossBehaviour
 			projectile.parent = GameManager.currentFloor.currentRoom.transform;
 
 			lastFiredCannon = Time.time;
-
-			// Play Sound
-			AudioSource source = GetComponent<AudioSource>();
-			source.clip = cannonSound;
-			source.Play();
 		}
 	}
 

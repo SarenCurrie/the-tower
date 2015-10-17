@@ -34,9 +34,6 @@ public class Boss3Weapon2 : BossBehaviour
 	public Sprite[] possibleProjectileSprites;
 	protected Sprite projectileSprite;
 
-	public AudioClip[] possibleSounds;
-	protected AudioClip actualSound;
-
 	void Start()
 	{
 		Generate();
@@ -67,10 +64,6 @@ public class Boss3Weapon2 : BossBehaviour
 
 			lastFired = Time.time;
 
-			// Play Sound
-			AudioSource source = GetComponent<AudioSource>();
-			source.clip = actualSound;
-			source.Play();
 		}
 	}
 
@@ -85,13 +78,6 @@ public class Boss3Weapon2 : BossBehaviour
 			(20 * (System.Math.Pow(fireForce, 0.2)) + 15 * (System.Math.Pow(fireFrequency, 1.2))));
 		int projectileSpriteIndex = UnityEngine.Random.Range(0, possibleProjectileSprites.Length);
 		projectileSprite = possibleProjectileSprites[projectileSpriteIndex];
-
-		// generate sound
-		if (possibleSounds.Length > 0)
-		{
-			int soundIndex = UnityEngine.Random.Range(0, possibleSounds.Length);
-			actualSound = possibleSounds[soundIndex];
-		}
 	}
 
 	protected void MaybeFireAtPlayer()
