@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour {
     public static void Restart()
     {
         currentFloorNumber = -1;
+        GameObject.Find("mars-small").GetComponent<Music>().StartMainMusic();
     }
 
 	public static int GetCurrentFloorNumber()
@@ -76,6 +77,10 @@ public class GameManager : MonoBehaviour {
 			currentFloor = Instantiate(staticFloorPrefabs[currentFloorNumber]).GetComponent<Floor>();
 			currentFloor.GenerateFloor();
 			currentFloor.MovePlayerToFloor(player);
+			if (currentFloorNumber == 4) //Final boss
+			{
+				GameObject.Find("mars-small").GetComponent<Music>().StartBossMusic();
+			}
 		}
 		else
 		{
