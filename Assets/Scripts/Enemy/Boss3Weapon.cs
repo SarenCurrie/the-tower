@@ -35,9 +35,12 @@ public class Boss3Weapon : RangedEnemy
 				projectile.parent = GameManager.currentFloor.currentRoom.transform;
 			}
 			lastFired = Time.time;
-			AudioSource source = GetComponent<AudioSource>();
-			source.clip = actualSound;
-			source.Play();
+			if (GetComponent<AudioSource>() != null)
+			{
+				AudioSource source = GetComponent<AudioSource>();
+				source.clip = actualSound;
+				source.Play();
+			}
 		}
 	}
 
