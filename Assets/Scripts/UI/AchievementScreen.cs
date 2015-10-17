@@ -37,6 +37,7 @@ public class AchievementScreen : MonoBehaviour {
 		temp = achievementArea.anchoredPosition;
 		temp.y = achievementUp;
 		achievementArea.anchoredPosition = temp;
+		UpdateAchievments();
 	}
 
 	void Update() {
@@ -56,24 +57,27 @@ public class AchievementScreen : MonoBehaviour {
 		}
 	}
 
-	public void UpdateAchievments(List<Achievement> achievements){
-		for (int i = 0; i < achievements.Count; i++){
+	public void UpdateAchievments(){
+		Dictionary<string, Achievement> achievements = GameObject.Find ("AchievementHandler").GetComponent<AchievementHandler> ().achievementFactory.GetAchievements();
+		List<string> keyList = new List<string>(achievements.Keys);
+
+		for (int i = 0; i < keyList.Count; i++){
 			if (i == 0){
 				backingText.text ="\n";
-				if (achievements[i].hasAchieved){
+				if (achievements[keyList[i]].hasAchieved){
 					doneText.text = "✓";
 				} else {
 					doneText.text = "?";
 				}
-				nameText.text = achievements[i].name;
+				nameText.text = achievements[keyList[i]].name;
 			} else {
 				backingText.text = backingText.text + "\n";
-				if (achievements[i].hasAchieved){
-					doneText.text = "\n✓";
+				if (achievements[keyList[i]].hasAchieved){
+					doneText.text = doneText.text + "\n✓";
 				} else {
-					doneText.text = "\n?";
+					doneText.text = doneText.text + "\n?";
 				}
-				nameText.text = "\n" + achievements[i].name;
+				nameText.text = nameText.text + "\n" + achievements[keyList[i]].name;
 			}
 		}
 	}
