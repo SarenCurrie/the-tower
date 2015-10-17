@@ -11,9 +11,9 @@ public class Floor : MonoBehaviour {
 	public const int STARTING_ROOM_Y = NO_ROOMS_Y/2;
 
 	//Percentage chance flavour text will be displayed upon entering room
-	public const int DIALOGCHANCE = 20;
+	public int dialogChance = 20;
 	//Amount of time that DIALOG is displayed
-	public const int DIALOGTIME = 10;
+	public const int DIALOGTIME = 5;
 
 	//How many rooms there will be. Guaranteed to be reachable.
 	//Excludes first room and boss room
@@ -74,7 +74,7 @@ public class Floor : MonoBehaviour {
 
 			// Have a chance to display some of the flavour text
 			int r = Random.Range(0, 101);
-			if(r <= DIALOGCHANCE)
+			if(r <= dialogChance)
 			{
 				DisplayFloorDialog();
 			}
