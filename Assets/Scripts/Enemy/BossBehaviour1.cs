@@ -102,9 +102,6 @@ public class BossBehaviour1 : BossBehaviour
 				projectile.parent = GameManager.currentFloor.currentRoom.transform;
 			}
 			lastFiredSpread = Time.time;
-			AudioSource source = GetComponent<AudioSource>();
-			source.clip = spreadSound;
-			source.Play();
 		}
 	}
 
