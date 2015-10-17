@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour {
 			currentFloor = Instantiate(staticFloorPrefabs[currentFloorNumber]).GetComponent<Floor>();
 			currentFloor.GenerateFloor();
 			currentFloor.MovePlayerToFloor(player);
-			if (currentFloorNumber == 4) //Final boss
+			if (currentFloorNumber == 4 && GameObject.Find("mars-small") != null) //Final boss
 			{
 				GameObject.Find("mars-small").GetComponent<Music>().StartBossMusic();
 			}
