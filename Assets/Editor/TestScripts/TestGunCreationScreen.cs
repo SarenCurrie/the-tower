@@ -8,6 +8,7 @@ using NSubstitute;
 /// 
 /// Tests the GunCreationScreen class.
 ///
+/// @author Harry
 /// 
 /// </summary>
 [TestFixture]
