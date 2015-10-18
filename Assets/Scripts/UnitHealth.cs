@@ -182,6 +182,10 @@ public class UnitHealth : MonoBehaviour {
 				if (GameManager.GetCurrentFloorNumber() == 4){
 					UIController.GetUI().ShowBeatGameMenu();
 				}
+				foreach (GameObject g in GameManager.currentFloor.currentRoom.GetEnemiesInRoom())
+				{
+					Destroy(g);
+				}
 			}
 
 			/**
