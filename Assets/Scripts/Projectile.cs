@@ -13,7 +13,7 @@ using System.Collections;
 public class Projectile : MonoBehaviour {
 
 	public float speed;
-	public float killTime = 2.0f;
+	public float killTime = 4.0f;
 
 	private float damage = 1.0f;
 
