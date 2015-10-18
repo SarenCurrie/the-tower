@@ -236,15 +236,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.10000002
-  m_Text: '1
+  m_Text: 'MPixels - GUI Skin
 
-    2
+    Quesoman - Loading Image
 
-    3
-
-    4
-
-    5'
+'
 --- !u!222 &119837683
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1076,7 +1072,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.10000002
-  m_Text: With special thanks to Rashina Hoda and the SE306 team.
+  m_Text: And special thanks to Rashina Hoda and the SE306 team.
 --- !u!222 &443923885
 CanvasRenderer:
   m_ObjectHideFlags: 0
