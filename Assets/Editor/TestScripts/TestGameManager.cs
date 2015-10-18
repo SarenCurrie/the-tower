@@ -3,6 +3,11 @@ using System.Collections;
 using NUnit.Framework;
 using NSubstitute;
 
+/// <summary>
+/// 
+/// Tests the GameManager class.
+/// 
+/// </summary>
 [TestFixture]
 public class TestGameManager
 {
@@ -13,14 +18,8 @@ public class TestGameManager
     {
 
         GameManager gameManager = instantiator.InstantiateScript<GameManager>();
-
         Assert.IsNotNull(gameManager);
 
     }
-
-
-
-
-
 
 }
