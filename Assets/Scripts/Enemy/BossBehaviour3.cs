@@ -78,10 +78,14 @@ public class BossBehaviour3 : BossBehaviour
 		if (((gameObject.GetComponent<UnitHealth>().GetHealth() / GetComponent<UnitHealth>().maxHealth) * 100) < spawnBoundary)
 		{
 			spawnBoundary -= spawnboundaryreduction;
-			Instantiate(enemyToSpawn, enemyLocation1, new Quaternion());
-			Instantiate(enemyToSpawn, enemyLocation2, new Quaternion());
-			Instantiate(enemyToSpawn, enemyLocation3, new Quaternion());
-			Instantiate(enemyToSpawn, enemyLocation4, new Quaternion());
+			GameObject g1 = Instantiate(enemyToSpawn, enemyLocation1, new Quaternion()) as GameObject;
+			g1.transform.parent = GameManager.currentFloor.currentRoom.transform;
+			GameObject g2 = Instantiate(enemyToSpawn, enemyLocation2, new Quaternion()) as GameObject;
+			g2.transform.parent = GameManager.currentFloor.currentRoom.transform;
+			GameObject g3 = Instantiate(enemyToSpawn, enemyLocation3, new Quaternion()) as GameObject;
+			g3.transform.parent = GameManager.currentFloor.currentRoom.transform;
+			GameObject g4 = Instantiate(enemyToSpawn, enemyLocation4, new Quaternion()) as GameObject;
+			g4.transform.parent = GameManager.currentFloor.currentRoom.transform;
 		}
 	}
 
