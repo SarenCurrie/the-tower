@@ -31,6 +31,8 @@ public class Player : MonoBehaviour {
 	public GameObject gloves;
 	public GameObject boots;
 
+	public bool godMode = false;
+
 	public float movementSpeed = 20.0f;
 
 	private Rigidbody2D rigidBody;

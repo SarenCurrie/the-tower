@@ -57,6 +57,8 @@ public class UnitHealth : MonoBehaviour {
 	public void LoseHealth(float val)
 	{
 		if (gameObject.tag == Tags.PLAYER) {
+			if (gameObject.GetComponent<Player>().godMode)
+				return;//Damage cannot be taken while in god mode
 			UIController.GetUI().FlashDamage();
 		}
 
