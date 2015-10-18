@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class DeathMenu : MonoBehaviour {
 	
 	public static bool visible = false;
+	public static bool beatGame = false;
 	
 	private float deathHeight;
 	private RectTransform deathArea;
@@ -15,7 +16,6 @@ public class DeathMenu : MonoBehaviour {
 	private Text text;
 	private Text title;
 	public bool setScore = false;
-	public bool beatGame = false;
 	
 	void Awake()
 	{

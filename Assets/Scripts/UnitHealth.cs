@@ -178,6 +178,10 @@ public class UnitHealth : MonoBehaviour {
 			{
 				UIController.GetUI().ShowDialog(GameManager.currentFloor.exitDialog, 5);
 				Item.GenerateArmour(gameObject.transform.position);
+				// If the enemy is the final boss, display the end game dialog
+				if (UIController.GetUI().GetScoreManager().floorMultiplier == 4){
+					UIController.GetUI().ShowBeatGameMenu();
+				}
 			}
 
 			/**

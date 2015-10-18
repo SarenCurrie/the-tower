@@ -31,13 +31,8 @@ public class WelcomeScreenImage : MonoBehaviour {
 		startMenuDown = startArea.anchoredPosition.y;
 	}
 
-	public void StartGame(bool godmode)
+	public void StartGame()
 	{
-		if (godmode) {
-
-		} else {
-
-		}
 		Application.LoadLevel(firstLevelName);
 	}
 

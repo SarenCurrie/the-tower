@@ -29,16 +29,14 @@ public class PauseMenu : MonoBehaviour {
 		UpdateTransparency();
 	}
 
+	public void toggleGodMode() {
+		GameManager.GetPlayer ().GetComponent<Player> ().godMode = GameObject.Find ("GodModeToggle").GetComponent<Toggle> ().isOn;
+	}
+
 	public void UpdateTransparency() {
 		int value = (int)(GameObject.Find ("TransSlider").GetComponent<Slider> ().value);
 		transparency.UpdateTransparency(value);
 		GameObject.Find ("TransPercent").GetComponent<Text>().text = value.ToString()+"%";
-	}
-
-	public void UpdateVolume() {
-		int value = (int)(GameObject.Find ("VolumeSlider").GetComponent<Slider> ().value);
-		//Do the actual update
-		GameObject.Find ("VolumePercent").GetComponent<Text>().text = value.ToString()+"%";
 	}
 	
 	void Update() {;

@@ -108,6 +108,13 @@ public class UIController : MonoBehaviour {
 		DeathMenu.visible = true;
 	}
 
+	public void ShowBeatGameMenu()
+	{
+		PauseMenu.canPause = false;
+		DeathMenu.beatGame = true;
+		DeathMenu.visible = true;
+	}
+
 	public void FlashDamage()
 	{
 		damageFlash.FlashDamage();
