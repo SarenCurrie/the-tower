@@ -2,6 +2,13 @@
 using UnityEngine.UI;
 using System.Collections;
 
+/// <summary>
+///
+/// This class handles the variable transparency of UI components
+/// 
+/// @Author MPixels - Purchased from Unity store
+/// @Modified by Jacob
+/// </summary>
 public class transparency : MonoBehaviour
 {
 	// Initialise alpha to max across all UI

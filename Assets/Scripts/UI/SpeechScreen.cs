@@ -2,18 +2,23 @@
 using System.Collections;
 using UnityEngine.UI;
 
+/// <summary>
+///
+/// This class handles all the actions of the in game dialog, 
+/// 
+/// @Author Jacob
+/// </summary>
 public class SpeechScreen : MonoBehaviour {
 
-	private string text;
-	private float waitTime;
-
 	private bool shown = false;
-	private float _MoveSpeed = 20f;
 
+	//Movement and alteration variables
+	private float _MoveSpeed = 20f;
 	private float dialogWidth;
 	private float dialogOut;
 	private float dialogIn;
-	
+	private string text;
+	private float waitTime;
 	private RectTransform dialogArea;
 	private Vector2 temp;
 
@@ -44,7 +49,8 @@ public class SpeechScreen : MonoBehaviour {
 		// Ask singleton to show dialog
 		singleton.Show(text, time);
 	}
-	
+
+	// Public method to show dialog, given an instance of the screen
 	public void Show(string text, float time)
 	{
 		GameObject.Find ("SpeechText").GetComponent<Text>().text = text;

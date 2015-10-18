@@ -4,6 +4,13 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using HighScores;
 
+/// <summary>
+///
+/// This class handles the high score summary shown via the start menu,
+/// including getting the high scores and keeping them up to date.
+/// 
+/// @Author Jacob
+/// </summary>
 public class HighScoreScreen : MonoBehaviour {
 		
 	private float _MoveSpeed = 20f;

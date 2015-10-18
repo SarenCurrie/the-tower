@@ -4,6 +4,13 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using Achievements;
 
+/// <summary>
+///
+/// This class handles the achievement summary shown via the start menu,
+/// including getting the achievements and keeping them up to date.
+/// 
+/// @Author Jacob
+/// </summary>
 public class AchievementScreen : MonoBehaviour {
 		
 	private float _MoveSpeed = 20f;

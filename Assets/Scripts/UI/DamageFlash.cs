@@ -2,6 +2,13 @@
 using System.Collections;
 using UnityEngine.UI;
 
+/// <summary>
+///
+/// This class handles the 'damage flash', a red border to the screen
+/// when the player is hit by an enemy
+/// 
+/// @Author Jacob
+/// </summary>
 public class DamageFlash {
 
 	private Image image;
@@ -10,12 +17,10 @@ public class DamageFlash {
 	private float fadeTime;
 	private bool isImageFading = false;
 
-	// Use this for initialization
 	public DamageFlash() {
 		image = UIController.GetUI().GetDamageImage();
 	}
-	
-	// Update is called once per frame
+
 	public void Process() {
 		if (fadeTime > 0)
 			fadeTime -= Time.deltaTime;
@@ -35,6 +40,7 @@ public class DamageFlash {
 		}
 	}
 
+	// This public method does the damage flashing
 	public void FlashDamage()
 	{
 		fadeTime = FADE_TIME;

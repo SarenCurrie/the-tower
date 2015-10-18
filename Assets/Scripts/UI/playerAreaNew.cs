@@ -2,6 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/// <summary>
+///
+/// This class handles the player area opened by pressing 'Q',
+/// including updating sprites/
+/// 
+/// @Author Jacob
+/// </summary>
 public class playerAreaNew : MonoBehaviour 
 {
 	
@@ -49,6 +56,7 @@ public class playerAreaNew : MonoBehaviour
 	
 	private void Update()
 	{
+		// Show when Q key pressed
 		if (Input.GetKey(KeyCode.Q))
 			_IsShown = true;
 		else

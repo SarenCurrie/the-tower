@@ -4,9 +4,9 @@ using System.Collections;
 
 
 /// <summary>
-/// This class is used to manage the weapon related elements for the Graphical User Interface HUD.
-/// It is used to set and update the current sprites for the second weapon slot above the health meter
-/// and highlight the weapon if it is currently selected/.
+/// This class is used to manage the armour elements for the Graphical User Interface HUD.
+/// It is used to set and update the current sprites for the slots, show details via popup
+/// and highlight the armour if it is currently equipped/.
 /// 
 ///  @author Jacob
 /// 

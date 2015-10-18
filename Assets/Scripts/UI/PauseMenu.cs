@@ -2,11 +2,20 @@
 using System.Collections;
 using UnityEngine.UI;
 
+/// <summary>
+///
+/// This class handles all the actions of the in game pause menu, 
+/// including updating transparency of the HUD and God Mode.
+/// 
+/// @Author Jacob
+/// </summary>
 public class PauseMenu : MonoBehaviour {
-	
+
+	// Public flags for in game processes
 	public static bool paused = false;
 	public static bool canPause = true;
 
+	// Internal references for movement and alteration
 	private float pauseHeight;
 	private RectTransform pauseArea;
 	private float pauseUp;

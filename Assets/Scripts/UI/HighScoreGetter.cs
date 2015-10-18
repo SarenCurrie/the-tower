@@ -4,6 +4,13 @@ using HighScores;
 using System.Collections;
 using System.Collections.Generic;
 
+/// <summary>
+///
+/// This class implements the HighScoreConsumers getting callback,
+/// ensuring the UI is updated after a get.
+/// 
+/// @Author Jacob
+/// </summary>
 public class HighScoreGetter : HighScoreConsumer
 {
 	private HighScoreScreen parent;
