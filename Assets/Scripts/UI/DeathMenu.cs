@@ -57,11 +57,12 @@ public class DeathMenu : MonoBehaviour {
         }
         int score = UIController.GetUI().GetScoreManager().score;
         string emailAddress = GameObject.Find("EmailInput").GetComponent<InputField>().text;
-        string body = name + " has challenged you to play the brand new Cyberpunk shooter: The Tower, they played and achieved a whopping " + score + " points!!\n Copy and paste this link into your browser to play and try to beat their score! \n http://studio-scur.github.io. Note: this game requires the Uniy Web Player to play.";
-        string URL = "mailto:" + emailAddress + "?subject=The Tower: New Challenge from " + name + "&body=" + body;
-        Application.OpenURL(URL);
+        string body = name + " has challenged you to play the brand new Cyberpunk shooter: The Tower, they played and achieved a whopping " + score + " points!! Copy and paste this link into your browser to play and try to beat their score! http://studio-scur.github.io. Note: this game requires the Unity Web Player to play.')";
+        string URL = "window.open('mailto:" + emailAddress + "?subject=The Tower: New Challenge from " + name + "&body=" + body;
+        Application.ExternalEval(URL);
 
     }
+
 
 	public void donePosting()
 	{
