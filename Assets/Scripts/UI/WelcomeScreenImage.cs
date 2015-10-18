@@ -2,20 +2,27 @@
 using System.Collections;
 using UnityEngine.UI;
 
+/// <summary>
+///
+/// This class handles all the actions of the in game start menu.
+/// including switching menus and starting the game.
+/// 
+/// @Author Jacob
+/// </summary>
 public class WelcomeScreenImage : MonoBehaviour {
 		
+	// References for changing scenes
 	public string firstLevelName;
 	public string weaponCreationName;
-	//The screen we are on
-	public static SCREEN currentScreen;
-	private float _MoveSpeed = 20f;
 
+	// Internal references for movement and alteration
+	private float _MoveSpeed = 20f;
 	private float startMenuUp;
 	private float startMenuDown;
-	
 	private RectTransform startArea;
 	private Vector2 temp;
 
+	// Enum to ensure we are only on one screen at a time
 	public enum SCREEN
 	{
 		startmenu = 0,
@@ -24,6 +31,11 @@ public class WelcomeScreenImage : MonoBehaviour {
 		achievements = 3
 	}
 
+	//The screen we are on
+	public static SCREEN currentScreen;
+
+
+
 	void Awake()
 	{
 		startArea = this.GetComponent<RectTransform> ();
@@ -31,13 +43,8 @@ public class WelcomeScreenImage : MonoBehaviour {
 		startMenuDown = startArea.anchoredPosition.y;
 	}
 
-	public void StartGame(bool godmode)
+	public void StartGame()
 	{
-		if (godmode) {
-
-		} else {
-
-		}
 		Application.LoadLevel(firstLevelName);
 	}
 

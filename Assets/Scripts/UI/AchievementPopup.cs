@@ -2,6 +2,13 @@
 using System.Collections;
 using UnityEngine.UI;
 
+/// <summary>
+///
+/// This class handles the achievement popup shown when the player completes
+/// a given achievement.
+/// 
+/// @Author Jacob
+/// </summary>
 public class AchievementPopup : MonoBehaviour {
 
 	public Sprite sprite;

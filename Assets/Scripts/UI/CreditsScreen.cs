@@ -1,6 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+///
+/// This class handles the credits screen shown via the start menu.
+/// 
+/// @Author Jacob
+/// </summary>
 public class CreditsScreen : MonoBehaviour {
 		
 	private float _MoveSpeed = 20f;

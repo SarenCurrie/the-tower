@@ -141,8 +141,8 @@ MonoBehaviour:
     I get a contract on paper, although wrapped up in there was a brand new holo-phone.
     For the number of credits the contract was offering, it could have been on toilet
     roll for all I cared. Hitmen on this floor aren\u2019t hard to come by either,
-    so I take what I can get.\n\nThe mark was some top floor suit - Floor 756. He
-    said he would keep in touch with me through the phone - there would be some trouble
+    so I take what I can get.\n\nThe mark was some enforcer bot - Floor 756. He said
+    he would keep in touch with me through the phone - there would be some trouble
     getting up the floors too.\n\nThat\u2019s not a problem. Trouble is what I do."
 --- !u!222 &355863430
 CanvasRenderer:
@@ -347,8 +347,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1974905158}
-  - {fileID: 722396422}
   - {fileID: 662825811}
+  - {fileID: 722396422}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
@@ -438,10 +438,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 581393502}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 332, y: 6}
+  m_AnchoredPosition: {x: 304, y: 6}
   m_SizeDelta: {x: 663, y: 671}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &662825812
@@ -463,7 +463,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: a76b308fe9e31ea4f982c30ea62c88ff, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 09d726ab964144d44808f7103291913f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -512,7 +512,7 @@ RectTransform:
   - {fileID: 1655910611}
   - {fileID: 355863431}
   m_Father: {fileID: 581393502}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -341.160004, y: .00104260445}

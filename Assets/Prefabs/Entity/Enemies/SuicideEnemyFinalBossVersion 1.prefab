@@ -187,8 +187,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d077cd82f98bf4742a90bc080b3c1078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 300
-  health: 300
+  maxHealth: 15
+  health: 15
   shouldDrop: 0
   isDead: 0
   bloodPrefabs: []
@@ -242,11 +242,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: maxHealth
-      value: 300
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: health
-      value: 300
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: explosionForce

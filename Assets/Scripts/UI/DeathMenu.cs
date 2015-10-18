@@ -2,10 +2,20 @@
 using System.Collections;
 using UnityEngine.UI;
 
+/// <summary>
+///
+/// This class handles all the actions of the in game death menu, 
+/// including starting the email and posting processes.
+/// 
+/// @Author Jacob
+/// </summary>
 public class DeathMenu : MonoBehaviour {
-	
+
+	// Public flags for in game processes
 	public static bool visible = false;
-	
+	public static bool beatGame = false;
+
+	// Internal references for movement and alteration
 	private float deathHeight;
 	private RectTransform deathArea;
 	private float deathUp;
@@ -15,7 +25,6 @@ public class DeathMenu : MonoBehaviour {
 	private Text text;
 	private Text title;
 	public bool setScore = false;
-	public bool beatGame = false;
 	
 	void Awake()
 	{

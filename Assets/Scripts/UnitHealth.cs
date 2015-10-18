@@ -57,6 +57,8 @@ public class UnitHealth : MonoBehaviour {
 	public void LoseHealth(float val)
 	{
 		if (gameObject.tag == Tags.PLAYER) {
+			if (gameObject.GetComponent<Player>().godMode)
+				return;//Damage cannot be taken while in god mode
 			UIController.GetUI().FlashDamage();
 		}
 
@@ -176,6 +178,14 @@ public class UnitHealth : MonoBehaviour {
 			{
 				UIController.GetUI().ShowDialog(GameManager.currentFloor.exitDialog, 5);
 				Item.GenerateArmour(gameObject.transform.position);
+				// If the enemy is the final boss, display the end game dialog
+				if (GameManager.GetCurrentFloorNumber() == 4){
+					UIController.GetUI().ShowBeatGameMenu();
+				}
+				foreach (GameObject g in GameManager.currentFloor.currentRoom.GetEnemiesInRoom())
+				{
+					Destroy(g);
+				}
 			}
 
 			/**
