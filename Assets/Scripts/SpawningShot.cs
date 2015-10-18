@@ -17,7 +17,7 @@ public class SpawningShot : Projectile
     void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject r = Instantiate(rotator, transform.position, transform.rotation) as GameObject;
-		r.transform.SetParent(GameManager.currentFloor.bossRoom.transform);
+		r.transform.parent = GameManager.currentFloor.currentRoom.transform;
 		Destroy(gameObject);
     }
 }

@@ -1,5 +1,6 @@
-﻿using UnityEngine; 
+﻿using UnityEngine;
 using System.Collections;
+using System;
 
 /// <summary>
 /// 
@@ -31,7 +32,7 @@ public abstract class Item : MonoBehaviour {
 	public static GameObject GenerateItem(Vector3 v)
 	{
         GameObject item;
-        int type = Random.Range(0, 101);
+        int type = UnityEngine.Random.Range(0, 101);
         if (type < WEAPON_CHANCE)
         {
             item = (Instantiate(Resources.Load("GroundGun"), v, Quaternion.identity)) as GameObject; 
@@ -50,22 +51,33 @@ public abstract class Item : MonoBehaviour {
     }
 
 	/**
-	* Static method that will definitely generate a weapon.
+	* Static method that will generate a weapon.
 	*/
 	public static GameObject GenerateWeapon(Vector3 v, bool persistent)
 	{
-        GameObject weapon;
+		GameObject weapon;
 
-        if (persistent)
-        {
-            weapon = (Instantiate(Resources.Load("PersistentGroundGun"), v, Quaternion.identity)) as GameObject;
-        }
-        else
-        {
-            weapon = (Instantiate(Resources.Load("GroundGun"), v, Quaternion.identity)) as GameObject;
-        }
+		if (persistent)
+		{
+			weapon = (Instantiate(Resources.Load("PersistentGroundGun"), v, Quaternion.identity)) as GameObject;
+		}
+		else
+		{
+			weapon = (Instantiate(Resources.Load("GroundGun"), v, Quaternion.identity)) as GameObject;
+		}
 
 		return weapon;
+	}
+
+	/**
+	* Static method that will generate an armour piece.
+	*/
+	public static GameObject GenerateArmour(Vector3 v)
+	{
+		GameObject armour;
+		armour = (Instantiate(Resources.Load("GroundArmour"), v, Quaternion.identity)) as GameObject;
+
+		return armour;
 	}
 
 	/*
@@ -125,7 +137,4 @@ public abstract class Item : MonoBehaviour {
 	{
 		return GameObject.FindObjectOfType<Player>();
 	}
-
-
-
 }

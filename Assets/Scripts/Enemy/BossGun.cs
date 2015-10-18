@@ -1,87 +1,82 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BossGun : Enemy {
-    private const float BASE_HIT_DAMAGE = 0.01f;
+public class BossGun : BossBehaviour
+{
+	private const float BASE_HIT_DAMAGE = 0.01f;
 
-    public Transform projectilePrefab;
+	public Transform projectilePrefab;
 
-    public float fireForce;
-    public float fireFrequency;
-    
-    public float DAMAGEMULTIPLIER;
+	public float fireForce;
+	public float fireFrequency;
 
-    protected float lastFired = 0;
+	public float DAMAGEMULTIPLIER;
 
-    public float burstTime;
+	protected float lastFired = 0;
 
-    public float fireWait;
+	public float burstTime;
 
-    public float damage;
+	public float fireWait;
 
-    //Used for burst fire and reload times
-    private float weaponTime;
+	public float damage;
 
-    private float nextFireTime = 0;
-    private float fireStopTime = 0;
+	//Used for burst fire and reload times
+	private float weaponTime;
 
-    private bool waitingToFire = false;
-    public Sprite projectileSprite;
-    private AudioClip actualSound;
+	private float nextFireTime = 0;
+	private float fireStopTime = 0;
 
-    void Update()
-    {
-        MaybeFireAtPlayer();
-    }
+	private bool waitingToFire = false;
+	public Sprite projectileSprite;
 
-    private void MaybeFireAtPlayer()
-    {
-        if (!waitingToFire)
-        {
-            if (weaponTime > fireStopTime)
-            {
-                Reload();
-            }
-            else
-            {
-                Fire(damage);
-            }
-        }
-        else if (weaponTime > nextFireTime)
-        {
-            fireStopTime = burstTime;
-            weaponTime = 0;
-            waitingToFire = false;
-        }
-        weaponTime += Time.deltaTime;
-    }
+	void Update()
+	{
+		MaybeFireAtPlayer();
+	}
 
-    private void Fire(float damage)
-    {
-        if (Time.time > lastFired + 1 / fireFrequency)
-        {
-            Transform projectile = Instantiate(projectilePrefab, transform.position, transform.rotation) as Transform;
-            projectile.GetComponent<SpriteRenderer>().sprite = projectileSprite;
-            Transform projectileTransform = projectile.GetComponent<Transform>();
-            projectile.GetComponent<Rigidbody2D>().AddForce((projectileTransform.up) * fireForce);
-            projectile.GetComponent<Projectile>().SetDamage(damage);
+	private void MaybeFireAtPlayer()
+	{
+		if (!waitingToFire)
+		{
+			if (weaponTime > fireStopTime)
+			{
+				Reload();
+			}
+			else
+			{
+				Fire(damage);
+			}
+		}
+		else if (weaponTime > nextFireTime)
+		{
+			fireStopTime = burstTime;
+			weaponTime = 0;
+			waitingToFire = false;
+		}
+		weaponTime += Time.deltaTime;
+	}
 
-            //Should be added as part of the current room
-            projectile.parent = GameManager.currentFloor.currentRoom.transform;
+	private void Fire(float damage)
+	{
+		if (Time.time > lastFired + 1 / fireFrequency)
+		{
+			Transform projectile = Instantiate(projectilePrefab, transform.position, transform.rotation) as Transform;
+			projectile.GetComponent<SpriteRenderer>().sprite = projectileSprite;
+			Transform projectileTransform = projectile.GetComponent<Transform>();
+			projectile.GetComponent<Rigidbody2D>().AddForce((projectileTransform.up) * fireForce);
+			projectile.GetComponent<Projectile>().SetDamage(damage);
 
-            lastFired = Time.time;
+			//Should be added as part of the current room
+			projectile.parent = GameManager.currentFloor.currentRoom.transform;
 
-            // Play Sound
-            AudioSource source = GetComponent<AudioSource>();
-            source.clip = actualSound;
-            source.Play();
-        }
-    }
+			lastFired = Time.time;
+		}
+	}
 
-    protected void Reload()
-    {
-        nextFireTime = fireWait;
-        weaponTime = 0;
-        waitingToFire = true;
-    }
+	protected void Reload()
+	{
+		nextFireTime = fireWait;
+		weaponTime = 0;
+		waitingToFire = true;
+	}
 }

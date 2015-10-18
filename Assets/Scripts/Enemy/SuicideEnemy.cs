@@ -31,6 +31,10 @@ public class SuicideEnemy : Enemy
 
 	void MaybeExplode()
 	{
+		if(GameManager.GetPlayer() == null)
+		{
+			return;
+		}
 		if (body.IsTouching(GameManager.GetPlayer().GetComponent<CircleCollider2D>()))
 		{
 			//Kill this suicide enemy
@@ -38,7 +42,7 @@ public class SuicideEnemy : Enemy
 		}
 	}
 
-	void OnDestroy()
+	public override void Die()
 	{
 		//Create an explosion at this point
 		Explosion.CreateExplosion(explosionPrefab, explosionForce, explosionRadius, damage, transform.position);
