@@ -6,6 +6,9 @@ using System.Text;
 
 namespace HighScores
 {
+	/**
+	 * Consumer for the High Score API
+	 */
 	public abstract class HighScoreConsumer : MonoBehaviour
 	{
 		private List<HighScore> highScores = new List<HighScore>();

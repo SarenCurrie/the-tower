@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Achievements
 {
+	/**
+	 * Defines a collection of achievements to be used in the game.
+	 */
 	public class AchievementFactory
 	{
 		private Dictionary<string, Achievement> achievements = new Dictionary<string, Achievement>();
@@ -21,7 +24,7 @@ namespace Achievements
 		// Enemy killing
 		private Achievement KILL_ONE_ENEMY = new Achievement("Entry Level Murderer", "Killed your first enemy.");
 		private Achievement KILL_THIRTY_ENEMIES = new Achievement("Hobbyist Murderer", "Killed your thirtieth enemy.");
-		private Achievement KILL_FIFTY_ENEMIES = new Achievement("Assassin", "Killed your fifieth enemy.");
+		private Achievement KILL_FIFTY_ENEMIES = new Achievement("Assassin", "Killed your fiftieth enemy.");
 
 		// Score
 		private Achievement SCORE_TEN_THOUSAND = new Achievement("Thousandaire", "Scored ten thousand points");
@@ -41,6 +44,9 @@ namespace Achievements
 			achievements.Add("SCORE_HUNDRED_THOUSAND", SCORE_HUNDRED_THOUSAND);
 		}
 
+		/**
+		 * Gets all the achievements
+		 */
 		public Dictionary<string, Achievement> GetAchievements()
 		{
 			return achievements;

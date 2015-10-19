@@ -1,6 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
+/**
+ * An achievement.
+ */
 namespace Achievements {
 	public class Achievement {
 		public string name;
