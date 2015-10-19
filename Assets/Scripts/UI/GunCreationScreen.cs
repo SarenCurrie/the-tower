@@ -3,7 +3,16 @@ using System.Collections;
 using UnityEngine.UI;
 using System;
 
-
+/// <summary>
+/// 
+/// This class represents the screen where players are able to create and customise
+/// their own weapon based on their personal gameplay preferences.
+/// 
+/// This includes choosing their weapon appearance, projectile, and weapon statistics.
+/// 
+/// @author Harry
+/// 
+/// </summary>
 public class GunCreationScreen : MonoBehaviour {
 
 
@@ -36,7 +45,7 @@ public class GunCreationScreen : MonoBehaviour {
     private float damageMod = 56.17f;
 
 
-
+    //Initialize defaults
     void Start () {
         topDownObject = GameObject.Find("topView");
         weaponObject = GameObject.Find("sideView");
@@ -92,7 +101,7 @@ public class GunCreationScreen : MonoBehaviour {
         updateSprites();
 
     }
-
+    //Called to updated the sprites chosen by the player to show on the screen
     public void updateSprites()
     {
         weaponObject.GetComponent<Image>().sprite = selectedSideLooks[weaponIndex];
@@ -107,6 +116,7 @@ public class GunCreationScreen : MonoBehaviour {
 
     }
 
+    //Various update methods for checking what the user selects for each weapon stat.
     public void UpdateFireRate()
     {
         int value = (int)(GameObject.Find("FireRate").GetComponent<Slider>().value);
@@ -152,6 +162,8 @@ public class GunCreationScreen : MonoBehaviour {
         minorModifier = value;
     }
 
+
+    //Creates the weapon when the user presses the create weapon button
     public void CreateWeapon()
     {
         if (majorModifier == minorModifier)
@@ -170,9 +182,9 @@ public class GunCreationScreen : MonoBehaviour {
         Application.LoadLevel("StartScreen");
     }
 
+    // Calculates the damage of the weapon, balancing it with the other choices the player makes.
     public void RecalculateDamage()
     {
-        //damageMod = (float) Math.Round(20f*(float)(System.Math.Pow(spreadAngle, 0.7f)+1)/(float)(System.Math.Pow(fireRate, 1.1f)+1 + System.Math.Pow(projectiles, 1.1f)+1 + System.Math.Pow(fireForce, 0.2))+1,2);
         damageMod = 1.0f+(float)(3f*(((50) + (System.Math.Pow(spreadAngle, 0.7f))) / (float)((((System.Math.Pow(fireRate, 1.1f))) * System.Math.Pow(projectiles, 1.1f))+ System.Math.Pow(fireForce, 0.2))));
         GameObject.Find("Damage").GetComponent<Text>().text = damageMod.ToString();
 

@@ -8,7 +8,7 @@ using NSubstitute;
 /// 
 /// Tests the Enemy class.
 ///
-/// 
+/// @author Harry
 /// </summary>
 [TestFixture]
 public class TestEnemy {
