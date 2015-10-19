@@ -7,7 +7,6 @@ using NSubstitute;
 /// 
 /// Tests the UIController class.
 ///
-/// 
 /// </summary>
 [TestFixture]
 public class TestUIController

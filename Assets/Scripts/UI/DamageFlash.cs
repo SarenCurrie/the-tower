@@ -7,7 +7,6 @@ using UnityEngine.UI;
 /// This class handles the 'damage flash', a red border to the screen
 /// when the player is hit by an enemy
 /// 
-/// @Author Jacob
 /// </summary>
 public class DamageFlash {
 

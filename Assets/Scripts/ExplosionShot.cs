@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
-/**
-*This projectile is used by the first boss, and will explode on contact
-*/
+/// <summary>
+/// 
+/// This projectile is used by the first boss, and will explode on contact
+/// 
+/// </summary>
 public class ExplosionShot : Projectile {
 
 	public float explosionForce;

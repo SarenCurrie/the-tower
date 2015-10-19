@@ -9,7 +9,6 @@ using System.Collections.Generic;
 /// This class implements the HighScoreConsumers posting callback,
 /// ensuring the UI is updated after a post.
 /// 
-/// @Author Jacob
 /// </summary>
 public class HighScorePoster : HighScoreConsumer
 {

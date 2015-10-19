@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-/**
- * This projectile is used by the first boss to spawn a rotator enemy  
- */
+/// <summary>
+/// 
+/// This projectile is used by the first boss to spawn a rotator enemy  
+/// 
+/// </summary>
 public class SpawningShot : Projectile
 {
     public GameObject rotator;

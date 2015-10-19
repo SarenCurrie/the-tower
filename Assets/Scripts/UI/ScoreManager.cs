@@ -3,7 +3,9 @@ using UnityEngine.UI;
 using System.Collections;
 
 /// <summary>
+/// 
 /// This script is used to modify the player's score. It handles GUI updating.
+/// 
 /// </summary>
 public class ScoreManager {
 

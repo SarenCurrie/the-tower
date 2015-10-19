@@ -7,7 +7,6 @@ using UnityEngine.UI;
 /// This class handles all the actions of the in game pause menu, 
 /// including updating transparency of the HUD and God Mode.
 /// 
-/// @Author Jacob
 /// </summary>
 public class PauseMenu : MonoBehaviour {
 

@@ -7,7 +7,6 @@ using UnityEngine.UI;
 /// This class handles all the actions of the in game start menu.
 /// including switching menus and starting the game.
 /// 
-/// @Author Jacob
 /// </summary>
 public class WelcomeScreenImage : MonoBehaviour {
 		

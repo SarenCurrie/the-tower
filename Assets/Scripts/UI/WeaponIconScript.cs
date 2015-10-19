@@ -9,8 +9,6 @@ using System;
 /// It is used to set and update the current sprites for the weapon slot above the health meter
 /// ,show details via popup and highlight the weapon if it is currently selected
 /// 
-///  @author Harry
-///  @author Jacob
 /// 
 /// </summary>
 public class WeaponIconScript : MonoBehaviour {

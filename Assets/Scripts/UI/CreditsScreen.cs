@@ -5,7 +5,6 @@ using UnityEngine.UI;
 ///
 /// This class handles the credits screen shown via the start menu.
 /// 
-/// @Author Jacob
 /// </summary>
 public class CreditsScreen : MonoBehaviour {
 		
