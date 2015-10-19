@@ -39,15 +39,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea2bd5a944b9b0544bde7362fb6a255d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogChance: 100
   numberOfRooms: 0
   enemies: []
   rooms: []
-  enterDialog: Hint (Aim for the starting turrets, then the main one. Mind the chargers!
-  exitDialog: Winner!
-  floorDialog: []
+  enterDialog: It's about time I introduce myself. I'm the AI system that controls
+    the entire tower and I have bought you here to kill me.
+  exitDialog: 
+  floorDialog:
+  - I'm sorry I can't make this easy. My security protocol can't be disabled, you'll
+    have to take out the turrets yourself.
+  - For hundreds of years I've watched over the tower. And watched it fall apart into
+    what you know.
+  - I wanted to help, make this place great. But I've only been given tools of destruction.
+    Now I just want it to end.
   firstRoom: {fileID: 147792, guid: 28dde597414c08f49a3e76170160dcfe, type: 2}
   bossRoom: {fileID: 199770, guid: 11c92419e465b1744bb4b350f664b5fe, type: 2}
   screenBlackerPrefab: {fileID: 129008, guid: 02525fa4ad0ec374290310ece9f6b2c4, type: 2}
+  orderedDialog: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -62,6 +71,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: enemies.Array.size
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: floorDialog.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: rooms.Array.data[0]
@@ -113,16 +126,40 @@ Prefab:
       objectReference: {fileID: 142788, guid: cd802890af0622f4aa52ecc30f7a5d81, type: 2}
     - target: {fileID: 0}
       propertyPath: enterDialog
-      value: Hint (Aim for the starting turrets, then the main one. Mind the chargers!
+      value: It's about time I introduce myself. I'm the AI system that controls the
+        entire tower and I have bought you here to kill me.
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: exitDialog
-      value: Winner!
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: screenBlackerPrefab
       value: 
       objectReference: {fileID: 129008, guid: 02525fa4ad0ec374290310ece9f6b2c4, type: 2}
+    - target: {fileID: 0}
+      propertyPath: floorDialog.Array.data[0]
+      value: I'm sorry I can't make this easy. My security protocol can't be disabled,
+        you'll have to take out the turrets yourself.
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: floorDialog.Array.data[1]
+      value: For hundreds of years I've watched over the tower. And watched it fall
+        apart into what you know.
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: floorDialog.Array.data[2]
+      value: I wanted to help, make this place great. But I've only been given tools
+        of destruction. Now I just want it to end.
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: orderedDialog
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: dialogChance
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 151502}

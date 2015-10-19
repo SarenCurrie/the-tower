@@ -18,7 +18,7 @@ public class Floor : MonoBehaviour {
 	//Percentage chance flavour text will be displayed upon entering room
 	public int dialogChance = 20;
 	//Amount of time that DIALOG is displayed
-	public const int DIALOGTIME = 5;
+	public const int DIALOGTIME = 7;
 
 	//How many rooms there will be. Guaranteed to be reachable.
 	//Excludes first room and boss room
@@ -53,6 +53,9 @@ public class Floor : MonoBehaviour {
 
 	private int currentRoomX = STARTING_ROOM_X;
 	private int currentRoomY = STARTING_ROOM_Y;
+
+	//Whether the floor dialog should be displayed in order
+	public bool orderedDialog = false;
 
 	// The room that the player is currently in
 	public Room currentRoom
@@ -224,11 +227,30 @@ public class Floor : MonoBehaviour {
 	// Displays a piece of flavour text and makes sure that it can't be shown again
 	public void DisplayFloorDialog()
 	{
+		if(orderedDialog)
+		{
+			DisplayFloorDialog(0);
+		}
+		else
+		{
+			int dialogLength = floorDialog.Count;
+
+			if(dialogLength != 0)
+			{
+				int index = UnityEngine.Random.Range(0, dialogLength);
+				UIController.GetUI().ShowDialog(floorDialog[index], DIALOGTIME);
+				floorDialog.RemoveAt(index);
+			}
+		}
+	}
+
+	// Displays a certain piece of the flavour text, for when it needs to be controlled
+	protected void DisplayFloorDialog(int index)
+	{
 		int dialogLength = floorDialog.Count;
 
 		if(dialogLength != 0)
 		{
-			int index = UnityEngine.Random.Range(0, dialogLength);
 			UIController.GetUI().ShowDialog(floorDialog[index], DIALOGTIME);
 			floorDialog.RemoveAt(index);
 		}

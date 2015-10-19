@@ -39,6 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea2bd5a944b9b0544bde7362fb6a255d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogChance: 20
   numberOfRooms: 14
   enemies:
   - {fileID: 101716, guid: df0d13e51c27c5140bf14684ba41f2d5, type: 2}
@@ -52,11 +53,10 @@ MonoBehaviour:
   - {fileID: 187704, guid: 171aee03a2b739743ac7b967868fa4aa, type: 2}
   - {fileID: 146140, guid: 17772a99673644a4ab05bed9cd71c817, type: 2}
   - {fileID: 142954, guid: e68f1d8942d9a8d46b8df3099c204e66, type: 2}
-  enterDialog: Forgot to mention, security will know you aren't meant to be here.
-    Expect hostility.
+  enterDialog: Security will know you aren't allowed here. Expect hostility.
   exitDialog: Impressive, I didn't think you'd make it look so easy.
   floorDialog:
-  - To think, you lived BELOW this floor when I found you.
+  - People live their entire lives in these conditions, it's disgusting.
   - The citizens are probably used to hiding when they hear gunfire down here.
   - We don't even need security this far down, there's enough violence to keep the
     citizens in line.
@@ -112,8 +112,7 @@ Prefab:
       objectReference: {fileID: 142954, guid: e68f1d8942d9a8d46b8df3099c204e66, type: 2}
     - target: {fileID: 0}
       propertyPath: enterDialog
-      value: Forgot to mention, security will know you aren't meant to be here. Expect
-        hostility.
+      value: Security will know you aren't allowed here. Expect hostility.
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: exitDialog
@@ -121,7 +120,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: floorDialog.Array.data[0]
-      value: To think, you lived BELOW this floor when I found you.
+      value: People live their entire lives in these conditions, it's disgusting.
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: floorDialog.Array.data[1]
