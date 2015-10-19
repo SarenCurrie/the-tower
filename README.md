@@ -1,7 +1,7 @@
 # The Tower
 
 [![Build Status](https://magnum.travis-ci.com/SarenCurrie/the-tower.svg?token=PpqedDmGK3qwq5Ez7x4Y&branch=master)](https://magnum.travis-ci.com/SarenCurrie/the-tower)
-[![](https://img.shields.io/badge/release-a.5.0-brightgreen.svg)](http://studio-scur.github.io)
+[![](https://img.shields.io/badge/release-b.1.2-brightgreen.svg)](http://studio-scur.github.io)
 [![](https://img.shields.io/badge/documentation-here-brightgreen.svg)](http://github.com/SarenCurrie/the-tower/wiki)
 
 
