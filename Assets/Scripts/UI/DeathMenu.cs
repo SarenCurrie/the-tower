@@ -48,7 +48,7 @@ public class DeathMenu : MonoBehaviour {
 
 	public void postHighScore()
 	{
-		int score = UIController.GetUI ().GetScoreManager ().score;;
+		int score = UIController.GetUI ().GetScoreManager ().score;
 		string name = GameObject.Find("HighScoreInput").GetComponent<InputField>().text;
 		foreach (Button b in this.GetComponentsInChildren<Button>()){
 			b.interactable = false;

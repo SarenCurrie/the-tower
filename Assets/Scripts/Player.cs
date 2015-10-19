@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
+using Achievements;
 
 /// <summary>
 /// 
@@ -64,11 +64,19 @@ public class Player : MonoBehaviour {
         GameObject w=null;
 		// Instantiate and pick up a starting weapon
         w = GameObject.Find("PersistentGroundGun(Clone)");
-        if (w==null)
-        {
-              w = Item.GenerateWeapon(gameObject.GetComponent<Transform>().position);
+        if (w == null) {
+			w = Item.GenerateWeapon (gameObject.GetComponent<Transform> ().position);
 
-        }
+		} else {
+			if (GameObject.Find("AchievementHandler") != null)
+			{
+				GameObject.Find("AchievementHandler").GetComponent<AchievementHandler>().Achieve("MAKE_FIRST_WEAPON");
+			}
+			else
+			{
+				Debug.LogWarning("AchievementHandler Missing!");
+			}
+		}
       
 		w.GetComponent<Weapon>().PickUp();
     }
