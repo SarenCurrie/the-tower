@@ -27,7 +27,7 @@ namespace Achievements
 		private Achievement KILL_FIFTY_ENEMIES = new Achievement("Assassin", "Killed your fiftieth enemy.");
 
 		// Score
-		private Achievement SCORE_TEN_THOUSAND = new Achievement("Thousandaire", "Scored ten thousand points");
+		private Achievement SCORE_TEN_THOUSAND = new Achievement("Making it Rain", "Scored ten thousand points");
 		private Achievement SCORE_HUNDRED_THOUSAND = new Achievement("Pointy", "Scored one hundred thousand points");
 
 		public AchievementFactory()
