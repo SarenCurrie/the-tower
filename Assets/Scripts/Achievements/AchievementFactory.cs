@@ -34,7 +34,6 @@ namespace Achievements
 			achievements.Add("KILL_FINAL_BOSS", KILL_FINAL_BOSS);
 			achievements.Add("MAKE_FIRST_WEAPON", MAKE_FIRST_WEAPON);
 			achievements.Add("SCORE_NONE", SCORE_NONE);
-			achievements.Add("UNTOUCHABLE", UNTOUCHABLE);
 			achievements.Add("KILL_ONE", KILL_ONE_ENEMY);
 			achievements.Add("KILL_THIRTY", KILL_THIRTY_ENEMIES);
 			achievements.Add("KILL_FIFTY", KILL_FIFTY_ENEMIES);
