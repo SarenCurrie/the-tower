@@ -179,8 +179,18 @@ public class UnitHealth : MonoBehaviour {
 				UIController.GetUI().ShowDialog(GameManager.currentFloor.exitDialog, 5);
 				Item.GenerateArmour(gameObject.transform.position);
 				// If the enemy is the final boss, display the end game dialog
-				if (GameManager.GetCurrentFloorNumber() == 4){
+				if (GameManager.GetCurrentFloorNumber() == 4)
+				{
+					CheckAndAchieve("KILL_FINAL_BOSS");
 					UIController.GetUI().ShowBeatGameMenu();
+				} 
+				else if (GameManager.GetCurrentFloorNumber() == 2)
+				{
+					CheckAndAchieve("KILL_SECOND_BOSS");
+				} 
+				else if (GameManager.GetCurrentFloorNumber() == 1)
+				{
+					CheckAndAchieve("KILL_FIRST_BOSS");
 				}
 				foreach (GameObject g in GameManager.currentFloor.currentRoom.GetEnemiesInRoom())
 				{
@@ -209,10 +219,28 @@ public class UnitHealth : MonoBehaviour {
 		}
 		else if (tag.Equals(Tags.PLAYER))
 		{
+			if (UIController.GetUI ().GetScoreManager ().score == 0){
+				CheckAndAchieve("SCORE_NONE");
+			}
 			UIController.GetUI().ShowDeathMenu();
 		}
 
 		//Destroy the game object
 		Destroy(gameObject);
+	}
+
+	/*
+	 * Achieves an achievement if the handler is not null
+	 */
+	public void CheckAndAchieve(string key){
+		// Add achievement
+		if (GameObject.Find("AchievementHandler") != null)
+		{
+			GameObject.Find("AchievementHandler").GetComponent<AchievementHandler>().Achieve(key);
+		}
+		else
+		{
+			Debug.LogWarning("AchievementHandler Missing!");
+		}
 	}
 }
