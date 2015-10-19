@@ -7,7 +7,6 @@ using UnityEngine.UI;
 /// The top level UI controller class. All UI elements should be accessed
 /// through this class.
 /// 
-/// @Author Tate
 /// </summary>
 public class UIController : MonoBehaviour {
 

@@ -9,7 +9,6 @@ using Achievements;
 /// This class handles the achievement summary shown via the start menu,
 /// including getting the achievements and keeping them up to date.
 /// 
-/// @Author Jacob
 /// </summary>
 public class AchievementScreen : MonoBehaviour {
 		

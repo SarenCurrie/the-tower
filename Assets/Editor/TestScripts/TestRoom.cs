@@ -8,7 +8,6 @@ using NSubstitute;
 /// 
 /// Tests the Room class.
 ///
-/// 
 /// </summary>
 [TestFixture]
 public class TestRoom

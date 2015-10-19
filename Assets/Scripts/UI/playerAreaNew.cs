@@ -7,7 +7,6 @@ using System.Collections.Generic;
 /// This class handles the player area opened by pressing 'Q',
 /// including updating sprites/
 /// 
-/// @Author Jacob
 /// </summary>
 public class playerAreaNew : MonoBehaviour 
 {

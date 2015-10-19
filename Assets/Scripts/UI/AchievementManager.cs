@@ -2,6 +2,12 @@ using UnityEngine;
 using System.Collections;
 using Achievements;
 
+/// <summary>
+/// 
+/// This class represents the AchievementMnager which
+/// manages what achievements the player has achieved.
+/// 
+/// </summary>
 public class AchievementManager : MonoBehaviour {
 
 	/**
