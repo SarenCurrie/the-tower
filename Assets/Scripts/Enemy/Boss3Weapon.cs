@@ -66,4 +66,9 @@ public class Boss3Weapon : RangedEnemy
 	{
 		return Random.Range(minBurstTime, maxBurstTime);
 	}
+
+	public override void Die()
+	{
+		GameManager.currentFloor.DisplayFloorDialog();
+	}
 }

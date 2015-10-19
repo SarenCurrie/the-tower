@@ -39,6 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea2bd5a944b9b0544bde7362fb6a255d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogChance: 20
   numberOfRooms: 14
   enemies:
   - {fileID: 108248, guid: b34e2072645245344851cc36d3f56a25, type: 2}
@@ -51,14 +52,13 @@ MonoBehaviour:
   - {fileID: 128598, guid: 6ae953c5836d78144921856cd8e082e3, type: 2}
   - {fileID: 144904, guid: 99db250844aa40d42a59ef741c4c4f96, type: 2}
   - {fileID: 185492, guid: 1b32568a364617a4ca677f5296b866ff, type: 2}
-  enterDialog: Surely you aren't surprised it's so much nicer up here. It gets better,
-    too.
+  enterDialog: You've made it to the residential block, well done.
   exitDialog: A second sentinel fallen to a single man. Is our security really that
     lacking?
   floorDialog:
   - I guess they expected you and evacuated the citizens to protect them from your
     rampage.
-  - I am actually shocked you made it this far, much better than the others.
+  - I am shocked you made it this far, much better than the others.
   - Security isn't normally so concentrated here. You must be scaring someone.
   firstRoom: {fileID: 137086, guid: 156bc63b191ed2e4fbe3e2141f83e7bc, type: 2}
   bossRoom: {fileID: 131790, guid: 86599ba2cf1bf46449c59393649c3272, type: 2}
@@ -124,8 +124,7 @@ Prefab:
       objectReference: {fileID: 129008, guid: 02525fa4ad0ec374290310ece9f6b2c4, type: 2}
     - target: {fileID: 0}
       propertyPath: enterDialog
-      value: Surely you aren't surprised it's so much nicer up here. It gets better,
-        too.
+      value: You've made it to the residential block, well done.
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: exitDialog
@@ -139,7 +138,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: floorDialog.Array.data[1]
-      value: I am actually shocked you made it this far, much better than the others.
+      value: I am shocked you made it this far, much better than the others.
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: floorDialog.Array.data[2]
