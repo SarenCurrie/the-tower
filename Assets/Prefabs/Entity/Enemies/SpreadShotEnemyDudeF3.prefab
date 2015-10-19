@@ -238,7 +238,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -726603125
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 055665ce6b1fef84bae2ee0c6e6f7b5e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9f19247a31b48934883e2aed83ec70a7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
@@ -254,7 +254,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 055665ce6b1fef84bae2ee0c6e6f7b5e,
+      objectReference: {fileID: 21300000, guid: 9f19247a31b48934883e2aed83ec70a7,
         type: 3}
     - target: {fileID: 0}
       propertyPath: bloodPrefabs.Array.data[4]
