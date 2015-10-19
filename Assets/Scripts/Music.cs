@@ -1,6 +1,13 @@
 using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// 
+/// This class represents the background music that is
+/// played upon starting the game for both the main and boss
+/// music.
+//
+/// </summary>
 public class Music : MonoBehaviour
 {
 	private static Music instance = null;

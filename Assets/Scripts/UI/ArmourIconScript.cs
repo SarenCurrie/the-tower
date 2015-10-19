@@ -8,7 +8,6 @@ using System.Collections;
 /// It is used to set and update the current sprites for the slots, show details via popup
 /// and highlight the armour if it is currently equipped/.
 /// 
-///  @author Jacob
 /// 
 /// </summary>
 public class ArmourIconScript : MonoBehaviour {

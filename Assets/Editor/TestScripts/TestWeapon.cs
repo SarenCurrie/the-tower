@@ -8,7 +8,6 @@ using NSubstitute;
 /// 
 /// Tests the Weapon class.
 ///
-/// @author Harry
 /// </summary>
 [TestFixture]
 public class TestWeapon

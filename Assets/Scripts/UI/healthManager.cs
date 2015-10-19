@@ -7,7 +7,6 @@ using System.Collections;
 /// It is used to set and update the Health meter of the player and also to update the heartRate
 /// monitor and heartrate (Not yet implemented).
 ///
-///  @author Harry
 ///
 /// </summary>
 public class HealthManager

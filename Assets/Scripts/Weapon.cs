@@ -17,7 +17,6 @@ using System;
 /// -damage - based on the Entity's statistics and the damageMod (damage modifier)
 ///
 ///
-/// @author Harry
 /// 
 /// </summary>
 /// 

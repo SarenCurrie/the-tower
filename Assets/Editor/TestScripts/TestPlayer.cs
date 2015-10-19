@@ -8,7 +8,6 @@ using NSubstitute;
 /// 
 /// Tests the Player class.
 ///
-/// @author Harry
 /// </summary>
 [TestFixture]
 public class TestPlayer

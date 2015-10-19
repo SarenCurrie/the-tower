@@ -6,7 +6,6 @@ using UnityEngine.UI;
 ///
 /// This class handles the stat summary shown over the player area
 /// 
-/// @Author Jacob
 /// </summary>
 public class StatSummaryText : MonoBehaviour {
 	

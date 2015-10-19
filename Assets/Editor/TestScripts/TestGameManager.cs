@@ -7,7 +7,6 @@ using NSubstitute;
 /// 
 /// Tests the GameManager class.
 /// 
-/// @author Harry
 /// </summary>
 [TestFixture]
 public class TestGameManager

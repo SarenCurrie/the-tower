@@ -10,7 +10,6 @@ using System;
 /// 
 /// This includes choosing their weapon appearance, projectile, and weapon statistics.
 /// 
-/// @author Harry
 /// 
 /// </summary>
 public class GunCreationScreen : MonoBehaviour {

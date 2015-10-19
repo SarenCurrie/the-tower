@@ -7,7 +7,6 @@ using UnityEngine.UI;
 /// This class handles all the actions of the in game death menu, 
 /// including starting the email and posting processes.
 /// 
-/// @Author Jacob
 /// </summary>
 public class DeathMenu : MonoBehaviour {
 

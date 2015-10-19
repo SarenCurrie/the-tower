@@ -7,7 +7,6 @@ using System.Collections;
 /// It is used to set and update the current sprites for the first weapon slot above the health meter
 /// and highlight the weapon if it is currently selected/.
 /// 
-///  @author Harry
 /// 
 /// </summary>
 public class Weapon2Script : MonoBehaviour
